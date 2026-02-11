@@ -77,7 +77,7 @@ export default function CookieCanvas({
       // Reveal fortune after delay
       setTimeout(() => {
         SoundManager.play("chime");
-        renderer.showFortunePaper(fortune, () => {
+        renderer.showFortunePaper(() => {
           onFortuneReveal();
           setShowNewButton(true);
         });
@@ -95,55 +95,28 @@ export default function CookieCanvas({
     const physics = physicsRef.current;
     const interaction = interactionRef.current;
 
+    // Reset existing objects in place — no destroy/recreate needed
     if (physics) {
-      physics.destroy();
+      physics.reset();
     }
     if (renderer) {
-      renderer.destroy();
+      renderer.reset();
     }
     if (interaction) {
       interaction.reset();
     }
 
-    // Re-initialize
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const newRenderer = new CookieRenderer();
-    const newPhysics = createCookiePhysics(600, 500);
-    rendererRef.current = newRenderer;
-    physicsRef.current = newPhysics;
-
-    newRenderer.init(canvas).then(() => {
-      const newInteraction = new InteractionDetector();
-      newInteraction.setCookieBounds(newRenderer.cx, newRenderer.cy, newRenderer.radius);
-      newInteraction.setCallbacks({
-        onBreak: handleBreak,
-        onHover: (intensity) => {
-          newRenderer.state.hoverIntensity = intensity;
-          if (intensity > 0.5) {
-            newRenderer.state.phase = "hover";
-          }
-        },
-        onShakeProgress: (progress) => {
-          newRenderer.state.shakeProgress = progress;
-        },
-        onSqueezeProgress: (progress) => {
-          newRenderer.state.squeezeProgress = progress;
-        },
-      });
-      newInteraction.attach(canvas);
-      interactionRef.current = newInteraction;
-    });
+    // Animation loop is still running from initial mount, no need to restart
 
     onNewCookie();
-  }, [handleBreak, onNewCookie]);
+  }, [onNewCookie]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     let cancelled = false;
+    let initialized = false;
     const renderer = new CookieRenderer();
     const physics = createCookiePhysics(600, 500);
     rendererRef.current = renderer;
@@ -151,10 +124,13 @@ export default function CookieCanvas({
 
     renderer.init(canvas).then(() => {
       if (cancelled) {
+        // Cleanup was called before init completed — destroy now that app is ready
         renderer.destroy();
         physics.destroy();
         return;
       }
+
+      initialized = true;
 
       const interaction = new InteractionDetector();
       interaction.setCookieBounds(renderer.cx, renderer.cy, renderer.radius);
@@ -172,12 +148,36 @@ export default function CookieCanvas({
         onSqueezeProgress: (progress) => {
           renderer.state.squeezeProgress = progress;
         },
+        onDragOffset: (dx, dy) => {
+          renderer.state.dragOffsetX = dx;
+          renderer.state.dragOffsetY = dy;
+        },
+        onClickProgress: (count) => {
+          renderer.state.clickCrackLevel = count;
+          // Small shake on each click
+          if (count > 0 && containerRef.current) {
+            gsap.to(containerRef.current, {
+              x: () => (Math.random() - 0.5) * 6 * count,
+              y: () => (Math.random() - 0.5) * 4 * count,
+              duration: 0.04,
+              repeat: 3,
+              yoyo: true,
+              ease: "power2.inOut",
+              onComplete: () => {
+                gsap.set(containerRef.current, { x: 0, y: 0 });
+              },
+            });
+            SoundManager.init();
+            SoundManager.play(count === 1 ? "crack" : "crack");
+          }
+        },
       });
       interaction.attach(canvas);
       interactionRef.current = interaction;
 
-      // Animation loop
+      // Animation loop — check cancelled flag each frame
       const loop = () => {
+        if (cancelled) return;
         physics.step();
         renderer.update(physics.fragments);
         animFrameRef.current = requestAnimationFrame(loop);
@@ -198,6 +198,11 @@ export default function CookieCanvas({
       cancelled = true;
       cancelAnimationFrame(animFrameRef.current);
       interactionRef.current?.detach();
+      // Only destroy if init completed; otherwise the .then() callback handles it
+      if (initialized) {
+        renderer.destroy();
+        physics.destroy();
+      }
       window.removeEventListener("click", initSound);
       window.removeEventListener("touchstart", initSound);
     };
@@ -207,13 +212,46 @@ export default function CookieCanvas({
     <div className="relative w-full max-w-[600px] mx-auto">
       <div
         ref={containerRef}
-        className="cookie-canvas-container rounded-2xl overflow-hidden"
+        className="cookie-canvas-container relative rounded-2xl overflow-hidden"
         style={{
           background: "radial-gradient(ellipse at center, #2d1810 0%, #1a0e04 70%)",
           boxShadow: "0 0 60px rgba(212, 160, 74, 0.15), inset 0 0 60px rgba(0,0,0,0.3)",
         }}
       >
-        <canvas ref={canvasRef} />
+        <canvas
+          ref={canvasRef}
+          style={{ touchAction: "none", cursor: "pointer" }}
+        />
+
+        {/* Instruction text (HTML overlay) */}
+        {!isBroken && (
+          <div
+            className="pointer-events-none absolute bottom-8 left-0 right-0 text-center animate-pulse"
+            style={{ color: "#d4a04a", fontSize: 14, opacity: 0.6 }}
+          >
+            Click, drag, or shake to break your cookie
+          </div>
+        )}
+
+        {/* Fortune text (HTML overlay on canvas) */}
+        {showNewButton && (
+          <div
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
+            <div
+              className="rounded px-6 py-3 text-center"
+              style={{
+                backgroundColor: "rgba(245, 230, 200, 0.95)",
+                border: "1px solid rgba(212, 160, 74, 0.3)",
+                maxWidth: 280,
+              }}
+            >
+              <p style={{ color: "#4a3520", fontSize: 13, fontFamily: "Georgia, serif" }}>
+                {fortune}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Break method indicator */}

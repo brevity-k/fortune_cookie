@@ -72,7 +72,7 @@ export default function TermsPage() {
           <section>
             <h2 className="mb-2 text-xl font-semibold text-gold">Disclaimer of Warranties</h2>
             <p>
-              The service is provided &ldquo;as is&rdquo; without warranties of any kind, either
+              The service is provided &quot;as is&quot; without warranties of any kind, either
               express or implied. We do not guarantee that the service will be uninterrupted,
               error-free, or free of harmful components.
             </p>
@@ -98,8 +98,8 @@ export default function TermsPage() {
             <h2 className="mb-2 text-xl font-semibold text-gold">Contact</h2>
             <p>
               For questions about these Terms, please contact us at{" "}
-              <a href="mailto:hello@fortunecrack.com" className="text-gold underline">
-                hello@fortunecrack.com
+              <a href="mailto:brevity1s.wos@gmail.com" className="text-gold underline">
+                brevity1s.wos@gmail.com
               </a>
               .
             </p>

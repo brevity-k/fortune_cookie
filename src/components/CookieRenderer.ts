@@ -1,4 +1,4 @@
-import { Application, Graphics, Container, Text } from "pixi.js";
+import { Application, Graphics, Container } from "pixi.js";
 import { Fragment } from "./CookiePhysics";
 import { ParticleSystem } from "./ParticleSystem";
 
@@ -9,6 +9,9 @@ export interface CookieRendererState {
   squeezeProgress: number;
   breathScale: number;
   cookieAlpha: number;
+  clickCrackLevel: number; // 0, 1, 2 (cracks shown after each click)
+  dragOffsetX: number;
+  dragOffsetY: number;
 }
 
 export class CookieRenderer {
@@ -19,9 +22,9 @@ export class CookieRenderer {
   private fragmentContainer: Container | null = null;
   private particleGraphics: Graphics | null = null;
   private fortunePaperGraphics: Graphics | null = null;
-  private instructionText: Text | null = null;
 
   private particleSystem = new ParticleSystem();
+  private destroyed = false;
   private width = 600;
   private height = 500;
   private cookieCX = 300;
@@ -37,11 +40,48 @@ export class CookieRenderer {
     squeezeProgress: 0,
     breathScale: 1,
     cookieAlpha: 1,
+    clickCrackLevel: 0,
+    dragOffsetX: 0,
+    dragOffsetY: 0,
   };
 
   get cx() { return this.cookieCX; }
   get cy() { return this.cookieCY; }
   get radius() { return this.cookieRadius; }
+
+  reset() {
+    this.destroyed = false;
+    this.particleSystem.clear();
+    this.breathTimer = 0;
+    this.ambientTimer = 0;
+    this.state = {
+      phase: "idle",
+      hoverIntensity: 0,
+      shakeProgress: 0,
+      squeezeProgress: 0,
+      breathScale: 1,
+      cookieAlpha: 1,
+      clickCrackLevel: 0,
+      dragOffsetX: 0,
+      dragOffsetY: 0,
+    };
+
+    // Remove all children from stage without destroying the app
+    if (this.app?.stage) {
+      this.app.stage.removeChildren();
+    }
+
+    // Null out references
+    this.cookieContainer = null;
+    this.cookieGraphics = null;
+    this.crackGraphics = null;
+    this.fragmentContainer = null;
+    this.particleGraphics = null;
+    this.fortunePaperGraphics = null;
+
+    // Rebuild the scene
+    this.setupScene();
+  }
 
   async init(canvas: HTMLCanvasElement): Promise<Application> {
     this.app = new Application();
@@ -101,22 +141,6 @@ export class CookieRenderer {
     this.fortunePaperGraphics = new Graphics();
     this.fortunePaperGraphics.alpha = 0;
     this.app.stage.addChild(this.fortunePaperGraphics);
-
-    // Instruction text
-    this.instructionText = new Text({
-      text: "Click, drag, or shake to break your cookie",
-      style: {
-        fontFamily: "Arial",
-        fontSize: 14,
-        fill: 0xd4a04a,
-        align: "center",
-      },
-    });
-    this.instructionText.anchor.set(0.5);
-    this.instructionText.x = this.cookieCX;
-    this.instructionText.y = this.height - 50;
-    this.instructionText.alpha = 0.6;
-    this.app.stage.addChild(this.instructionText);
   }
 
   private drawCookie() {
@@ -175,6 +199,7 @@ export class CookieRenderer {
   }
 
   update(fragments: Fragment[]) {
+    if (this.destroyed) return;
     this.breathTimer += 0.02;
     this.ambientTimer++;
 
@@ -198,24 +223,23 @@ export class CookieRenderer {
 
     this.cookieContainer.scale.set(totalScale);
 
+    // Drag offset
+    const baseX = this.cookieCX + this.state.dragOffsetX;
+    const baseY = this.cookieCY + this.state.dragOffsetY;
+
     // Shake effect
     if (this.state.shakeProgress > 0) {
       const shakeAmount = this.state.shakeProgress * 5;
-      this.cookieContainer.x = this.cookieCX + (Math.random() - 0.5) * shakeAmount;
-      this.cookieContainer.y = this.cookieCY + (Math.random() - 0.5) * shakeAmount;
+      this.cookieContainer.x = baseX + (Math.random() - 0.5) * shakeAmount;
+      this.cookieContainer.y = baseY + (Math.random() - 0.5) * shakeAmount;
     } else {
-      this.cookieContainer.x = this.cookieCX;
-      this.cookieContainer.y = this.cookieCY;
+      this.cookieContainer.x = baseX;
+      this.cookieContainer.y = baseY;
     }
 
     // Ambient particles
     if (this.ambientTimer % 8 === 0) {
       this.particleSystem.emitAmbient(this.cookieCX, this.cookieCY, this.cookieRadius);
-    }
-
-    // Instruction text pulsing
-    if (this.instructionText) {
-      this.instructionText.alpha = 0.4 + Math.sin(this.breathTimer * 0.7) * 0.2;
     }
   }
 
@@ -223,9 +247,26 @@ export class CookieRenderer {
     if (!this.crackGraphics) return;
     this.crackGraphics.clear();
 
-    // Show crack lines based on hover intensity or squeeze progress
+    if (this.state.phase === "breaking" || this.state.phase === "reveal") return;
+
+    const clickLevel = this.state.clickCrackLevel;
+
+    // Persistent cracks from clicks (these stay until break/reset)
+    if (clickLevel >= 1) {
+      // First click: one main crack from center
+      this.drawCrackLine(0, 0, this.cookieRadius * 0.7, -0.4, 3, 0.7);
+      this.drawCrackLine(0, 0, this.cookieRadius * 0.4, 2.2, 2, 0.5);
+    }
+    if (clickLevel >= 2) {
+      // Second click: more cracks spreading out
+      this.drawCrackLine(0, 0, this.cookieRadius * 0.8, 0.8, 3, 0.8);
+      this.drawCrackLine(0, 0, this.cookieRadius * 0.6, -1.8, 2.5, 0.6);
+      this.drawCrackLine(0, 0, this.cookieRadius * 0.5, 3.0, 2, 0.5);
+    }
+
+    // Dynamic cracks from hover/squeeze/shake
     const intensity = Math.max(this.state.hoverIntensity, this.state.squeezeProgress, this.state.shakeProgress);
-    if (intensity > 0.2 && this.state.phase !== "breaking" && this.state.phase !== "reveal") {
+    if (intensity > 0.2) {
       const numCracks = Math.floor(intensity * 4);
       for (let i = 0; i < numCracks; i++) {
         const angle = (Math.PI * 2 * i) / numCracks + this.breathTimer;
@@ -240,17 +281,35 @@ export class CookieRenderer {
     }
   }
 
+  private drawCrackLine(
+    startX: number, startY: number,
+    length: number, angle: number,
+    width: number, alpha: number,
+  ) {
+    if (!this.crackGraphics) return;
+
+    // Draw a jagged crack line with small random offsets
+    const segments = 5;
+    const segLen = length / segments;
+    let x = startX;
+    let y = startY;
+
+    this.crackGraphics.moveTo(x, y);
+    for (let i = 0; i < segments; i++) {
+      const jitter = (Math.random() - 0.5) * segLen * 0.5;
+      x += Math.cos(angle) * segLen + Math.cos(angle + Math.PI / 2) * jitter;
+      y += Math.sin(angle) * segLen + Math.sin(angle + Math.PI / 2) * jitter;
+      this.crackGraphics.lineTo(x, y);
+    }
+    this.crackGraphics.stroke({ width, color: 0x6b4f10, alpha });
+  }
+
   triggerBreakEffect(impactX: number, impactY: number, force: number) {
     this.state.phase = "breaking";
 
     // Hide cookie
     if (this.cookieContainer) {
       this.cookieContainer.alpha = 0;
-    }
-
-    // Hide instruction text
-    if (this.instructionText) {
-      this.instructionText.alpha = 0;
     }
 
     // Particle burst
@@ -308,8 +367,8 @@ export class CookieRenderer {
     }
   }
 
-  showFortunePaper(text: string, onComplete: () => void) {
-    if (!this.fortunePaperGraphics) return;
+  showFortunePaper(onComplete: () => void) {
+    if (this.destroyed || !this.fortunePaperGraphics || !this.app) return;
 
     this.state.phase = "reveal";
     const g = this.fortunePaperGraphics;
@@ -325,30 +384,13 @@ export class CookieRenderer {
     g.fill({ color: 0xf5e6c8 });
     g.stroke({ width: 1, color: 0xd4a04a, alpha: 0.3 });
 
-    // Fortune text on paper
-    const fortuneText = new Text({
-      text,
-      style: {
-        fontFamily: "Georgia",
-        fontSize: 13,
-        fill: 0x4a3520,
-        align: "center",
-        wordWrap: true,
-        wordWrapWidth: paperW - 30,
-      },
-    });
-    fortuneText.anchor.set(0.5);
-    fortuneText.x = this.cookieCX;
-    fortuneText.y = this.cookieCY;
-
     // Animate in
     g.alpha = 0;
     g.y = 30;
-    g.addChild(fortuneText);
 
-    // Simple animation with requestAnimationFrame
     let frame = 0;
     const animate = () => {
+      if (this.destroyed) return;
       frame++;
       const progress = Math.min(1, frame / 40);
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -364,9 +406,34 @@ export class CookieRenderer {
     requestAnimationFrame(animate);
   }
 
-  destroy() {
+  destroy(removeView = true) {
+    this.destroyed = true;
     this.particleSystem.clear();
-    this.app?.destroy({ removeView: true }, { children: true });
+
+    // Remove all children from the stage BEFORE destroying the app.
+    // This prevents Pixi.js from trying to render/measure Text objects
+    // during the destroy cascade, which causes the null fontFamily error.
+    try {
+      if (this.app?.stage) {
+        this.app.stage.removeChildren();
+      }
+    } catch {
+      // Stage may be partially initialized
+    }
+
+    // Null out all display object references
+    this.cookieContainer = null;
+    this.cookieGraphics = null;
+    this.crackGraphics = null;
+    this.fragmentContainer = null;
+    this.particleGraphics = null;
+    this.fortunePaperGraphics = null;
+
+    try {
+      this.app?.destroy({ removeView });
+    } catch {
+      // App may be partially initialized
+    }
     this.app = null;
   }
 }

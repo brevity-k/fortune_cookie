@@ -45,7 +45,7 @@ export default function AboutPage() {
 
           <h2 className="text-xl font-semibold text-gold">Daily Fortune</h2>
           <p>
-            Every day, a special &ldquo;Fortune of the Day&rdquo; is generated using a date-based
+            Every day, a special &quot;Fortune of the Day&quot; is generated using a date-based
             seed, meaning everyone around the world gets the same daily fortune. It&apos;s a fun
             way to connect with friends and share your fortune experience.
           </p>
