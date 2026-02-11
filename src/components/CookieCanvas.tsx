@@ -143,12 +143,19 @@ export default function CookieCanvas({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    let cancelled = false;
     const renderer = new CookieRenderer();
     const physics = createCookiePhysics(600, 500);
     rendererRef.current = renderer;
     physicsRef.current = physics;
 
     renderer.init(canvas).then(() => {
+      if (cancelled) {
+        renderer.destroy();
+        physics.destroy();
+        return;
+      }
+
       const interaction = new InteractionDetector();
       interaction.setCookieBounds(renderer.cx, renderer.cy, renderer.radius);
       interaction.setCallbacks({
@@ -188,9 +195,8 @@ export default function CookieCanvas({
     window.addEventListener("touchstart", initSound);
 
     return () => {
+      cancelled = true;
       cancelAnimationFrame(animFrameRef.current);
-      renderer.destroy();
-      physics.destroy();
       interactionRef.current?.detach();
       window.removeEventListener("click", initSound);
       window.removeEventListener("touchstart", initSound);
