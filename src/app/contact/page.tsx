@@ -32,28 +32,6 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="mb-1 text-sm font-semibold text-gold/70">Social Media</h3>
-                <div className="flex gap-4">
-                  <a
-                    href="https://twitter.com/fortunecrack"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/50 transition hover:text-gold"
-                  >
-                    Twitter/X
-                  </a>
-                  <a
-                    href="https://instagram.com/fortunecrack"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/50 transition hover:text-gold"
-                  >
-                    Instagram
-                  </a>
-                </div>
-              </div>
-
-              <div>
                 <h3 className="mb-1 text-sm font-semibold text-gold/70">Bug Reports</h3>
                 <p className="text-sm text-foreground/50">
                   Found a bug or have a technical issue? Use the form above or email us with a

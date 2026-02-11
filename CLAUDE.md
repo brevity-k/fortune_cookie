@@ -14,13 +14,14 @@
 | Fortune System | Done | 1,031 fortunes, 8 categories, 4 rarities, streaks |
 | Cookie Consent Banner | Done | GDPR-compliant accept/reject with localStorage |
 | SEO (basic) | Done | Meta tags, Open Graph, Twitter cards, sitemap, robots.txt |
-| Blog Content | Needs Work | 5 posts, all under 500 words — need expansion |
+| Blog Content | Done | 5 posts, all expanded to 1,200-1,600 words each |
 | Legal Pages | Done | Privacy Policy & Terms of Service |
 | About Page | Done | Technology breakdown, features, categories |
-| Contact Page | Done | Email, social links, bug reports |
+| Contact Form | Done | Form with Resend auto-response + owner notification |
 | Social Sharing | Done | Twitter/X, Facebook, WhatsApp, clipboard |
 | Google Analytics | Not Active | Code exists, no measurement ID configured |
 | Google AdSense | Not Active | 3 ad slots coded, publisher ID empty |
+| Environment Variables | Done | .env.local with Resend API key, .env.example committed |
 | Deployment | Not Configured | No vercel.json, no CI/CD |
 | Blog Automation | Not Started | Posts are hardcoded in TSX |
 | OG Images | Missing | No social sharing images |
@@ -30,15 +31,15 @@
 
 ---
 
-## Blog Posts (All Need Expansion to 500+ Words)
+## Blog Posts (All Expanded to 500+ Words)
 
-| Slug | Current Words | Target |
-|---|---|---|
-| history-of-fortune-cookies | ~444 | 600+ |
-| fortune-cookie-traditions | ~322 | 600+ |
-| building-interactive-web-games | ~425 | 600+ |
-| psychology-of-fortune-telling | ~436 | 600+ |
-| digital-fortune-cookies-future | ~350 | 600+ |
+| Slug | Words |
+|---|---|
+| history-of-fortune-cookies | ~1,500 |
+| fortune-cookie-traditions | ~1,400 |
+| building-interactive-web-games | ~1,600 |
+| psychology-of-fortune-telling | ~1,300 |
+| digital-fortune-cookies-future | ~1,200 |
 
 Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no automated generation.
 
@@ -72,15 +73,26 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 
 ---
 
+## Contact Form & Auto-Response
+
+- **Form:** `src/components/ContactForm.tsx` (name, email, subject, message)
+- **API Route:** `src/app/api/contact/route.ts` (Resend integration)
+- **On submit:** Sends notification to owner + branded auto-response to sender
+- **Env vars:** `RESEND_API_KEY`, `CONTACT_EMAIL`, `FROM_EMAIL` in `.env.local`
+- **Status:** Tested and working (2026-02-11)
+- **Note:** Using `onboarding@resend.dev` sender — verify own domain in Resend for production
+
+---
+
 ## High Priority TODO
 
-1. Expand all blog posts to 500+ words each
+1. ~~Expand all blog posts to 500+ words each~~ Done
 2. Add automated blog post generation system
 3. Enable Google Analytics (add measurement ID)
 4. Configure AdSense (add publisher ID)
 5. Add OG images for social sharing
 6. Add JSON-LD structured data (Organization, Article, BreadcrumbList)
-7. Set up environment variables (.env.local) instead of hardcoded values
+7. ~~Set up environment variables (.env.local) instead of hardcoded values~~ Done
 8. Deploy to Vercel
 
 ---
@@ -97,7 +109,8 @@ src/
 │   ├── robots.ts             # Search engine directives
 │   ├── about/page.tsx
 │   ├── blog/page.tsx         # Blog index
-│   ├── blog/[slug]/page.tsx  # Hardcoded blog posts
+│   ├── blog/[slug]/page.tsx  # Hardcoded blog posts (5 posts, 1.2-1.6k words)
+│   ├── api/contact/route.ts  # Contact form API (Resend)
 │   ├── contact/page.tsx
 │   ├── privacy/page.tsx
 │   └── terms/page.tsx
@@ -111,6 +124,7 @@ src/
 │   ├── FortuneReveal.tsx     # Typewriter effect
 │   ├── FortuneOfTheDay.tsx   # Daily seeded fortune
 │   ├── ShareButtons.tsx      # Social sharing
+│   ├── ContactForm.tsx       # Contact form with validation
 │   ├── AdUnit.tsx            # AdSense (disabled, no pub ID)
 │   ├── CookieConsent.tsx     # GDPR consent banner
 │   ├── Header.tsx            # Responsive nav
