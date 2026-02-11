@@ -37,7 +37,7 @@ export default function FortuneOfTheDay() {
         <div className="absolute bottom-3 right-3 text-gold/30">✦</div>
 
         <p className="font-serif text-xl leading-relaxed text-cream">
-          &ldquo;{fortune.text}&rdquo;
+          {fortune.text}
         </p>
         <p className="mt-4 text-xs capitalize text-foreground/30">
           {fortune.category} fortune

@@ -23,8 +23,8 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div>
                 <h3 className="mb-1 text-sm font-semibold text-gold/70">Email</h3>
-                <a href="mailto:hello@fortunecrack.com" className="text-gold underline">
-                  hello@fortunecrack.com
+                <a href="mailto:your-email@example.com" className="text-gold underline">
+                  your-email@example.com
                 </a>
               </div>
 
@@ -65,8 +65,8 @@ export default function ContactPage() {
             <p className="text-foreground/50">
               Have a great fortune phrase idea? We&apos;re always looking to expand our collection
               of over 1,000 fortunes. Send your original fortune ideas to{" "}
-              <a href="mailto:fortunes@fortunecrack.com" className="text-gold underline">
-                fortunes@fortunecrack.com
+              <a href="mailto:your-email@example.com" className="text-gold underline">
+                your-email@example.com
               </a>{" "}
               and if we love it, we&apos;ll add it to the collection!
             </p>

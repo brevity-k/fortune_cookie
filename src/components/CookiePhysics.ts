@@ -13,6 +13,7 @@ export interface CookiePhysicsWorld {
   boundaries: Matter.Body[];
   runner: Matter.Runner;
   destroy: () => void;
+  reset: () => void;
   createFragments: (
     cx: number,
     cy: number,
@@ -189,6 +190,14 @@ export function createCookiePhysics(
     Matter.Engine.update(engine, 1000 / 60);
   }
 
+  function reset() {
+    // Remove fragment bodies from the world, keep boundaries
+    for (const frag of fragments) {
+      Matter.World.remove(world, frag.body);
+    }
+    fragments.length = 0;
+  }
+
   function destroy() {
     Matter.Runner.stop(runner);
     Matter.World.clear(world, false);
@@ -202,6 +211,7 @@ export function createCookiePhysics(
     boundaries,
     runner,
     destroy,
+    reset,
     createFragments,
     step,
   };

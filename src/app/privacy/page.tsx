@@ -16,7 +16,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="mb-2 text-xl font-semibold text-gold">Introduction</h2>
             <p>
-              Fortune Cookie (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is
+              Fortune Cookie (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is
               committed to protecting your privacy. This Privacy Policy explains how we collect,
               use, and share information when you visit our website.
             </p>
@@ -109,8 +109,8 @@ export default function PrivacyPage() {
             <h2 className="mb-2 text-xl font-semibold text-gold">Contact Us</h2>
             <p>
               If you have questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:hello@fortunecrack.com" className="text-gold underline">
-                hello@fortunecrack.com
+              <a href="mailto:your-email@example.com" className="text-gold underline">
+                your-email@example.com
               </a>
               .
             </p>

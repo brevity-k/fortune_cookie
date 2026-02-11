@@ -63,9 +63,8 @@ export default function FortuneReveal({ fortune, visible }: FortuneRevealProps) 
 
         {/* Fortune text */}
         <p className="min-h-[2.5rem] font-serif text-xl leading-relaxed text-amber-900">
-          &ldquo;{displayText}
+          {displayText}
           {!typingDone && <span className="typewriter-cursor">&nbsp;</span>}
-          {typingDone && "&rdquo;"}
         </p>
 
         {/* Decorative elements */}
