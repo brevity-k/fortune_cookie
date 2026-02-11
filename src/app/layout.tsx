@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -60,15 +59,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Google AdSense - replace ca-pub-XXXXXXX with actual publisher ID */}
+      {/*
+        Google AdSense - uncomment and replace with your publisher ID:
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-      </head>
+      */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-warm-gradient min-h-screen antialiased`}
       >
