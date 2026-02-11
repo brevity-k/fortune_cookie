@@ -8,6 +8,11 @@ const blogSlugs = [
   "building-interactive-web-games",
   "psychology-of-fortune-telling",
   "digital-fortune-cookies-future",
+  "lucky-numbers-superstitions-science",
+  "morning-rituals-around-the-world",
+  "famous-fortunes-that-came-true",
+  "zodiac-fortune-cookies-astrology-meets-wisdom",
+  "why-we-need-small-joys",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
