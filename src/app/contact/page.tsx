@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -17,8 +18,10 @@ export default function ContactPage() {
             or just want to share your favorite fortune, reach out to us.
           </p>
 
+          <ContactForm />
+
           <div className="rounded-2xl border border-gold/10 bg-gold/5 p-8">
-            <h2 className="mb-4 text-xl font-semibold text-gold">Get in Touch</h2>
+            <h2 className="mb-4 text-xl font-semibold text-gold">Other Ways to Reach Us</h2>
 
             <div className="space-y-4">
               <div>
@@ -53,8 +56,8 @@ export default function ContactPage() {
               <div>
                 <h3 className="mb-1 text-sm font-semibold text-gold/70">Bug Reports</h3>
                 <p className="text-sm text-foreground/50">
-                  Found a bug or have a technical issue? Please email us with a description of
-                  the problem and we&apos;ll look into it.
+                  Found a bug or have a technical issue? Use the form above or email us with a
+                  description of the problem and we&apos;ll look into it.
                 </p>
               </div>
             </div>
