@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1a0e04;
+  --foreground: #f5e6d0;
+  --gold: #d4a04a;
+  --gold-light: #f0d68a;
+  --gold-dark: #8b6914;
+  --amber: #b8860b;
+  --cream: #fef3e0;
+  --paper: #f5e6c8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-amber: var(--amber);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Warm gradient background */
+.bg-warm-gradient {
+  background: linear-gradient(
+    180deg,
+    #1a0e04 0%,
+    #2d1810 20%,
+    #3d2216 40%,
+    #2d1810 70%,
+    #1a0e04 100%
+  );
+}
+
+/* Golden shimmer text */
+.text-golden-shimmer {
+  background: linear-gradient(90deg, #d4a04a, #f0d68a, #d4a04a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Fortune paper texture */
+.paper-texture {
+  background: linear-gradient(135deg, #f5e6c8 0%, #ede0c8 50%, #f5e6c8 100%);
+  box-shadow:
+    0 2px 15px rgba(212, 160, 74, 0.3),
+    inset 0 0 30px rgba(139, 105, 20, 0.1);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 160, 74, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(212, 160, 74, 0.6); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Canvas container */
+.cookie-canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 6 / 5;
+  margin: 0 auto;
+}
+
+.cookie-canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 1rem;
+}
+
+/* Typewriter effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--gold); }
+}
+
+.typewriter-cursor {
+  border-right: 2px solid var(--gold);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Ad container styling */
+.ad-container {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(212, 160, 74, 0.15);
+  border-radius: 0.5rem;
 }
