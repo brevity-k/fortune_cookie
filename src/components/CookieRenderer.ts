@@ -1,4 +1,4 @@
-import { Application, Graphics, Container, Text, TextStyle } from "pixi.js";
+import { Application, Graphics, Container, Text } from "pixi.js";
 import { Fragment } from "./CookiePhysics";
 import { ParticleSystem } from "./ParticleSystem";
 
@@ -103,16 +103,14 @@ export class CookieRenderer {
     this.app.stage.addChild(this.fortunePaperGraphics);
 
     // Instruction text
-    const style = new TextStyle({
-      fontFamily: "Arial, Helvetica, sans-serif",
-      fontSize: 14,
-      fill: "#d4a04a",
-      align: "center",
-      fontWeight: "400",
-    });
     this.instructionText = new Text({
       text: "Click, drag, or shake to break your cookie",
-      style,
+      style: {
+        fontFamily: "Arial",
+        fontSize: 14,
+        fill: 0xd4a04a,
+        align: "center",
+      },
     });
     this.instructionText.anchor.set(0.5);
     this.instructionText.x = this.cookieCX;
@@ -328,15 +326,17 @@ export class CookieRenderer {
     g.stroke({ width: 1, color: 0xd4a04a, alpha: 0.3 });
 
     // Fortune text on paper
-    const style = new TextStyle({
-      fontFamily: "Georgia, serif",
-      fontSize: 13,
-      fill: "#4a3520",
-      align: "center",
-      wordWrap: true,
-      wordWrapWidth: paperW - 30,
+    const fortuneText = new Text({
+      text,
+      style: {
+        fontFamily: "Georgia",
+        fontSize: 13,
+        fill: 0x4a3520,
+        align: "center",
+        wordWrap: true,
+        wordWrapWidth: paperW - 30,
+      },
     });
-    const fortuneText = new Text({ text, style });
     fortuneText.anchor.set(0.5);
     fortuneText.x = this.cookieCX;
     fortuneText.y = this.cookieCY;
@@ -366,7 +366,7 @@ export class CookieRenderer {
 
   destroy() {
     this.particleSystem.clear();
-    this.app?.destroy(true);
+    this.app?.destroy({ removeView: true }, { children: true });
     this.app = null;
   }
 }
