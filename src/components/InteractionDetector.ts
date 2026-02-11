@@ -23,7 +23,6 @@ interface MouseState {
   downY: number;
   velocityHistory: { vx: number; vy: number; time: number }[];
   shakeIntensity: number;
-  lastClickTime: number;
   isOverCookie: boolean;
   dragDistance: number;
 }
@@ -40,7 +39,6 @@ export class InteractionDetector {
     downY: 0,
     velocityHistory: [],
     shakeIntensity: 0,
-    lastClickTime: 0,
     isOverCookie: false,
     dragDistance: 0,
   };
@@ -58,8 +56,16 @@ export class InteractionDetector {
   private readonly SHAKE_THRESHOLD = 40;
   private readonly SQUEEZE_DURATION = 2000;
   private readonly DOUBLE_TAP_WINDOW = 400;
-  private readonly DRAG_THRESHOLD = 80;
-  private firstTapDone = false;
+  private readonly DRAG_THRESHOLD = 40;
+  private readonly CLICK_MAX_DURATION = 300;
+  private readonly CLICK_MAX_MOVE = 15;
+
+  private lastClickTime = 0;
+  private clickCount = 0;
+  private clickTimeout: ReturnType<typeof setTimeout> | null = null;
+  private squeezeInterval: ReturnType<typeof setInterval> | null = null;
+  private onClickProgress: ((count: number) => void) | null = null;
+  private onDragOffset: ((dx: number, dy: number) => void) | null = null;
 
   setCookieBounds(cx: number, cy: number, radius: number) {
     this.cookieCenterX = cx;
@@ -72,50 +78,65 @@ export class InteractionDetector {
     onHover?: (intensity: number) => void;
     onShakeProgress?: (progress: number) => void;
     onSqueezeProgress?: (progress: number) => void;
+    onClickProgress?: (count: number) => void;
+    onDragOffset?: (dx: number, dy: number) => void;
   }) {
     this.onBreak = callbacks.onBreak;
     this.onHover = callbacks.onHover || null;
     this.onShakeProgress = callbacks.onShakeProgress || null;
     this.onSqueezeProgress = callbacks.onSqueezeProgress || null;
+    this.onClickProgress = callbacks.onClickProgress || null;
+    this.onDragOffset = callbacks.onDragOffset || null;
   }
 
   attach(element: HTMLElement) {
     this.element = element;
-    element.addEventListener("mousedown", this.handleMouseDown);
-    element.addEventListener("mousemove", this.handleMouseMove);
-    element.addEventListener("mouseup", this.handleMouseUp);
-    element.addEventListener("mouseleave", this.handleMouseLeave);
-    // Touch support
-    element.addEventListener("touchstart", this.handleTouchStart, { passive: false });
-    element.addEventListener("touchmove", this.handleTouchMove, { passive: false });
-    element.addEventListener("touchend", this.handleTouchEnd);
+    element.addEventListener("pointerdown", this.handlePointerDown);
+    element.addEventListener("pointermove", this.handlePointerMove);
+    element.addEventListener("pointerup", this.handlePointerUp);
+    element.addEventListener("pointerleave", this.handleMouseLeave);
   }
 
   detach() {
+    this.stopSqueezeTimer();
+    if (this.clickTimeout) {
+      clearTimeout(this.clickTimeout);
+      this.clickTimeout = null;
+    }
     if (this.element) {
-      this.element.removeEventListener("mousedown", this.handleMouseDown);
-      this.element.removeEventListener("mousemove", this.handleMouseMove);
-      this.element.removeEventListener("mouseup", this.handleMouseUp);
-      this.element.removeEventListener("mouseleave", this.handleMouseLeave);
-      this.element.removeEventListener("touchstart", this.handleTouchStart);
-      this.element.removeEventListener("touchmove", this.handleTouchMove);
-      this.element.removeEventListener("touchend", this.handleTouchEnd);
+      this.element.removeEventListener("pointerdown", this.handlePointerDown);
+      this.element.removeEventListener("pointermove", this.handlePointerMove);
+      this.element.removeEventListener("pointerup", this.handlePointerUp);
+      this.element.removeEventListener("pointerleave", this.handleMouseLeave);
     }
   }
 
   reset() {
     this.broken = false;
     this.mouse.shakeIntensity = 0;
-    this.firstTapDone = false;
+    this.mouse.isDown = false;
+    this.mouse.dragDistance = 0;
+    this.lastClickTime = 0;
+    this.clickCount = 0;
+    if (this.clickTimeout) {
+      clearTimeout(this.clickTimeout);
+      this.clickTimeout = null;
+    }
+    this.stopSqueezeTimer();
+    this.onShakeProgress?.(0);
+    this.onSqueezeProgress?.(0);
+    this.onClickProgress?.(0);
+    this.onDragOffset?.(0, 0);
+    this.onHover?.(0);
   }
 
-  private isOverCookie(x: number, y: number): boolean {
+  private isPointOverCookie(x: number, y: number): boolean {
     const dx = x - this.cookieCenterX;
     const dy = y - this.cookieCenterY;
-    return Math.sqrt(dx * dx + dy * dy) <= this.cookieRadius;
+    return Math.sqrt(dx * dx + dy * dy) <= this.cookieRadius * 1.2;
   }
 
-  private getRelativePos(e: MouseEvent | Touch): { x: number; y: number } {
+  private getRelativePos(e: { clientX: number; clientY: number }): { x: number; y: number } {
     if (!this.element) return { x: 0, y: 0 };
     const rect = this.element.getBoundingClientRect();
     const scaleX = 600 / rect.width;
@@ -129,10 +150,45 @@ export class InteractionDetector {
   private triggerBreak(method: BreakMethod, x: number, y: number, force: number) {
     if (this.broken) return;
     this.broken = true;
+    this.stopSqueezeTimer();
     this.onBreak?.({ method, x, y, force: Math.min(1, force) });
   }
 
-  private handleMouseDown = (e: MouseEvent) => {
+  private startSqueezeTimer() {
+    this.stopSqueezeTimer();
+    this.squeezeInterval = setInterval(() => {
+      if (this.broken || !this.mouse.isDown) {
+        this.stopSqueezeTimer();
+        return;
+      }
+      // Cancel squeeze if user moved too much (it's a drag)
+      if (this.mouse.dragDistance > this.CLICK_MAX_MOVE) {
+        this.stopSqueezeTimer();
+        this.onSqueezeProgress?.(0);
+        return;
+      }
+      const holdDuration = Date.now() - this.mouse.downTime;
+      const progress = Math.min(1, holdDuration / this.SQUEEZE_DURATION);
+      this.onSqueezeProgress?.(progress);
+
+      if (holdDuration >= this.SQUEEZE_DURATION) {
+        this.triggerBreak("squeeze", this.mouse.downX, this.mouse.downY, 1.0);
+      }
+    }, 50);
+  }
+
+  private stopSqueezeTimer() {
+    if (this.squeezeInterval) {
+      clearInterval(this.squeezeInterval);
+      this.squeezeInterval = null;
+    }
+  }
+
+  private handlePointerDown = (e: PointerEvent) => {
+    // Capture pointer so drag works even if cursor leaves the canvas
+    (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
+    e.preventDefault();
+
     const pos = this.getRelativePos(e);
     this.mouse.isDown = true;
     this.mouse.downTime = Date.now();
@@ -140,42 +196,26 @@ export class InteractionDetector {
     this.mouse.downY = pos.y;
     this.mouse.dragDistance = 0;
 
-    if (!this.isOverCookie(pos.x, pos.y)) return;
+    if (!this.isPointOverCookie(pos.x, pos.y)) return;
+    if (this.broken) return;
 
-    // Double-tap detection
-    const now = Date.now();
-    if (this.firstTapDone && now - this.mouse.lastClickTime < this.DOUBLE_TAP_WINDOW) {
-      this.triggerBreak("double_tap", pos.x, pos.y, 0.8);
-      this.firstTapDone = false;
-      return;
-    }
-    this.mouse.lastClickTime = now;
-    this.firstTapDone = true;
-
-    // Reset after double-tap window
-    setTimeout(() => {
-      if (this.firstTapDone && !this.broken && !this.mouse.isDown) {
-        // Single click smash
-        this.triggerBreak("click_smash", pos.x, pos.y, 0.6);
-        this.firstTapDone = false;
-      }
-    }, this.DOUBLE_TAP_WINDOW + 50);
+    // Start squeeze timer (will be cancelled if user drags or releases quickly)
+    this.startSqueezeTimer();
   };
 
-  private handleMouseMove = (e: MouseEvent) => {
+  private handlePointerMove = (e: PointerEvent) => {
     const pos = this.getRelativePos(e);
     this.mouse.prevX = this.mouse.x;
     this.mouse.prevY = this.mouse.y;
     this.mouse.x = pos.x;
     this.mouse.y = pos.y;
-    this.mouse.isOverCookie = this.isOverCookie(pos.x, pos.y);
+    this.mouse.isOverCookie = this.isPointOverCookie(pos.x, pos.y);
 
     // Track velocity for shake detection
     const vx = pos.x - this.mouse.prevX;
     const vy = pos.y - this.mouse.prevY;
     const now = Date.now();
     this.mouse.velocityHistory.push({ vx, vy, time: now });
-    // Keep only recent history (300ms)
     this.mouse.velocityHistory = this.mouse.velocityHistory.filter(
       (v) => now - v.time < 300
     );
@@ -183,13 +223,13 @@ export class InteractionDetector {
     if (this.broken) return;
 
     // Hover intensity
-    if (this.mouse.isOverCookie) {
+    if (this.mouse.isOverCookie && !this.mouse.isDown) {
       const dx = pos.x - this.cookieCenterX;
       const dy = pos.y - this.cookieCenterY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const intensity = 1 - dist / this.cookieRadius;
+      const intensity = Math.max(0, 1 - dist / (this.cookieRadius * 1.2));
       this.onHover?.(intensity);
-    } else {
+    } else if (!this.mouse.isDown) {
       this.onHover?.(0);
     }
 
@@ -210,7 +250,7 @@ export class InteractionDetector {
         if (dirChanges > 3 && speed > 3) {
           this.mouse.shakeIntensity += 1.5;
         } else {
-          this.mouse.shakeIntensity = Math.max(0, this.mouse.shakeIntensity - 0.5);
+          this.mouse.shakeIntensity = Math.max(0, this.mouse.shakeIntensity - 0.3);
         }
 
         const progress = Math.min(1, this.mouse.shakeIntensity / this.SHAKE_THRESHOLD);
@@ -222,65 +262,94 @@ export class InteractionDetector {
       }
     }
 
-    // Drag detection
-    if (this.mouse.isDown && this.isOverCookie(this.mouse.downX, this.mouse.downY)) {
+    // Drag detection — move cookie visually while dragging
+    if (this.mouse.isDown && this.isPointOverCookie(this.mouse.downX, this.mouse.downY)) {
       const dx = pos.x - this.mouse.downX;
       const dy = pos.y - this.mouse.downY;
       this.mouse.dragDistance = Math.sqrt(dx * dx + dy * dy);
+
+      // Move cookie with pointer
+      this.onDragOffset?.(dx, dy);
 
       if (this.mouse.dragDistance > this.DRAG_THRESHOLD) {
         this.triggerBreak("drag_crack", pos.x, pos.y, 0.7);
       }
     }
-
-    // Squeeze detection (hold)
-    if (this.mouse.isDown && this.mouse.isOverCookie) {
-      const holdDuration = Date.now() - this.mouse.downTime;
-      if (this.mouse.dragDistance < 20) {
-        const progress = Math.min(1, holdDuration / this.SQUEEZE_DURATION);
-        this.onSqueezeProgress?.(progress);
-        if (holdDuration >= this.SQUEEZE_DURATION) {
-          this.triggerBreak("squeeze", this.mouse.downX, this.mouse.downY, 1.0);
-        }
-      }
-    }
   };
 
-  private handleMouseUp = () => {
+  private handlePointerUp = () => {
+    if (this.broken || !this.mouse.isDown) {
+      this.mouse.isDown = false;
+      this.stopSqueezeTimer();
+      this.onSqueezeProgress?.(0);
+      this.onDragOffset?.(0, 0);
+      return;
+    }
+
+    const holdDuration = Date.now() - this.mouse.downTime;
+    const wasOverCookie = this.isPointOverCookie(this.mouse.downX, this.mouse.downY);
+    const clickX = this.mouse.downX;
+    const clickY = this.mouse.downY;
+
     this.mouse.isDown = false;
-    this.mouse.dragDistance = 0;
+    this.stopSqueezeTimer();
     this.onSqueezeProgress?.(0);
+    // Snap cookie back if released without breaking
+    this.onDragOffset?.(0, 0);
+
+    // Only process clicks if it was on the cookie, quick, and didn't move much
+    if (
+      wasOverCookie &&
+      holdDuration < this.CLICK_MAX_DURATION &&
+      this.mouse.dragDistance < this.CLICK_MAX_MOVE
+    ) {
+      const now = Date.now();
+
+      // Check for double-tap: two quick clicks close together → instant break
+      if (now - this.lastClickTime < this.DOUBLE_TAP_WINDOW) {
+        this.lastClickTime = 0;
+        this.clickCount = 0;
+        if (this.clickTimeout) {
+          clearTimeout(this.clickTimeout);
+          this.clickTimeout = null;
+        }
+        this.triggerBreak("double_tap", clickX, clickY, 0.8);
+        return;
+      }
+
+      this.lastClickTime = now;
+
+      // Clear any pending click timeout (from previous click waiting for double-tap check)
+      if (this.clickTimeout) {
+        clearTimeout(this.clickTimeout);
+        this.clickTimeout = null;
+      }
+
+      // Wait briefly to see if a second click is coming (double-tap)
+      // If not, register as a single click toward the 3-click break
+      this.clickTimeout = setTimeout(() => {
+        this.clickTimeout = null;
+        if (this.broken) return;
+
+        this.clickCount++;
+        this.onClickProgress?.(this.clickCount);
+
+        if (this.clickCount >= 3) {
+          this.clickCount = 0;
+          this.triggerBreak("click_smash", clickX, clickY, 0.6);
+        }
+      }, this.DOUBLE_TAP_WINDOW + 50);
+    }
   };
 
   private handleMouseLeave = () => {
     this.mouse.isDown = false;
     this.mouse.isOverCookie = false;
     this.mouse.shakeIntensity = 0;
+    this.stopSqueezeTimer();
     this.onHover?.(0);
     this.onShakeProgress?.(0);
     this.onSqueezeProgress?.(0);
-  };
-
-  // Touch handlers
-  private handleTouchStart = (e: TouchEvent) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    this.handleMouseDown({
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    } as MouseEvent);
-  };
-
-  private handleTouchMove = (e: TouchEvent) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    this.handleMouseMove({
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    } as MouseEvent);
-  };
-
-  private handleTouchEnd = () => {
-    this.handleMouseUp();
+    this.onDragOffset?.(0, 0);
   };
 }
