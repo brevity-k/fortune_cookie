@@ -33,7 +33,7 @@ jobs:
 
       - name: Create issue on failure (deduplicated)
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({
