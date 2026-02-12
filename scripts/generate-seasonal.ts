@@ -1,6 +1,21 @@
+/**
+ * Seasonal fortune content generator
+ *
+ * Usage:
+ *   npx tsx scripts/generate-seasonal.ts   # Generate seasonal fortunes if within a holiday window
+ *
+ * Environment:
+ *   ANTHROPIC_API_KEY - Claude API key (required)
+ *
+ * Tracks generated seasons per year in scripts/seasonal-state.json to avoid duplicates.
+ * Holiday windows: new-year, valentine, halloween, thanksgiving, christmas.
+ */
+
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
+import { callWithRetry, extractJson, requireEnv, log } from "./lib/utils";
+import type { CategoryData, FortunesFile } from "./lib/types";
 
 const ROOT = process.cwd();
 const FORTUNES_PATH = path.join(ROOT, "src/data/fortunes.json");
@@ -60,48 +75,28 @@ const SEASONS: Season[] = [
   },
 ];
 
-interface CategoryData {
-  rarity: string;
-  fortunes: string[];
-}
-
-interface FortunesFile {
-  categories: Record<string, CategoryData>;
-}
-
 interface SeasonalState {
   [year: string]: string[];
 }
 
-async function callWithRetry<T>(
-  fn: () => Promise<T>,
-  maxAttempts = 3,
-  delayMs = 30000
-): Promise<T> {
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await fn();
-    } catch (err) {
-      if (attempt === maxAttempts) throw err;
-      console.log(`API call failed (attempt ${attempt}/${maxAttempts}), retrying in ${delayMs / 1000}s...`);
-      await new Promise((r) => setTimeout(r, delayMs));
-    }
-  }
-  throw new Error("Unreachable");
-}
-
+/**
+ * Checks whether `now` falls inside the seasonal window.
+ * Correctly handles year-wrapping windows (e.g. Dec 26 – Jan 7).
+ */
 function isInWindow(season: Season, now: Date): boolean {
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
+  const month = now.getUTCMonth() + 1;
+  const day = now.getUTCDate();
 
-  // Handle year-wrapping seasons (e.g., new-year: Dec 26 - Jan 7)
   if (season.startMonth > season.endMonth) {
-    return (
-      (month === season.startMonth && day >= season.startDay) ||
-      (month > season.startMonth) ||
-      (month < season.endMonth) ||
-      (month === season.endMonth && day <= season.endDay)
-    );
+    // Year-wrapping: the date is in-window if it's in the "start" tail
+    // OR in the "end" head, but NOT in any month between endMonth and startMonth.
+    const inStartTail =
+      month > season.startMonth ||
+      (month === season.startMonth && day >= season.startDay);
+    const inEndHead =
+      month < season.endMonth ||
+      (month === season.endMonth && day <= season.endDay);
+    return inStartTail || inEndHead;
   }
 
   // Same-year window
@@ -120,16 +115,16 @@ function getActiveSeason(now: Date): Season | null {
 
 async function generateSeasonal(): Promise<void> {
   const now = new Date();
-  const year = String(now.getFullYear());
+  const year = String(now.getUTCFullYear());
 
   const season = getActiveSeason(now);
 
   if (!season) {
-    console.log("No active seasonal window. Skipping.");
+    log.info("No active seasonal window. Skipping.");
     return;
   }
 
-  console.log(`Active season: ${season.name} (${season.theme})`);
+  log.info(`Active season: ${season.name} (${season.theme})`);
 
   // Check state
   let state: SeasonalState = {};
@@ -142,15 +137,11 @@ async function generateSeasonal(): Promise<void> {
   }
 
   if (state[year]?.includes(season.name)) {
-    console.log(`Season "${season.name}" already generated for ${year}. Skipping.`);
+    log.info(`Season "${season.name}" already generated for ${year}. Skipping.`);
     return;
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    throw new Error("ANTHROPIC_API_KEY environment variable is required");
-  }
-
+  const apiKey = requireEnv("ANTHROPIC_API_KEY");
   const client = new Anthropic({ apiKey });
 
   // Read current fortunes
@@ -174,7 +165,7 @@ async function generateSeasonal(): Promise<void> {
     .sort(() => Math.random() - 0.5)
     .slice(0, 15);
 
-  console.log(`Generating 20 ${season.name} fortunes for "${season.category}" category...`);
+  log.info(`Generating 20 ${season.name} fortunes for "${season.category}" category...`);
 
   const result = await callWithRetry(async () => {
     const response = await client.messages.create({
@@ -203,30 +194,32 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
     });
 
     const text = response.content[0].type === "text" ? response.content[0].text : "";
-    const match = text.match(/\[[\s\S]*\]/);
-    if (!match) throw new Error("No JSON array found in response");
-    return JSON.parse(match[0]) as string[];
+    const parsed = extractJson(text, "array");
+    if (!Array.isArray(parsed)) throw new Error("Response is not an array");
+    const strings = parsed.filter((item): item is string => typeof item === "string");
+    if (strings.length === 0) throw new Error("No valid fortune strings in response");
+    return strings;
   });
 
-  console.log(`Generated ${result.length} fortune candidates`);
+  log.info(`Generated ${result.length} fortune candidates`);
 
   // Validate and deduplicate
   const valid = result.filter((f) => {
     const normalized = f.toLowerCase().trim();
     if (allExisting.has(normalized)) {
-      console.log(`  Duplicate: "${f}"`);
+      log.warn(`Duplicate: "${f}"`);
       return false;
     }
     const wordCount = f.split(/\s+/).length;
     if (wordCount < 4 || wordCount > 30) {
-      console.log(`  Bad length (${wordCount} words): "${f}"`);
+      log.warn(`Bad length (${wordCount} words): "${f}"`);
       return false;
     }
     allExisting.add(normalized);
     return true;
   });
 
-  console.log(`Valid after dedup: ${valid.length}`);
+  log.info(`Valid after dedup: ${valid.length}`);
 
   if (valid.length < 5) {
     throw new Error(`Only ${valid.length} valid fortunes after dedup (need >= 5)`);
@@ -242,14 +235,14 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
   fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 
   const totalFortunes = Object.values(data.categories).reduce(
-    (sum, cat) => sum + cat.fortunes.length, 0
+    (sum, cat) => sum + cat.fortunes.length, 0,
   );
 
-  console.log(`Added ${valid.length} seasonal "${season.name}" fortunes to "${season.category}"`);
-  console.log(`New total: ${totalFortunes} fortunes`);
+  log.ok(`Added ${valid.length} seasonal "${season.name}" fortunes to "${season.category}"`);
+  log.ok(`New total: ${totalFortunes} fortunes`);
 }
 
 generateSeasonal().catch((err) => {
-  console.error("Failed to generate seasonal content:", err);
+  log.error(`Failed to generate seasonal content: ${err.message || err}`);
   process.exit(1);
 });

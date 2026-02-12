@@ -1,32 +1,20 @@
 import { ImageResponse } from "next/og";
+import { SITE_DOMAIN } from "@/lib/constants";
+import { ZODIAC_SIGNS } from "@/lib/horoscopes";
 
 export const alt = "Zodiac Fortune";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const ZODIAC_DATA: Record<string, { symbol: string; element: string }> = {
-  aries: { symbol: "♈", element: "Fire" },
-  taurus: { symbol: "♉", element: "Earth" },
-  gemini: { symbol: "♊", element: "Air" },
-  cancer: { symbol: "♋", element: "Water" },
-  leo: { symbol: "♌", element: "Fire" },
-  virgo: { symbol: "♍", element: "Earth" },
-  libra: { symbol: "♎", element: "Air" },
-  scorpio: { symbol: "♏", element: "Water" },
-  sagittarius: { symbol: "♐", element: "Fire" },
-  capricorn: { symbol: "♑", element: "Earth" },
-  aquarius: { symbol: "♒", element: "Air" },
-  pisces: { symbol: "♓", element: "Water" },
-};
-
 export function generateStaticParams() {
-  return Object.keys(ZODIAC_DATA).map((sign) => ({ sign }));
+  return ZODIAC_SIGNS.map((z) => ({ sign: z.key }));
 }
 
 export default async function OGImage({ params }: { params: Promise<{ sign: string }> }) {
   const { sign } = await params;
-  const data = ZODIAC_DATA[sign] || { symbol: "🥠", element: "" };
-  const title = sign.charAt(0).toUpperCase() + sign.slice(1);
+  const zodiac = ZODIAC_SIGNS.find((z) => z.key === sign);
+  const data = zodiac ?? { symbol: "🥠", element: "", name: sign };
+  const title = zodiac?.name ?? sign.charAt(0).toUpperCase() + sign.slice(1);
 
   return new ImageResponse(
     (
@@ -71,7 +59,7 @@ export default async function OGImage({ params }: { params: Promise<{ sign: stri
             letterSpacing: 2,
           }}
         >
-          fortunecrack.com
+          {SITE_DOMAIN}
         </div>
       </div>
     ),

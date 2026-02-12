@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: false, // Disabled: Pixi.js/Matter.js/GSAP cause issues with strict mode double-renders
+  poweredByHeader: false,
 };
 
 export default nextConfig;

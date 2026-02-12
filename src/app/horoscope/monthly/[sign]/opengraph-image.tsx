@@ -1,31 +1,20 @@
 import { ImageResponse } from "next/og";
-import { CATEGORIES, FortuneCategory } from "@/lib/fortuneEngine";
 import { SITE_DOMAIN } from "@/lib/constants";
+import { ZODIAC_SIGNS } from "@/lib/horoscopes";
 
-export const alt = "Fortune Cookie Category";
+export const alt = "Monthly Horoscope";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export function generateStaticParams() {
-  return CATEGORIES.map((category) => ({ category }));
+  return ZODIAC_SIGNS.map((s) => ({ sign: s.key }));
 }
 
-const categoryEmojis: Record<FortuneCategory, string> = {
-  wisdom: "🧠",
-  love: "❤️",
-  career: "💼",
-  humor: "😄",
-  motivation: "🔥",
-  philosophy: "🤔",
-  adventure: "🌍",
-  mystery: "🔮",
-};
-
-export default async function OGImage({ params }: { params: Promise<{ category: string }> }) {
-  const { category } = await params;
-  const cat = category as FortuneCategory;
-  const emoji = categoryEmojis[cat] || "🥠";
-  const title = cat.charAt(0).toUpperCase() + cat.slice(1);
+export default async function OGImage({ params }: { params: Promise<{ sign: string }> }) {
+  const { sign } = await params;
+  const zodiac = ZODIAC_SIGNS.find((z) => z.key === sign);
+  const name = zodiac?.name ?? sign.charAt(0).toUpperCase() + sign.slice(1);
+  const symbol = zodiac?.symbol ?? "✨";
 
   return new ImageResponse(
     (
@@ -41,27 +30,27 @@ export default async function OGImage({ params }: { params: Promise<{ category: 
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 100, marginBottom: 16 }}>{emoji}</div>
+        <div style={{ fontSize: 120, marginBottom: 16 }}>{symbol}</div>
         <div
           style={{
-            fontSize: 52,
+            fontSize: 48,
             fontWeight: 800,
             color: "#d4a04a",
-            marginBottom: 12,
+            marginBottom: 8,
             display: "flex",
           }}
         >
-          {`${title} Fortunes`}
+          {`${name} Monthly Horoscope`}
         </div>
         <div
           style={{
-            fontSize: 24,
+            fontSize: 22,
             color: "rgba(245, 230, 208, 0.5)",
             marginBottom: 32,
             display: "flex",
           }}
         >
-          {`Fortune Cookie Messages About ${title}`}
+          {`${zodiac?.element ?? ""} Sign · Monthly Astrology Forecast`}
         </div>
         <div
           style={{

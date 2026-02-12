@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getPost } from "@/lib/blog";
+import { SITE_DOMAIN } from "@/lib/constants";
 
 export const alt = "Fortune Cookie Blog";
 export const size = { width: 1200, height: 630 };
@@ -46,7 +47,7 @@ export default async function BlogOGImage({ params }: { params: Promise<{ slug: 
             letterSpacing: 2,
           }}
         >
-          fortunecrack.com/blog
+          {`${SITE_DOMAIN}/blog`}
         </div>
       </div>
     ),
