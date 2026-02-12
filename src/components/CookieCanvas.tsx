@@ -59,6 +59,7 @@ export default function CookieCanvas({
   const [isBroken, setIsBroken] = useState(false);
   const [showNewButton, setShowNewButton] = useState(false);
   const [breakMethod, setBreakMethod] = useState<string>("");
+  const [shakeProgress, setShakeProgress] = useState(0);
   const isMobile = useSyncExternalStore(noopSubscribe, getIsMobile, getServerIsMobile);
 
   const handleBreak = useCallback(
@@ -201,6 +202,7 @@ export default function CookieCanvas({
         },
         onShakeProgress: (progress) => {
           renderer.state.shakeProgress = progress;
+          setShakeProgress(progress);
         },
         onSqueezeProgress: (progress) => {
           renderer.state.squeezeProgress = progress;
@@ -245,11 +247,15 @@ export default function CookieCanvas({
       animFrameRef.current = requestAnimationFrame(loop);
     });
 
-    // Initialize sound and device motion on first user interaction
-    // Keep listener until device motion is successfully enabled (handles race condition)
+    // Initialize device motion and sound on first user interaction.
+    // DeviceMotion permission MUST be requested first (before SoundManager)
+    // because iOS requires it to be the first async call in a user gesture.
     const initOnInteraction = async () => {
-      SoundManager.init();
+      // Request device motion permission first — must be first in gesture handler
       await tryEnableDeviceMotion();
+
+      // Sound init after permission (also gesture-gated but less strict)
+      SoundManager.init();
 
       // Only remove listeners once device motion is enabled (or not a touch device)
       if (motionEnabledRef.current || !isTouchDevice()) {
@@ -288,6 +294,32 @@ export default function CookieCanvas({
           ref={canvasRef}
           style={{ touchAction: "none", cursor: "pointer" }}
         />
+
+        {/* Shake progress bar (mobile only) */}
+        {isMobile && !isBroken && shakeProgress > 0 && (
+          <div
+            className="pointer-events-none absolute top-4 left-4 right-4"
+          >
+            <div
+              style={{
+                height: 4,
+                borderRadius: 2,
+                backgroundColor: "rgba(212, 160, 74, 0.2)",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  height: "100%",
+                  width: `${shakeProgress * 100}%`,
+                  backgroundColor: "#d4a04a",
+                  borderRadius: 2,
+                  transition: "width 0.1s ease-out",
+                }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Instruction text (HTML overlay) */}
         {!isBroken && (
