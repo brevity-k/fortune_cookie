@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "horoscope:generate": "tsx scripts/generate-horoscopes.ts",
+    "horoscope:daily": "tsx scripts/generate-horoscopes.ts --daily",
+    "horoscope:weekly": "tsx scripts/generate-horoscopes.ts --weekly",
+    "horoscope:monthly": "tsx scripts/generate-horoscopes.ts --monthly"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
