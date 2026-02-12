@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 interface BlogPost {
   title: string;
@@ -430,8 +431,23 @@ export default async function BlogPostPage({ params }: PageProps) {
     );
   }
 
+  const description = post.content.slice(0, 160).replace(/<[^>]*>/g, "").trim();
+
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
+      <ArticleJsonLd
+        title={post.title}
+        description={description}
+        slug={slug}
+        datePublished={post.date}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://fortunecrack.com" },
+          { name: "Blog", url: "https://fortunecrack.com/blog" },
+          { name: post.title, url: `https://fortunecrack.com/blog/${slug}` },
+        ]}
+      />
       <article className="mx-auto max-w-2xl">
         <Link
           href="/blog"
