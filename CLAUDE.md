@@ -32,7 +32,7 @@
 | Auto-Fortune Generation | Done | scripts/generate-fortunes.ts + weekly GitHub Actions workflow |
 | PWA + Push Notifications | Not Started | Daily fortune push notification (deferred — Phase 6) |
 | Site Health Monitoring | Done | link-check, lighthouse, content-health (self-healing) workflows |
-| Self-Sufficient Automation | Done | Auto-close recovery, dedup issues, seasonal content, content validation |
+| Self-Sufficient Automation | Done | Auto-close recovery, dedup issues, seasonal content, content validation (verified in Actions tab) |
 | Astrology Content | Not Started | Horoscopes, birth charts, compatibility — Phase 8 (NEW) |
 | Testing | None | No test framework |
 
@@ -610,6 +610,7 @@ scripts/
 | Mon 8AM UTC | auto-seasonal | Seasonal content if holiday window active | Issue + auto-close |
 | Mon noon UTC | content-health | Blog/horoscope/fortune freshness + URL pings + auto-trigger stale pipelines | Issue + auto-trigger |
 | Wed 6AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
+| On push | dependabot-updates | Auto-merge Dependabot PRs after CI passes | Auto-merge |
 
 ### Self-Corrective Mechanisms
 
