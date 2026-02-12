@@ -19,7 +19,7 @@
 | About Page | Done | Technology breakdown, features, categories |
 | Contact Form | Done | Form with Resend auto-response + owner notification |
 | Social Sharing | Done | Twitter/X, Facebook, WhatsApp, clipboard |
-| Google Analytics | Not Active | Code exists, no measurement ID configured |
+| Google Analytics | Done | GA4 enabled, ID: G-TMMGPRKTLD |
 | Google AdSense | Not Active | 3 ad slots coded, publisher ID empty |
 | Environment Variables | Done | .env.local with Resend API key, .env.example committed |
 | Deployment | Not Configured | No vercel.json, no CI/CD |
@@ -131,7 +131,7 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 
 1. ~~Expand all blog posts to 500+ words each~~ Done (10 posts, 1.2-1.6k words each)
 2. Migrate blog to MDX for easier authoring, then add auto-generation script
-3. Enable Google Analytics (add measurement ID)
+3. ~~Enable Google Analytics (add measurement ID)~~ Done (G-TMMGPRKTLD)
 4. Configure AdSense (add publisher ID)
 5. ~~Add OG images for social sharing~~ Done
 6. ~~Add JSON-LD structured data (Organization, Article, BreadcrumbList)~~ Done
