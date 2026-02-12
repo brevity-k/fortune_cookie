@@ -10,6 +10,8 @@ import {
 } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 
+export const revalidate = 43200; // 12 hours — refresh at least twice daily
+
 interface ZodiacSign {
   sign: string;
   symbol: string;

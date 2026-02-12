@@ -16,7 +16,7 @@ const ZODIAC_SIGNS = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = getAllPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
@@ -34,6 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "daily" as const,
     priority: 0.7,
   }));
+
+  const staticPageDate = new Date("2026-02-12");
 
   return [
     {
@@ -62,25 +64,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: staticPageDate,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      lastModified: staticPageDate,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: staticPageDate,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: staticPageDate,
       changeFrequency: "monthly",
       priority: 0.4,
     },

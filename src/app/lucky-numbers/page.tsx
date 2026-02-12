@@ -3,6 +3,8 @@ import Link from "next/link";
 import { seededRandom, dateSeed } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 
+export const revalidate = 43200; // 12 hours — refresh at least twice daily
+
 export const metadata: Metadata = {
   title: "Lucky Numbers Today",
   description:
