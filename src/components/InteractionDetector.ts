@@ -10,6 +10,8 @@ export interface BreakEvent {
   x: number;
   y: number;
   force: number; // 0-1
+  dragVelocityX?: number;
+  dragVelocityY?: number;
 }
 
 interface MouseState {
@@ -60,6 +62,15 @@ export class InteractionDetector {
   private readonly CLICK_MAX_DURATION = 300;
   private readonly CLICK_MAX_MOVE = 15;
 
+  // Device motion shake detection
+  private readonly DEVICE_SHAKE_ACCEL_THRESHOLD = 18;
+  private readonly DEVICE_SHAKE_ACCUMULATION = 2.5;
+  private readonly DEVICE_SHAKE_DECAY = 0.4;
+  private deviceMotionEnabled = false;
+  private lastAccel = { x: 0, y: 0, z: 0 };
+  private hasLastAccel = false;
+  private deviceMotionHandler: ((e: DeviceMotionEvent) => void) | null = null;
+
   private lastClickTime = 0;
   private clickCount = 0;
   private clickTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -97,6 +108,57 @@ export class InteractionDetector {
     element.addEventListener("pointerleave", this.handleMouseLeave);
   }
 
+  enableDeviceMotion() {
+    if (this.deviceMotionEnabled) return;
+    this.deviceMotionEnabled = true;
+    this.deviceMotionHandler = (e: DeviceMotionEvent) => {
+      this.handleDeviceMotion(e);
+    };
+    window.addEventListener("devicemotion", this.deviceMotionHandler);
+  }
+
+  private handleDeviceMotion(e: DeviceMotionEvent) {
+    if (this.broken) return;
+
+    const accel = e.accelerationIncludingGravity;
+    if (!accel || accel.x == null || accel.y == null || accel.z == null) return;
+
+    if (!this.hasLastAccel) {
+      this.lastAccel = { x: accel.x, y: accel.y, z: accel.z };
+      this.hasLastAccel = true;
+      return;
+    }
+
+    // Calculate jerk (change in acceleration) to detect shaking
+    const dx = accel.x - this.lastAccel.x;
+    const dy = accel.y - this.lastAccel.y;
+    const dz = accel.z - this.lastAccel.z;
+    const delta = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+    this.lastAccel = { x: accel.x, y: accel.y, z: accel.z };
+
+    if (delta > this.DEVICE_SHAKE_ACCEL_THRESHOLD) {
+      this.mouse.shakeIntensity += this.DEVICE_SHAKE_ACCUMULATION;
+    } else {
+      this.mouse.shakeIntensity = Math.max(
+        0,
+        this.mouse.shakeIntensity - this.DEVICE_SHAKE_DECAY
+      );
+    }
+
+    const progress = Math.min(1, this.mouse.shakeIntensity / this.SHAKE_THRESHOLD);
+    this.onShakeProgress?.(progress);
+
+    if (this.mouse.shakeIntensity >= this.SHAKE_THRESHOLD) {
+      this.triggerBreak(
+        "shake_break",
+        this.cookieCenterX,
+        this.cookieCenterY,
+        0.9
+      );
+    }
+  }
+
   detach() {
     this.stopSqueezeTimer();
     if (this.clickTimeout) {
@@ -109,6 +171,11 @@ export class InteractionDetector {
       this.element.removeEventListener("pointerup", this.handlePointerUp);
       this.element.removeEventListener("pointerleave", this.handleMouseLeave);
     }
+    if (this.deviceMotionHandler) {
+      window.removeEventListener("devicemotion", this.deviceMotionHandler);
+      this.deviceMotionHandler = null;
+      this.deviceMotionEnabled = false;
+    }
   }
 
   reset() {
@@ -118,6 +185,7 @@ export class InteractionDetector {
     this.mouse.dragDistance = 0;
     this.lastClickTime = 0;
     this.clickCount = 0;
+    this.hasLastAccel = false;
     if (this.clickTimeout) {
       clearTimeout(this.clickTimeout);
       this.clickTimeout = null;
@@ -147,11 +215,18 @@ export class InteractionDetector {
     };
   }
 
-  private triggerBreak(method: BreakMethod, x: number, y: number, force: number) {
+  private triggerBreak(
+    method: BreakMethod,
+    x: number,
+    y: number,
+    force: number,
+    dragVelocityX?: number,
+    dragVelocityY?: number
+  ) {
     if (this.broken) return;
     this.broken = true;
     this.stopSqueezeTimer();
-    this.onBreak?.({ method, x, y, force: Math.min(1, force) });
+    this.onBreak?.({ method, x, y, force: Math.min(1, force), dragVelocityX, dragVelocityY });
   }
 
   private startSqueezeTimer() {
@@ -272,7 +347,12 @@ export class InteractionDetector {
       this.onDragOffset?.(dx, dy);
 
       if (this.mouse.dragDistance > this.DRAG_THRESHOLD) {
-        this.triggerBreak("drag_crack", pos.x, pos.y, 0.7);
+        // Calculate throw velocity from drag direction
+        const dist = this.mouse.dragDistance || 1;
+        const throwSpeed = Math.min(dist / this.DRAG_THRESHOLD, 3);
+        const dvx = (dx / dist) * throwSpeed;
+        const dvy = (dy / dist) * throwSpeed;
+        this.triggerBreak("drag_crack", pos.x, pos.y, 0.7, dvx, dvy);
       }
     }
   };

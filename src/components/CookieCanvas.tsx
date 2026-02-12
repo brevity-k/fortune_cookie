@@ -3,9 +3,34 @@
 import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import { CookieRenderer } from "./CookieRenderer";
+import Matter from "matter-js";
 import { createCookiePhysics, CookiePhysicsWorld } from "./CookiePhysics";
 import { InteractionDetector, BreakEvent } from "./InteractionDetector";
 import { SoundManager } from "./SoundManager";
+
+interface DeviceMotionEvtConstructor {
+  requestPermission?: () => Promise<"granted" | "denied">;
+}
+
+function isTouchDevice(): boolean {
+  if (typeof window === "undefined") return false;
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+}
+
+async function requestDeviceMotionPermission(): Promise<boolean> {
+  const DME = DeviceMotionEvent as unknown as DeviceMotionEvtConstructor;
+  if (typeof DME.requestPermission === "function") {
+    // iOS 13+ requires explicit permission from a user gesture
+    try {
+      const result = await DME.requestPermission();
+      return result === "granted";
+    } catch {
+      return false;
+    }
+  }
+  // Android and older iOS — permission not required
+  return true;
+}
 
 interface CookieCanvasProps {
   onFortuneReveal: () => void;
@@ -26,9 +51,11 @@ export default function CookieCanvas({
   const physicsRef = useRef<CookiePhysicsWorld | null>(null);
   const interactionRef = useRef<InteractionDetector | null>(null);
   const animFrameRef = useRef<number>(0);
+  const motionEnabledRef = useRef(false);
   const [isBroken, setIsBroken] = useState(false);
   const [showNewButton, setShowNewButton] = useState(false);
   const [breakMethod, setBreakMethod] = useState<string>("");
+  const [isMobile] = useState(() => isTouchDevice());
 
   const handleBreak = useCallback(
     (event: BreakEvent) => {
@@ -44,18 +71,33 @@ export default function CookieCanvas({
       SoundManager.play("crack");
       setTimeout(() => SoundManager.play("break"), 100);
 
-      // Create physics fragments
-      physics.createFragments(
-        renderer.cx,
-        renderer.cy,
+      // For drag_crack, use the dragged cookie position as the fragment origin
+      const fragmentCX = renderer.cx + renderer.state.dragOffsetX;
+      const fragmentCY = renderer.cy + renderer.state.dragOffsetY;
+
+      // Create physics fragments at the cookie's current visual position
+      const frags = physics.createFragments(
+        fragmentCX,
+        fragmentCY,
         renderer.radius,
         event.x,
         event.y,
         event.force
       );
 
-      // Trigger visual break effect
-      renderer.triggerBreakEffect(event.x, event.y, event.force);
+      // For drag_crack, apply throw velocity to all fragments
+      if (event.method === "drag_crack" && event.dragVelocityX != null && event.dragVelocityY != null) {
+        for (const frag of frags) {
+          const throwForce = {
+            x: event.dragVelocityX * 0.04,
+            y: event.dragVelocityY * 0.04 - 0.02,
+          };
+          Matter.Body.applyForce(frag.body, frag.body.position, throwForce);
+        }
+      }
+
+      // Trigger visual break effect at the dragged position
+      renderer.triggerBreakEffect(fragmentCX, fragmentCY, event.force);
 
       // Screen shake
       if (containerRef.current) {
@@ -185,14 +227,24 @@ export default function CookieCanvas({
       animFrameRef.current = requestAnimationFrame(loop);
     });
 
-    // Initialize sound on first user interaction
-    const initSound = () => {
+    // Initialize sound and device motion on first user interaction
+    const initOnInteraction = async () => {
       SoundManager.init();
-      window.removeEventListener("click", initSound);
-      window.removeEventListener("touchstart", initSound);
+
+      // Enable device motion for physical shake detection on mobile
+      if (!motionEnabledRef.current && isTouchDevice()) {
+        const granted = await requestDeviceMotionPermission();
+        if (granted && interactionRef.current) {
+          interactionRef.current.enableDeviceMotion();
+          motionEnabledRef.current = true;
+        }
+      }
+
+      window.removeEventListener("click", initOnInteraction);
+      window.removeEventListener("touchstart", initOnInteraction);
     };
-    window.addEventListener("click", initSound);
-    window.addEventListener("touchstart", initSound);
+    window.addEventListener("click", initOnInteraction);
+    window.addEventListener("touchstart", initOnInteraction);
 
     return () => {
       cancelled = true;
@@ -203,8 +255,8 @@ export default function CookieCanvas({
         renderer.destroy();
         physics.destroy();
       }
-      window.removeEventListener("click", initSound);
-      window.removeEventListener("touchstart", initSound);
+      window.removeEventListener("click", initOnInteraction);
+      window.removeEventListener("touchstart", initOnInteraction);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -229,7 +281,9 @@ export default function CookieCanvas({
             className="pointer-events-none absolute bottom-8 left-0 right-0 text-center animate-pulse"
             style={{ color: "#d4a04a", fontSize: 14, opacity: 0.6 }}
           >
-            Click, drag, or shake to break your cookie
+            {isMobile
+              ? "Tap, drag, or shake your phone to break"
+              : "Click, drag, or shake to break your cookie"}
           </div>
         )}
 
