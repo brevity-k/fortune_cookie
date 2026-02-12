@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback, useState, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
 import { CookieRenderer } from "./CookieRenderer";
 import Matter from "matter-js";
@@ -16,6 +16,10 @@ function isTouchDevice(): boolean {
   if (typeof window === "undefined") return false;
   return "ontouchstart" in window || navigator.maxTouchPoints > 0;
 }
+
+const noopSubscribe = () => () => {};
+const getIsMobile = () => isTouchDevice();
+const getServerIsMobile = () => false;
 
 async function requestDeviceMotionPermission(): Promise<boolean> {
   const DME = DeviceMotionEvent as unknown as DeviceMotionEvtConstructor;
@@ -55,7 +59,7 @@ export default function CookieCanvas({
   const [isBroken, setIsBroken] = useState(false);
   const [showNewButton, setShowNewButton] = useState(false);
   const [breakMethod, setBreakMethod] = useState<string>("");
-  const [isMobile] = useState(() => isTouchDevice());
+  const isMobile = useSyncExternalStore(noopSubscribe, getIsMobile, getServerIsMobile);
 
   const handleBreak = useCallback(
     (event: BreakEvent) => {
@@ -164,6 +168,17 @@ export default function CookieCanvas({
     rendererRef.current = renderer;
     physicsRef.current = physics;
 
+    // Helper to enable device motion (called from multiple places)
+    const tryEnableDeviceMotion = async () => {
+      if (motionEnabledRef.current || !isTouchDevice()) return;
+      if (!interactionRef.current) return;
+      const granted = await requestDeviceMotionPermission();
+      if (granted && interactionRef.current) {
+        interactionRef.current.enableDeviceMotion();
+        motionEnabledRef.current = true;
+      }
+    };
+
     renderer.init(canvas).then(() => {
       if (cancelled) {
         // Cleanup was called before init completed — destroy now that app is ready
@@ -217,6 +232,9 @@ export default function CookieCanvas({
       interaction.attach(canvas);
       interactionRef.current = interaction;
 
+      // Try enabling device motion now that interaction detector is ready
+      tryEnableDeviceMotion();
+
       // Animation loop — check cancelled flag each frame
       const loop = () => {
         if (cancelled) return;
@@ -228,20 +246,16 @@ export default function CookieCanvas({
     });
 
     // Initialize sound and device motion on first user interaction
+    // Keep listener until device motion is successfully enabled (handles race condition)
     const initOnInteraction = async () => {
       SoundManager.init();
+      await tryEnableDeviceMotion();
 
-      // Enable device motion for physical shake detection on mobile
-      if (!motionEnabledRef.current && isTouchDevice()) {
-        const granted = await requestDeviceMotionPermission();
-        if (granted && interactionRef.current) {
-          interactionRef.current.enableDeviceMotion();
-          motionEnabledRef.current = true;
-        }
+      // Only remove listeners once device motion is enabled (or not a touch device)
+      if (motionEnabledRef.current || !isTouchDevice()) {
+        window.removeEventListener("click", initOnInteraction);
+        window.removeEventListener("touchstart", initOnInteraction);
       }
-
-      window.removeEventListener("click", initOnInteraction);
-      window.removeEventListener("touchstart", initOnInteraction);
     };
     window.addEventListener("click", initOnInteraction);
     window.addEventListener("touchstart", initOnInteraction);
