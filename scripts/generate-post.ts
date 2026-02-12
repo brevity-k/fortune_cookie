@@ -106,15 +106,73 @@ Requirements:
     keywords: string[];
   };
 
-  // Validate slug uniqueness
-  if (existingSlugs.includes(topic.slug)) {
-    console.error(`Slug "${topic.slug}" already exists. Aborting.`);
-    process.exit(1);
+  // Validate slug uniqueness — retry Stage 1 up to 3 times on collision
+  const MAX_SLUG_RETRIES = 3;
+  let finalTopic = topic;
+
+  if (existingSlugs.includes(finalTopic.slug)) {
+    let resolved = false;
+    for (let retry = 1; retry <= MAX_SLUG_RETRIES; retry++) {
+      console.log(`Slug "${finalTopic.slug}" already exists. Retrying topic selection (${retry}/${MAX_SLUG_RETRIES})...`);
+
+      const retryResponse = await callWithRetry(() =>
+        client.messages.create({
+          model: "claude-sonnet-4-5-20250929",
+          max_tokens: 500,
+          messages: [
+            {
+              role: "user",
+              content: `You are a blog content strategist for fortunecrack.com, an interactive fortune cookie website where users can virtually break fortune cookies.
+
+Content pillar for this post: "${pillar}"
+
+Existing blog post titles (DO NOT duplicate these topics):
+${existingTitles.map((t) => `- ${t}`).join("\n")}
+
+Slugs that are already taken (DO NOT reuse): ${[...existingSlugs, finalTopic.slug].join(", ")}
+
+Generate ONE new blog post topic that is COMPLETELY DIFFERENT from previous attempts. Return ONLY a JSON object with no other text:
+{
+  "title": "SEO-friendly title with target keyword (50-70 chars)",
+  "slug": "url-friendly-slug-lowercase-hyphens",
+  "excerpt": "Compelling meta description under 155 characters",
+  "keywords": ["primary keyword", "secondary keyword"]
+}
+
+Requirements:
+- Title must be engaging and include a target keyword
+- Slug: lowercase, hyphens only, no special characters
+- Excerpt: under 155 characters, compelling for search results
+- Topic must be completely unique from existing posts
+- Related to fortune cookies, luck, wisdom, or the content pillar theme`,
+            },
+          ],
+        }),
+      );
+
+      const retryText =
+        retryResponse.content[0].type === "text"
+          ? retryResponse.content[0].text
+          : "";
+      const retryMatch = retryText.match(/\{[\s\S]*\}/);
+      if (!retryMatch) continue;
+
+      finalTopic = JSON.parse(retryMatch[0]) as typeof topic;
+      if (!existingSlugs.includes(finalTopic.slug)) {
+        resolved = true;
+        break;
+      }
+    }
+
+    if (!resolved) {
+      console.error(`Failed to generate unique slug after ${MAX_SLUG_RETRIES} retries. Aborting.`);
+      process.exit(1);
+    }
   }
 
-  console.log(`\nTopic: ${topic.title}`);
-  console.log(`Slug: ${topic.slug}`);
-  console.log(`Excerpt: ${topic.excerpt}`);
+  console.log(`\nTopic: ${finalTopic.title}`);
+  console.log(`Slug: ${finalTopic.slug}`);
+  console.log(`Excerpt: ${finalTopic.excerpt}`);
 
   // Stage 2: Write the post
   const postResponse = await callWithRetry(() =>
@@ -126,8 +184,8 @@ Requirements:
           role: "user",
           content: `Write a blog post for fortunecrack.com, an interactive fortune cookie website where users can virtually break fortune cookies to reveal their fortunes.
 
-Title: "${topic.title}"
-Target keywords: ${topic.keywords.join(", ")}
+Title: "${finalTopic.title}"
+Target keywords: ${finalTopic.keywords.join(", ")}
 
 Requirements:
 - Write 1,000-1,500 words of engaging, informative content
@@ -157,18 +215,18 @@ Requirements:
   // Build MDX file
   const today = new Date().toISOString().split("T")[0];
   const mdxContent = matter.stringify(content.trim(), {
-    title: topic.title,
+    title: finalTopic.title,
     date: today,
     readTime,
-    excerpt: topic.excerpt,
+    excerpt: finalTopic.excerpt,
   });
 
   // Write the file
-  const filePath = path.join(BLOG_DIR, `${topic.slug}.mdx`);
+  const filePath = path.join(BLOG_DIR, `${finalTopic.slug}.mdx`);
   fs.writeFileSync(filePath, mdxContent, "utf-8");
 
   // Write slug for downstream scripts
-  fs.writeFileSync(SLUG_FILE, topic.slug, "utf-8");
+  fs.writeFileSync(SLUG_FILE, finalTopic.slug, "utf-8");
 
   console.log(`\nPost written: ${filePath}`);
   console.log(`Word count: ${wordCount}`);
@@ -178,7 +236,7 @@ Requirements:
   if (process.env.GITHUB_OUTPUT) {
     fs.appendFileSync(
       process.env.GITHUB_OUTPUT,
-      `slug=${topic.slug}\ntitle=${topic.title}\nword_count=${wordCount}\n`,
+      `slug=${finalTopic.slug}\ntitle=${finalTopic.title}\nword_count=${wordCount}\n`,
     );
   }
 }

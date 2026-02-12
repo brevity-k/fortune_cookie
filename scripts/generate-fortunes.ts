@@ -63,6 +63,16 @@ async function generateFortunes(): Promise<void> {
   const rawData = fs.readFileSync(FORTUNES_PATH, "utf-8");
   const data: FortunesFile = JSON.parse(rawData);
 
+  // Check fortune cap — skip generation if database is large enough
+  const currentTotal = Object.values(data.categories).reduce(
+    (sum, cat) => sum + cat.fortunes.length,
+    0
+  );
+  if (currentTotal > 3000) {
+    console.log(`Fortune database has ${currentTotal} fortunes (cap: 3000). Skipping generation.`);
+    return;
+  }
+
   // Find category with fewest fortunes
   const targetCategory = getSmallestCategory(data);
   const currentFortunes = data.categories[targetCategory].fortunes;
@@ -76,7 +86,7 @@ async function generateFortunes(): Promise<void> {
   // Generate new fortunes
   const result = await callWithRetry(async () => {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-5-20250929",
       max_tokens: 2000,
       messages: [
         {
@@ -133,9 +143,9 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
 
   console.log(`Valid after dedup: ${valid.length}`);
 
-  if (valid.length < 10) {
+  if (valid.length < 5) {
     throw new Error(
-      `Only ${valid.length} valid fortunes after dedup (need >= 10). Regeneration needed.`
+      `Only ${valid.length} valid fortunes after dedup (need >= 5). Regeneration needed.`
     );
   }
 
