@@ -24,8 +24,8 @@
 | Environment Variables | Done | .env.local with Resend API key, .env.example committed |
 | Deployment | Not Configured | No vercel.json, no CI/CD |
 | Blog Automation | Not Started | Posts are hardcoded in TSX |
-| OG Images | Missing | No social sharing images |
-| JSON-LD Structured Data | Missing | No schema.org markup |
+| OG Images | Done | Dynamic OG + Twitter images for homepage and all blog posts |
+| JSON-LD Structured Data | Done | Organization, WebSite, Article, BreadcrumbList |
 | Testing | None | No test framework |
 | CI/CD | None | No GitHub Actions |
 
@@ -133,10 +133,10 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 2. Migrate blog to MDX for easier authoring, then add auto-generation script
 3. Enable Google Analytics (add measurement ID)
 4. Configure AdSense (add publisher ID)
-5. Add OG images for social sharing
-6. Add JSON-LD structured data (Organization, Article, BreadcrumbList)
+5. ~~Add OG images for social sharing~~ Done
+6. ~~Add JSON-LD structured data (Organization, Article, BreadcrumbList)~~ Done
 7. ~~Set up environment variables (.env.local) instead of hardcoded values~~ Done
-8. Deploy to Vercel
+8. ~~Deploy to Vercel~~ Done (fortunecrack.com, auto-deploys on push)
 
 ---
 
