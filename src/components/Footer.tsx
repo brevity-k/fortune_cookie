@@ -34,6 +34,7 @@ export default function Footer() {
               <Link href="/lucky-numbers" className="text-foreground/50 transition hover:text-gold">Lucky Numbers</Link>
               <Link href="/fortune/wisdom" className="text-foreground/50 transition hover:text-gold">Fortune Categories</Link>
               <Link href="/zodiac/aries" className="text-foreground/50 transition hover:text-gold">Zodiac Fortunes</Link>
+              <Link href="/horoscope" className="text-foreground/50 transition hover:text-gold">Daily Horoscopes</Link>
             </div>
           </div>
 

@@ -1,0 +1,281 @@
+{
+  "daily": {
+    "date": "2026-02-11",
+    "horoscopes": {
+      "aries": {
+        "text": "Today brings unexpected clarity to a situation that has been clouding your judgment. Mars, your ruling planet, forms a harmonious trine with Jupiter, opening doors you thought were permanently closed. Trust your instincts when making decisions this afternoon — your gut feeling is aligned with the stars.",
+        "love": 4,
+        "career": 3,
+        "health": 5,
+        "luckyNumber": 7,
+        "luckyColor": "red",
+        "mood": "energetic"
+      },
+      "taurus": {
+        "text": "Venus casts a warm glow over your financial sector today, making it an excellent time to review investments or negotiate a raise. A conversation with a trusted friend reveals a perspective you hadn't considered. Slow and steady wins the race — resist the urge to rush important decisions.",
+        "love": 3,
+        "career": 5,
+        "health": 4,
+        "luckyNumber": 22,
+        "luckyColor": "green",
+        "mood": "determined"
+      },
+      "gemini": {
+        "text": "Mercury retrograde's shadow period lifts, clearing communication channels that have been foggy. An old friend or colleague may reach out with an intriguing proposal. Your dual nature serves you well today — use your adaptability to navigate a tricky social situation with grace.",
+        "love": 5,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 15,
+        "luckyColor": "yellow",
+        "mood": "curious"
+      },
+      "cancer": {
+        "text": "The Moon, your ruling celestial body, enters your fourth house of home and family, stirring deep emotions and nostalgic memories. A family matter that has been simmering may come to a resolution. Create a cozy sanctuary tonight — self-care isn't selfish, it's essential.",
+        "love": 4,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 33,
+        "luckyColor": "silver",
+        "mood": "reflective"
+      },
+      "leo": {
+        "text": "The Sun illuminates your creative sector, and your natural charisma is dialed up to maximum. A bold idea you've been nurturing is ready to be shared with the world. Don't dim your light to make others comfortable — today is your day to shine brighter than ever.",
+        "love": 5,
+        "career": 4,
+        "health": 4,
+        "luckyNumber": 11,
+        "luckyColor": "gold",
+        "mood": "confident"
+      },
+      "virgo": {
+        "text": "Mercury sharpens your analytical mind to a fine edge today. Details others miss will be crystal clear to you, making it the perfect day for planning and organizing. A health routine adjustment you've been considering gets a green light from the cosmos. Trust your practical nature.",
+        "love": 3,
+        "career": 5,
+        "health": 5,
+        "luckyNumber": 42,
+        "luckyColor": "navy",
+        "mood": "focused"
+      },
+      "libra": {
+        "text": "Venus graces your relationship sector with harmonious energy. Partnerships of all kinds — romantic, business, creative — receive a cosmic blessing today. If you've been sitting on the fence about a decision, the scales tip in your favor. Balance comes naturally when you listen to your heart.",
+        "love": 5,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 28,
+        "luckyColor": "pink",
+        "mood": "harmonious"
+      },
+      "scorpio": {
+        "text": "Pluto's transformative energy activates your eighth house, bringing powerful insights about shared resources or emotional bonds. A secret or hidden truth may surface — embrace it rather than resist. Your intensity is your superpower today. Use it to break through barriers that have held you back.",
+        "love": 4,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 13,
+        "luckyColor": "maroon",
+        "mood": "intense"
+      },
+      "sagittarius": {
+        "text": "Jupiter expands your horizons in exciting ways today. A learning opportunity or travel possibility appears seemingly out of nowhere. Your optimistic spirit attracts positive energy from everyone around you. Aim your arrow high — the universe is ready to support your grandest ambitions.",
+        "love": 3,
+        "career": 5,
+        "health": 4,
+        "luckyNumber": 9,
+        "luckyColor": "purple",
+        "mood": "adventurous"
+      },
+      "capricorn": {
+        "text": "Saturn rewards your persistent efforts with tangible results today. A professional goal that seemed distant suddenly feels within reach. Your disciplined approach to challenges impresses someone in a position of authority. Build on this momentum — your foundation is stronger than you realize.",
+        "love": 3,
+        "career": 5,
+        "health": 4,
+        "luckyNumber": 50,
+        "luckyColor": "charcoal",
+        "mood": "ambitious"
+      },
+      "aquarius": {
+        "text": "Uranus sends unexpected waves of inspiration through your chart today. A revolutionary idea strikes during a mundane moment — capture it before it fades. Your unique perspective is exactly what a group project or community effort needs. Don't be afraid to be the voice of change.",
+        "love": 4,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 77,
+        "luckyColor": "electric blue",
+        "mood": "innovative"
+      },
+      "pisces": {
+        "text": "Neptune heightens your intuition to an almost psychic level today. Pay attention to dreams, symbols, and synchronicities — the universe is sending you encoded messages. A creative project benefits from your vivid imagination. Let yourself drift into the flow state where magic happens.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 19,
+        "luckyColor": "seafoam",
+        "mood": "intuitive"
+      }
+    }
+  },
+  "weekly": {
+    "weekOf": "2026-02-09",
+    "horoscopes": {
+      "aries": {
+        "overview": "A week of transformation awaits as Mars conjuncts Uranus in your sign. Expect sudden shifts in your professional landscape that ultimately work in your favor. Mid-week brings a passionate encounter or rekindling of creative fire.",
+        "love": "Venus entering your fifth house mid-week ignites romantic sparks. Single Aries may attract attention from an unlikely source. Coupled Aries should plan something spontaneous to reignite the flame.",
+        "career": "Professional opportunities multiply as your assertive energy catches the eye of decision-makers. Thursday and Friday are power days for negotiations and presentations.",
+        "advice": "Focus on what you can control and release what you cannot. Your impulsive nature may be tested, but patience yields the greatest rewards this week."
+      },
+      "taurus": {
+        "overview": "This week centers on financial growth and material security. Venus, your ruling planet, harmonizes with Saturn, creating a stable foundation for long-term investments. A surprising opportunity emerges from a casual conversation.",
+        "love": "Romantic relationships deepen through honest communication. A partner or love interest reveals a vulnerable side, strengthening your bond. Single Taurus may reconnect with someone from the past.",
+        "career": "Your methodical approach to a complex project earns recognition. A mentor figure offers guidance that could reshape your career trajectory. Consider a skill-building opportunity presented on Wednesday.",
+        "advice": "Resist stubbornness when new information challenges your perspective. Flexibility this week leads to abundance next month."
+      },
+      "gemini": {
+        "overview": "Communication is your superpower this week as Mercury, your ruler, forms brilliant aspects with multiple planets. Your words carry extra weight — choose them wisely. A social event on the weekend could introduce you to an important new connection.",
+        "love": "Your charm is irresistible this week. Playful banter evolves into something deeper with someone who matches your intellectual energy. Existing relationships benefit from heart-to-heart talks.",
+        "career": "A writing, speaking, or teaching opportunity presents itself. Your ability to simplify complex ideas impresses colleagues. Networking events on Wednesday or Thursday are especially favorable.",
+        "advice": "Ground your restless energy with a physical activity or meditation practice. Your mind is a powerful tool, but it needs moments of stillness to recharge."
+      },
+      "cancer": {
+        "overview": "Emotional depth defines this week as the Moon makes significant transits through your chart. Family matters demand attention early in the week, but by Thursday, the focus shifts to your personal goals and desires.",
+        "love": "Nurturing energy flows freely in your relationships. A heartfelt gesture from you creates a ripple of warmth in your closest bonds. Single Cancers may feel drawn to someone with a protective, caring nature.",
+        "career": "Your emotional intelligence becomes a professional asset. Reading the room in a meeting leads to a breakthrough. A home-based project or remote work arrangement gets a favorable review.",
+        "advice": "Set boundaries without guilt. Your giving nature is beautiful, but this week teaches that receiving is equally important."
+      },
+      "leo": {
+        "overview": "The spotlight is firmly on you this week as the Sun forms a grand trine with Mars and Jupiter. Your creative energy peaks, and leadership opportunities abound. A celebration or recognition may come your way by the weekend.",
+        "love": "Romance takes center stage with grand gestures and passionate declarations. Your generous spirit attracts admiration. Couples enjoy a renewed sense of playfulness and joy together.",
+        "career": "A creative project reaches a milestone, earning well-deserved praise. Your vision inspires team members to elevate their own contributions. Financial discussions on Friday favor your position.",
+        "advice": "Share the spotlight with those who've supported your journey. Generosity of spirit amplifies your already magnetic presence."
+      },
+      "virgo": {
+        "overview": "A week of refinement and optimization as Mercury helps you see the blueprint behind the chaos. Health improvements show noticeable results. A practical solution to a long-standing problem presents itself on Tuesday.",
+        "love": "Love grows through acts of service this week. Small, thoughtful gestures mean more than grand displays. A conversation about future plans with a partner brings clarity and excitement.",
+        "career": "Your attention to detail catches an error that saves significant resources. A systematic approach to a new project positions you as the go-to expert. Training opportunities on Thursday are worth pursuing.",
+        "advice": "Perfectionism can be a trap. This week, aim for excellent rather than flawless, and notice how much lighter you feel."
+      },
+      "libra": {
+        "overview": "Harmony and partnership energy dominate this week. Venus brings beautiful aspects to your social sector, making every interaction feel meaningful. A legal or contractual matter reaches a favorable conclusion.",
+        "love": "Relationships reach a new level of understanding. A compromise that once felt impossible now seems natural. Single Libras attract balanced, mature connections through social gatherings mid-week.",
+        "career": "Collaborative projects thrive under your diplomatic leadership. Your ability to find common ground resolves a team conflict. A business partnership opportunity emerges by Friday.",
+        "advice": "Make a decision you've been postponing. The information you need is already available — trust your judgment and commit."
+      },
+      "scorpio": {
+        "overview": "Intensity builds throughout the week as Pluto activates hidden aspects of your chart. Secrets come to light, transformations accelerate, and power dynamics shift in your favor. This is a week of profound personal growth.",
+        "love": "Deep emotional connections intensify. A vulnerable conversation with a partner or love interest creates unbreakable trust. Passion runs high — channel it constructively.",
+        "career": "Research, investigation, or strategic planning yields breakthrough results. Your ability to see beneath the surface gives you a competitive advantage. A financial opportunity requires careful analysis.",
+        "advice": "Release control over outcomes you cannot influence. True power comes from inner transformation, not external manipulation."
+      },
+      "sagittarius": {
+        "overview": "Adventure calls this week as Jupiter expands your ninth house of exploration and higher learning. A travel opportunity, academic pursuit, or philosophical breakthrough brightens the week. Your optimism is contagious.",
+        "love": "A long-distance connection strengthens, or a local relationship benefits from shared adventures. Plan something outside your comfort zone with a partner — the shared experience creates lasting memories.",
+        "career": "International business or cross-cultural collaboration opens new doors. Your big-picture thinking impresses leadership. A publishing, teaching, or training opportunity deserves serious consideration.",
+        "advice": "Balance your desire for freedom with your commitments. The most meaningful adventures often happen within the context of deep relationships."
+      },
+      "capricorn": {
+        "overview": "Achievement energy peaks this week as Saturn blesses your efforts with structure and reward. A long-term goal reaches a critical milestone. Your reputation in professional circles strengthens considerably.",
+        "love": "Emotional walls gradually lower as you allow someone to see your softer side. Vulnerability becomes a strength in relationships. Practical expressions of love — reliability, follow-through — are your love language this week.",
+        "career": "A promotion, raise, or significant recognition is on the horizon. Your disciplined approach to a challenging project sets you apart. Authority figures take note of your leadership potential.",
+        "advice": "Celebrate your accomplishments before rushing to the next goal. Joy in the journey prevents burnout at the destination."
+      },
+      "aquarius": {
+        "overview": "Innovation and community are the themes this week. Uranus in your chart sparks brilliant ideas that serve both personal and collective goals. A group project or humanitarian effort gains unexpected momentum.",
+        "love": "Intellectual connection sparks romantic interest. A stimulating conversation leads somewhere unexpected. Existing relationships benefit from giving each other space to grow individually.",
+        "career": "Technology, innovation, or social media plays a key role in a professional breakthrough. Your unconventional approach to problem-solving earns respect. A team brainstorming session on Wednesday produces gold.",
+        "advice": "Connect your brilliant ideas with practical execution plans. Vision without action remains a dream — this week, start building."
+      },
+      "pisces": {
+        "overview": "Spiritual and creative energy flows abundantly this week as Neptune forms a supportive aspect with Venus. Artistic pursuits reach new heights, and your compassion touches everyone around you. Pay attention to vivid dreams — they carry messages.",
+        "love": "A soulmate connection deepens through shared spiritual or creative experiences. Music, art, or nature provide the perfect backdrop for romance. Single Pisces may meet someone in a healing or artistic setting.",
+        "career": "Creative industries, healing professions, and counseling roles are especially favored. Your empathic abilities help you understand what clients or colleagues truly need. A project with artistic elements showcases your talents.",
+        "advice": "Protect your energy by establishing clear boundaries. Your sensitivity is a gift, but it requires conscious management to prevent overwhelm."
+      }
+    }
+  },
+  "monthly": {
+    "month": "2026-02",
+    "horoscopes": {
+      "aries": {
+        "overview": "February brings a powerful shift in your professional trajectory as Mars moves through your tenth house of career and public image. The first two weeks favor bold initiatives, while the latter half is ideal for consolidating gains and building alliances.",
+        "love": "Romantic connections heat up after the 14th when Venus enters your seventh house. Single Aries may find love through professional or networking events. Couples deepen their bond through shared goals and mutual support.",
+        "career": "A major career milestone arrives mid-month. Your assertive energy and willingness to take calculated risks set you apart from the competition. A leadership opportunity emerges that could define your professional trajectory for years to come.",
+        "health": "High energy levels serve you well, but watch for burnout in the third week. Incorporate stress-relief practices like exercise or meditation. Mars energy benefits from physical outlets — try a new sport or fitness challenge.",
+        "advice": "Trust the process and stay patient. February rewards those who combine boldness with strategic thinking. Your ambition is your greatest asset this month."
+      },
+      "taurus": {
+        "overview": "February is a month of steady financial growth and intellectual expansion for Taurus. Venus harmonizes with Saturn throughout the month, creating a stable foundation for long-term investments and meaningful relationships.",
+        "love": "Your sensual nature is heightened this month. Physical affection and quality time strengthen existing bonds. A romantic getaway or intimate dinner around the 20th creates lasting memories. Single Taurus attracts partners who appreciate depth.",
+        "career": "Financial acumen is your superpower in February. Investments made now have long-term potential. A salary negotiation or business proposal finds favorable ground after the 10th. Trust your instinct for value.",
+        "health": "Focus on nutrition and sensory wellness. Your body responds well to nourishing foods, massage, and time in nature. A new wellness routine started this month has lasting benefits.",
+        "advice": "Embrace change without abandoning your values. February asks you to grow while staying rooted in what matters most to you."
+      },
+      "gemini": {
+        "overview": "February sparkles with social energy and intellectual stimulation for Gemini. Mercury's favorable position amplifies your communication gifts, making this an ideal month for networking, learning, and sharing your ideas with a wider audience.",
+        "love": "Flirtatious energy is high all month. Your wit and charm attract multiple admirers. The key is depth over breadth — invest in the connection that stimulates both your mind and heart. Mid-month conversations reveal important truths.",
+        "career": "Writing, speaking, and media opportunities flourish. A presentation or pitch around the 15th could be a turning point. Your ability to synthesize information and present it engagingly sets you apart in your field.",
+        "health": "Nervous energy needs healthy outlets. Mindfulness practices, especially breathwork, help calm your racing mind. Social activities that involve movement — dancing, group sports — satisfy both your social and physical needs.",
+        "advice": "Commit to one idea and see it through. Your versatility is a strength, but February rewards focused execution over scattered exploration."
+      },
+      "cancer": {
+        "overview": "February invites deep emotional healing and family strengthening for Cancer. The lunar cycles this month create powerful windows for releasing old patterns and welcoming new beginnings in your most intimate relationships.",
+        "love": "Emotional vulnerability becomes your greatest romantic asset. Sharing your true feelings without a protective shell invites deeper intimacy. The Full Moon on the 18th illuminates relationship dynamics that need attention.",
+        "career": "Your nurturing leadership style gains recognition at work. A project involving customer care, team building, or community outreach highlights your strengths. Real estate or home-related ventures are especially favored.",
+        "health": "Emotional and physical health are deeply connected this month. Comfort eating may increase with stress — find nourishing alternatives. Water activities like swimming or hot baths are especially therapeutic.",
+        "advice": "Release the need to protect everyone around you. This month, let others care for you as generously as you care for them."
+      },
+      "leo": {
+        "overview": "February is a month of creative renaissance and romantic expression for Leo. The Sun's journey through your chart ignites your artistic talents and draws admiring attention from all directions. Your natural magnetism is at its peak.",
+        "love": "Romance flourishes with dramatic flair this month. Grand gestures, heartfelt declarations, and creative expressions of love define your romantic landscape. Valentine's season is your time to shine — plan something unforgettable.",
+        "career": "Creative projects reach completion or gain significant momentum. Entertainment, arts, education, and children-related fields are especially favored. Your leadership charisma inspires your entire team to perform at their best.",
+        "health": "Your vitality is strong, but don't neglect your heart — both emotionally and physically. Cardiovascular exercise and activities that bring joy are your best medicine. Spend time outdoors when possible.",
+        "advice": "Share your creative gifts generously. February rewards Leos who uplift others with their warmth, talent, and irrepressible spirit."
+      },
+      "virgo": {
+        "overview": "February brings practical improvements and health breakthroughs for Virgo. Mercury's analytical power helps you optimize every area of your life, from daily routines to career strategies. Small, consistent changes yield remarkable results.",
+        "love": "Love grows through reliability and thoughtful gestures this month. Showing up consistently means more than any grand romantic display. Health-focused activities with a partner strengthen both your bond and your wellness.",
+        "career": "Your organizational skills save the day on more than one occasion this month. A complex project benefits from your systematic approach. Professional development opportunities around the 12th are worth pursuing.",
+        "health": "This is your wellness power month. Diet adjustments, exercise routines, and health screenings started now produce excellent results. Pay attention to digestive health and stress management techniques.",
+        "advice": "Let go of perfectionism and embrace progress. February teaches that consistent improvement matters more than flawless execution."
+      },
+      "libra": {
+        "overview": "February centers on partnership harmony and creative collaboration for Libra. Venus blesses your relationships with beauty and grace, while Saturn provides the structure to make creative visions real. Balance is not just your goal — it is your gift.",
+        "love": "Valentine's month is especially magical for Libra. Existing partnerships reach a new level of mutual understanding and aesthetic harmony. Single Libras attract balanced, attractive partners through cultural events and social gatherings.",
+        "career": "Collaborative ventures thrive this month. Your diplomatic nature resolves a workplace conflict that others found impossible. Creative industries, law, and design fields are especially favorable. Contracts signed after the 10th have lasting value.",
+        "health": "Balance in health mirrors balance in life. Alternate active and restful days. Your kidneys and lower back benefit from extra attention — stay hydrated and practice gentle stretching.",
+        "advice": "Make the decision you have been deliberating. February provides the clarity and courage you need to choose and commit wholeheartedly."
+      },
+      "scorpio": {
+        "overview": "February is a month of profound transformation and hidden power for Scorpio. Pluto's influence reveals what lies beneath the surface, while Mars provides the courage to act on deep truths. Financial and emotional resources undergo positive restructuring.",
+        "love": "Passionate intensity defines your romantic life this month. Superficial connections fall away as you seek authentic soul-level bonds. A vulnerable conversation around the 20th has the power to transform a relationship forever.",
+        "career": "Strategic thinking and investigative skills lead to a major professional breakthrough. Research, finance, therapy, and crisis management are especially favored. A hidden opportunity reveals itself to those who look beneath the surface.",
+        "health": "Detoxification — physical, emotional, and digital — serves you powerfully this month. Release what no longer serves your highest good. Intense exercise provides a healthy outlet for Scorpio's potent energy.",
+        "advice": "Transformation requires surrender. Release control over outcomes and trust that what emerges from the depths will be more powerful than what you planned."
+      },
+      "sagittarius": {
+        "overview": "February expands your horizons through travel, education, and philosophical exploration. Jupiter's generous influence opens doors to international connections, academic achievements, and spiritual growth that broadens your worldview.",
+        "love": "Adventurous romance is on the menu this month. A travel companion becomes a romantic interest, or a partner suggests an exciting new experience together. Cross-cultural connections are especially favored after the 14th.",
+        "career": "Publishing, education, international business, and travel industries offer exciting opportunities. Your big-picture vision impresses decision-makers. A mentorship role — giving or receiving — accelerates your professional growth.",
+        "health": "Your hips and thighs benefit from extra attention. Outdoor activities like hiking, horseback riding, or cycling align with your adventurous nature while supporting physical wellness. Travel-related health precautions are worth taking.",
+        "advice": "Anchor your expansive vision with practical steps. February's abundance flows to those who combine optimistic dreams with disciplined follow-through."
+      },
+      "capricorn": {
+        "overview": "February consolidates your professional achievements while opening new doors for growth. Saturn's structured energy helps you build upon recent successes, while Pluto's transformative influence continues to reshape your identity and ambitions in powerful ways.",
+        "love": "Emotional authenticity deepens your most important relationships. Letting your guard down with a trusted partner creates space for genuine intimacy. Professional respect may evolve into romantic interest for single Capricorns.",
+        "career": "Your professional reputation reaches new heights this month. A promotion, public recognition, or significant achievement validates your disciplined approach. Authority figures actively support your advancement. Financial planning yields tangible results.",
+        "health": "Bones, joints, and skin deserve extra care this month. Calcium-rich foods, stretching routines, and proper skincare make a noticeable difference. Manage stress through structured relaxation — you work best with a plan, even for rest.",
+        "advice": "Celebrate your achievements before climbing the next mountain. February reminds you that joy in accomplishment fuels the next phase of your journey."
+      },
+      "aquarius": {
+        "overview": "February is your birthday season, and the cosmos showers you with renewal energy. Uranus continues to shake up comfortable patterns, while the Sun illuminates your authentic self. Innovation, community, and personal freedom are your guiding themes.",
+        "love": "Your unique personality is especially attractive this month. Someone who appreciates your unconventional nature may appear unexpectedly. Existing relationships benefit from intellectual stimulation and shared humanitarian interests.",
+        "career": "Technology, social media, and innovation-driven projects receive cosmic support. Your ability to envision the future gives you a competitive edge. Team leadership roles suit you well — your democratic approach inspires loyalty and creativity.",
+        "health": "Circulation and ankle health deserve attention. Electric or alternative healing modalities resonate with your energy. Group fitness activities or technology-assisted wellness tracking appeal to your innovative nature.",
+        "advice": "Ground your revolutionary ideas in human connection. February's greatest breakthroughs come when brilliant innovation serves genuine community needs."
+      },
+      "pisces": {
+        "overview": "February is a deeply spiritual and creative month for Pisces, as your birthday season approaches. Neptune amplifies your intuitive gifts, while Venus adds beauty and harmony to everything you touch. Artistic expression and compassionate service define this period.",
+        "love": "Soulmate energy is powerful this month. Existing relationships reach transcendent levels of understanding and compassion. Single Pisces may experience love at first sight or a karmic reconnection that feels destined.",
+        "career": "Creative industries, healing professions, music, film, and spiritual services are especially blessed. Your empathic abilities help you understand exactly what people need. A project combining creativity with compassion becomes your signature achievement.",
+        "health": "Feet, lymphatic system, and immune function benefit from attention. Gentle exercise like yoga, tai chi, or swimming aligns with your water-sign nature. Sleep quality is essential — create a serene bedtime routine.",
+        "advice": "Set boundaries to protect your sensitive energy. February's cosmic gifts flow most freely when you honor your need for solitude and spiritual recharging."
+      }
+    }
+  }
+}
