@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-gold/10 bg-background/90">
       <div className="mx-auto max-w-6xl px-4 py-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
           {/* Brand */}
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -23,6 +23,17 @@ export default function Footer() {
               <Link href="/about" className="text-foreground/50 transition hover:text-gold">About</Link>
               <Link href="/blog" className="text-foreground/50 transition hover:text-gold">Blog</Link>
               <Link href="/contact" className="text-foreground/50 transition hover:text-gold">Contact</Link>
+            </div>
+          </div>
+
+          {/* Explore */}
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-gold">Explore</h3>
+            <div className="flex flex-col gap-2 text-sm">
+              <Link href="/daily" className="text-foreground/50 transition hover:text-gold">Daily Fortune</Link>
+              <Link href="/lucky-numbers" className="text-foreground/50 transition hover:text-gold">Lucky Numbers</Link>
+              <Link href="/fortune/wisdom" className="text-foreground/50 transition hover:text-gold">Fortune Categories</Link>
+              <Link href="/zodiac/aries" className="text-foreground/50 transition hover:text-gold">Zodiac Fortunes</Link>
             </div>
           </div>
 

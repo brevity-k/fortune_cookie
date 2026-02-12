@@ -27,10 +27,11 @@
 | OG Images | Done | Dynamic OG + Twitter images for homepage and all blog posts |
 | JSON-LD Structured Data | Done | Organization, WebSite, Article, BreadcrumbList |
 | Blog Auto-Generation | Done | scripts/ + .github/workflows/auto-blog.yml, needs ANTHROPIC_API_KEY secret |
-| Shareable Fortune Cards | Not Started | Wordle-style share image for each fortune |
-| Programmatic SEO Pages | Not Started | /fortune/[category], /zodiac/[sign], /lucky-numbers |
-| PWA + Push Notifications | Not Started | Daily fortune push notification |
-| Site Health Monitoring | Not Started | Lighthouse CI, link checker, SEO audits |
+| Shareable Fortune Cards | Done | /api/fortune-card image gen, /f/[id] share landing, rarity emoji sharing |
+| Programmatic SEO Pages | Done | 23 new routes: 8 category + 12 zodiac + /daily + /lucky-numbers + OG images |
+| Auto-Fortune Generation | Done | scripts/generate-fortunes.ts + weekly GitHub Actions workflow |
+| PWA + Push Notifications | Not Started | Daily fortune push notification (deferred — Phase 6) |
+| Site Health Monitoring | Done | link-check, lighthouse, content-health workflows |
 | Testing | None | No test framework |
 
 ---
@@ -253,10 +254,11 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 
 ## Fortune Data
 
-- **Total:** 1,031 fortunes in `src/data/fortunes.json`
+- **Total:** 1,031+ fortunes in `src/data/fortunes.json` (auto-growing ~20/week)
 - **Categories:** wisdom (200), love (150), career (150), humor (150), motivation (150), philosophy (101), adventure (80), mystery (50)
 - **Rarities:** Common 63%, Rare 24%, Epic 8%, Legendary 5%
 - **Daily Fortune:** Seeded RNG (mulberry32) — same fortune globally per day
+- **Auto-Growth:** `scripts/generate-fortunes.ts` adds ~20 fortunes/week to smallest category via Claude API
 
 ---
 
@@ -264,7 +266,7 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 
 | Secret | Purpose |
 |---|---|
-| `ANTHROPIC_API_KEY` | Claude API for blog auto-generation + quality checks |
+| `ANTHROPIC_API_KEY` | Claude API for blog auto-generation + quality checks + fortune generation |
 | (GITHUB_TOKEN) | Auto-provided by GitHub Actions for git push |
 
 ---
@@ -299,9 +301,9 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 6. ~~Set up environment variables~~ Done
 7. ~~Deploy to Vercel~~ Done (fortunecrack.com)
 8. ~~Build auto-blog pipeline~~ Done (scripts + GitHub Actions)
-9. **Add shareable fortune card images** — Phase 4
-10. **Create programmatic SEO pages** (/fortune/[category], /zodiac/[sign], /lucky-numbers) — Phase 5
-11. **Add PWA + push notifications** — Phase 6
+9. ~~Add shareable fortune card images~~ Done (Phase 4)
+10. ~~Create programmatic SEO pages~~ Done (Phase 5 — 23 routes)
+11. **Add PWA + push notifications** — Phase 6 (deferred)
 12. Configure AdSense (add publisher ID)
 
 ---
@@ -314,13 +316,19 @@ src/
 │   ├── page.tsx              # Homepage with interactive cookie
 │   ├── layout.tsx            # Root layout (GA/AdSense scripts here)
 │   ├── globals.css           # Theme variables, animations
-│   ├── sitemap.ts            # Dynamic sitemap generation
+│   ├── sitemap.ts            # Dynamic sitemap (30+ entries)
 │   ├── robots.ts             # Search engine directives
 │   ├── about/page.tsx
 │   ├── blog/page.tsx         # Blog index
 │   ├── blog/[slug]/page.tsx  # MDX blog post renderer (next-mdx-remote)
 │   ├── api/contact/route.ts  # Contact form API (Resend)
+│   ├── api/fortune-card/route.tsx # Edge: OG image for fortune shares (1200x630)
 │   ├── contact/page.tsx
+│   ├── daily/page.tsx        # Daily fortune page + 7-day history
+│   ├── f/[id]/page.tsx       # Fortune share landing page (base64url encoded)
+│   ├── fortune/[category]/page.tsx  # 8 category fortune pages (SSG)
+│   ├── zodiac/[sign]/page.tsx       # 12 zodiac fortune pages (SSG)
+│   ├── lucky-numbers/page.tsx       # Daily lucky numbers page
 │   ├── privacy/page.tsx
 │   └── terms/page.tsx
 ├── components/
@@ -332,30 +340,34 @@ src/
 │   ├── ParticleSystem.ts     # Visual effects
 │   ├── FortuneReveal.tsx     # Typewriter effect
 │   ├── FortuneOfTheDay.tsx   # Daily seeded fortune
-│   ├── ShareButtons.tsx      # Social sharing
+│   ├── ShareButtons.tsx      # Social sharing with personalized fortune URLs
+│   ├── JsonLd.tsx            # JSON-LD: Organization, WebSite, Article, Breadcrumb, FAQPage
 │   ├── ContactForm.tsx       # Contact form with validation
 │   ├── AdUnit.tsx            # AdSense (disabled, no pub ID)
 │   ├── CookieConsent.tsx     # GDPR consent banner
 │   ├── Header.tsx            # Responsive nav
-│   └── Footer.tsx            # Footer links
+│   └── Footer.tsx            # Footer links + Explore section
 ├── content/
-│   └── blog/                 # MDX blog posts with YAML frontmatter (10 posts)
+│   └── blog/                 # MDX blog posts with YAML frontmatter (10+ posts)
 ├── lib/
 │   ├── blog.ts               # Blog content loader (getAllPosts, getPost)
-│   ├── fortuneEngine.ts      # Fortune logic, streaks, journal
+│   ├── fortuneEngine.ts      # Fortune logic, streaks, journal, seededRandom, category helpers
 │   └── analytics.ts          # GA4 event tracking (disabled)
 └── data/
-    └── fortunes.json         # 1,031 fortunes
+    └── fortunes.json         # 1,031+ fortunes (auto-growing weekly)
 
 scripts/
 ├── generate-post.ts          # Two-stage Claude API blog post generator
 ├── quality-check.ts          # Content quality validation (structural + AI review)
-└── auto-fix.ts               # Self-healing post fixer (frontmatter, H1→H2, etc.)
+├── auto-fix.ts               # Self-healing post fixer (frontmatter, H1→H2, etc.)
+└── generate-fortunes.ts      # Weekly fortune database growth via Claude API
 
 .github/workflows/
-├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish
-├── link-check.yml            # (Phase 7) Weekly: broken link detection
-└── lighthouse.yml            # (Phase 7) Weekly: SEO + performance audit
+├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish + sitemap ping
+├── auto-fortunes.yml         # Cron (Sun 10AM UTC): generate 20 new fortunes + validate + publish
+├── link-check.yml            # Weekly (Mon 6AM UTC): broken link detection → auto GitHub issue
+├── lighthouse.yml            # Weekly (Wed 6AM UTC): SEO + performance audit
+└── content-health.yml        # Weekly (Mon noon UTC): blog freshness + page health + sitemap ping
 ```
 
 ---

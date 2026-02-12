@@ -3,6 +3,16 @@ import { getAllPosts } from "@/lib/blog";
 
 const baseUrl = "https://fortunecrack.com";
 
+const CATEGORIES = [
+  "wisdom", "love", "career", "humor",
+  "motivation", "philosophy", "adventure", "mystery",
+];
+
+const ZODIAC_SIGNS = [
+  "aries", "taurus", "gemini", "cancer", "leo", "virgo",
+  "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = getAllPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -11,12 +21,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const categoryEntries = CATEGORIES.map((cat) => ({
+    url: `${baseUrl}/fortune/${cat}`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.7,
+  }));
+
+  const zodiacEntries = ZODIAC_SIGNS.map((sign) => ({
+    url: `${baseUrl}/zodiac/${sign}`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/daily`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/lucky-numbers`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
@@ -48,6 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.4,
     },
+    ...categoryEntries,
+    ...zodiacEntries,
     ...blogEntries,
   ];
 }

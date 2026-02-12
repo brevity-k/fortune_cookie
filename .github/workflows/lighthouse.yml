@@ -1,0 +1,28 @@
+name: Lighthouse Audit
+
+on:
+  schedule:
+    - cron: "0 6 * * 3" # Wednesday 6AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit homepage
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://fortunecrack.com
+            https://fortunecrack.com/daily
+            https://fortunecrack.com/blog
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
