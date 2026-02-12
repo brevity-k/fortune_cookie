@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import "./globals.css";
+
+const GA_ID = "G-TMMGPRKTLD";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,15 +67,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/*
-        Google AdSense - uncomment and replace with your publisher ID:
+      <head>
         <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"
-          crossOrigin="anonymous"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
-      */}
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+        {/*
+          Google AdSense - uncomment and replace with your publisher ID:
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        */}
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-warm-gradient min-h-screen antialiased`}
       >
