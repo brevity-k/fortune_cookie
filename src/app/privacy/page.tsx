@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
+import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for Fortune Cookie — how we handle your data and cookies.",
+  description: `Privacy Policy for ${SITE_NAME} — how we handle your data and cookies.`,
+  openGraph: {
+    title: `Privacy Policy | ${SITE_NAME}`,
+    description: `Privacy Policy for ${SITE_NAME} — how we handle your data and cookies.`,
+    url: `${SITE_URL}/privacy`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Privacy Policy | ${SITE_NAME}`,
+    description: `Privacy Policy for ${SITE_NAME} — how we handle your data and cookies.`,
+  },
 };
 
 export default function PrivacyPage() {
@@ -109,8 +120,8 @@ export default function PrivacyPage() {
             <h2 className="mb-2 text-xl font-semibold text-gold">Contact Us</h2>
             <p>
               If you have questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:your-email@example.com" className="text-gold underline">
-                your-email@example.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold underline">
+                {CONTACT_EMAIL}
               </a>
               .
             </p>

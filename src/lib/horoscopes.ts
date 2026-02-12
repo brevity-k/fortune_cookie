@@ -6,6 +6,7 @@ export interface ZodiacSign {
   symbol: string;
   element: string;
   dateRange: string;
+  ruler: string;
 }
 
 export interface DailyHoroscope {
@@ -34,19 +35,21 @@ export interface MonthlyHoroscope {
 }
 
 export const ZODIAC_SIGNS: ZodiacSign[] = [
-  { key: "aries", name: "Aries", symbol: "\u2648", element: "Fire", dateRange: "Mar 21 - Apr 19" },
-  { key: "taurus", name: "Taurus", symbol: "\u2649", element: "Earth", dateRange: "Apr 20 - May 20" },
-  { key: "gemini", name: "Gemini", symbol: "\u264A", element: "Air", dateRange: "May 21 - Jun 20" },
-  { key: "cancer", name: "Cancer", symbol: "\u264B", element: "Water", dateRange: "Jun 21 - Jul 22" },
-  { key: "leo", name: "Leo", symbol: "\u264C", element: "Fire", dateRange: "Jul 23 - Aug 22" },
-  { key: "virgo", name: "Virgo", symbol: "\u264D", element: "Earth", dateRange: "Aug 23 - Sep 22" },
-  { key: "libra", name: "Libra", symbol: "\u264E", element: "Air", dateRange: "Sep 23 - Oct 22" },
-  { key: "scorpio", name: "Scorpio", symbol: "\u264F", element: "Water", dateRange: "Oct 23 - Nov 21" },
-  { key: "sagittarius", name: "Sagittarius", symbol: "\u2650", element: "Fire", dateRange: "Nov 22 - Dec 21" },
-  { key: "capricorn", name: "Capricorn", symbol: "\u2651", element: "Earth", dateRange: "Dec 22 - Jan 19" },
-  { key: "aquarius", name: "Aquarius", symbol: "\u2652", element: "Air", dateRange: "Jan 20 - Feb 18" },
-  { key: "pisces", name: "Pisces", symbol: "\u2653", element: "Water", dateRange: "Feb 19 - Mar 20" },
+  { key: "aries", name: "Aries", symbol: "\u2648", element: "Fire", dateRange: "Mar 21 - Apr 19", ruler: "Mars" },
+  { key: "taurus", name: "Taurus", symbol: "\u2649", element: "Earth", dateRange: "Apr 20 - May 20", ruler: "Venus" },
+  { key: "gemini", name: "Gemini", symbol: "\u264A", element: "Air", dateRange: "May 21 - Jun 20", ruler: "Mercury" },
+  { key: "cancer", name: "Cancer", symbol: "\u264B", element: "Water", dateRange: "Jun 21 - Jul 22", ruler: "Moon" },
+  { key: "leo", name: "Leo", symbol: "\u264C", element: "Fire", dateRange: "Jul 23 - Aug 22", ruler: "Sun" },
+  { key: "virgo", name: "Virgo", symbol: "\u264D", element: "Earth", dateRange: "Aug 23 - Sep 22", ruler: "Mercury" },
+  { key: "libra", name: "Libra", symbol: "\u264E", element: "Air", dateRange: "Sep 23 - Oct 22", ruler: "Venus" },
+  { key: "scorpio", name: "Scorpio", symbol: "\u264F", element: "Water", dateRange: "Oct 23 - Nov 21", ruler: "Pluto" },
+  { key: "sagittarius", name: "Sagittarius", symbol: "\u2650", element: "Fire", dateRange: "Nov 22 - Dec 21", ruler: "Jupiter" },
+  { key: "capricorn", name: "Capricorn", symbol: "\u2651", element: "Earth", dateRange: "Dec 22 - Jan 19", ruler: "Saturn" },
+  { key: "aquarius", name: "Aquarius", symbol: "\u2652", element: "Air", dateRange: "Jan 20 - Feb 18", ruler: "Uranus" },
+  { key: "pisces", name: "Pisces", symbol: "\u2653", element: "Water", dateRange: "Feb 19 - Mar 20", ruler: "Neptune" },
 ];
+
+export const ZODIAC_SIGN_KEYS = ZODIAC_SIGNS.map((s) => s.key);
 
 const data = horoscopeData as {
   daily: { date: string; horoscopes: Record<string, DailyHoroscope> };

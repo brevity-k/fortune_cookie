@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
+import { SITE_DOMAIN } from "@/lib/constants";
 
+export const runtime = "edge";
 export const alt = "Lucky Numbers Today";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -46,7 +48,7 @@ export default function OGImage() {
             letterSpacing: 2,
           }}
         >
-          fortunecrack.com
+          {SITE_DOMAIN}
         </div>
       </div>
     ),

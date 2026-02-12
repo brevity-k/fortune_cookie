@@ -1,6 +1,18 @@
+/**
+ * Blog post auto-fixer
+ *
+ * Usage:
+ *   npx tsx scripts/auto-fix.ts [slug]     # Fix a specific post by slug
+ *   npx tsx scripts/auto-fix.ts            # Fix the post whose slug is in .generated-slug
+ *
+ * Fixes: excerpt truncation, H1→H2 conversion, date format, missing readTime/title/excerpt.
+ * Designed to run after generate-post.ts in the auto-blog pipeline.
+ */
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { log } from "./lib/utils";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
@@ -8,7 +20,7 @@ const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
 function getSlug(): string {
   if (process.argv[2]) return process.argv[2];
   if (fs.existsSync(SLUG_FILE)) return fs.readFileSync(SLUG_FILE, "utf-8").trim();
-  console.error("No slug provided. Pass as argument or run generate-post.ts first.");
+  log.error("No slug provided. Pass as argument or run generate-post.ts first.");
   process.exit(1);
 }
 
@@ -17,7 +29,7 @@ function main() {
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
-    console.error(`Post not found: ${filePath}`);
+    log.error(`Post not found: ${filePath}`);
     process.exit(1);
   }
 
@@ -47,6 +59,9 @@ function main() {
       if (!isNaN(d.getTime())) {
         fixedData.date = d.toISOString().split("T")[0];
         fixes.push(`Fixed date format to ${fixedData.date}`);
+      } else {
+        fixedData.date = new Date().toISOString().split("T")[0];
+        fixes.push(`Invalid date "${dateStr}", set to today: ${fixedData.date}`);
       }
     }
   } else {
@@ -72,18 +87,26 @@ function main() {
 
   // Fix 6: Ensure excerpt exists
   if (!fixedData.excerpt) {
-    // Extract first paragraph as excerpt
-    const firstPara = fixedContent
-      .trim()
-      .split(/\n\n/)[0]
-      .replace(/[#*[\]()]/g, "")
-      .trim();
-    fixedData.excerpt = firstPara.slice(0, 157) + "...";
-    fixes.push("Generated excerpt from first paragraph");
+    const paragraphs = fixedContent.trim().split(/\n\n/);
+    let excerptText = "";
+    for (const para of paragraphs) {
+      const cleaned = para.replace(/[#*[\]()]/g, "").trim();
+      if (cleaned.length > 0) {
+        excerptText = cleaned;
+        break;
+      }
+    }
+    if (excerptText) {
+      fixedData.excerpt = excerptText.length > 157 ? excerptText.slice(0, 157) + "..." : excerptText;
+      fixes.push("Generated excerpt from first paragraph");
+    } else {
+      fixedData.excerpt = fixedData.title || "Fortune Cookie Blog Post";
+      fixes.push("Used title as fallback excerpt");
+    }
   }
 
   if (fixes.length === 0) {
-    console.log(`No fixes needed for: ${slug}`);
+    log.ok(`No fixes needed for: ${slug}`);
     return;
   }
 
@@ -91,10 +114,15 @@ function main() {
   const fixed = matter.stringify(fixedContent, fixedData);
   fs.writeFileSync(filePath, fixed, "utf-8");
 
-  console.log(`Fixed ${fixes.length} issue(s) in: ${slug}`);
+  log.ok(`Fixed ${fixes.length} issue(s) in: ${slug}`);
   for (const fix of fixes) {
     console.log(`  - ${fix}`);
   }
 }
 
-main();
+try {
+  main();
+} catch (err) {
+  log.error(`Auto-fix failed: ${err instanceof Error ? err.message : err}`);
+  process.exit(1);
+}

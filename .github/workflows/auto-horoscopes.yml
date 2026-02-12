@@ -2,7 +2,7 @@ name: Auto Horoscopes
 
 on:
   schedule:
-    - cron: "0 6 * * *" # Daily at 6AM UTC
+    - cron: "0 5 * * *" # Daily at 5AM UTC (staggered from link-check at 6AM)
   workflow_dispatch:
     inputs:
       type:
@@ -16,7 +16,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: auto-content
+  group: auto-content # Prevents git conflicts from concurrent writes to src/data/* and src/content/blog/
   cancel-in-progress: false
 
 jobs:
@@ -37,6 +37,8 @@ jobs:
       - run: npm ci
 
       - name: Generate horoscopes
+        id: generate
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -49,14 +51,32 @@ jobs:
             npx tsx scripts/generate-horoscopes.ts --$TYPE
           fi
 
+      - name: Retry on failure
+        if: steps.generate.outcome == 'failure'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -e
+          echo "Retrying horoscope generation..."
+          sleep 30
+          TYPE="${{ github.event.inputs.type || 'auto' }}"
+          if [ "$TYPE" = "auto" ]; then
+            npx tsx scripts/generate-horoscopes.ts
+          elif [ "$TYPE" = "all" ]; then
+            npx tsx scripts/generate-horoscopes.ts --all
+          else
+            npx tsx scripts/generate-horoscopes.ts --$TYPE
+          fi
+
       - name: Validate JSON
-        run: node -e "JSON.parse(require('fs').readFileSync('src/data/horoscopes.json','utf-8')); console.log('JSON valid')"
+        run: node -e "JSON.parse(require('fs').readFileSync('src/data/horoscopes.json','utf8')); console.log('JSON valid')"
 
       - name: Build verification
         run: npm run build
 
       - name: Commit and push
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/horoscopes.json
