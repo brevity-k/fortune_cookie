@@ -11,6 +11,8 @@ import {
 } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 
+export const revalidate = 43200; // 12 hours — refresh at least twice daily
+
 const categoryDescriptions: Record<FortuneCategory, string> = {
   wisdom: "Timeless wisdom and profound insights to guide your journey through life.",
   love: "Heartfelt fortunes about love, relationships, and matters of the heart.",

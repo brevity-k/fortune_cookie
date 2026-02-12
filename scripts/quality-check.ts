@@ -6,6 +6,25 @@ import matter from "gray-matter";
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
 
+async function callWithRetry<T>(
+  fn: () => Promise<T>,
+  maxAttempts = 3,
+  delayMs = 30000,
+): Promise<T> {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+      console.log(
+        `API call failed (attempt ${attempt}/${maxAttempts}), retrying in ${delayMs / 1000}s...`,
+      );
+      await new Promise((r) => setTimeout(r, delayMs));
+    }
+  }
+  throw new Error("Unreachable");
+}
+
 interface QualityResult {
   pass: boolean;
   issues: string[];
@@ -89,21 +108,23 @@ async function main() {
   if (result.pass && process.env.ANTHROPIC_API_KEY) {
     console.log("\n  Running AI quality review...");
     const client = new Anthropic();
-    const reviewResponse = await client.messages.create({
-      model: "claude-sonnet-4-5-20250929",
-      max_tokens: 300,
-      messages: [
-        {
-          role: "user",
-          content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality. Return ONLY a JSON object:
+    const reviewResponse = await callWithRetry(() =>
+      client.messages.create({
+        model: "claude-sonnet-4-5-20250929",
+        max_tokens: 300,
+        messages: [
+          {
+            role: "user",
+            content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality. Return ONLY a JSON object:
 {"score": <number>, "feedback": "<one sentence>"}
 
 Title: ${data.title}
 
-${content.slice(0, 3000)}`,
-        },
-      ],
-    });
+${content.slice(0, 6000)}`,
+          },
+        ],
+      }),
+    );
 
     const reviewText =
       reviewResponse.content[0].type === "text"
