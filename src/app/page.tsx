@@ -98,8 +98,8 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="px-4 pb-4 pt-10 text-center">
-        <h1 className="text-golden-shimmer mb-2 text-4xl font-bold tracking-tight md:text-5xl">
+      <section className="px-4 pb-4 pt-6 sm:pt-10 text-center">
+        <h1 className="text-golden-shimmer mb-2 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl">
           Break Your Fortune Cookie
         </h1>
         <p className="mx-auto max-w-md text-foreground/50">

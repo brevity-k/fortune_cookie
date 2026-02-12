@@ -87,20 +87,20 @@ export default function LuckyNumbersPage() {
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-10">
           <div className="text-6xl mb-4">🍀</div>
-          <h1 className="text-golden-shimmer text-4xl font-bold mb-2">Lucky Numbers Today</h1>
+          <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">Lucky Numbers Today</h1>
           <p className="text-foreground/40 text-sm">{dateStr}</p>
         </div>
 
         {/* Main Numbers */}
-        <div className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center mb-8">
+        <div className="rounded-2xl border border-gold/20 bg-gold/5 p-5 sm:p-8 text-center mb-8">
           <p className="text-xs uppercase tracking-wider text-foreground/30 mb-6">
             Your Lucky Numbers
           </p>
-          <div className="flex justify-center gap-4 flex-wrap mb-8">
+          <div className="flex justify-center gap-2.5 sm:gap-4 flex-wrap mb-8">
             {numbers.map((n) => (
               <div
                 key={n}
-                className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-gold/10 text-xl font-bold text-gold"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-gold/10 text-lg sm:text-xl font-bold text-gold"
               >
                 {n}
               </div>
@@ -155,19 +155,19 @@ export default function LuckyNumbersPage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/daily"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Daily Fortune
             </Link>
             <Link
               href="/zodiac/aries"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Zodiac Fortunes
             </Link>
             <Link
               href="/fortune/wisdom"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Fortune Categories
             </Link>

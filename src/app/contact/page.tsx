@@ -10,7 +10,7 @@ export default function ContactPage() {
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <div className="mx-auto max-w-2xl">
-        <h1 className="text-golden-shimmer mb-6 text-4xl font-bold">Contact Us</h1>
+        <h1 className="text-golden-shimmer mb-6 text-3xl sm:text-4xl font-bold">Contact Us</h1>
 
         <div className="space-y-6 text-foreground/70 leading-relaxed">
           <p>
