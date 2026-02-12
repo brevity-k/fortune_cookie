@@ -1,0 +1,59 @@
+name: Content Health Check
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # Monday noon UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  content-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check blog freshness
+        run: |
+          echo "Checking blog post freshness..."
+          RECENT=$(find src/content/blog -name "*.mdx" -mtime -14 | wc -l | tr -d ' ')
+          echo "Posts modified in last 14 days: $RECENT"
+          if [ "$RECENT" -lt 2 ]; then
+            echo "::warning::Less than 2 blog posts in the last 14 days. Auto-blog pipeline may have stopped."
+          else
+            echo "Blog freshness OK ($RECENT posts in 14 days)"
+          fi
+
+      - name: Verify key pages
+        run: |
+          PAGES=(
+            "https://fortunecrack.com"
+            "https://fortunecrack.com/blog"
+            "https://fortunecrack.com/daily"
+            "https://fortunecrack.com/lucky-numbers"
+            "https://fortunecrack.com/fortune/wisdom"
+            "https://fortunecrack.com/zodiac/aries"
+          )
+          FAILED=0
+          for url in "${PAGES[@]}"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$url" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "OK: $url ($STATUS)"
+            else
+              echo "::error::FAIL: $url (HTTP $STATUS)"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" = "1" ]; then
+            exit 1
+          fi
+
+      - name: Ping sitemap
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://fortunecrack.com/sitemap.xml" || true
+          echo "Sitemap ping sent"

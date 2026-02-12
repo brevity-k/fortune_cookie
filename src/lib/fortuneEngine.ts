@@ -25,6 +25,28 @@ interface CategoryData {
 
 const categories = fortunesData.categories as Record<string, CategoryData>;
 
+export const CATEGORIES = Object.keys(categories) as FortuneCategory[];
+
+export function getAllFortunes(): Fortune[] {
+  const all: Fortune[] = [];
+  for (const [cat, data] of Object.entries(categories)) {
+    for (const text of data.fortunes) {
+      all.push({ text, category: cat as FortuneCategory, rarity: data.rarity });
+    }
+  }
+  return all;
+}
+
+export function getFortunesByCategory(category: FortuneCategory): Fortune[] {
+  const data = categories[category];
+  if (!data) return [];
+  return data.fortunes.map((text) => ({
+    text,
+    category,
+    rarity: data.rarity,
+  }));
+}
+
 // Rarity weights (higher = more likely)
 const RARITY_WEIGHTS: Record<Rarity, number> = {
   common: 60,
@@ -34,7 +56,7 @@ const RARITY_WEIGHTS: Record<Rarity, number> = {
 };
 
 // Seeded random number generator (mulberry32)
-function seededRandom(seed: number): () => number {
+export function seededRandom(seed: number): () => number {
   return function () {
     let t = (seed += 0x6d2b79f5);
     t = Math.imul(t ^ (t >>> 15), t | 1);
@@ -43,7 +65,7 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function dateSeed(): number {
+export function dateSeed(): number {
   const now = new Date();
   return now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
 }
