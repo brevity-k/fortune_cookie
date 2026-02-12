@@ -10,7 +10,13 @@
     "horoscope:generate": "tsx scripts/generate-horoscopes.ts",
     "horoscope:daily": "tsx scripts/generate-horoscopes.ts --daily",
     "horoscope:weekly": "tsx scripts/generate-horoscopes.ts --weekly",
-    "horoscope:monthly": "tsx scripts/generate-horoscopes.ts --monthly"
+    "horoscope:monthly": "tsx scripts/generate-horoscopes.ts --monthly",
+    "blog:generate": "tsx scripts/generate-post.ts",
+    "blog:quality": "tsx scripts/quality-check.ts",
+    "blog:fix": "tsx scripts/auto-fix.ts",
+    "fortune:generate": "tsx scripts/generate-fortunes.ts",
+    "seasonal:generate": "tsx scripts/generate-seasonal.ts",
+    "content:validate": "tsx scripts/validate-content.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
