@@ -14,7 +14,7 @@
 | Fortune System | Done | 1,031 fortunes, 8 categories, 4 rarities, streaks |
 | Cookie Consent Banner | Done | GDPR-compliant accept/reject with localStorage |
 | SEO (basic) | Done | Meta tags, Open Graph, Twitter cards, sitemap, robots.txt |
-| Blog Content | Done | 5 posts, all expanded to 1,200-1,600 words each |
+| Blog Content | Done | 10 posts as MDX files in src/content/blog/ |
 | Legal Pages | Done | Privacy Policy & Terms of Service |
 | About Page | Done | Technology breakdown, features, categories |
 | Contact Form | Done | Form with Resend auto-response + owner notification |
@@ -23,7 +23,8 @@
 | Google AdSense | Not Active | 3 ad slots coded, publisher ID empty |
 | Environment Variables | Done | .env.local with Resend API key, .env.example committed |
 | Deployment | Not Configured | No vercel.json, no CI/CD |
-| Blog Automation | Not Started | Posts are hardcoded in TSX |
+| Blog MDX Migration | Done | MDX files + content loader, single source of truth |
+| Blog Automation | Not Started | MDX ready, auto-generation script next |
 | OG Images | Done | Dynamic OG + Twitter images for homepage and all blog posts |
 | JSON-LD Structured Data | Done | Organization, WebSite, Article, BreadcrumbList |
 | Testing | None | No test framework |
@@ -46,7 +47,7 @@
 | zodiac-fortune-cookies-astrology-meets-wisdom | ~1,500 | Astrology |
 | why-we-need-small-joys | ~1,400 | Wellness |
 
-Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no automated generation.
+Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Content loader in `src/lib/blog.ts` provides `getAllPosts()` and `getPost(slug)`. Rendered with `next-mdx-remote/rsc`.
 
 ---
 
@@ -66,7 +67,7 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 - SEO-friendly title with target keyword
 - 4-6 H2 sections for scannability
 - Internal link to homepage ("break a fortune cookie")
-- Meta description auto-generated from first 160 chars
+- Meta description from frontmatter `excerpt` field
 
 ### Upcoming Post Ideas
 - "How to Create Your Own Luck: 7 Science-Backed Strategies"
@@ -80,10 +81,10 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 - "How Different Cultures Find Daily Inspiration"
 - "The Surprising Health Benefits of Laughter and Lightheartedness"
 
-### Automation Plan (Future)
-1. **Phase 1 (current):** Manual — posts hardcoded in TSX
-2. **Phase 2:** Migrate to MDX files in `/content/blog/` for easier authoring
-3. **Phase 3:** Add a script (`scripts/generate-post.ts`) that uses Claude API to draft posts from topic + outline, outputs MDX
+### Automation Plan
+1. ~~**Phase 1:** Manual — posts hardcoded in TSX~~ Done
+2. ~~**Phase 2:** Migrate to MDX files in `src/content/blog/` for easier authoring~~ Done
+3. **Phase 3 (next):** Add a script (`scripts/generate-post.ts`) that uses Claude API to draft posts from topic + outline, outputs MDX
 4. **Phase 4:** GitHub Action cron job (2x/week) that auto-generates, commits, and deploys new posts
 
 ---
@@ -130,7 +131,7 @@ Blog system is **hardcoded** in `src/app/blog/[slug]/page.tsx`. No CMS, no autom
 ## High Priority TODO
 
 1. ~~Expand all blog posts to 500+ words each~~ Done (10 posts, 1.2-1.6k words each)
-2. Migrate blog to MDX for easier authoring, then add auto-generation script
+2. ~~Migrate blog to MDX for easier authoring~~ Done — add auto-generation script next
 3. ~~Enable Google Analytics (add measurement ID)~~ Done (G-TMMGPRKTLD)
 4. Configure AdSense (add publisher ID)
 5. ~~Add OG images for social sharing~~ Done
@@ -152,7 +153,7 @@ src/
 │   ├── robots.ts             # Search engine directives
 │   ├── about/page.tsx
 │   ├── blog/page.tsx         # Blog index
-│   ├── blog/[slug]/page.tsx  # Hardcoded blog posts (5 posts, 1.2-1.6k words)
+│   ├── blog/[slug]/page.tsx  # MDX blog post renderer (next-mdx-remote)
 │   ├── api/contact/route.ts  # Contact form API (Resend)
 │   ├── contact/page.tsx
 │   ├── privacy/page.tsx
@@ -172,7 +173,10 @@ src/
 │   ├── CookieConsent.tsx     # GDPR consent banner
 │   ├── Header.tsx            # Responsive nav
 │   └── Footer.tsx            # Footer links
+├── content/
+│   └── blog/                 # MDX blog posts with YAML frontmatter (10 posts)
 ├── lib/
+│   ├── blog.ts               # Blog content loader (getAllPosts, getPost)
 │   ├── fortuneEngine.ts      # Fortune logic, streaks, journal
 │   └── analytics.ts          # GA4 event tracking (disabled)
 └── data/
