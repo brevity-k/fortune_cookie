@@ -31,7 +31,8 @@
 | Programmatic SEO Pages | Done | 23 new routes: 8 category + 12 zodiac + /daily + /lucky-numbers + OG images |
 | Auto-Fortune Generation | Done | scripts/generate-fortunes.ts + weekly GitHub Actions workflow |
 | PWA + Push Notifications | Not Started | Daily fortune push notification (deferred — Phase 6) |
-| Site Health Monitoring | Done | link-check, lighthouse, content-health workflows |
+| Site Health Monitoring | Done | link-check, lighthouse, content-health (self-healing) workflows |
+| Self-Sufficient Automation | Done | Auto-close recovery, dedup issues, seasonal content, content validation |
 | Astrology Content | Not Started | Horoscopes, birth charts, compatibility — Phase 8 (NEW) |
 | Testing | None | No test framework |
 
@@ -551,14 +552,20 @@ scripts/
 ├── generate-post.ts          # Two-stage Claude API blog post generator
 ├── quality-check.ts          # Content quality validation (structural + AI review)
 ├── auto-fix.ts               # Self-healing post fixer (frontmatter, H1→H2, etc.)
-└── generate-fortunes.ts      # Weekly fortune database growth via Claude API
+├── generate-fortunes.ts      # Weekly fortune database growth via Claude API
+├── generate-horoscopes.ts    # Daily/weekly/monthly horoscope generation via Claude API
+├── generate-seasonal.ts      # Seasonal holiday content generation via Claude API
+├── validate-content.ts       # Data integrity validation (fortunes, horoscopes, blog)
+└── seasonal-state.json       # Tracks which seasonal content has been generated per year
 
 .github/workflows/
-├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish + sitemap ping
+├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish
 ├── auto-fortunes.yml         # Cron (Sun 10AM UTC): generate 20 new fortunes + validate + publish
-├── link-check.yml            # Weekly (Mon 6AM UTC): broken link detection → auto GitHub issue
-├── lighthouse.yml            # Weekly (Wed 6AM UTC): SEO + performance audit
-└── content-health.yml        # Weekly (Mon noon UTC): blog freshness + page health + sitemap ping
+├── auto-horoscopes.yml       # Cron (Daily 6AM UTC): daily/weekly/monthly horoscopes for 12 signs
+├── auto-seasonal.yml         # Cron (Mon 8AM UTC): seasonal content if holiday window active
+├── content-health.yml        # Weekly (Mon noon UTC): blog/horoscope/fortune freshness + URL pings + auto-triggers
+├── link-check.yml            # Weekly (Mon 6AM UTC): broken link detection → deduplicated issues
+└── lighthouse.yml            # Weekly (Wed 6AM UTC): SEO + performance audit
 ```
 
 ### Planned File Additions (Phase 8)
@@ -592,6 +599,39 @@ scripts/
 
 ---
 
+## Automation Pipeline (Self-Sufficient)
+
+| Schedule | Workflow | What It Does | Self-Healing |
+|----------|----------|-------------|-------------|
+| Daily 6AM UTC | auto-horoscopes | Daily/weekly/monthly horoscopes for 12 signs | Retry + issue + auto-close |
+| Tue/Fri 9AM UTC | auto-blog | Blog post: generate + fix + quality check + retry | Retry + issue + auto-close |
+| Sun 10AM UTC | auto-fortunes | 20 new fortunes to smallest category (cap: 3000) | Retry + issue + auto-close |
+| Mon 6AM UTC | link-check | Broken link detection | Deduplicated issues |
+| Mon 8AM UTC | auto-seasonal | Seasonal content if holiday window active | Issue + auto-close |
+| Mon noon UTC | content-health | Blog/horoscope/fortune freshness + URL pings + auto-trigger stale pipelines | Issue + auto-trigger |
+| Wed 6AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
+
+### Self-Corrective Mechanisms
+
+1. **Stale content detection**: content-health monitors all 3 content types; auto-triggers their workflows if stale
+2. **Quality gates**: Blog posts go through auto-fix + AI quality review (score >= 6/10); retry on failure
+3. **Issue lifecycle**: Failure creates issue → recovery auto-closes with comment
+4. **Deduplication**: No duplicate failure issues (checked before creation)
+5. **Data validation**: validate-content.ts checks integrity of all data files
+6. **Fortune cap**: Stops generating at 3000 fortunes to prevent bloat
+
+### Seasonal Content Windows
+
+| Season | Window | Category | Content |
+|--------|--------|----------|---------|
+| new-year | Dec 26 – Jan 7 | motivation | 20 New Year resolution fortunes |
+| valentine | Feb 1 – Feb 14 | love | 20 love-themed fortunes |
+| halloween | Oct 15 – Oct 31 | mystery | 20 spooky/mystery fortunes |
+| thanksgiving | Nov 15 – Nov 28 | wisdom | 20 gratitude fortunes |
+| christmas | Dec 10 – Dec 25 | wisdom | 20 holiday/joy fortunes |
+
+---
+
 ## Build & Run
 
 ```bash
@@ -599,4 +639,19 @@ npm run dev      # Development server
 npm run build    # Production build
 npm run start    # Production server
 npm run lint     # ESLint
+```
+
+### Content Scripts (Manual)
+
+```bash
+npm run blog:generate        # Generate a new blog post
+npm run blog:fix             # Auto-fix blog post issues
+npm run blog:quality         # AI quality check on latest post
+npm run fortune:generate     # Generate 20 new fortunes
+npm run seasonal:generate    # Generate seasonal content (if in window)
+npm run content:validate     # Validate all data file integrity
+npm run horoscope:generate   # Generate horoscopes (auto-detect type)
+npm run horoscope:daily      # Generate daily horoscopes only
+npm run horoscope:weekly     # Generate weekly horoscopes only
+npm run horoscope:monthly    # Generate monthly horoscopes only
 ```
