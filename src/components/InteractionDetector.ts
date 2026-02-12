@@ -260,11 +260,15 @@ export class InteractionDetector {
   }
 
   private handlePointerDown = (e: PointerEvent) => {
-    // Capture pointer so drag works even if cursor leaves the canvas
-    (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
-    e.preventDefault();
-
     const pos = this.getRelativePos(e);
+
+    // Only capture and prevent default when touching the cookie area
+    // This allows page scrolling when touching outside the cookie
+    if (this.isPointOverCookie(pos.x, pos.y)) {
+      (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
+      e.preventDefault();
+    }
+
     this.mouse.isDown = true;
     this.mouse.downTime = Date.now();
     this.mouse.downX = pos.x;
