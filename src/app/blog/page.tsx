@@ -14,7 +14,7 @@ export default function BlogPage() {
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-golden-shimmer mb-4 text-4xl font-bold">Blog</h1>
+        <h1 className="text-golden-shimmer mb-4 text-3xl sm:text-4xl font-bold">Blog</h1>
         <p className="mb-12 text-foreground/50">
           Stories, insights, and behind-the-scenes looks at the world of fortune cookies.
         </p>

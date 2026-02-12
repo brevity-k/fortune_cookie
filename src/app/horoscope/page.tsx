@@ -77,7 +77,7 @@ export default function HoroscopeHub() {
 
       <div className="mx-auto max-w-4xl">
         <div className="text-center mb-10">
-          <h1 className="text-golden-shimmer text-4xl font-bold mb-3">
+          <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-3">
             Daily Horoscopes
           </h1>
           <p className="text-sm text-foreground/40 mb-2">{formattedDate}</p>

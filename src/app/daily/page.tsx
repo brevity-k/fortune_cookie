@@ -89,13 +89,13 @@ export default function DailyPage() {
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-8">
           <div className="text-6xl mb-4">🥠</div>
-          <h1 className="text-golden-shimmer text-4xl font-bold mb-2">Daily Fortune Cookie</h1>
+          <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">Daily Fortune Cookie</h1>
           <p className="text-foreground/40 text-sm">{dateStr}</p>
         </div>
 
         {/* Today's Fortune */}
         <div
-          className="relative overflow-hidden rounded-2xl border p-8 text-center mb-6"
+          className="relative overflow-hidden rounded-2xl border p-5 sm:p-8 text-center mb-6"
           style={{
             borderColor: rarityColor + "30",
             background: `radial-gradient(ellipse at center, ${rarityColor}08 0%, transparent 70%)`,
@@ -170,19 +170,19 @@ export default function DailyPage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/lucky-numbers"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Lucky Numbers
             </Link>
             <Link
               href="/zodiac/aries"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Zodiac Fortunes
             </Link>
             <Link
               href="/fortune/wisdom"
-              className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
             >
               Fortune Categories
             </Link>

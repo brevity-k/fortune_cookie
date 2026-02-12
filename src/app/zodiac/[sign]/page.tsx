@@ -149,7 +149,7 @@ export default async function ZodiacPage({
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-8">
           <div className="text-7xl mb-4">{zodiac.symbol}</div>
-          <h1 className="text-golden-shimmer text-4xl font-bold mb-2">
+          <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">
             {signTitle} Fortune Today
           </h1>
           <p className="text-foreground/40 text-sm">{zodiac.dateRange}</p>
@@ -163,7 +163,7 @@ export default async function ZodiacPage({
 
         {/* Today's Fortune */}
         <div
-          className="relative overflow-hidden rounded-2xl border p-8 text-center mb-10"
+          className="relative overflow-hidden rounded-2xl border p-5 sm:p-8 text-center mb-10"
           style={{
             borderColor: rarityColor + "30",
             background: `radial-gradient(ellipse at center, ${rarityColor}08 0%, transparent 70%)`,
@@ -223,7 +223,7 @@ export default async function ZodiacPage({
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">
             Other Zodiac Signs
           </h2>
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
             {ZODIAC_SIGNS.filter((z) => z.sign !== sign).map((z) => (
               <Link
                 key={z.sign}

@@ -38,8 +38,9 @@ export default function Header() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-foreground/70 md:hidden"
+          className="p-2 -mr-2 text-foreground/70 md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {menuOpen ? (
@@ -54,20 +55,20 @@ export default function Header() {
       {/* Mobile nav */}
       {menuOpen && (
         <nav className="border-t border-gold/10 bg-background/95 px-4 py-3 backdrop-blur-md md:hidden">
-          <div className="flex flex-col gap-3 text-sm">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="text-foreground/70 transition hover:text-gold">
+          <div className="flex flex-col gap-1 text-sm">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
               Home
             </Link>
-            <Link href="/horoscope" onClick={() => setMenuOpen(false)} className="text-foreground/70 transition hover:text-gold">
+            <Link href="/horoscope" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
               Horoscopes
             </Link>
-            <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-foreground/70 transition hover:text-gold">
+            <Link href="/blog" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
               Blog
             </Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)} className="text-foreground/70 transition hover:text-gold">
+            <Link href="/about" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
               About
             </Link>
-            <Link href="/contact" onClick={() => setMenuOpen(false)} className="text-foreground/70 transition hover:text-gold">
+            <Link href="/contact" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
               Contact
             </Link>
           </div>
