@@ -35,7 +35,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/howler": "^2.2.12",
     "@types/matter-js": "^0.20.2",
-    "@types/node": "^20",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
