@@ -43,7 +43,7 @@ jobs:
 
       - name: Trigger auto-blog if stale
         if: env.BLOG_STALE == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
@@ -82,7 +82,7 @@ jobs:
 
       - name: Trigger auto-horoscopes if stale
         if: env.HOROSCOPE_STALE == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
@@ -108,7 +108,7 @@ jobs:
 
       - name: Trigger auto-fortunes if stale
         if: env.FORTUNE_STALE == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
@@ -157,7 +157,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v8
         with:
           script: |
             const title = '🚨 Content health check failed';
@@ -187,7 +187,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v8
         with:
           script: |
             const titles = [
