@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with the Fortune Cookie team.",
+  description: `Get in touch with the ${SITE_NAME} team.`,
+  openGraph: {
+    title: `Contact Us | ${SITE_NAME}`,
+    description: `Get in touch with the ${SITE_NAME} team.`,
+    url: `${SITE_URL}/contact`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Contact Us | ${SITE_NAME}`,
+    description: `Get in touch with the ${SITE_NAME} team.`,
+  },
 };
 
 export default function ContactPage() {
@@ -26,8 +37,8 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div>
                 <h3 className="mb-1 text-sm font-semibold text-gold/70">Email</h3>
-                <a href="mailto:brevity1s.wos@gmail.com" className="text-gold underline">
-                  brevity1s.wos@gmail.com
+                <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold underline">
+                  {CONTACT_EMAIL}
                 </a>
               </div>
 
@@ -46,8 +57,8 @@ export default function ContactPage() {
             <p className="text-foreground/50">
               Have a great fortune phrase idea? We&apos;re always looking to expand our collection
               of over 1,000 fortunes. Send your original fortune ideas to{" "}
-              <a href="mailto:brevity1s.wos@gmail.com" className="text-gold underline">
-                brevity1s.wos@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold underline">
+                {CONTACT_EMAIL}
               </a>{" "}
               and if we love it, we&apos;ll add it to the collection!
             </p>

@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Fortune Cookie — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.",
+    `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+  openGraph: {
+    title: `About ${SITE_NAME}`,
+    description:
+      `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+    url: `${SITE_URL}/about`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About ${SITE_NAME}`,
+    description:
+      `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+  },
 };
 
 export default function AboutPage() {

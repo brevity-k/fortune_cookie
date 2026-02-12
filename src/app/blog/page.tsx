@@ -1,18 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
     "Read about fortune cookie history, traditions, and the technology behind our interactive fortune cookie experience.",
+  openGraph: {
+    title: `Blog | ${SITE_NAME}`,
+    description:
+      "Read about fortune cookie history, traditions, and the technology behind our interactive fortune cookie experience.",
+    url: `${SITE_URL}/blog`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Blog | ${SITE_NAME}`,
+    description:
+      "Articles about fortune cookie history, traditions, and the technology behind our interactive experience.",
+  },
 };
+
+export const revalidate = 86400; // 24 hours — blog auto-generates 2-3x/week
 
 export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Blog", url: `${SITE_URL}/blog` },
+        ]}
+      />
       <div className="mx-auto max-w-3xl">
         <h1 className="text-golden-shimmer mb-4 text-3xl sm:text-4xl font-bold">Blog</h1>
         <p className="mb-12 text-foreground/50">

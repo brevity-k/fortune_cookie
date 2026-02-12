@@ -10,7 +10,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: auto-content
+  group: auto-content # Prevents git conflicts from concurrent writes to src/data/* and src/content/blog/
   cancel-in-progress: false
 
 jobs:
@@ -31,9 +31,21 @@ jobs:
       - run: npm ci
 
       - name: Generate seasonal content
+        id: generate
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: npx tsx scripts/generate-seasonal.ts
+
+      - name: Retry on failure
+        if: steps.generate.outcome == 'failure'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -e
+          echo "First attempt failed, retrying..."
+          sleep 30
+          npx tsx scripts/generate-seasonal.ts
 
       - name: Validate JSON
         run: node -e "JSON.parse(require('fs').readFileSync('src/data/fortunes.json','utf8')); console.log('JSON valid')"
@@ -46,6 +58,7 @@ jobs:
 
       - name: Commit and push
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/fortunes.json scripts/seasonal-state.json
@@ -82,6 +95,8 @@ jobs:
                 body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
                 labels: ['bug', 'automated']
               });
+            } else {
+              console.log('Open issue for auto-seasonal failure already exists — skipping duplicate.');
             }
 
   notify-success:

@@ -1,4 +1,10 @@
 import fortunesData from "@/data/fortunes.json";
+import {
+  JOURNAL_LIMIT,
+  STREAK_RARE_THRESHOLD,
+  STREAK_EPIC_THRESHOLD,
+  STREAK_LEGENDARY_THRESHOLD,
+} from "@/lib/constants";
 
 export type FortuneCategory =
   | "wisdom"
@@ -18,9 +24,13 @@ export interface Fortune {
   rarity: Rarity;
 }
 
-interface CategoryData {
+export interface CategoryData {
   rarity: Rarity;
   fortunes: string[];
+}
+
+export interface FortunesFile {
+  categories: Record<string, CategoryData>;
 }
 
 const categories = fortunesData.categories as Record<string, CategoryData>;
@@ -99,9 +109,9 @@ export function getRandomFortune(streak: number = 0): Fortune {
     let weight = RARITY_WEIGHTS[data.rarity] || 10;
 
     // Streak bonus: higher streaks unlock rarer categories more often
-    if (streak >= 7 && data.rarity === "rare") weight *= 1.5;
-    if (streak >= 14 && data.rarity === "epic") weight *= 2;
-    if (streak >= 30 && data.rarity === "legendary") weight *= 3;
+    if (streak >= STREAK_RARE_THRESHOLD && data.rarity === "rare") weight *= 1.5;
+    if (streak >= STREAK_EPIC_THRESHOLD && data.rarity === "epic") weight *= 2;
+    if (streak >= STREAK_LEGENDARY_THRESHOLD && data.rarity === "legendary") weight *= 3;
 
     pool.push({ category: cat, data, weight });
     totalWeight += weight;
@@ -201,8 +211,7 @@ export function saveToJournal(fortune: Fortune) {
       ...fortune,
       date: new Date().toISOString(),
     });
-    // Keep last 100
-    if (journal.length > 100) journal.length = 100;
+    if (journal.length > JOURNAL_LIMIT) journal.length = JOURNAL_LIMIT;
     localStorage.setItem("fortune_journal", JSON.stringify(journal));
   } catch {
     // Silently fail

@@ -1,40 +1,51 @@
+/**
+ * Content integrity validator
+ *
+ * Usage:
+ *   npx tsx scripts/validate-content.ts    # Validate fortunes, horoscopes, and blog posts
+ *
+ * Checks:
+ *   - fortunes.json: structure, rarity fields, duplicates, word lengths
+ *   - horoscopes.json: all 12 signs present, required fields, freshness
+ *   - blog posts: frontmatter fields, word count (min 600), heading structure
+ *
+ * Exits with code 1 if any errors are found (warnings are non-fatal).
+ */
+
 import fs from "fs";
 import path from "path";
+import { ZODIAC_SIGN_KEYS } from "./lib/types";
+import { log } from "./lib/utils";
 
 const ROOT = process.cwd();
 const FORTUNES_PATH = path.join(ROOT, "src/data/fortunes.json");
 const HOROSCOPES_PATH = path.join(ROOT, "src/data/horoscopes.json");
 const BLOG_DIR = path.join(ROOT, "src/content/blog");
 
-const ZODIAC_SIGNS = [
-  "aries", "taurus", "gemini", "cancer", "leo", "virgo",
-  "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces",
-];
+const DAILY_REQUIRED_KEYS = ["text", "love", "career", "health", "luckyNumber", "luckyColor", "mood"];
+const WEEKLY_REQUIRED_KEYS = ["overview", "love", "career", "advice"];
+const MONTHLY_REQUIRED_KEYS = ["overview", "love", "career", "health", "advice"];
 
 let errors = 0;
 let warnings = 0;
 
-function error(msg: string) {
-  console.error(`ERROR: ${msg}`);
+function logError(msg: string) {
+  log.error(msg);
   errors++;
 }
 
-function warn(msg: string) {
-  console.warn(`WARN: ${msg}`);
+function logWarn(msg: string) {
+  log.warn(msg);
   warnings++;
-}
-
-function ok(msg: string) {
-  console.log(`OK: ${msg}`);
 }
 
 // --- Fortunes validation ---
 
 function validateFortunes() {
-  console.log("\n=== Fortunes Validation ===\n");
+  log.step("Fortunes Validation");
 
   if (!fs.existsSync(FORTUNES_PATH)) {
-    error("fortunes.json not found");
+    logError("fortunes.json not found");
     return;
   }
 
@@ -42,12 +53,12 @@ function validateFortunes() {
   try {
     data = JSON.parse(fs.readFileSync(FORTUNES_PATH, "utf-8"));
   } catch {
-    error("fortunes.json is not valid JSON");
+    logError("fortunes.json is not valid JSON");
     return;
   }
 
   if (!data.categories || typeof data.categories !== "object") {
-    error("fortunes.json missing 'categories' object");
+    logError("fortunes.json missing 'categories' object");
     return;
   }
 
@@ -58,32 +69,32 @@ function validateFortunes() {
 
   for (const [name, cat] of categories) {
     if (!Array.isArray(cat.fortunes)) {
-      error(`Category "${name}" missing fortunes array`);
+      logError(`Category "${name}" missing fortunes array`);
       continue;
     }
 
     if (cat.fortunes.length < 10) {
-      error(`Category "${name}" has only ${cat.fortunes.length} fortunes (minimum: 10)`);
+      logError(`Category "${name}" has only ${cat.fortunes.length} fortunes (minimum: 10)`);
     }
 
     if (!cat.rarity) {
-      warn(`Category "${name}" missing rarity field`);
+      logWarn(`Category "${name}" missing rarity field`);
     }
 
     for (const fortune of cat.fortunes) {
       const wordCount = fortune.split(/\s+/).length;
       if (wordCount < 4) {
-        warn(`Category "${name}": fortune too short (${wordCount} words): "${fortune.slice(0, 50)}..."`);
+        logWarn(`Category "${name}": fortune too short (${wordCount} words): "${fortune.slice(0, 50)}..."`);
       }
       if (wordCount > 30) {
-        warn(`Category "${name}": fortune too long (${wordCount} words): "${fortune.slice(0, 50)}..."`);
+        logWarn(`Category "${name}": fortune too long (${wordCount} words): "${fortune.slice(0, 50)}..."`);
       }
 
       const normalized = fortune.toLowerCase().trim();
       if (allFortunes.has(normalized)) {
         duplicates++;
         if (duplicates <= 5) {
-          warn(`Duplicate fortune: "${fortune.slice(0, 60)}..."`);
+          logWarn(`Duplicate fortune: "${fortune.slice(0, 60)}..."`);
         }
       }
       allFortunes.add(normalized);
@@ -93,14 +104,14 @@ function validateFortunes() {
   }
 
   if (duplicates > 5) {
-    warn(`... and ${duplicates - 5} more duplicates`);
+    logWarn(`... and ${duplicates - 5} more duplicates`);
   }
 
   if (duplicates > 0) {
-    warn(`Total duplicate fortunes: ${duplicates}`);
+    logWarn(`Total duplicate fortunes: ${duplicates}`);
   }
 
-  ok(`${categories.length} categories, ${totalFortunes} total fortunes`);
+  log.ok(`${categories.length} categories, ${totalFortunes} total fortunes`);
   for (const [name, cat] of categories) {
     console.log(`  ${name}: ${cat.fortunes.length} (${cat.rarity})`);
   }
@@ -108,93 +119,110 @@ function validateFortunes() {
 
 // --- Horoscopes validation ---
 
+function validateHoroscopeSection(
+  horoscopes: Record<string, unknown>,
+  requiredKeys: string[],
+  label: string,
+) {
+  const signs = Object.keys(horoscopes);
+  const missingSigns = ZODIAC_SIGN_KEYS.filter((s) => !signs.includes(s));
+  if (missingSigns.length > 0) {
+    logError(`${label} horoscope missing signs: ${missingSigns.join(", ")}`);
+  } else {
+    log.ok(`${label} horoscope: all 12 signs present`);
+  }
+
+  // Validate each sign has required keys
+  for (const sign of ZODIAC_SIGN_KEYS) {
+    const entry = horoscopes[sign] as Record<string, unknown> | undefined;
+    if (!entry) continue;
+    for (const key of requiredKeys) {
+      if (entry[key] === undefined || entry[key] === null || entry[key] === "") {
+        logWarn(`${label} ${sign}: missing or empty field '${key}'`);
+      }
+    }
+  }
+}
+
 function validateHoroscopes() {
-  console.log("\n=== Horoscopes Validation ===\n");
+  log.step("Horoscopes Validation");
 
   if (!fs.existsSync(HOROSCOPES_PATH)) {
-    error("horoscopes.json not found");
+    logError("horoscopes.json not found");
     return;
   }
 
   let data: {
     daily?: { date: string; horoscopes: Record<string, unknown> };
-    weekly?: { week: string; horoscopes: Record<string, unknown> };
+    weekly?: { weekOf: string; horoscopes: Record<string, unknown> };
     monthly?: { month: string; horoscopes: Record<string, unknown> };
   };
   try {
     data = JSON.parse(fs.readFileSync(HOROSCOPES_PATH, "utf-8"));
   } catch {
-    error("horoscopes.json is not valid JSON");
+    logError("horoscopes.json is not valid JSON");
     return;
   }
 
   // Check daily
   if (!data.daily) {
-    error("horoscopes.json missing 'daily' section");
+    logError("horoscopes.json missing 'daily' section");
   } else {
     if (!data.daily.date) {
-      error("daily horoscope missing 'date' field");
+      logError("daily horoscope missing 'date' field");
     } else {
       const daysOld = Math.floor(
-        (Date.now() - new Date(data.daily.date).getTime()) / (1000 * 60 * 60 * 24)
+        (Date.now() - new Date(data.daily.date).getTime()) / (1000 * 60 * 60 * 24),
       );
       if (daysOld > 2) {
-        warn(`Daily horoscope is ${daysOld} days old (date: ${data.daily.date})`);
+        logWarn(`Daily horoscope is ${daysOld} days old (date: ${data.daily.date})`);
       } else {
-        ok(`Daily horoscope date: ${data.daily.date} (${daysOld} days old)`);
+        log.ok(`Daily horoscope date: ${data.daily.date} (${daysOld} days old)`);
       }
     }
 
-    const dailySigns = Object.keys(data.daily.horoscopes || {});
-    const missingSigns = ZODIAC_SIGNS.filter((s) => !dailySigns.includes(s));
-    if (missingSigns.length > 0) {
-      error(`Daily horoscope missing signs: ${missingSigns.join(", ")}`);
-    } else {
-      ok(`Daily horoscope: all 12 signs present`);
-    }
+    validateHoroscopeSection(data.daily.horoscopes || {}, DAILY_REQUIRED_KEYS, "Daily");
   }
 
   // Check weekly
   if (!data.weekly) {
-    error("horoscopes.json missing 'weekly' section");
+    logError("horoscopes.json missing 'weekly' section");
   } else {
-    const weeklySigns = Object.keys(data.weekly.horoscopes || {});
-    const missingSigns = ZODIAC_SIGNS.filter((s) => !weeklySigns.includes(s));
-    if (missingSigns.length > 0) {
-      error(`Weekly horoscope missing signs: ${missingSigns.join(", ")}`);
+    if (data.weekly.weekOf) {
+      log.ok(`Weekly horoscope weekOf: ${data.weekly.weekOf}`);
     } else {
-      ok(`Weekly horoscope: all 12 signs present (week: ${data.weekly.week})`);
+      logWarn("Weekly horoscope missing 'weekOf' field");
     }
+    validateHoroscopeSection(data.weekly.horoscopes || {}, WEEKLY_REQUIRED_KEYS, "Weekly");
   }
 
   // Check monthly
   if (!data.monthly) {
-    error("horoscopes.json missing 'monthly' section");
+    logError("horoscopes.json missing 'monthly' section");
   } else {
-    const monthlySigns = Object.keys(data.monthly.horoscopes || {});
-    const missingSigns = ZODIAC_SIGNS.filter((s) => !monthlySigns.includes(s));
-    if (missingSigns.length > 0) {
-      error(`Monthly horoscope missing signs: ${missingSigns.join(", ")}`);
+    if (data.monthly.month) {
+      log.ok(`Monthly horoscope month: ${data.monthly.month}`);
     } else {
-      ok(`Monthly horoscope: all 12 signs present (month: ${data.monthly.month})`);
+      logWarn("Monthly horoscope missing 'month' field");
     }
+    validateHoroscopeSection(data.monthly.horoscopes || {}, MONTHLY_REQUIRED_KEYS, "Monthly");
   }
 }
 
 // --- Blog validation ---
 
 function validateBlog() {
-  console.log("\n=== Blog Validation ===\n");
+  log.step("Blog Validation");
 
   if (!fs.existsSync(BLOG_DIR)) {
-    error("Blog directory not found: src/content/blog/");
+    logError("Blog directory not found: src/content/blog/");
     return;
   }
 
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
 
   if (files.length === 0) {
-    error("No MDX blog posts found");
+    logError("No MDX blog posts found");
     return;
   }
 
@@ -205,7 +233,7 @@ function validateBlog() {
     // Check frontmatter
     const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
     if (!fmMatch) {
-      error(`${file}: missing YAML frontmatter`);
+      logError(`${file}: missing YAML frontmatter`);
       continue;
     }
 
@@ -213,38 +241,48 @@ function validateBlog() {
     const required = ["title", "date", "readTime", "excerpt"];
     for (const field of required) {
       if (!frontmatter.includes(`${field}:`)) {
-        error(`${file}: missing required frontmatter field '${field}'`);
+        logError(`${file}: missing required frontmatter field '${field}'`);
       }
     }
 
     // Check content length
     const body = content.slice(fmMatch[0].length).trim();
     const wordCount = body.split(/\s+/).length;
-    if (wordCount < 300) {
-      warn(`${file}: only ${wordCount} words (minimum recommended: 500)`);
+    if (wordCount < 600) {
+      logWarn(`${file}: only ${wordCount} words (minimum recommended: 600)`);
+    }
+
+    // Check H2 count (mirrors quality-check.ts)
+    const h2Count = (body.match(/^## /gm) || []).length;
+    if (h2Count < 3) {
+      logWarn(`${file}: only ${h2Count} H2 headings (minimum recommended: 3)`);
+    }
+
+    // Check for H1 headings (should not exist)
+    const h1Count = (body.match(/^# [^#]/gm) || []).length;
+    if (h1Count > 0) {
+      logWarn(`${file}: has ${h1Count} H1 heading(s) — page template provides H1`);
     }
 
     valid++;
   }
 
-  ok(`${valid}/${files.length} blog posts validated`);
+  log.ok(`${valid}/${files.length} blog posts validated`);
 }
 
 // --- Main ---
 
-console.log("Content Integrity Validation");
-console.log("============================");
+log.step("Content Integrity Validation");
 
 validateFortunes();
 validateHoroscopes();
 validateBlog();
 
-console.log("\n============================");
-console.log(`Results: ${errors} errors, ${warnings} warnings`);
+log.info(`Results: ${errors} errors, ${warnings} warnings`);
 
 if (errors > 0) {
-  console.error("\nValidation FAILED");
+  log.error("Validation FAILED");
   process.exit(1);
 } else {
-  console.log("\nValidation PASSED");
+  log.ok("Validation PASSED");
 }

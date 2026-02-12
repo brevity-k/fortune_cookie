@@ -1,36 +1,23 @@
+/**
+ * Fortune database growth script
+ *
+ * Usage:
+ *   npx tsx scripts/generate-fortunes.ts   # Add ~20 fortunes to the smallest category
+ *
+ * Environment:
+ *   ANTHROPIC_API_KEY - Claude API key (required)
+ *
+ * Stops generating when total fortune count exceeds 3000.
+ */
+
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
+import { callWithRetry, extractJson, requireEnv, log } from "./lib/utils";
+import { MAX_FORTUNES } from "./lib/types";
+import type { CategoryData, FortunesFile } from "./lib/types";
 
 const FORTUNES_PATH = path.join(process.cwd(), "src/data/fortunes.json");
-
-interface CategoryData {
-  rarity: string;
-  fortunes: string[];
-}
-
-interface FortunesFile {
-  categories: Record<string, CategoryData>;
-}
-
-async function callWithRetry<T>(
-  fn: () => Promise<T>,
-  maxAttempts = 3,
-  delayMs = 30000
-): Promise<T> {
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await fn();
-    } catch (err) {
-      if (attempt === maxAttempts) throw err;
-      console.log(
-        `API call failed (attempt ${attempt}/${maxAttempts}), retrying in ${delayMs / 1000}s...`
-      );
-      await new Promise((r) => setTimeout(r, delayMs));
-    }
-  }
-  throw new Error("Unreachable");
-}
 
 function getSmallestCategory(data: FortunesFile): string {
   let smallest = "";
@@ -52,24 +39,20 @@ function getSampleFortunes(fortunes: string[], count: number): string[] {
 }
 
 async function generateFortunes(): Promise<void> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    throw new Error("ANTHROPIC_API_KEY environment variable is required");
-  }
-
+  const apiKey = requireEnv("ANTHROPIC_API_KEY");
   const client = new Anthropic({ apiKey });
 
   // Read current fortunes
   const rawData = fs.readFileSync(FORTUNES_PATH, "utf-8");
   const data: FortunesFile = JSON.parse(rawData);
 
-  // Check fortune cap — skip generation if database is large enough
+  // Check fortune cap
   const currentTotal = Object.values(data.categories).reduce(
     (sum, cat) => sum + cat.fortunes.length,
-    0
+    0,
   );
-  if (currentTotal > 3000) {
-    console.log(`Fortune database has ${currentTotal} fortunes (cap: 3000). Skipping generation.`);
+  if (currentTotal > MAX_FORTUNES) {
+    log.info(`Fortune database has ${currentTotal} fortunes (cap: ${MAX_FORTUNES}). Skipping generation.`);
     return;
   }
 
@@ -78,7 +61,9 @@ async function generateFortunes(): Promise<void> {
   const currentFortunes = data.categories[targetCategory].fortunes;
   const rarity = data.categories[targetCategory].rarity;
 
-  console.log(`Target category: ${targetCategory} (${currentFortunes.length} fortunes, ${rarity} rarity)`);
+  log.info(
+    `Target category: ${targetCategory} (${currentFortunes.length} fortunes, ${rarity} rarity)`,
+  );
 
   // Get sample fortunes as style reference
   const samples = getSampleFortunes(currentFortunes, 30);
@@ -109,13 +94,14 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
 
     const text =
       response.content[0].type === "text" ? response.content[0].text : "";
-    // Extract JSON array from response
-    const match = text.match(/\[[\s\S]*\]/);
-    if (!match) throw new Error("No JSON array found in response");
-    return JSON.parse(match[0]) as string[];
+    const parsed = extractJson(text, "array");
+    if (!Array.isArray(parsed)) throw new Error("Response is not an array");
+    const strings = parsed.filter((item): item is string => typeof item === "string");
+    if (strings.length === 0) throw new Error("No valid fortune strings in response");
+    return strings;
   });
 
-  console.log(`Generated ${result.length} fortune candidates`);
+  log.info(`Generated ${result.length} fortune candidates`);
 
   // Deduplicate against all existing fortunes
   const allExisting = new Set<string>();
@@ -127,25 +113,25 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
 
   const valid = result.filter((f) => {
     const normalized = f.toLowerCase().trim();
-    // Check not duplicate
     if (allExisting.has(normalized)) {
-      console.log(`  Duplicate: "${f}"`);
+      log.warn(`Duplicate: "${f}"`);
       return false;
     }
-    // Check length (roughly 5-25 words)
     const wordCount = f.split(/\s+/).length;
     if (wordCount < 4 || wordCount > 30) {
-      console.log(`  Bad length (${wordCount} words): "${f}"`);
+      log.warn(`Bad length (${wordCount} words): "${f}"`);
       return false;
     }
+    // Track newly accepted fortune to prevent intra-batch duplicates
+    allExisting.add(normalized);
     return true;
   });
 
-  console.log(`Valid after dedup: ${valid.length}`);
+  log.info(`Valid after dedup: ${valid.length}`);
 
   if (valid.length < 5) {
     throw new Error(
-      `Only ${valid.length} valid fortunes after dedup (need >= 5). Regeneration needed.`
+      `Only ${valid.length} valid fortunes after dedup (need >= 5). Regeneration needed.`,
     );
   }
 
@@ -157,14 +143,14 @@ Return ONLY a JSON array of 20 strings, no other text. Example format:
 
   const totalFortunes = Object.values(data.categories).reduce(
     (sum, cat) => sum + cat.fortunes.length,
-    0
+    0,
   );
 
-  console.log(`Added ${valid.length} fortunes to "${targetCategory}"`);
-  console.log(`New total: ${totalFortunes} fortunes`);
+  log.ok(`Added ${valid.length} fortunes to "${targetCategory}"`);
+  log.ok(`New total: ${totalFortunes} fortunes`);
 }
 
 generateFortunes().catch((err) => {
-  console.error("Failed to generate fortunes:", err);
+  log.error(`Failed to generate fortunes: ${err.message || err}`);
   process.exit(1);
 });

@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
+import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for Fortune Cookie.",
+  description: `Terms of Service for ${SITE_NAME}.`,
+  openGraph: {
+    title: `Terms of Service | ${SITE_NAME}`,
+    description: `Terms of Service for ${SITE_NAME}.`,
+    url: `${SITE_URL}/terms`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Terms of Service | ${SITE_NAME}`,
+    description: `Terms of Service for ${SITE_NAME}.`,
+  },
 };
 
 export default function TermsPage() {
@@ -98,8 +109,8 @@ export default function TermsPage() {
             <h2 className="mb-2 text-xl font-semibold text-gold">Contact</h2>
             <p>
               For questions about these Terms, please contact us at{" "}
-              <a href="mailto:brevity1s.wos@gmail.com" className="text-gold underline">
-                brevity1s.wos@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold underline">
+                {CONTACT_EMAIL}
               </a>
               .
             </p>

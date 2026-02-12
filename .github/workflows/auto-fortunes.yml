@@ -10,7 +10,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: auto-content
+  group: auto-content # Prevents git conflicts from concurrent writes to src/data/* and src/content/blog/
   cancel-in-progress: false
 
 jobs:
@@ -42,6 +42,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          set -e
           echo "First attempt failed, retrying..."
           sleep 30
           npx tsx scripts/generate-fortunes.ts
@@ -54,6 +55,7 @@ jobs:
 
       - name: Commit and push
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/fortunes.json

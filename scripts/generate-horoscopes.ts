@@ -15,23 +15,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
+import { callWithRetry, extractJson, requireEnv, ensureFileExists, log } from "./lib/utils";
+import { ZODIAC_SIGNS } from "./lib/types";
 
 const DATA_FILE = path.join(process.cwd(), "src/data/horoscopes.json");
-
-const ZODIAC_SIGNS = [
-  { key: "aries", name: "Aries", element: "Fire", ruler: "Mars" },
-  { key: "taurus", name: "Taurus", element: "Earth", ruler: "Venus" },
-  { key: "gemini", name: "Gemini", element: "Air", ruler: "Mercury" },
-  { key: "cancer", name: "Cancer", element: "Water", ruler: "Moon" },
-  { key: "leo", name: "Leo", element: "Fire", ruler: "Sun" },
-  { key: "virgo", name: "Virgo", element: "Earth", ruler: "Mercury" },
-  { key: "libra", name: "Libra", element: "Air", ruler: "Venus" },
-  { key: "scorpio", name: "Scorpio", element: "Water", ruler: "Pluto" },
-  { key: "sagittarius", name: "Sagittarius", element: "Fire", ruler: "Jupiter" },
-  { key: "capricorn", name: "Capricorn", element: "Earth", ruler: "Saturn" },
-  { key: "aquarius", name: "Aquarius", element: "Air", ruler: "Uranus" },
-  { key: "pisces", name: "Pisces", element: "Water", ruler: "Neptune" },
-];
 
 const MOODS = [
   "energetic", "determined", "curious", "reflective", "confident", "focused",
@@ -45,31 +32,20 @@ const COLORS = [
   "emerald", "crimson", "amber", "indigo", "seafoam", "electric blue",
 ];
 
-async function callWithRetry<T>(
-  fn: () => Promise<T>,
-  maxAttempts = 3,
-  delayMs = 30000
-): Promise<T> {
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    try {
-      return await fn();
-    } catch (err) {
-      if (attempt === maxAttempts) throw err;
-      console.log(`API call failed (attempt ${attempt}/${maxAttempts}), retrying in ${delayMs / 1000}s...`);
-      await new Promise((r) => setTimeout(r, delayMs));
-    }
-  }
-  throw new Error("Unreachable");
-}
-
 interface HoroscopeData {
   daily: { date: string; horoscopes: Record<string, unknown> };
   weekly: { weekOf: string; horoscopes: Record<string, unknown> };
   monthly: { month: string; horoscopes: Record<string, unknown> };
 }
 
+const EMPTY_HOROSCOPE_DATA: HoroscopeData = {
+  daily: { date: "", horoscopes: {} },
+  weekly: { weekOf: "", horoscopes: {} },
+  monthly: { month: "", horoscopes: {} },
+};
+
 function readData(): HoroscopeData {
-  return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+  return ensureFileExists<HoroscopeData>(DATA_FILE, EMPTY_HOROSCOPE_DATA);
 }
 
 function writeData(data: HoroscopeData): void {
@@ -82,30 +58,21 @@ function getToday(): string {
 
 function getWeekStart(): string {
   const d = new Date();
-  d.setDate(d.getDate() - d.getDay());
+  d.setUTCDate(d.getUTCDate() - d.getUTCDay());
   return d.toISOString().split("T")[0];
 }
 
 function getCurrentMonth(): string {
   const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
 }
 
 function getSeasonContext(): string {
-  const month = new Date().getMonth() + 1;
+  const month = new Date().getUTCMonth() + 1;
   if (month >= 3 && month <= 5) return "spring — renewal, growth, new beginnings";
   if (month >= 6 && month <= 8) return "summer — vitality, passion, abundance";
   if (month >= 9 && month <= 11) return "autumn — harvest, reflection, transformation";
   return "winter — introspection, planning, resilience";
-}
-
-function parseJson(text: string): unknown {
-  let json = text.trim();
-  if (json.startsWith("```")) {
-    json = json.replace(/^```(?:json)?\s*\n?/, "").replace(/\n?```\s*$/, "");
-  }
-  json = json.replace(/,\s*([}\]])/g, "$1");
-  return JSON.parse(json);
 }
 
 async function generateDaily(client: Anthropic): Promise<Record<string, unknown>> {
@@ -136,11 +103,11 @@ Output JSON object with lowercase sign keys. Each value:
 Ensure variety in ratings. Unique luckyNumber, luckyColor, mood per sign.
 Return ONLY JSON. No markdown fences.`,
       }],
-    })
+    }),
   );
 
   const text = response.content[0].type === "text" ? response.content[0].text : "";
-  return parseJson(text) as Record<string, unknown>;
+  return extractJson(text, "object") as Record<string, unknown>;
 }
 
 async function generateWeekly(client: Anthropic): Promise<Record<string, unknown>> {
@@ -165,11 +132,11 @@ JSON object with lowercase sign keys. Each value:
 
 Return ONLY JSON. No markdown fences.`,
       }],
-    })
+    }),
   );
 
   const text = response.content[0].type === "text" ? response.content[0].text : "";
-  return parseJson(text) as Record<string, unknown>;
+  return extractJson(text, "object") as Record<string, unknown>;
 }
 
 async function generateMonthly(client: Anthropic): Promise<Record<string, unknown>> {
@@ -198,11 +165,11 @@ JSON object with lowercase sign keys. Each value:
 
 Return ONLY JSON. No markdown fences.`,
       }],
-    })
+    }),
   );
 
   const text = response.content[0].type === "text" ? response.content[0].text : "";
-  return parseJson(text) as Record<string, unknown>;
+  return extractJson(text, "object") as Record<string, unknown>;
 }
 
 function validateKeys(horoscopes: Record<string, unknown>, required: string[], label: string): void {
@@ -210,13 +177,22 @@ function validateKeys(horoscopes: Record<string, unknown>, required: string[], l
     const h = horoscopes[sign.key] as Record<string, unknown> | undefined;
     if (!h) throw new Error(`${label}: missing ${sign.key}`);
     for (const key of required) {
-      if (!h[key]) throw new Error(`${label}: ${sign.key} missing ${key}`);
+      if (h[key] === undefined || h[key] === null || h[key] === "") {
+        throw new Error(`${label}: ${sign.key} missing ${key}`);
+      }
     }
   }
 }
 
 async function main() {
   const args = process.argv.slice(2);
+  const validFlags = ["--all", "--daily", "--weekly", "--monthly"];
+  const invalidFlags = args.filter((a) => a.startsWith("--") && !validFlags.includes(a));
+  if (invalidFlags.length > 0) {
+    log.error(`Unknown flags: ${invalidFlags.join(", ")}. Valid: ${validFlags.join(", ")}`);
+    process.exit(1);
+  }
+
   const flagAll = args.includes("--all");
   const flagDaily = args.includes("--daily");
   const flagWeekly = args.includes("--weekly");
@@ -233,48 +209,45 @@ async function main() {
   } else {
     doDaily = true;
     const today = new Date();
-    if (today.getDay() === 0) doWeekly = true;
-    if (today.getDate() === 1) doMonthly = true;
+    if (today.getUTCDay() === 0) doWeekly = true;
+    if (today.getUTCDate() === 1) doMonthly = true;
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error("ANTHROPIC_API_KEY environment variable is required");
-  }
-
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  const apiKey = requireEnv("ANTHROPIC_API_KEY");
+  const client = new Anthropic({ apiKey });
   const data = readData();
 
-  console.log(`Generating: daily=${doDaily} weekly=${doWeekly} monthly=${doMonthly}`);
+  log.info(`Generating: daily=${doDaily} weekly=${doWeekly} monthly=${doMonthly}`);
 
   if (doDaily) {
-    console.log("Generating daily horoscopes...");
+    log.step("Generating daily horoscopes");
     const horoscopes = await generateDaily(client);
     validateKeys(horoscopes, ["text", "love", "career", "health", "luckyNumber", "luckyColor", "mood"], "daily");
     data.daily = { date: getToday(), horoscopes };
-    console.log(`Daily horoscopes generated for ${getToday()}`);
+    log.ok(`Daily horoscopes generated for ${getToday()}`);
   }
 
   if (doWeekly) {
-    console.log("Generating weekly horoscopes...");
+    log.step("Generating weekly horoscopes");
     const horoscopes = await generateWeekly(client);
     validateKeys(horoscopes, ["overview", "love", "career", "advice"], "weekly");
     data.weekly = { weekOf: getWeekStart(), horoscopes };
-    console.log(`Weekly horoscopes generated for week of ${getWeekStart()}`);
+    log.ok(`Weekly horoscopes generated for week of ${getWeekStart()}`);
   }
 
   if (doMonthly) {
-    console.log("Generating monthly horoscopes...");
+    log.step("Generating monthly horoscopes");
     const horoscopes = await generateMonthly(client);
     validateKeys(horoscopes, ["overview", "love", "career", "health", "advice"], "monthly");
     data.monthly = { month: getCurrentMonth(), horoscopes };
-    console.log(`Monthly horoscopes generated for ${getCurrentMonth()}`);
+    log.ok(`Monthly horoscopes generated for ${getCurrentMonth()}`);
   }
 
   writeData(data);
-  console.log("Updated src/data/horoscopes.json");
+  log.ok("Updated src/data/horoscopes.json");
 }
 
 main().catch((err) => {
-  console.error("Failed:", err.message);
+  log.error(`Failed: ${err.message || err}`);
   process.exit(1);
 });
