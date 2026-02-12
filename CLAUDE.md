@@ -26,7 +26,7 @@
 | Deployment | Done | Vercel, auto-deploys on push to main |
 | OG Images | Done | Dynamic OG + Twitter images for homepage and all blog posts |
 | JSON-LD Structured Data | Done | Organization, WebSite, Article, BreadcrumbList |
-| Blog Auto-Generation | Not Started | Claude API script + GitHub Actions |
+| Blog Auto-Generation | Done | scripts/ + .github/workflows/auto-blog.yml, needs ANTHROPIC_API_KEY secret |
 | Shareable Fortune Cards | Not Started | Wordle-style share image for each fortune |
 | Programmatic SEO Pages | Not Started | /fortune/[category], /zodiac/[sign], /lucky-numbers |
 | PWA + Push Notifications | Not Started | Daily fortune push notification |
@@ -67,7 +67,7 @@
 
 ## Implementation Roadmap
 
-### Phase 3: Auto-Blog Pipeline (NEXT — Week 1-2)
+### Phase 3: Auto-Blog Pipeline (DONE)
 
 **Goal:** Self-sufficient blog that publishes 2-3 posts/week with zero manual input.
 
@@ -298,7 +298,7 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 5. ~~Add JSON-LD structured data~~ Done
 6. ~~Set up environment variables~~ Done
 7. ~~Deploy to Vercel~~ Done (fortunecrack.com)
-8. **Build auto-blog pipeline** (scripts + GitHub Actions) — Phase 3
+8. ~~Build auto-blog pipeline~~ Done (scripts + GitHub Actions)
 9. **Add shareable fortune card images** — Phase 4
 10. **Create programmatic SEO pages** (/fortune/[category], /zodiac/[sign], /lucky-numbers) — Phase 5
 11. **Add PWA + push notifications** — Phase 6
@@ -347,15 +347,15 @@ src/
 └── data/
     └── fortunes.json         # 1,031 fortunes
 
-scripts/                      # (Phase 3 — to be created)
-├── generate-post.ts          # Claude API blog post generator
-├── quality-check.ts          # Content quality validation
-└── auto-fix.ts               # Self-healing post fixer
+scripts/
+├── generate-post.ts          # Two-stage Claude API blog post generator
+├── quality-check.ts          # Content quality validation (structural + AI review)
+└── auto-fix.ts               # Self-healing post fixer (frontmatter, H1→H2, etc.)
 
-.github/workflows/            # (Phase 3 — to be created)
-├── auto-blog.yml             # Cron: auto-generate + publish blog posts
-├── link-check.yml            # Weekly: broken link detection
-└── lighthouse.yml            # Weekly: SEO + performance audit
+.github/workflows/
+├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish
+├── link-check.yml            # (Phase 7) Weekly: broken link detection
+└── lighthouse.yml            # (Phase 7) Weekly: SEO + performance audit
 ```
 
 ---
