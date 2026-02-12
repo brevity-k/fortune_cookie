@@ -1,11 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { Fortune } from "@/lib/fortuneEngine";
+import { Fortune, Rarity } from "@/lib/fortuneEngine";
 
 interface ShareButtonsProps {
   fortune: Fortune | null;
   visible: boolean;
+}
+
+const RARITY_EMOJI: Record<Rarity, string> = {
+  common: "\u{1F49B}",
+  rare: "\u{1F499}",
+  epic: "\u{1F49C}",
+  legendary: "\u{2764}\u{FE0F}",
+};
+
+function encodeFortuneId(fortune: Fortune): string {
+  const data = JSON.stringify({ t: fortune.text, c: fortune.category, r: fortune.rarity });
+  // base64url encode
+  return btoa(data).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
 export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
@@ -13,8 +26,10 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
 
   if (!fortune || !visible) return null;
 
-  const shareText = `🥠 My fortune: "${fortune.text}" — Break your own at`;
-  const shareUrl = "https://fortunecrack.com";
+  const fortuneId = encodeFortuneId(fortune);
+  const shareUrl = `https://fortunecrack.com/f/${fortuneId}`;
+  const rarityEmoji = RARITY_EMOJI[fortune.rarity];
+  const shareText = `${rarityEmoji} My fortune: "${fortune.text}" — Break your own at`;
   const fullText = `${shareText} ${shareUrl}`;
 
   const handleCopy = async () => {

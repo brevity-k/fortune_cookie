@@ -1,0 +1,40 @@
+name: Link Check
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Monday 6AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --accept 200,204,301,302,403,429
+            --exclude-mail
+            --exclude "localhost"
+            --exclude "127.0.0.1"
+            "src/content/blog/**/*.mdx"
+            "src/app/**/*.tsx"
+          fail: true
+
+      - name: Create issue on failure
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links detected"
+          content-filepath: ./lychee/out.md
+          labels: bug,automated
