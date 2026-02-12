@@ -63,9 +63,9 @@ export class InteractionDetector {
   private readonly CLICK_MAX_MOVE = 15;
 
   // Device motion shake detection
-  private readonly DEVICE_SHAKE_ACCEL_THRESHOLD = 18;
-  private readonly DEVICE_SHAKE_ACCUMULATION = 2.5;
-  private readonly DEVICE_SHAKE_DECAY = 0.4;
+  private readonly DEVICE_SHAKE_ACCEL_THRESHOLD = 8;
+  private readonly DEVICE_SHAKE_ACCUMULATION = 6;
+  private readonly DEVICE_SHAKE_DECAY = 0.2;
   private deviceMotionEnabled = false;
   private lastAccel = { x: 0, y: 0, z: 0 };
   private hasLastAccel = false;
