@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import FortuneReveal from "@/components/FortuneReveal";
 import FortuneOfTheDay from "@/components/FortuneOfTheDay";
@@ -13,6 +13,11 @@ import {
   updateStreak,
   saveToJournal,
 } from "@/lib/fortuneEngine";
+
+const noopSubscribe = () => () => {};
+const getIsMobile = () =>
+  typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+const getServerIsMobile = () => false;
 import { trackCookieBreak, trackFortuneReveal, trackNewCookie } from "@/lib/analytics";
 
 // Dynamic import for CookieCanvas (needs browser APIs)
@@ -34,6 +39,7 @@ export default function Home() {
   const [showShare, setShowShare] = useState(false);
   const [streak, setStreak] = useState(0);
   const [totalBroken, setTotalBroken] = useState(0);
+  const isMobile = useSyncExternalStore(noopSubscribe, getIsMobile, getServerIsMobile);
 
   useEffect(() => {
     setStreak(getStreak());
@@ -97,7 +103,9 @@ export default function Home() {
           Break Your Fortune Cookie
         </h1>
         <p className="mx-auto max-w-md text-foreground/50">
-          Click, drag, shake, double-tap, or squeeze to reveal your destiny
+          {isMobile
+            ? "Tap, drag, shake your phone, or squeeze to reveal your destiny"
+            : "Click, drag, shake, double-tap, or squeeze to reveal your destiny"}
         </p>
 
         {/* Stats */}
@@ -149,15 +157,16 @@ export default function Home() {
       {/* How to Play */}
       <section className="mx-auto max-w-3xl px-4 py-12">
         <h2 className="text-golden-shimmer mb-8 text-center text-2xl font-bold">
-          5 Ways to Break Your Cookie
+          {isMobile ? "6" : "5"} Ways to Break Your Cookie
         </h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+        <div className={`grid grid-cols-1 gap-4 ${isMobile ? "grid-cols-2 md:grid-cols-3" : "md:grid-cols-5"}`}>
           {[
-            { icon: "👆", title: "Click Smash", desc: "Single click for a quick break" },
-            { icon: "👉", title: "Drag Crack", desc: "Click and drag across the cookie" },
-            { icon: "👋", title: "Shake Break", desc: "Rapidly wiggle your mouse over it" },
-            { icon: "✌️", title: "Double Tap", desc: "Double-click for a two-stage break" },
-            { icon: "✊", title: "Squeeze", desc: "Click and hold for 2 seconds" },
+            { icon: "👆", title: "Tap Smash", desc: isMobile ? "Tap 3 times to crack it open" : "Click 3 times for a quick break" },
+            { icon: "👉", title: "Drag Crack", desc: "Drag across the cookie to throw it" },
+            { icon: "👋", title: "Shake Break", desc: isMobile ? "Wiggle your finger over the cookie" : "Rapidly wiggle your mouse over it" },
+            ...(isMobile ? [{ icon: "📱", title: "Phone Shake", desc: "Physically shake your phone to break" }] : []),
+            { icon: "✌️", title: "Double Tap", desc: isMobile ? "Double-tap for an instant break" : "Double-click for a two-stage break" },
+            { icon: "✊", title: "Squeeze", desc: "Press and hold for 2 seconds" },
           ].map((method) => (
             <div
               key={method.title}
