@@ -1,23 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 const baseUrl = "https://fortunecrack.com";
 
-const blogSlugs = [
-  "history-of-fortune-cookies",
-  "fortune-cookie-traditions",
-  "building-interactive-web-games",
-  "psychology-of-fortune-telling",
-  "digital-fortune-cookies-future",
-  "lucky-numbers-superstitions-science",
-  "morning-rituals-around-the-world",
-  "famous-fortunes-that-came-true",
-  "zodiac-fortune-cookies-astrology-meets-wisdom",
-  "why-we-need-small-joys",
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const blogEntries = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
+  const blogEntries = getAllPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
