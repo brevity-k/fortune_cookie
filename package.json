@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
     "howler": "^2.2.4",
     "matter-js": "^0.20.0",
     "next": "16.1.6",
+    "next-mdx-remote": "^6.0.0",
     "pixi.js": "^8.16.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
