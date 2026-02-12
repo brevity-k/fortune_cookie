@@ -1,0 +1,50 @@
+---
+title: "Building Interactive Web Games with Physics Engines"
+date: "2026-02-08"
+readTime: "7 min read"
+excerpt: "A deep dive into how we used Pixi.js and Matter.js to create a realistic fortune cookie breaking experience in the browser."
+---
+
+Creating an interactive web experience with realistic physics isn't as daunting as it might seem. Modern JavaScript libraries have made it remarkably accessible to build browser-based games and simulations that would have required native applications just a decade ago. In this post, we'll explore the technologies behind our fortune cookie game and how you can use similar techniques in your own projects.
+
+## The Tech Stack
+
+Our fortune cookie uses three main technologies for its interactive elements: Pixi.js for rendering, Matter.js for physics, and GSAP for animations. Each serves a specific purpose in creating the overall experience, and together they form a powerful combination that can handle everything from simple button animations to complex physics simulations with dozens of interacting objects.
+
+## Pixi.js: The Visual Engine
+
+Pixi.js is a fast 2D rendering engine that uses WebGL (with a Canvas fallback). It handles drawing everything you see on screen — the cookie, the fragments, the particles, and the fortune paper. With Pixi.js, we can maintain smooth 60fps animations even with dozens of moving objects on screen. The library abstracts away the complexity of working directly with the WebGL API, providing a friendly scene graph and sprite-based architecture that feels intuitive to web developers.
+
+The key advantage of Pixi.js over plain Canvas 2D is performance. WebGL leverages your GPU for rendering, which means complex scenes with many objects can still run smoothly. For our fortune cookie, this means each cookie fragment, particle, and visual effect can be rendered independently without performance issues. Pixi.js also handles DPI scaling automatically, so the experience looks crisp on high-resolution retina displays without any extra work from the developer.
+
+Setting up a Pixi.js application involves creating an Application instance, configuring the renderer with your desired resolution and background color, and adding display objects to the stage. Display objects can be sprites, graphics (shapes drawn with code), text, or containers that group other objects together. The rendering loop runs automatically at the display's refresh rate, redrawing the scene every frame.
+
+## Matter.js: The Physics
+
+Matter.js is a 2D rigid body physics engine that handles the realistic behavior of cookie fragments after breaking. When you smash a cookie, Matter.js calculates how each piece should fly, spin, bounce off walls, and eventually settle. The engine runs its own simulation loop, updating the position and rotation of every physics body at each timestep based on the forces acting on it.
+
+Key physics concepts we use include gravity (fragments fall downward), restitution (fragments bounce when they hit surfaces — a value of 1.0 means a perfectly elastic bounce, while 0 means no bounce at all), friction (fragments eventually stop moving as energy is lost to surface contact), and impulse forces (the initial explosion force that sends fragments flying outward from the break point).
+
+One important detail is that Matter.js handles the physics simulation, but it doesn't draw anything. The rendering is entirely handled by Pixi.js. On each animation frame, we read the position and angle of every Matter.js body and update the corresponding Pixi.js graphics object to match. This separation of physics and rendering is a common pattern in game development that allows each system to be optimized independently.
+
+## GSAP: The Polish
+
+GSAP (GreenSock Animation Platform) handles the UI animations that don't need physics — screen shake, the fortune paper reveal, button animations, and text effects. GSAP excels at precisely timed, sequenced animations with easing functions that make movements feel natural. Unlike CSS animations, GSAP provides fine-grained control over timing, allows animations to be chained into complex sequences, and performs consistently across all browsers.
+
+For the fortune cookie experience, GSAP powers the screen shake effect when the cookie breaks — a subtle but impactful detail that adds visceral feedback to the interaction. It also handles the smooth reveal of the fortune text, the fade-in of share buttons, and the pulsing glow effects on interactive elements. These polishing touches might seem small individually, but together they transform a functional prototype into a delightful experience.
+
+## Voronoi Fragmentation
+
+One of the most interesting technical challenges was creating realistic cookie fragments. We use a simplified Voronoi-like algorithm to split the cookie shape into irregular pieces. The algorithm works by placing random seed points within the cookie's circular boundary, then creating wedge-shaped regions around each point. Random vertex offsets are added to make the edges irregular, producing fragments that look naturally broken rather than having uniform geometric shapes.
+
+Each fragment is assigned one of eight distinct cookie colors to create visual variety, and the fragment shapes are used to create both the Pixi.js graphics for rendering and the Matter.js bodies for physics simulation. The result is a convincing break effect where every crack looks unique — no two cookie breaks are ever quite the same.
+
+## Interaction Detection
+
+Supporting five different breaking methods required a sophisticated interaction detection system. We use the Pointer Events API, which provides a unified interface for mouse, touch, and pen input. The system tracks mouse position, velocity, click timing, and hold duration to distinguish between a click smash (three progressive clicks), drag crack (40-pixel drag threshold), shake break (rapid mouse movement velocity), double-tap (instant break), and squeeze (2-second hold). Each method produces different fragment patterns and force distributions, making the chosen method feel distinct and satisfying.
+
+## Performance Considerations
+
+Running a physics engine, a rendering engine, and particle effects simultaneously can be demanding, especially on mobile devices with limited processing power. We optimize by limiting the number of fragments to 8-12 pieces per cookie, capping particle counts, using efficient collision detection boundaries defined by simple convex polygons, and cleaning up objects that have left the visible area. Physics bodies that settle and stop moving are put to sleep by Matter.js, reducing computation.
+
+We also use dynamic imports in Next.js to load the interactive components only when needed, preventing the heavy Pixi.js and Matter.js libraries from blocking the initial page render. The result is a smooth experience that loads fast and runs well even on mid-range mobile devices.

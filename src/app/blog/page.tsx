@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -7,90 +8,9 @@ export const metadata: Metadata = {
     "Read about fortune cookie history, traditions, and the technology behind our interactive fortune cookie experience.",
 };
 
-const posts = [
-  {
-    slug: "history-of-fortune-cookies",
-    title: "The Surprising History of Fortune Cookies",
-    excerpt:
-      "Fortune cookies aren't actually from China — discover the fascinating true origin story of everyone's favorite post-meal treat.",
-    date: "2026-02-01",
-    readTime: "5 min read",
-  },
-  {
-    slug: "fortune-cookie-traditions",
-    title: "Fortune Cookie Traditions Around the World",
-    excerpt:
-      "From restaurant tables to wedding favors, explore how fortune cookies have been adapted and celebrated across different cultures.",
-    date: "2026-02-05",
-    readTime: "4 min read",
-  },
-  {
-    slug: "building-interactive-web-games",
-    title: "Building Interactive Web Games with Physics Engines",
-    excerpt:
-      "A deep dive into how we used Pixi.js and Matter.js to create a realistic fortune cookie breaking experience in the browser.",
-    date: "2026-02-08",
-    readTime: "7 min read",
-  },
-  {
-    slug: "psychology-of-fortune-telling",
-    title: "The Psychology Behind Fortune Telling and Why We Love It",
-    excerpt:
-      "Why do vague positive statements feel so personal? Explore the Barnum effect and the psychology that makes fortune cookies irresistible.",
-    date: "2026-02-10",
-    readTime: "6 min read",
-  },
-  {
-    slug: "digital-fortune-cookies-future",
-    title: "The Future of Digital Fortune Cookies",
-    excerpt:
-      "From AI-generated personalized fortunes to AR cookie breaking, here's where virtual fortune cookies might be heading.",
-    date: "2026-02-10",
-    readTime: "4 min read",
-  },
-  {
-    slug: "lucky-numbers-superstitions-science",
-    title: "Lucky Numbers, Superstitions, and What Science Actually Says",
-    excerpt:
-      "Why do we believe in lucky numbers? From cultural superstitions to the psychology of luck, explore the science behind what makes us feel fortunate.",
-    date: "2026-02-11",
-    readTime: "6 min read",
-  },
-  {
-    slug: "morning-rituals-around-the-world",
-    title: "Morning Rituals Around the World That Set the Tone for Your Day",
-    excerpt:
-      "From Japanese mindful mornings to Italian espresso rituals, discover how cultures around the world start their day with intention and joy.",
-    date: "2026-02-11",
-    readTime: "6 min read",
-  },
-  {
-    slug: "famous-fortunes-that-came-true",
-    title: "10 Famous Fortune Cookie Predictions That Actually Came True",
-    excerpt:
-      "Lottery wins, career changes, surprise proposals — real stories of fortune cookie messages that proved eerily accurate.",
-    date: "2026-02-12",
-    readTime: "7 min read",
-  },
-  {
-    slug: "zodiac-fortune-cookies-astrology-meets-wisdom",
-    title: "Your Zodiac Sign as a Fortune Cookie: What the Stars Would Tell You",
-    excerpt:
-      "What fortune does your zodiac sign need to hear? We matched each sign with its perfect fortune cookie message.",
-    date: "2026-02-12",
-    readTime: "6 min read",
-  },
-  {
-    slug: "why-we-need-small-joys",
-    title: "The Science of Small Joys: Why Tiny Moments of Delight Matter More Than You Think",
-    excerpt:
-      "Research shows that frequent small pleasures contribute more to happiness than rare big events. Here's why fortune cookies are a perfect micro-joy.",
-    date: "2026-02-13",
-    readTime: "6 min read",
-  },
-];
-
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <div className="mx-auto max-w-3xl">

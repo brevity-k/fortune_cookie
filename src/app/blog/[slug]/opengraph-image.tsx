@@ -1,25 +1,14 @@
 import { ImageResponse } from "next/og";
+import { getPost } from "@/lib/blog";
 
 export const alt = "Fortune Cookie Blog";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const titles: Record<string, string> = {
-  "history-of-fortune-cookies": "The Surprising History of Fortune Cookies",
-  "fortune-cookie-traditions": "Fortune Cookie Traditions Around the World",
-  "building-interactive-web-games": "Building Interactive Web Games with Physics Engines",
-  "psychology-of-fortune-telling": "The Psychology Behind Fortune Telling",
-  "digital-fortune-cookies-future": "The Future of Digital Fortune Cookies",
-  "lucky-numbers-superstitions-science": "Lucky Numbers, Superstitions & Science",
-  "morning-rituals-around-the-world": "Morning Rituals Around the World",
-  "famous-fortunes-that-came-true": "10 Fortune Cookie Predictions That Came True",
-  "zodiac-fortune-cookies-astrology-meets-wisdom": "Your Zodiac Sign as a Fortune Cookie",
-  "why-we-need-small-joys": "The Science of Small Joys",
-};
-
 export default async function BlogOGImage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const title = titles[slug] || "Fortune Cookie Blog";
+  const post = getPost(slug);
+  const title = post?.title || "Fortune Cookie Blog";
 
   return new ImageResponse(
     (
