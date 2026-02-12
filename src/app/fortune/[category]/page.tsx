@@ -139,7 +139,7 @@ export default async function CategoryPage({
       <FAQPageJsonLd faqs={faqs} />
 
       <article className="mx-auto max-w-2xl">
-        <h1 className="text-golden-shimmer mb-2 text-4xl font-bold text-center">
+        <h1 className="text-golden-shimmer mb-2 text-3xl sm:text-4xl font-bold text-center">
           {catTitle} Fortune Cookies
         </h1>
         <p className="text-center text-foreground/50 mb-8">{description}</p>

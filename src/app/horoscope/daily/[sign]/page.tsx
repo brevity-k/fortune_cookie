@@ -95,7 +95,7 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-8">
           <div className="text-7xl mb-4">{zodiac.symbol}</div>
-          <h1 className="text-golden-shimmer text-4xl font-bold mb-2">
+          <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">
             {signTitle} Daily Horoscope
           </h1>
           <p className="text-foreground/40 text-sm">{zodiac.dateRange} · {zodiac.element} Sign</p>
