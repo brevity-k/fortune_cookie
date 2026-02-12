@@ -158,7 +158,7 @@ export default async function CategoryPage({
 
         {/* Featured Fortune */}
         <div
-          className="relative overflow-hidden rounded-2xl border p-8 text-center mb-12"
+          className="relative overflow-hidden rounded-2xl border p-5 sm:p-8 text-center mb-12"
           style={{
             borderColor: rarityColor + "30",
             background: `radial-gradient(ellipse at center, ${rarityColor}08 0%, transparent 70%)`,

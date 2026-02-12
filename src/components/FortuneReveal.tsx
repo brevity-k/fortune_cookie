@@ -11,7 +11,7 @@ interface FortuneRevealProps {
 export default function FortuneReveal({ fortune, visible }: FortuneRevealProps) {
   const [displayText, setDisplayText] = useState("");
   const [typingDone, setTypingDone] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
+  const rafRef = useRef<number>(undefined);
 
   useEffect(() => {
     if (!fortune || !visible) {
@@ -20,22 +20,35 @@ export default function FortuneReveal({ fortune, visible }: FortuneRevealProps) 
       return;
     }
 
-    // Typewriter effect
+    // Typewriter effect using requestAnimationFrame
     let index = 0;
+    let lastTime = 0;
     setDisplayText("");
     setTypingDone(false);
 
-    intervalRef.current = setInterval(() => {
-      if (index < fortune.text.length) {
-        setDisplayText(fortune.text.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(intervalRef.current);
-        setTypingDone(true);
-      }
-    }, 35);
+    const step = (timestamp: number) => {
+      if (!lastTime) lastTime = timestamp;
+      const elapsed = timestamp - lastTime;
 
-    return () => clearInterval(intervalRef.current);
+      if (elapsed >= 35) {
+        lastTime = timestamp;
+        index++;
+        if (index <= fortune.text.length) {
+          setDisplayText(fortune.text.slice(0, index));
+        }
+        if (index >= fortune.text.length) {
+          setTypingDone(true);
+          return;
+        }
+      }
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [fortune, visible]);
 
   if (!fortune || !visible) return null;

@@ -61,6 +61,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Share on X"
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -74,6 +75,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         href={facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Share on Facebook"
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -87,6 +89,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Share on WhatsApp"
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -98,6 +101,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
       {/* Copy */}
       <button
         onClick={handleCopy}
+        aria-label="Copy fortune link"
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

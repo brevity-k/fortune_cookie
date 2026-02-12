@@ -46,13 +46,13 @@ export default function CookieConsent() {
           <div className="flex shrink-0 gap-3">
             <button
               onClick={() => handleConsent("rejected")}
-              className="rounded-lg border border-gold/20 px-4 py-2 text-sm text-foreground/60 transition hover:border-gold/40 hover:text-foreground/80"
+              className="rounded-lg border border-gold/20 px-4 py-2.5 text-sm text-foreground/60 transition hover:border-gold/40 hover:text-foreground/80"
             >
               Reject
             </button>
             <button
               onClick={() => handleConsent("accepted")}
-              className="rounded-lg bg-gold px-5 py-2 text-sm font-semibold text-background transition hover:bg-gold-light"
+              className="rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-gold-light"
             >
               Accept
             </button>
