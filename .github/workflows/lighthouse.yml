@@ -2,7 +2,7 @@ name: Lighthouse Audit
 
 on:
   schedule:
-    - cron: "0 6 * * 3" # Wednesday 6AM UTC
+    - cron: "0 7 * * 3" # Wednesday 7AM UTC (staggered from horoscopes at 5AM)
   workflow_dispatch:
 
 permissions:
@@ -38,10 +38,58 @@ jobs:
       - uses: actions/github-script@v8
         with:
           script: |
-            await github.rest.issues.create({
+            const title = '🚨 Lighthouse audit failed';
+            const existing = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '🚨 Lighthouse audit failed',
-              body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
-              labels: ['bug', 'automated']
+              state: 'open',
+              labels: 'automated',
+              per_page: 10
             });
+            if (!existing.data.some(i => i.title === title)) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: `Workflow run failed: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                labels: ['bug', 'automated']
+              });
+            } else {
+              console.log('Open issue for lighthouse failure already exists — skipping duplicate.');
+            }
+
+  notify-success:
+    needs: lighthouse
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const title = '🚨 Lighthouse audit failed';
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automated',
+              per_page: 10
+            });
+            for (const issue of issues.data) {
+              if (issue.title === title) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  state: 'closed',
+                  state_reason: 'completed'
+                });
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `✅ Lighthouse audit recovered. Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+                });
+              }
+            }
