@@ -1,5 +1,6 @@
-# CI — runs on every pull request to verify the build passes.
-# Required by the dependabot-automerge workflow as a status check.
+# CI — runs on every pull request to verify the build and lint pass.
+# The "build" job name is a required status check in the branch ruleset,
+# which gates auto-merge for Dependabot PRs.
 name: CI
 
 on:
@@ -24,5 +25,7 @@ jobs:
           cache: "npm"
 
       - run: npm ci
+
+      - run: npm run lint
 
       - run: npm run build

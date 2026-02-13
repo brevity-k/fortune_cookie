@@ -1,6 +1,16 @@
 # Auto-merge Dependabot PRs after CI passes.
-# Only merges patch/minor npm updates and GitHub Actions bumps automatically.
-# Major npm version bumps still require manual review.
+#
+# Flow:
+#   1. Dependabot opens a PR
+#   2. This workflow runs immediately and enables GitHub auto-merge (--auto)
+#      for patch/minor npm updates and all GitHub Actions bumps
+#   3. CI workflow runs build + lint on the PR
+#   4. GitHub auto-merges the PR once the required "build" status check passes
+#   5. Major npm version bumps are NOT auto-merged — they require manual review
+#
+# Requires:
+#   - "Allow auto-merge" enabled in repo settings
+#   - Branch ruleset "Require CI on PRs" with required status check "build"
 name: Dependabot auto-merge
 
 on: pull_request
@@ -21,7 +31,7 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Auto-merge safe updates
+      - name: Enable auto-merge for safe updates
         if: >
           steps.metadata.outputs.package-ecosystem == 'github_actions' ||
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
