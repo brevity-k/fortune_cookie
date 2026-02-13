@@ -6,10 +6,6 @@ export const alt = "Weekly Horoscope";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export function generateStaticParams() {
-  return ZODIAC_SIGNS.map((s) => ({ sign: s.key }));
-}
-
 export default async function OGImage({ params }: { params: Promise<{ sign: string }> }) {
   const { sign } = await params;
   const zodiac = ZODIAC_SIGNS.find((z) => z.key === sign);

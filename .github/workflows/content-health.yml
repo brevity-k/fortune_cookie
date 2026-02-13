@@ -138,7 +138,7 @@ jobs:
           )
           FAILED=0
           for url in "${PAGES[@]}"; do
-            STATUS=$(curl --max-time 15 -s -o /dev/null -w "%{http_code}" "$url" || echo "000")
+            STATUS=$(curl -L --max-time 15 -s -o /dev/null -w "%{http_code}" "$url" || echo "000")
             if [ "$STATUS" = "200" ]; then
               echo "OK: $url ($STATUS)"
             else
