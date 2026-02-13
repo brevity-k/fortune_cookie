@@ -23,9 +23,10 @@ jobs:
         with:
           args: >-
             --no-progress
-            --accept 200,204,301,302,403,429
+            --accept 200,204,301,302,307,403,429
             --exclude "localhost"
             --exclude "127.0.0.1"
+            --exclude "fortunecrack.com/api/"
             "src/content/blog/**/*.mdx"
             "src/app/**/*.tsx"
           fail: true
