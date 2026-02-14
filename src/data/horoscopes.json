@@ -1,113 +1,113 @@
 {
   "daily": {
-    "date": "2026-02-13",
+    "date": "2026-02-14",
     "horoscopes": {
       "aries": {
-        "text": "Mars energizes your communication sector today, making this an excellent time to share bold ideas and lead important conversations. Your natural courage shines through, but remember that listening is just as powerful as speaking. Channel your fiery energy into collaborative efforts for maximum impact.",
-        "love": 3,
+        "text": "Mars charges through your collaborative sector today, Aries, making Valentine's Day a powerful moment for both romantic partnerships and professional alliances. Your natural leadership shines, but remember that true strength lies in sharing the spotlight. Channel your fiery energy into meaningful connections rather than solo pursuits.",
+        "love": 5,
         "career": 4,
-        "health": 4,
+        "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "energetic"
+        "mood": "passionate"
       },
       "taurus": {
-        "text": "Venus whispers sweetly in your financial zone, encouraging you to reassess your resources and plant seeds for future abundance. This winter day calls for practical magic—review your budget, but don't forget to indulge in one small pleasure that feeds your soul. Stability comes from both discipline and self-care.",
-        "love": 4,
-        "career": 3,
-        "health": 3,
+        "text": "Venus graces your career zone on this romantic day, creating an unexpected blend of professional recognition and personal warmth. A creative project may receive the appreciation you've been waiting for, Taurus. Trust your instincts when it comes to matters of beauty and value—your judgment is particularly sharp now.",
+        "love": 3,
+        "career": 5,
+        "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Mercury's playful dance sparks your curiosity and draws fascinating people into your orbit. Today's conversations could unlock unexpected opportunities, so keep your mind open and your wit sharp. The universe rewards your flexibility—embrace spontaneous connections that challenge your perspective.",
+        "text": "Mercury's playful dance invites you to express your feelings with eloquence and charm today. Whether you're crafting the perfect message or engaging in spirited conversation, your words carry extra magic. Don't overthink matters of the heart—spontaneity is your secret weapon this Valentine's Day.",
         "love": 4,
-        "career": 4,
-        "health": 3,
+        "career": 3,
+        "health": 4,
         "luckyNumber": 23,
         "luckyColor": "electric blue",
-        "mood": "curious"
+        "mood": "playful"
       },
       "cancer": {
-        "text": "The Moon's gentle influence invites you deeper into introspection, asking you to honor your emotional needs without apology. This is a day for nurturing yourself first—create cozy spaces, journal your dreams, and trust your powerful intuition. What you discover in quiet moments will guide your next steps forward.",
+        "text": "The Moon illuminates your inner world, Cancer, encouraging deep emotional reflection on this day of love. Rather than grand gestures, you'll find fulfillment in quiet intimacy and nurturing those closest to you. Your intuitive powers are heightened—pay attention to what your heart whispers.",
         "love": 5,
         "career": 2,
-        "health": 4,
+        "health": 3,
         "luckyNumber": 7,
         "luckyColor": "silver",
         "mood": "intuitive"
       },
       "leo": {
-        "text": "The Sun illuminates your house of relationships, reminding you that true leadership includes lifting others up. Your warmth attracts admiration, but today's magic happens when you share the spotlight generously. Let your confidence inspire rather than overshadow—collaboration brings unexpected creative breakthroughs.",
-        "love": 4,
-        "career": 5,
-        "health": 3,
-        "luckyNumber": 88,
+        "text": "The Sun spotlights your relationship sector, making this Valentine's Day truly shine for you, Leo. Your warmth and generosity attract admiration from all directions, but focus on quality over quantity in your connections. A creative collaboration could spark unexpected romantic or professional chemistry.",
+        "love": 5,
+        "career": 4,
+        "health": 5,
+        "luckyNumber": 31,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "Mercury sharpens your analytical prowess, making this ideal for tackling complex problems that have been lingering. Your attention to detail is unmatched today, but guard against perfectionism that delays progress. Trust that excellence and completion can coexist—sometimes done is better than flawless.",
+        "text": "Mercury enhances your analytical gifts today, helping you organize both practical matters and emotional priorities. While others get swept up in Valentine's sentimentality, you find beauty in meaningful service and thoughtful details. A health-focused routine brings unexpected satisfaction and clarity.",
         "love": 3,
         "career": 5,
-        "health": 2,
+        "health": 5,
         "luckyNumber": 54,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "Venus graces your creative sector with beauty and inspiration, urging you to express yourself through art, romance, or meaningful dialogue. Balance remains your superpower—harmonize competing priorities with your characteristic grace. A partnership deepens when you share your authentic vision without compromising your values.",
+        "text": "Venus, your ruling planet, blesses you with irresistible charm and social grace this Valentine's Day. Balance is your theme—honor both your need for partnership and your individual desires. An artistic pursuit or aesthetic upgrade to your environment brings deep contentment.",
         "love": 5,
         "career": 3,
         "health": 4,
-        "luckyNumber": 31,
-        "luckyColor": "lavender",
+        "luckyNumber": 88,
+        "luckyColor": "pink",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "Pluto's transformative power stirs your foundations, pushing you to release what no longer serves your evolution. This intensity isn't comfortable, but you thrive in deep waters where others fear to swim. Trust the process of becoming—today's endings are tomorrow's powerful new beginnings.",
-        "love": 3,
-        "career": 4,
+        "text": "Pluto's transformative energy stirs deep within your psyche, Scorpio, making this a Valentine's Day of profound emotional truth. Surface-level pleasantries won't satisfy you—you crave authentic connection and meaningful exchange. Trust your powerful instincts about who deserves access to your vulnerable heart.",
+        "love": 4,
+        "career": 3,
         "health": 3,
         "luckyNumber": 13,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Jupiter expands your horizons even on this wintry day, filling you with optimism and wanderlust. Your philosophical mind craves meaning—seek it through learning, teaching, or planning future adventures. The world feels smaller when you remember that every person you meet is a potential teacher.",
+        "text": "Jupiter expands your horizons even on this traditionally intimate holiday, dear Archer. You might find love or inspiration in unexpected places—perhaps through travel plans, philosophical discussions, or cultural exploration. Your optimism is contagious; share your adventurous spirit generously.",
         "love": 4,
         "career": 4,
-        "health": 5,
-        "luckyNumber": 66,
+        "health": 4,
+        "luckyNumber": 69,
         "luckyColor": "orange",
-        "mood": "optimistic"
+        "mood": "adventurous"
       },
       "capricorn": {
-        "text": "Saturn reinforces your natural discipline, helping you build structures that will stand the test of time. Your ambition is admirable, but today calls for strategic rest within the hustle—resilience requires knowing when to push and when to pause. Your long-term vision is crystallizing beautifully.",
-        "love": 2,
+        "text": "Saturn steadies your ambitions while softening your approach to relationships today. Valentine's Day finds you building something lasting rather than chasing fleeting romance. Your discipline and dedication impress others—let your guard down slightly to receive the appreciation you've earned.",
+        "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 8,
+        "luckyNumber": 26,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Uranus electrifies your sector of self-expression, making you a beacon of originality and progressive thinking. Your innovative ideas might seem ahead of their time, but that's precisely where you belong—at the edge of what's possible. Community connections formed now could reshape your future in unexpected ways.",
-        "love": 3,
+        "text": "Uranus electrifies your social sphere with unexpected delights and unconventional expressions of affection. This Valentine's Day defies tradition in the best possible way, Aquarius—embrace innovation in how you connect with others. A breakthrough idea could revolutionize your creative or collaborative work.",
+        "love": 4,
         "career": 4,
         "health": 4,
-        "luckyNumber": 45,
+        "luckyNumber": 95,
         "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune deepens your already profound connection to the unseen realms, heightening your psychic sensitivity and creative gifts. This winter day invites you to dream vividly and trust your visions—they contain wisdom your rational mind hasn't yet grasped. Artistic expression becomes a healing portal today.",
+        "text": "Neptune weaves dreamy enchantment through your day, making this Valentine's profoundly romantic and spiritually rich. Your empathic abilities reach new heights—you intuitively understand what others need. Channel your creative inspiration into artistic expression or compassionate acts that ripple outward.",
         "love": 5,
         "career": 3,
         "health": 4,
-        "luckyNumber": 29,
-        "luckyColor": "seafoam",
+        "luckyNumber": 11,
+        "luckyColor": "lavender",
         "mood": "inspired"
       }
     }
