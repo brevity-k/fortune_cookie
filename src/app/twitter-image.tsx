@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_DOMAIN } from "@/lib/constants";
 
 export const runtime = "edge";
 export const alt = "Fortune Cookie - Break Your Virtual Fortune Cookie";
@@ -51,7 +52,7 @@ export default function TwitterImage() {
             letterSpacing: 2,
           }}
         >
-          fortunecrack.com
+          {SITE_DOMAIN}
         </div>
       </div>
     ),

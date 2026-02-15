@@ -1,17 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { CATEGORIES } from "@/lib/fortuneEngine";
+import { ZODIAC_SIGNS } from "@/lib/horoscopes";
+import { SITE_URL } from "@/lib/constants";
 
-const baseUrl = "https://fortunecrack.com";
-
-const CATEGORIES = [
-  "wisdom", "love", "career", "humor",
-  "motivation", "philosophy", "adventure", "mystery",
-];
-
-const ZODIAC_SIGNS = [
-  "aries", "taurus", "gemini", "cancer", "leo", "virgo",
-  "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces",
-];
+const baseUrl = SITE_URL;
+const zodiacKeys = ZODIAC_SIGNS.map((z) => z.key);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = getAllPosts().map((post) => ({
@@ -28,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const zodiacEntries = ZODIAC_SIGNS.map((sign) => ({
+  const zodiacEntries = zodiacKeys.map((sign) => ({
     url: `${baseUrl}/zodiac/${sign}`,
     lastModified: new Date(),
     changeFrequency: "daily" as const,
@@ -94,19 +88,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
-    ...ZODIAC_SIGNS.map((sign) => ({
+    ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/daily/${sign}`,
       lastModified: new Date(),
       changeFrequency: "daily" as const,
       priority: 0.8,
     })),
-    ...ZODIAC_SIGNS.map((sign) => ({
+    ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/weekly/${sign}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
-    ...ZODIAC_SIGNS.map((sign) => ({
+    ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/monthly/${sign}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { SITE_DOMAIN } from "@/lib/constants";
 
 export const runtime = "edge";
 
@@ -108,7 +109,7 @@ export async function GET(request: NextRequest) {
             display: "flex",
           }}
         >
-          fortunecrack.com
+          {SITE_DOMAIN}
         </div>
       </div>
     ),
