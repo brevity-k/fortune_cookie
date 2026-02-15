@@ -1,191 +1,191 @@
 {
   "daily": {
-    "date": "2026-02-14",
+    "date": "2026-02-15",
     "horoscopes": {
       "aries": {
-        "text": "Mars charges through your collaborative sector today, Aries, making Valentine's Day a powerful moment for both romantic partnerships and professional alliances. Your natural leadership shines, but remember that true strength lies in sharing the spotlight. Channel your fiery energy into meaningful connections rather than solo pursuits.",
-        "love": 5,
+        "text": "Mars drives you toward bold action today, but the winter's wisdom asks you to temper impulse with strategy. Channel that fierce energy into planning your next big move rather than rushing headlong into it. A conversation this evening could reveal unexpected allies.",
+        "love": 3,
         "career": 4,
-        "health": 3,
+        "health": 4,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "passionate"
+        "mood": "determined"
       },
       "taurus": {
-        "text": "Venus graces your career zone on this romantic day, creating an unexpected blend of professional recognition and personal warmth. A creative project may receive the appreciation you've been waiting for, Taurus. Trust your instincts when it comes to matters of beauty and value—your judgment is particularly sharp now.",
-        "love": 3,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 42,
+        "text": "Venus whispers sweetly in your ear today, reminding you that comfort and beauty are not indulgences but necessities. Take time to nourish your senses—a good meal, soft fabrics, or simply the quiet pleasure of your own company. Financial matters show promising developments by midweek.",
+        "love": 4,
+        "career": 3,
+        "health": 5,
+        "luckyNumber": 28,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Mercury's playful dance invites you to express your feelings with eloquence and charm today. Whether you're crafting the perfect message or engaging in spirited conversation, your words carry extra magic. Don't overthink matters of the heart—spontaneity is your secret weapon this Valentine's Day.",
-        "love": 4,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 23,
+        "text": "Mercury's quicksilver energy has you buzzing with ideas, but winter's introspective mood suggests you document rather than disperse them. That creative project you've been mulling over is ready for serious attention. Connect with someone from your past—they have information you need.",
+        "love": 3,
+        "career": 5,
+        "health": 3,
+        "luckyNumber": 42,
         "luckyColor": "electric blue",
-        "mood": "playful"
+        "mood": "curious"
       },
       "cancer": {
-        "text": "The Moon illuminates your inner world, Cancer, encouraging deep emotional reflection on this day of love. Rather than grand gestures, you'll find fulfillment in quiet intimacy and nurturing those closest to you. Your intuitive powers are heightened—pay attention to what your heart whispers.",
-        "love": 5,
+        "text": "The Moon's gentle pull encourages you to retreat into your shell today, and that's perfectly fine. Honor your need for emotional privacy and reflection—not every feeling needs to be shared immediately. Trust that this quiet period is preparing you for brighter days ahead.",
+        "love": 4,
         "career": 2,
-        "health": 3,
+        "health": 4,
         "luckyNumber": 7,
         "luckyColor": "silver",
-        "mood": "intuitive"
+        "mood": "reflective"
       },
       "leo": {
-        "text": "The Sun spotlights your relationship sector, making this Valentine's Day truly shine for you, Leo. Your warmth and generosity attract admiration from all directions, but focus on quality over quantity in your connections. A creative collaboration could spark unexpected romantic or professional chemistry.",
+        "text": "Even in winter's shadow, the Sun ensures you shine, though perhaps more subtly than usual. Your natural confidence attracts positive attention in professional circles, so don't hide your light. A creative collaboration could ignite something truly special if you're willing to share the spotlight.",
         "love": 5,
         "career": 4,
-        "health": 5,
-        "luckyNumber": 31,
+        "health": 3,
+        "luckyNumber": 91,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "Mercury enhances your analytical gifts today, helping you organize both practical matters and emotional priorities. While others get swept up in Valentine's sentimentality, you find beauty in meaningful service and thoughtful details. A health-focused routine brings unexpected satisfaction and clarity.",
-        "love": 3,
+        "text": "Mercury sharpens your analytical powers to a fine point today—perfect for tackling that complex problem you've been avoiding. Your attention to detail impresses someone important, but remember to also see the bigger picture. Health routines established now will serve you well into spring.",
+        "love": 2,
         "career": 5,
         "health": 5,
-        "luckyNumber": 54,
+        "luckyNumber": 53,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "Venus, your ruling planet, blesses you with irresistible charm and social grace this Valentine's Day. Balance is your theme—honor both your need for partnership and your individual desires. An artistic pursuit or aesthetic upgrade to your environment brings deep contentment.",
+        "text": "Venus graces you with diplomatic superpowers today, making you the peacemaker everyone turns to. While harmony is your gift, ensure you're not sacrificing your own needs to keep others comfortable. Balance, as always, is your true north—seek it in all things.",
         "love": 5,
         "career": 3,
-        "health": 4,
-        "luckyNumber": 88,
-        "luckyColor": "pink",
+        "health": 3,
+        "luckyNumber": 66,
+        "luckyColor": "lavender",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "Pluto's transformative energy stirs deep within your psyche, Scorpio, making this a Valentine's Day of profound emotional truth. Surface-level pleasantries won't satisfy you—you crave authentic connection and meaningful exchange. Trust your powerful instincts about who deserves access to your vulnerable heart.",
+        "text": "Pluto's transformative energy runs deep today, stirring waters you thought had settled. Embrace the intensity rather than fighting it—profound insights await in the depths. A secret shared or discovered could shift the dynamics of an important relationship, so handle sensitive information with care.",
         "love": 4,
-        "career": 3,
-        "health": 3,
+        "career": 4,
+        "health": 2,
         "luckyNumber": 13,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Jupiter expands your horizons even on this traditionally intimate holiday, dear Archer. You might find love or inspiration in unexpected places—perhaps through travel plans, philosophical discussions, or cultural exploration. Your optimism is contagious; share your adventurous spirit generously.",
-        "love": 4,
+        "text": "Jupiter's expansive influence battles against winter's containment, leaving you restless for adventure. Channel that wanderlust into intellectual exploration or future travel planning. Your optimism is contagious today, lifting spirits wherever you go—use that power wisely and watch doors open.",
+        "love": 3,
         "career": 4,
         "health": 4,
-        "luckyNumber": 69,
-        "luckyColor": "orange",
+        "luckyNumber": 79,
+        "luckyColor": "purple",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "Saturn steadies your ambitions while softening your approach to relationships today. Valentine's Day finds you building something lasting rather than chasing fleeting romance. Your discipline and dedication impress others—let your guard down slightly to receive the appreciation you've earned.",
+        "text": "Saturn rewards your persistent efforts with tangible progress today, though the pace may feel slower than you'd like. Trust the process—foundations built carefully now will support towering achievements later. Take a moment to acknowledge how far you've already climbed.",
         "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 26,
+        "luckyNumber": 34,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Uranus electrifies your social sphere with unexpected delights and unconventional expressions of affection. This Valentine's Day defies tradition in the best possible way, Aquarius—embrace innovation in how you connect with others. A breakthrough idea could revolutionize your creative or collaborative work.",
-        "love": 4,
-        "career": 4,
+        "text": "Uranus sparks revolutionary thinking today, and your innovative ideas could solve a collective problem. Don't dismiss that seemingly outlandish solution—it might be exactly what's needed. Community connections strengthen, reminding you that progress is always a team sport.",
+        "love": 2,
+        "career": 5,
         "health": 4,
-        "luckyNumber": 95,
+        "luckyNumber": 88,
         "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune weaves dreamy enchantment through your day, making this Valentine's profoundly romantic and spiritually rich. Your empathic abilities reach new heights—you intuitively understand what others need. Channel your creative inspiration into artistic expression or compassionate acts that ripple outward.",
+        "text": "Neptune's dreamy influence is especially strong today, blurring boundaries between imagination and reality in the most magical way. Trust your intuition completely—it's speaking truth even if logic can't explain it. Artistic pursuits flow effortlessly, so make time for creative expression.",
         "love": 5,
         "career": 3,
         "health": 4,
-        "luckyNumber": 11,
-        "luckyColor": "lavender",
-        "mood": "inspired"
+        "luckyNumber": 22,
+        "luckyColor": "seafoam",
+        "mood": "intuitive"
       }
     }
   },
   "weekly": {
-    "weekOf": "2026-02-09",
+    "weekOf": "2026-02-15",
     "horoscopes": {
       "aries": {
-        "overview": "A week of transformation awaits as Mars conjuncts Uranus in your sign. Expect sudden shifts in your professional landscape that ultimately work in your favor. Mid-week brings a passionate encounter or rekindling of creative fire.",
-        "love": "Venus entering your fifth house mid-week ignites romantic sparks. Single Aries may attract attention from an unlikely source. Coupled Aries should plan something spontaneous to reignite the flame.",
-        "career": "Professional opportunities multiply as your assertive energy catches the eye of decision-makers. Thursday and Friday are power days for negotiations and presentations.",
-        "advice": "Focus on what you can control and release what you cannot. Your impulsive nature may be tested, but patience yields the greatest rewards this week."
+        "overview": "Mars forms a challenging square with Saturn this week, urging you to temper your natural impulse with strategic patience. The winter season asks you to channel your fiery energy into careful planning rather than immediate action, building foundations that will support your spring ambitions.",
+        "love": "Venus in your friendship sector creates opportunities for romance to bloom from platonic connections, though Mercury's retrograde shadow suggests proceeding slowly. Existing relationships benefit from honest conversations about long-term goals and shared visions for the future.",
+        "career": "Professional frustrations may surface as your drive encounters bureaucratic obstacles or delays that test your resolve. This temporary slowdown is actually fortuitous, allowing you to refine your approach and identify weaknesses in your strategy before moving forward with greater confidence.",
+        "advice": "Embrace the discipline that restriction brings; your greatest victories this week come from mastering restraint rather than asserting force."
       },
       "taurus": {
-        "overview": "This week centers on financial growth and material security. Venus, your ruling planet, harmonizes with Saturn, creating a stable foundation for long-term investments. A surprising opportunity emerges from a casual conversation.",
-        "love": "Romantic relationships deepen through honest communication. A partner or love interest reveals a vulnerable side, strengthening your bond. Single Taurus may reconnect with someone from the past.",
-        "career": "Your methodical approach to a complex project earns recognition. A mentor figure offers guidance that could reshape your career trajectory. Consider a skill-building opportunity presented on Wednesday.",
-        "advice": "Resist stubbornness when new information challenges your perspective. Flexibility this week leads to abundance next month."
+        "overview": "Venus, your ruling planet, harmonizes beautifully with Neptune, infusing your winter with artistic inspiration and romantic idealism. The Sun's position in your career sector illuminates professional possibilities, making this an excellent time for introspection about your authentic vocational path.",
+        "love": "Romance takes on a dreamy, almost spiritual quality as Venus-Neptune connections dissolve barriers between hearts. Single Taureans may encounter someone who seems impossibly perfect—trust your instincts but verify details, as Neptune can obscure practical realities.",
+        "career": "Your natural persistence finds powerful support from Saturn's stabilizing influence, helping you make tangible progress on long-term projects. Recognition from authority figures is likely, particularly for work that demonstrates both creativity and practical value.",
+        "advice": "Ground your beautiful dreams in earthly action; the universe rewards those who build altars to their visions with dedicated hands."
       },
       "gemini": {
-        "overview": "Communication is your superpower this week as Mercury, your ruler, forms brilliant aspects with multiple planets. Your words carry extra weight — choose them wisely. A social event on the weekend could introduce you to an important new connection.",
-        "love": "Your charm is irresistible this week. Playful banter evolves into something deeper with someone who matches your intellectual energy. Existing relationships benefit from heart-to-heart talks.",
-        "career": "A writing, speaking, or teaching opportunity presents itself. Your ability to simplify complex ideas impresses colleagues. Networking events on Wednesday or Thursday are especially favorable.",
-        "advice": "Ground your restless energy with a physical activity or meditation practice. Your mind is a powerful tool, but it needs moments of stillness to recharge."
+        "overview": "Mercury's complex dance through the heavens brings intellectual intensity but also potential communication tangles that require your adaptable nature. Jupiter's expansive aspect to your sign encourages philosophical reflection during this winter period, urging you to find meaning beneath surface-level interactions.",
+        "love": "Conversations deepen significantly this week as Mercury encourages authentic dialogue, though misunderstandings may require patient clarification. Your natural curiosity serves relationships well now—ask questions, listen carefully, and allow emotional vulnerability to complement your intellectual connection.",
+        "career": "Multiple projects demand your attention simultaneously, and your multitasking gifts are both blessing and curse as scattered energy dilutes effectiveness. Focus on completing existing commitments before accepting new opportunities, as Mercury's influence suggests revisions and refinements are necessary.",
+        "advice": "Slow your mental pace to match winter's rhythm; depth of understanding serves you better than breadth of information this week."
       },
       "cancer": {
-        "overview": "Emotional depth defines this week as the Moon makes significant transits through your chart. Family matters demand attention early in the week, but by Thursday, the focus shifts to your personal goals and desires.",
-        "love": "Nurturing energy flows freely in your relationships. A heartfelt gesture from you creates a ripple of warmth in your closest bonds. Single Cancers may feel drawn to someone with a protective, caring nature.",
-        "career": "Your emotional intelligence becomes a professional asset. Reading the room in a meeting leads to a breakthrough. A home-based project or remote work arrangement gets a favorable review.",
-        "advice": "Set boundaries without guilt. Your giving nature is beautiful, but this week teaches that receiving is equally important."
+        "overview": "The Moon's nodes shift through emotional territory close to your heart, initiating a powerful six-month cycle of karmic release and soul-level healing. Winter's introspective energy aligns perfectly with your need to retreat into your shell and process deep feelings that have been accumulating.",
+        "love": "Emotional honesty reaches new depths as you feel safe enough to share vulnerabilities that you've long protected. Partners respond with surprising tenderness to your openness, while single Cancers attract people who appreciate sensitivity rather than viewing it as weakness.",
+        "career": "Workplace dynamics may feel emotionally charged, requiring you to maintain professional boundaries while honoring your intuitive responses. Your nurturing leadership style gains recognition, particularly in roles that involve caring for others or creating supportive team environments.",
+        "advice": "Your feelings are not obstacles to overcome but wisdom to integrate; trust the tides of your emotional knowing."
       },
       "leo": {
-        "overview": "The spotlight is firmly on you this week as the Sun forms a grand trine with Mars and Jupiter. Your creative energy peaks, and leadership opportunities abound. A celebration or recognition may come your way by the weekend.",
-        "love": "Romance takes center stage with grand gestures and passionate declarations. Your generous spirit attracts admiration. Couples enjoy a renewed sense of playfulness and joy together.",
-        "career": "A creative project reaches a milestone, earning well-deserved praise. Your vision inspires team members to elevate their own contributions. Financial discussions on Friday favor your position.",
-        "advice": "Share the spotlight with those who've supported your journey. Generosity of spirit amplifies your already magnetic presence."
+        "overview": "The Sun, your celestial ruler, moves through your relationship sector while forming a supportive sextile with innovative Uranus, bringing unexpected breakthroughs in partnerships. This winter week asks you to balance your natural radiance with genuine interest in others' light, creating collaborative warmth rather than solo performance.",
+        "love": "Romance flourishes when you step back from center stage and allow authentic partnership dynamics to emerge organically. Existing relationships benefit from trying something completely new together—Uranus brings excitement through novelty and shared adventure into unexplored territory.",
+        "career": "Creative projects gain momentum as your natural confidence inspires team members and superiors alike to support your vision. Collaboration proves more fruitful than solo efforts now, despite your preference for leading from the front—share the spotlight and watch collective results exceed individual efforts.",
+        "advice": "True royalty recognizes the sovereignty of others; your kingdom expands through generous acknowledgment of others' gifts."
       },
       "virgo": {
-        "overview": "A week of refinement and optimization as Mercury helps you see the blueprint behind the chaos. Health improvements show noticeable results. A practical solution to a long-standing problem presents itself on Tuesday.",
-        "love": "Love grows through acts of service this week. Small, thoughtful gestures mean more than grand displays. A conversation about future plans with a partner brings clarity and excitement.",
-        "career": "Your attention to detail catches an error that saves significant resources. A systematic approach to a new project positions you as the go-to expert. Training opportunities on Thursday are worth pursuing.",
-        "advice": "Perfectionism can be a trap. This week, aim for excellent rather than flawless, and notice how much lighter you feel."
+        "overview": "Mercury's influence through your health and service sectors sharpens your already acute attention to detail, making this ideal for organizing, analyzing, and perfecting. Saturn's supportive angle brings the discipline needed to implement sustainable systems, turning winter introspection into practical structures that will serve you for months ahead.",
+        "love": "Your tendency toward perfectionism may create unnecessary relationship tension if you critique rather than appreciate your partner's efforts. Soften your standards and recognize that emotional connection flourishes in acceptance, not in the continuous improvement projects you naturally prefer.",
+        "career": "Your analytical gifts are in high demand as colleagues seek your expertise in solving complex problems requiring meticulous attention. Recognition comes through competence rather than showmanship—let your work speak eloquently while you maintain your characteristic humility and focus on service.",
+        "advice": "Perfection is a direction, not a destination; allow yourself and others the grace of beautiful imperfection."
       },
       "libra": {
-        "overview": "Harmony and partnership energy dominate this week. Venus brings beautiful aspects to your social sector, making every interaction feel meaningful. A legal or contractual matter reaches a favorable conclusion.",
-        "love": "Relationships reach a new level of understanding. A compromise that once felt impossible now seems natural. Single Libras attract balanced, mature connections through social gatherings mid-week.",
-        "career": "Collaborative projects thrive under your diplomatic leadership. Your ability to find common ground resolves a team conflict. A business partnership opportunity emerges by Friday.",
-        "advice": "Make a decision you've been postponing. The information you need is already available — trust your judgment and commit."
+        "overview": "Venus graces your creative and romantic sectors with harmonious aspects that awaken your aesthetic sensibilities and desire for beauty in all forms. The winter season's call for planning finds expression through your natural ability to envision balanced, harmonious futures that honor all parties' needs and desires.",
+        "love": "Romance blooms under Venus's benevolent gaze, bringing opportunities for deeper commitment or enchanting new encounters that feel fated. Your diplomatic nature serves love beautifully now—conflicts resolve through your gift for seeing multiple perspectives and finding middle ground that satisfies both hearts.",
+        "career": "Professional partnerships require careful negotiation as diverging visions threaten collaborative projects you value. Your mediation skills prove essential in resolving workplace tensions, positioning you as the indispensable bridge between opposing factions who trust your fairness.",
+        "advice": "Not all imbalances require immediate correction; sometimes wisdom lies in allowing asymmetry to reveal its own resolution."
       },
       "scorpio": {
-        "overview": "Intensity builds throughout the week as Pluto activates hidden aspects of your chart. Secrets come to light, transformations accelerate, and power dynamics shift in your favor. This is a week of profound personal growth.",
-        "love": "Deep emotional connections intensify. A vulnerable conversation with a partner or love interest creates unbreakable trust. Passion runs high — channel it constructively.",
-        "career": "Research, investigation, or strategic planning yields breakthrough results. Your ability to see beneath the surface gives you a competitive advantage. A financial opportunity requires careful analysis.",
-        "advice": "Release control over outcomes you cannot influence. True power comes from inner transformation, not external manipulation."
+        "overview": "Pluto's transformative energy moves through significant territory in your chart, marking this winter week as profoundly regenerative for deep psychological work. Mars activates your communication sector, giving you courage to speak truths you've kept submerged, while winter's introspective quality supports the excavation of buried treasures within your psyche.",
+        "love": "Intensity defines your romantic interactions as you crave soul-deep connection rather than superficial pleasantries. Existing relationships either deepen significantly through vulnerable sharing or reveal themselves as inadequately equipped for the profundity you require—both outcomes serve your evolutionary path.",
+        "career": "Your investigative abilities uncover information that proves professionally valuable, particularly regarding hidden agendas or overlooked resources. Power dynamics at work require careful navigation—use your strategic mind rather than emotional reactivity when dealing with authority figures or competitive colleagues.",
+        "advice": "Transformation requires surrender before reconstruction; allow what must die to decompose, trusting that fertile ground awaits new growth."
       },
       "sagittarius": {
-        "overview": "Adventure calls this week as Jupiter expands your ninth house of exploration and higher learning. A travel opportunity, academic pursuit, or philosophical breakthrough brightens the week. Your optimism is contagious.",
-        "love": "A long-distance connection strengthens, or a local relationship benefits from shared adventures. Plan something outside your comfort zone with a partner — the shared experience creates lasting memories.",
-        "career": "International business or cross-cultural collaboration opens new doors. Your big-picture thinking impresses leadership. A publishing, teaching, or training opportunity deserves serious consideration.",
-        "advice": "Balance your desire for freedom with your commitments. The most meaningful adventures often happen within the context of deep relationships."
+        "overview": "Jupiter's retrograde journey through your philosophical sectors encourages reviewing beliefs and worldviews you've accumulated through your adventurous explorations. Winter's reflective energy may feel constraining to your expansive nature, yet this temporary contraction allows necessary integration of wisdom gained from experience.",
+        "love": "Your restless spirit seeks partners who can match your enthusiasm for growth and exploration, making this week ideal for planning future adventures together. Single Sagittarians attract fellow seekers and philosophers—look for love in educational settings, spiritual communities, or anywhere ideas are passionately exchanged.",
+        "career": "Professional opportunities emerge from unexpected directions, possibly involving travel, education, or cross-cultural communication. Your optimistic vision inspires others, but Saturn's influence reminds you that grand ideas require practical implementation plans—balance inspiration with realistic action steps.",
+        "advice": "Sometimes the greatest adventures happen in stillness; explore the vast inner territories that require no passport."
       },
       "capricorn": {
-        "overview": "Achievement energy peaks this week as Saturn blesses your efforts with structure and reward. A long-term goal reaches a critical milestone. Your reputation in professional circles strengthens considerably.",
-        "love": "Emotional walls gradually lower as you allow someone to see your softer side. Vulnerability becomes a strength in relationships. Practical expressions of love — reliability, follow-through — are your love language this week.",
-        "career": "A promotion, raise, or significant recognition is on the horizon. Your disciplined approach to a challenging project sets you apart. Authority figures take note of your leadership potential.",
-        "advice": "Celebrate your accomplishments before rushing to the next goal. Joy in the journey prevents burnout at the destination."
+        "overview": "Saturn, your ruling planet, provides steady support for the ambitious plans taking shape during this winter planning season perfectly aligned with your nature. The Sun illuminates your financial and values sectors, prompting reflection about whether your material pursuits align with what you genuinely treasure beyond status and achievement.",
+        "love": "Relationships deepen as you allow yourself rare vulnerability, recognizing that emotional intimacy requires lowering the walls you've carefully constructed. Your partner appreciates witnessing the tender heart beneath your competent exterior—show them the person behind the persona you present to the world.",
+        "career": "Professional momentum builds as your strategic planning and persistent effort begin yielding tangible results that validate your dedication. Authority figures recognize your reliability and leadership potential, possibly offering increased responsibilities that align with your long-term ambitions and trajectory.",
+        "advice": "Your mountain is climbed one intentional step at a time; trust the process rather than anxiously measuring distance to summit."
       },
       "aquarius": {
-        "overview": "Innovation and community are the themes this week. Uranus in your chart sparks brilliant ideas that serve both personal and collective goals. A group project or humanitarian effort gains unexpected momentum.",
-        "love": "Intellectual connection sparks romantic interest. A stimulating conversation leads somewhere unexpected. Existing relationships benefit from giving each other space to grow individually.",
-        "career": "Technology, innovation, or social media plays a key role in a professional breakthrough. Your unconventional approach to problem-solving earns respect. A team brainstorming session on Wednesday produces gold.",
-        "advice": "Connect your brilliant ideas with practical execution plans. Vision without action remains a dream — this week, start building."
+        "overview": "Uranus energizes your sector of self-expression just as the Sun moves through your sign, creating a potent combination of individuality and innovative thinking. This winter week invites you to conceptualize revolutionary ideas that will shake foundations when spring arrives, using the season's planning energy to blueprint futures others cannot yet imagine.",
+        "love": "Your need for independence and authentic connection sometimes creates paradoxical relationship dynamics that confuse more conventional partners. Communicate clearly about your unique approach to intimacy, seeking those who appreciate freedom as essential to love rather than threatening to commitment.",
+        "career": "Your visionary ideas may encounter resistance from traditional thinkers who cannot yet grasp the innovations you propose. Document your concepts thoroughly and build alliances with fellow forward-thinkers who recognize brilliance rather than dismissing it as impractical—your time is coming.",
+        "advice": "Revolution begins in consciousness before manifesting in form; tend the garden of radical ideas blooming in your brilliant mind."
       },
       "pisces": {
-        "overview": "Spiritual and creative energy flows abundantly this week as Neptune forms a supportive aspect with Venus. Artistic pursuits reach new heights, and your compassion touches everyone around you. Pay attention to vivid dreams — they carry messages.",
-        "love": "A soulmate connection deepens through shared spiritual or creative experiences. Music, art, or nature provide the perfect backdrop for romance. Single Pisces may meet someone in a healing or artistic setting.",
-        "career": "Creative industries, healing professions, and counseling roles are especially favored. Your empathic abilities help you understand what clients or colleagues truly need. A project with artistic elements showcases your talents.",
-        "advice": "Protect your energy by establishing clear boundaries. Your sensitivity is a gift, but it requires conscious management to prevent overwhelm."
+        "overview": "Neptune's dreamy influence through your sign intensifies this week, blurring boundaries between inner and outer worlds in ways both enchanting and disorienting. Winter's introspective quality perfectly suits your mystical nature, making this ideal for spiritual practices, creative endeavors, and emotional processing that requires retreat from harsh external demands.",
+        "love": "Romantic idealism reaches peak levels as you project divine qualities onto potential partners, seeing their highest potential rather than present reality. While your capacity for unconditional love is beautiful, ensure you're relating to actual humans rather than fantasies—compassion includes clear-seeing.",
+        "career": "Creative and healing professions flourish under Neptune's influence, as your intuitive abilities guide you toward solutions others cannot access through logic alone. Practical details may slip through your fingers like water—partner with earth-sign colleagues who can anchor your visions in executable plans.",
+        "advice": "Your sensitivity is a superpower, not a weakness; honor your need for retreat and regeneration without apologizing for your permeable boundaries."
       }
     }
   },
