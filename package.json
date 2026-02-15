@@ -16,7 +16,10 @@
     "blog:fix": "tsx scripts/auto-fix.ts",
     "fortune:generate": "tsx scripts/generate-fortunes.ts",
     "seasonal:generate": "tsx scripts/generate-seasonal.ts",
-    "content:validate": "tsx scripts/validate-content.ts"
+    "content:validate": "tsx scripts/validate-content.ts",
+    "x:post": "tsx scripts/post-to-x.ts --both",
+    "x:fortune": "tsx scripts/post-to-x.ts --fortune",
+    "x:horoscope": "tsx scripts/post-to-x.ts --horoscope"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -42,6 +45,7 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
+    "twitter-api-v2": "^1.29.0",
     "typescript": "^5"
   }
 }

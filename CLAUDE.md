@@ -34,6 +34,7 @@
 | Site Health Monitoring | Done | link-check, lighthouse, content-health (self-healing) workflows |
 | Self-Sufficient Automation | Done | Auto-close recovery, dedup issues, seasonal content, content validation (verified in Actions tab) |
 | Astrology Content | Not Started | Horoscopes, birth charts, compatibility — Phase 8 (NEW) |
+| Auto X (Twitter) Posting | Done | 2 tweets/day: fortune (8AM UTC) + horoscope (2PM UTC) via twitter-api-v2 |
 | Testing | None | No test framework |
 
 ---
@@ -455,6 +456,10 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 | Secret | Purpose |
 |---|---|
 | `ANTHROPIC_API_KEY` | Claude API for blog auto-generation + quality checks + fortune generation + horoscopes |
+| `X_API_KEY` | X (Twitter) API key for automated tweets |
+| `X_API_SECRET` | X (Twitter) API secret |
+| `X_ACCESS_TOKEN` | X (Twitter) user access token |
+| `X_ACCESS_TOKEN_SECRET` | X (Twitter) user access token secret |
 | (GITHUB_TOKEN) | Auto-provided by GitHub Actions for git push |
 
 ---
@@ -556,6 +561,7 @@ scripts/
 ├── generate-horoscopes.ts    # Daily/weekly/monthly horoscope generation via Claude API
 ├── generate-seasonal.ts      # Seasonal holiday content generation via Claude API
 ├── validate-content.ts       # Data integrity validation (fortunes, horoscopes, blog)
+├── post-to-x.ts              # Auto-post daily fortune/horoscope tweets to X (Twitter)
 └── seasonal-state.json       # Tracks which seasonal content has been generated per year
 
 .github/workflows/
@@ -564,6 +570,7 @@ scripts/
 ├── auto-horoscopes.yml       # Cron (Daily 6AM UTC): daily/weekly/monthly horoscopes for 12 signs
 ├── auto-seasonal.yml         # Cron (Mon 8AM UTC): seasonal content if holiday window active
 ├── content-health.yml        # Weekly (Mon noon UTC): blog/horoscope/fortune freshness + URL pings + auto-triggers
+├── auto-x-post.yml           # Cron (Daily 8AM+2PM UTC): fortune + horoscope tweets to X
 ├── link-check.yml            # Weekly (Mon 6AM UTC): broken link detection → deduplicated issues
 └── lighthouse.yml            # Weekly (Wed 6AM UTC): SEO + performance audit
 ```
@@ -610,6 +617,8 @@ scripts/
 | Mon 8AM UTC | auto-seasonal | Seasonal content if holiday window active | Issue + auto-close |
 | Mon noon UTC | content-health | Blog/horoscope/fortune freshness + URL pings + auto-trigger stale pipelines | Issue + auto-trigger |
 | Wed 6AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
+| Daily 8AM UTC | auto-x-post | Fortune tweet to X (Twitter) | Retry + issue + auto-close |
+| Daily 2PM UTC | auto-x-post | Rotating zodiac horoscope tweet to X | Retry + issue + auto-close |
 | On push | dependabot-updates | Auto-merge Dependabot PRs after CI passes | Auto-merge |
 
 ### Self-Corrective Mechanisms
@@ -655,4 +664,7 @@ npm run horoscope:generate   # Generate horoscopes (auto-detect type)
 npm run horoscope:daily      # Generate daily horoscopes only
 npm run horoscope:weekly     # Generate weekly horoscopes only
 npm run horoscope:monthly    # Generate monthly horoscopes only
+npm run x:post               # Post both fortune + horoscope tweets to X
+npm run x:fortune            # Post daily fortune tweet to X
+npm run x:horoscope          # Post horoscope tweet to X
 ```
