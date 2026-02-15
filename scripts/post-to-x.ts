@@ -132,8 +132,8 @@ function buildHoroscopeTweet(): string {
 
 function createClient(): TwitterApi {
   return new TwitterApi({
-    appKey: requireEnv("X_API_KEY"),
-    appSecret: requireEnv("X_API_SECRET"),
+    appKey: requireEnv("X_CONSUMER_KEY"),
+    appSecret: requireEnv("X_SECRET_KEY"),
     accessToken: requireEnv("X_ACCESS_TOKEN"),
     accessSecret: requireEnv("X_ACCESS_TOKEN_SECRET"),
   });
