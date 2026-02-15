@@ -153,10 +153,52 @@ async function postTweet(text: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Dedup state — single file tracks fortune/horoscope dates + blog slugs
+// ---------------------------------------------------------------------------
+
+const STATE_PATH = path.join(__dirname, "x-post-state.json");
+const OLD_BLOG_STATE_PATH = path.join(__dirname, "x-blog-state.json");
+
+interface PostState {
+  lastFortuneDate: string | null;
+  lastHoroscopeDate: string | null;
+  tweetedBlogSlugs: string[];
+}
+
+function loadState(): PostState {
+  // Migrate from old x-blog-state.json if it exists and new file doesn't
+  if (!fs.existsSync(STATE_PATH) && fs.existsSync(OLD_BLOG_STATE_PATH)) {
+    const slugs: string[] = JSON.parse(fs.readFileSync(OLD_BLOG_STATE_PATH, "utf-8"));
+    const migrated: PostState = { lastFortuneDate: null, lastHoroscopeDate: null, tweetedBlogSlugs: slugs };
+    saveState(migrated);
+    fs.unlinkSync(OLD_BLOG_STATE_PATH);
+    log.info("Migrated x-blog-state.json → x-post-state.json");
+    return migrated;
+  }
+  if (!fs.existsSync(STATE_PATH)) {
+    return { lastFortuneDate: null, lastHoroscopeDate: null, tweetedBlogSlugs: [] };
+  }
+  const raw = JSON.parse(fs.readFileSync(STATE_PATH, "utf-8"));
+  return {
+    lastFortuneDate: raw.lastFortuneDate ?? null,
+    lastHoroscopeDate: raw.lastHoroscopeDate ?? null,
+    tweetedBlogSlugs: raw.tweetedBlogSlugs ?? [],
+  };
+}
+
+function saveState(state: PostState): void {
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
+}
+
+function todayString(): string {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+}
+
+// ---------------------------------------------------------------------------
 // Blog tweet helpers
 // ---------------------------------------------------------------------------
 
-const BLOG_STATE_PATH = path.join(__dirname, "x-blog-state.json");
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
 interface BlogPost {
@@ -164,15 +206,6 @@ interface BlogPost {
   title: string;
   excerpt: string;
   date: string;
-}
-
-function loadBlogState(): string[] {
-  if (!fs.existsSync(BLOG_STATE_PATH)) return [];
-  return JSON.parse(fs.readFileSync(BLOG_STATE_PATH, "utf-8"));
-}
-
-function saveBlogState(slugs: string[]): void {
-  fs.writeFileSync(BLOG_STATE_PATH, JSON.stringify(slugs, null, 2) + "\n");
 }
 
 function loadBlogPosts(): BlogPost[] {
@@ -214,14 +247,14 @@ function buildBlogTweet(post: BlogPost): string {
   return `${header}${excerpt}${footer}`;
 }
 
-function getUntweetedPosts(): BlogPost[] {
-  const tweeted = loadBlogState();
+function getUntweetedPosts(state: PostState): BlogPost[] {
   const allPosts = loadBlogPosts();
-  return allPosts.filter((p) => !tweeted.includes(p.slug));
+  return allPosts.filter((p) => !state.tweetedBlogSlugs.includes(p.slug));
 }
 
 async function postBlogTweets(all: boolean): Promise<void> {
-  const untweeted = getUntweetedPosts();
+  const state = loadState();
+  const untweeted = getUntweetedPosts(state);
 
   if (untweeted.length === 0) {
     log.info("No untweeted blog posts. Nothing to do.");
@@ -231,16 +264,14 @@ async function postBlogTweets(all: boolean): Promise<void> {
   const toPost = all ? untweeted : [untweeted[0]];
   log.info(`${untweeted.length} untweeted post(s) found, posting ${toPost.length}`);
 
-  const tweeted = loadBlogState();
-
   for (let i = 0; i < toPost.length; i++) {
     const post = toPost[i];
     log.step(`Posting blog tweet for: ${post.title}`);
     const tweet = buildBlogTweet(post);
     log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
     await postTweet(tweet);
-    tweeted.push(post.slug);
-    saveBlogState(tweeted);
+    state.tweetedBlogSlugs.push(post.slug);
+    saveState(state);
 
     // Delay between tweets to avoid rate limiting
     if (all && i < toPost.length - 1) {
@@ -266,18 +297,33 @@ async function main() {
     process.exit(1);
   }
 
+  const state = loadState();
+  const today = todayString();
+
   if (doFortune) {
-    log.step("Posting daily fortune tweet");
-    const tweet = buildFortuneTweet();
-    log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
-    await postTweet(tweet);
+    if (state.lastFortuneDate === today) {
+      log.info(`Fortune tweet already posted today (${today}). Skipping.`);
+    } else {
+      log.step("Posting daily fortune tweet");
+      const tweet = buildFortuneTweet();
+      log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
+      await postTweet(tweet);
+      state.lastFortuneDate = today;
+      saveState(state);
+    }
   }
 
   if (doHoroscope) {
-    log.step("Posting horoscope tweet");
-    const tweet = buildHoroscopeTweet();
-    log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
-    await postTweet(tweet);
+    if (state.lastHoroscopeDate === today) {
+      log.info(`Horoscope tweet already posted today (${today}). Skipping.`);
+    } else {
+      log.step("Posting horoscope tweet");
+      const tweet = buildHoroscopeTweet();
+      log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
+      await postTweet(tweet);
+      state.lastHoroscopeDate = today;
+      saveState(state);
+    }
   }
 
   if (doBlog || doBlogAll) {
