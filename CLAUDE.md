@@ -667,4 +667,5 @@ npm run horoscope:monthly    # Generate monthly horoscopes only
 npm run x:post               # Post both fortune + horoscope tweets to X
 npm run x:fortune            # Post daily fortune tweet to X
 npm run x:horoscope          # Post horoscope tweet to X
+npm run x:blog               # Post all untweeted blog posts to X
 ```

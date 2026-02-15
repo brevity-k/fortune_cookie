@@ -1,16 +1,19 @@
 /**
- * Post daily fortune or horoscope tweets to X (Twitter).
+ * Post daily fortune, horoscope, or blog tweets to X (Twitter).
  *
  * Usage:
  *   npx tsx scripts/post-to-x.ts --fortune     # Post daily fortune tweet
  *   npx tsx scripts/post-to-x.ts --horoscope   # Post rotating zodiac horoscope tweet
- *   npx tsx scripts/post-to-x.ts --both        # Post both
+ *   npx tsx scripts/post-to-x.ts --both        # Post fortune + horoscope
+ *   npx tsx scripts/post-to-x.ts --blog        # Post one untweeted blog post (oldest first)
+ *   npx tsx scripts/post-to-x.ts --blog-all    # Post all untweeted blog posts (30s delay between)
  *
- * Requires env vars: X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET
+ * Requires env vars: X_CONSUMER_KEY, X_SECRET_KEY, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET
  */
 
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 import { TwitterApi } from "twitter-api-v2";
 import { log, requireEnv, callWithRetry } from "./lib/utils";
 import { ZODIAC_SIGNS } from "./lib/types";
@@ -150,6 +153,104 @@ async function postTweet(text: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Blog tweet helpers
+// ---------------------------------------------------------------------------
+
+const BLOG_STATE_PATH = path.join(__dirname, "x-blog-state.json");
+const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+}
+
+function loadBlogState(): string[] {
+  if (!fs.existsSync(BLOG_STATE_PATH)) return [];
+  return JSON.parse(fs.readFileSync(BLOG_STATE_PATH, "utf-8"));
+}
+
+function saveBlogState(slugs: string[]): void {
+  fs.writeFileSync(BLOG_STATE_PATH, JSON.stringify(slugs, null, 2) + "\n");
+}
+
+function loadBlogPosts(): BlogPost[] {
+  const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
+  const posts: BlogPost[] = [];
+
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf-8");
+    const { data } = matter(raw);
+    posts.push({
+      slug: file.replace(/\.mdx$/, ""),
+      title: data.title || file.replace(/\.mdx$/, ""),
+      excerpt: data.excerpt || "",
+      date: data.date || "1970-01-01",
+    });
+  }
+
+  // Sort oldest first
+  posts.sort((a, b) => a.date.localeCompare(b.date));
+  return posts;
+}
+
+function buildBlogTweet(post: BlogPost): string {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  const header = `\uD83D\uDCD6 ${post.title}\n\n`;
+  const footer = `\n\nRead \u2192 ${url}`;
+  const maxExcerptLength = MAX_TWEET_LENGTH - header.length - footer.length;
+
+  let excerpt = post.excerpt;
+  if (excerpt.length > maxExcerptLength) {
+    const truncated = excerpt.slice(0, maxExcerptLength - 1);
+    const lastSpace = truncated.lastIndexOf(" ");
+    excerpt =
+      (lastSpace > maxExcerptLength * 0.5
+        ? truncated.slice(0, lastSpace)
+        : truncated) + "\u2026";
+  }
+
+  return `${header}${excerpt}${footer}`;
+}
+
+function getUntweetedPosts(): BlogPost[] {
+  const tweeted = loadBlogState();
+  const allPosts = loadBlogPosts();
+  return allPosts.filter((p) => !tweeted.includes(p.slug));
+}
+
+async function postBlogTweets(all: boolean): Promise<void> {
+  const untweeted = getUntweetedPosts();
+
+  if (untweeted.length === 0) {
+    log.info("No untweeted blog posts. Nothing to do.");
+    return;
+  }
+
+  const toPost = all ? untweeted : [untweeted[0]];
+  log.info(`${untweeted.length} untweeted post(s) found, posting ${toPost.length}`);
+
+  const tweeted = loadBlogState();
+
+  for (let i = 0; i < toPost.length; i++) {
+    const post = toPost[i];
+    log.step(`Posting blog tweet for: ${post.title}`);
+    const tweet = buildBlogTweet(post);
+    log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
+    await postTweet(tweet);
+    tweeted.push(post.slug);
+    saveBlogState(tweeted);
+
+    // Delay between tweets to avoid rate limiting
+    if (all && i < toPost.length - 1) {
+      log.info("Waiting 30s before next tweet...");
+      await new Promise((r) => setTimeout(r, 30000));
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -157,9 +258,11 @@ async function main() {
   const args = process.argv.slice(2);
   const doFortune = args.includes("--fortune") || args.includes("--both");
   const doHoroscope = args.includes("--horoscope") || args.includes("--both");
+  const doBlog = args.includes("--blog");
+  const doBlogAll = args.includes("--blog-all");
 
-  if (!doFortune && !doHoroscope) {
-    log.error("Usage: post-to-x.ts --fortune | --horoscope | --both");
+  if (!doFortune && !doHoroscope && !doBlog && !doBlogAll) {
+    log.error("Usage: post-to-x.ts --fortune | --horoscope | --both | --blog | --blog-all");
     process.exit(1);
   }
 
@@ -175,6 +278,11 @@ async function main() {
     const tweet = buildHoroscopeTweet();
     log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
     await postTweet(tweet);
+  }
+
+  if (doBlog || doBlogAll) {
+    log.step("Posting blog tweet(s)");
+    await postBlogTweets(doBlogAll);
   }
 
   log.ok("Done!");

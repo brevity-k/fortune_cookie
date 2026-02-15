@@ -19,7 +19,8 @@
     "content:validate": "tsx scripts/validate-content.ts",
     "x:post": "tsx scripts/post-to-x.ts --both",
     "x:fortune": "tsx scripts/post-to-x.ts --fortune",
-    "x:horoscope": "tsx scripts/post-to-x.ts --horoscope"
+    "x:horoscope": "tsx scripts/post-to-x.ts --horoscope",
+    "x:blog": "tsx scripts/post-to-x.ts --blog-all"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
