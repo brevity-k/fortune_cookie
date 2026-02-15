@@ -1,10 +1,12 @@
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
+
 export function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Fortune Cookie",
-    url: "https://fortunecrack.com",
-    logo: "https://fortunecrack.com/opengraph-image",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/opengraph-image`,
     description:
       "Break a virtual fortune cookie with realistic physics and discover your fortune!",
     sameAs: [],
@@ -22,13 +24,13 @@ export function WebSiteJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Fortune Cookie",
-    url: "https://fortunecrack.com",
+    name: SITE_NAME,
+    url: SITE_URL,
     description:
       "Break a virtual fortune cookie with realistic physics and discover your fortune! Interactive web experience with multiple breaking styles.",
     publisher: {
       "@type": "Organization",
-      name: "Fortune Cookie",
+      name: SITE_NAME,
     },
   };
 
@@ -53,25 +55,25 @@ export function ArticleJsonLd({ title, description, slug, datePublished }: Artic
     "@type": "Article",
     headline: title,
     description,
-    url: `https://fortunecrack.com/blog/${slug}`,
+    url: `${SITE_URL}/blog/${slug}`,
     datePublished,
     dateModified: datePublished,
     author: {
       "@type": "Organization",
-      name: "Fortune Cookie",
+      name: SITE_NAME,
     },
     publisher: {
       "@type": "Organization",
-      name: "Fortune Cookie",
+      name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: "https://fortunecrack.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
       },
     },
-    image: `https://fortunecrack.com/blog/${slug}/opengraph-image`,
+    image: `${SITE_URL}/blog/${slug}/opengraph-image`,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://fortunecrack.com/blog/${slug}`,
+      "@id": `${SITE_URL}/blog/${slug}`,
     },
   };
 
