@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 import { getAllPosts, getPost } from "@/lib/blog";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 const components = {
   h2: (props: React.ComponentProps<"h2">) => (
@@ -33,6 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `${SITE_URL}/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | ${SITE_NAME}`,
+      description: post.excerpt,
+      url: `${SITE_URL}/blog/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -63,9 +78,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Blog", url: "https://fortunecrack.com/blog" },
-          { name: post.title, url: `https://fortunecrack.com/blog/${slug}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Blog", url: `${SITE_URL}/blog` },
+          { name: post.title, url: `${SITE_URL}/blog/${slug}` },
         ]}
       />
       <article className="mx-auto max-w-2xl">

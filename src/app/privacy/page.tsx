@@ -4,6 +4,9 @@ import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `Privacy Policy for ${SITE_NAME} — how we handle your data and cookies.`,
+  alternates: {
+    canonical: `${SITE_URL}/privacy`,
+  },
   openGraph: {
     title: `Privacy Policy | ${SITE_NAME}`,
     description: `Privacy Policy for ${SITE_NAME} — how we handle your data and cookies.`,

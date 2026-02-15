@@ -10,6 +10,7 @@ import {
   getRarityLabel,
 } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const revalidate = 43200; // 12 hours — refresh at least twice daily
 
@@ -84,14 +85,17 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `${SITE_URL}/fortune/${category}`,
+    },
     openGraph: {
-      title: `${title} | Fortune Cookie`,
+      title: `${title} | ${SITE_NAME}`,
       description,
-      url: `https://fortunecrack.com/fortune/${category}`,
+      url: `${SITE_URL}/fortune/${category}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | Fortune Cookie`,
+      title: `${title} | ${SITE_NAME}`,
       description,
     },
   };
@@ -131,9 +135,9 @@ export default async function CategoryPage({
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Fortunes", url: "https://fortunecrack.com/fortune/wisdom" },
-          { name: catTitle, url: `https://fortunecrack.com/fortune/${category}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Fortunes", url: `${SITE_URL}/fortune/wisdom` },
+          { name: catTitle, url: `${SITE_URL}/fortune/${category}` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />

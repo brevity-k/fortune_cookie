@@ -4,6 +4,9 @@ import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: `Terms of Service for ${SITE_NAME}.`,
+  alternates: {
+    canonical: `${SITE_URL}/terms`,
+  },
   openGraph: {
     title: `Terms of Service | ${SITE_NAME}`,
     description: `Terms of Service for ${SITE_NAME}.`,

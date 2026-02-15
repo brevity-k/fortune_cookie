@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { StarRating } from "@/components/StarRating";
 import {
   ZODIAC_SIGNS,
   getDailyHoroscope,
   getDailyDate,
   formatDailyDate,
 } from "@/lib/horoscopes";
+import { SITE_URL } from "@/lib/constants";
 
 export const revalidate = 43200;
 
@@ -32,26 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "daily horoscope",
       "horoscope today",
     ],
+    alternates: {
+      canonical: `${SITE_URL}/horoscope/daily/${sign}`,
+    },
     openGraph: {
       title: `${zodiac.symbol} ${zodiac.name} Daily Horoscope - ${formatted} | Fortune Cookie`,
       description: `Today's ${zodiac.name} horoscope: love, career, and health predictions.`,
-      url: `https://fortunecrack.com/horoscope/daily/${sign}`,
+      url: `${SITE_URL}/horoscope/daily/${sign}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${zodiac.symbol} ${zodiac.name} Daily Horoscope - ${formatted}`,
+      description: `Today's ${zodiac.name} horoscope: love, career, and health predictions.`,
     },
   };
-}
-
-function StarRating({ rating, label }: { rating: number; label: string }) {
-  return (
-    <div className="flex items-center gap-2">
-      <span className="text-sm text-foreground/40 w-16">{label}</span>
-      <div className="flex gap-1">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <span key={i} className={`text-lg ${i <= rating ? "text-gold" : "text-foreground/10"}`}>★</span>
-        ))}
-      </div>
-      <span className="text-xs text-foreground/30">{rating}/5</span>
-    </div>
-  );
 }
 
 export default async function DailyHoroscopePage({ params }: PageProps) {
@@ -60,7 +56,7 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
 
   if (!zodiac) {
     return (
-      <div className="px-4 py-16 text-center text-foreground/50">
+      <div className="bg-warm-gradient min-h-screen px-4 py-16 text-center text-foreground/50">
         Zodiac sign not found.
       </div>
     );
@@ -82,12 +78,12 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
   ];
 
   return (
-    <div className="px-4 py-16">
+    <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Horoscopes", url: "https://fortunecrack.com/horoscope" },
-          { name: `${signTitle} Daily`, url: `https://fortunecrack.com/horoscope/daily/${sign}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Horoscopes", url: `${SITE_URL}/horoscope` },
+          { name: `${signTitle} Daily`, url: `${SITE_URL}/horoscope/daily/${sign}` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />

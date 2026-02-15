@@ -5,6 +5,9 @@ import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Contact",
   description: `Get in touch with the ${SITE_NAME} team.`,
+  alternates: {
+    canonical: `${SITE_URL}/contact`,
+  },
   openGraph: {
     title: `Contact Us | ${SITE_NAME}`,
     description: `Get in touch with the ${SITE_NAME} team.`,
