@@ -31,23 +31,24 @@ export const MAX_FORTUNES = 3000;
 export interface ZodiacSignData {
   key: string;
   name: string;
+  symbol: string;
   element: string;
   ruler: string;
 }
 
 export const ZODIAC_SIGNS: ZodiacSignData[] = [
-  { key: "aries", name: "Aries", element: "Fire", ruler: "Mars" },
-  { key: "taurus", name: "Taurus", element: "Earth", ruler: "Venus" },
-  { key: "gemini", name: "Gemini", element: "Air", ruler: "Mercury" },
-  { key: "cancer", name: "Cancer", element: "Water", ruler: "Moon" },
-  { key: "leo", name: "Leo", element: "Fire", ruler: "Sun" },
-  { key: "virgo", name: "Virgo", element: "Earth", ruler: "Mercury" },
-  { key: "libra", name: "Libra", element: "Air", ruler: "Venus" },
-  { key: "scorpio", name: "Scorpio", element: "Water", ruler: "Pluto" },
-  { key: "sagittarius", name: "Sagittarius", element: "Fire", ruler: "Jupiter" },
-  { key: "capricorn", name: "Capricorn", element: "Earth", ruler: "Saturn" },
-  { key: "aquarius", name: "Aquarius", element: "Air", ruler: "Uranus" },
-  { key: "pisces", name: "Pisces", element: "Water", ruler: "Neptune" },
+  { key: "aries", name: "Aries", symbol: "\u2648", element: "Fire", ruler: "Mars" },
+  { key: "taurus", name: "Taurus", symbol: "\u2649", element: "Earth", ruler: "Venus" },
+  { key: "gemini", name: "Gemini", symbol: "\u264A", element: "Air", ruler: "Mercury" },
+  { key: "cancer", name: "Cancer", symbol: "\u264B", element: "Water", ruler: "Moon" },
+  { key: "leo", name: "Leo", symbol: "\u264C", element: "Fire", ruler: "Sun" },
+  { key: "virgo", name: "Virgo", symbol: "\u264D", element: "Earth", ruler: "Mercury" },
+  { key: "libra", name: "Libra", symbol: "\u264E", element: "Air", ruler: "Venus" },
+  { key: "scorpio", name: "Scorpio", symbol: "\u264F", element: "Water", ruler: "Pluto" },
+  { key: "sagittarius", name: "Sagittarius", symbol: "\u2650", element: "Fire", ruler: "Jupiter" },
+  { key: "capricorn", name: "Capricorn", symbol: "\u2651", element: "Earth", ruler: "Saturn" },
+  { key: "aquarius", name: "Aquarius", symbol: "\u2652", element: "Air", ruler: "Uranus" },
+  { key: "pisces", name: "Pisces", symbol: "\u2653", element: "Water", ruler: "Neptune" },
 ];
 
 export const ZODIAC_SIGN_KEYS = ZODIAC_SIGNS.map((s) => s.key);
