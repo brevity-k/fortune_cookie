@@ -2,21 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { seededRandom, dateSeed } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const revalidate = 43200; // 12 hours — refresh at least twice daily
 
 export const metadata: Metadata = {
   title: "Lucky Numbers Today",
   description:
-    "Get your daily lucky numbers! 6 lottery-style numbers plus a power number, refreshed every day. Free daily lucky numbers from Fortune Cookie.",
+    `Get your daily lucky numbers! 6 lottery-style numbers plus a power number, refreshed every day. Free daily lucky numbers from ${SITE_NAME}.`,
+  alternates: {
+    canonical: `${SITE_URL}/lucky-numbers`,
+  },
   openGraph: {
-    title: "Lucky Numbers Today | Fortune Cookie",
+    title: `Lucky Numbers Today | ${SITE_NAME}`,
     description: "Get your daily lucky numbers! 6 lottery-style numbers refreshed every day.",
-    url: "https://fortunecrack.com/lucky-numbers",
+    url: `${SITE_URL}/lucky-numbers`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lucky Numbers Today | Fortune Cookie",
+    title: `Lucky Numbers Today | ${SITE_NAME}`,
     description: "Get your daily lucky numbers! 6 lottery-style numbers refreshed every day.",
   },
 };
@@ -78,8 +82,8 @@ export default function LuckyNumbersPage() {
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Lucky Numbers", url: "https://fortunecrack.com/lucky-numbers" },
+          { name: "Home", url: SITE_URL },
+          { name: "Lucky Numbers", url: `${SITE_URL}/lucky-numbers` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />

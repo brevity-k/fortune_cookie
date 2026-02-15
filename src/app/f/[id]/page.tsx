@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 interface FortuneData {
   t: string; // text
@@ -21,20 +22,20 @@ const RARITY_LABELS: Record<string, string> = {
   legendary: "Legendary",
 };
 
+const VALID_RARITIES = ["common", "rare", "epic", "legendary"];
+const VALID_CATEGORIES = ["wisdom", "love", "career", "humor", "motivation", "philosophy", "adventure", "mystery"];
+
 function decodeFortuneId(id: string): FortuneData | null {
   try {
-    // base64url → base64 → JSON
     const base64 = id.replace(/-/g, "+").replace(/_/g, "/");
     const json = Buffer.from(base64, "base64").toString("utf-8");
     const data = JSON.parse(json);
-    if (data.t && typeof data.t === "string") {
-      return {
-        t: data.t.slice(0, 300),
-        c: data.c || "wisdom",
-        r: data.r || "common",
-      };
-    }
-    return null;
+    if (!data.t || typeof data.t !== "string") return null;
+    return {
+      t: data.t.slice(0, 300),
+      c: VALID_CATEGORIES.includes(data.c) ? data.c : "wisdom",
+      r: VALID_RARITIES.includes(data.r) ? data.r : "common",
+    };
   } catch {
     return null;
   }
@@ -49,20 +50,23 @@ export async function generateMetadata({
   const fortune = decodeFortuneId(id);
 
   if (!fortune) {
-    return { title: "Fortune Cookie" };
+    return { title: SITE_NAME };
   }
 
-  const title = `"${fortune.t}" — Fortune Cookie`;
+  const title = `"${fortune.t}" — ${SITE_NAME}`;
   const description = `I cracked a ${fortune.r} ${fortune.c} fortune cookie! Break your own at Fortune Cookie.`;
-  const cardUrl = `https://fortunecrack.com/api/fortune-card?text=${encodeURIComponent(fortune.t)}&category=${encodeURIComponent(fortune.c)}&rarity=${encodeURIComponent(fortune.r)}`;
+  const cardUrl = `${SITE_URL}/api/fortune-card?text=${encodeURIComponent(fortune.t)}&category=${encodeURIComponent(fortune.c)}&rarity=${encodeURIComponent(fortune.r)}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: `${SITE_URL}/f/${id}`,
+    },
     openGraph: {
       title,
       description,
-      url: `https://fortunecrack.com/f/${id}`,
+      url: `${SITE_URL}/f/${id}`,
       images: [{ url: cardUrl, width: 1200, height: 630 }],
     },
     twitter: {

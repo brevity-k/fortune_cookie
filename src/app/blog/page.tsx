@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Read about fortune cookie history, traditions, and the technology behind our interactive fortune cookie experience.",
+  alternates: {
+    canonical: `${SITE_URL}/blog`,
+  },
   openGraph: {
     title: `Blog | ${SITE_NAME}`,
     description:

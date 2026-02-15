@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 import {
   ZODIAC_SIGNS,
   getMonthlyHoroscope,
   getMonthlyDate,
   formatMonthYear,
 } from "@/lib/horoscopes";
+import { SITE_URL } from "@/lib/constants";
 
 export const revalidate = 43200;
 
@@ -31,10 +32,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${zodiac.name.toLowerCase()} horoscope ${formatted.toLowerCase()}`,
       "monthly horoscope",
     ],
+    alternates: {
+      canonical: `${SITE_URL}/horoscope/monthly/${sign}`,
+    },
     openGraph: {
       title: `${zodiac.symbol} ${zodiac.name} Monthly Horoscope - ${formatted} | Fortune Cookie`,
       description: `${zodiac.name} monthly horoscope with love, career, health, and life advice for ${formatted}.`,
-      url: `https://fortunecrack.com/horoscope/monthly/${sign}`,
+      url: `${SITE_URL}/horoscope/monthly/${sign}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${zodiac.symbol} ${zodiac.name} Monthly Horoscope - ${formatted}`,
+      description: `${zodiac.name} monthly horoscope with love, career, health, and life advice for ${formatted}.`,
     },
   };
 }
@@ -44,22 +53,38 @@ export default async function MonthlyHoroscopePage({ params }: PageProps) {
   const zodiac = ZODIAC_SIGNS.find((s) => s.key === sign);
 
   if (!zodiac) {
-    return <div className="px-4 py-16 text-center text-foreground/50">Zodiac sign not found.</div>;
+    return (
+      <div className="bg-warm-gradient min-h-screen px-4 py-16 text-center text-foreground/50">
+        Zodiac sign not found.
+      </div>
+    );
   }
 
   const monthly = getMonthlyHoroscope(sign);
   const formattedMonth = formatMonthYear(getMonthlyDate());
   const signTitle = zodiac.name;
 
+  const faqs = [
+    {
+      q: `What is ${signTitle}'s monthly horoscope for ${formattedMonth}?`,
+      a: monthly ? `${signTitle}'s ${formattedMonth} overview: "${monthly.overview.slice(0, 120)}..."` : `Check back for ${signTitle}'s ${formattedMonth} horoscope.`,
+    },
+    {
+      q: `When do monthly horoscopes update?`,
+      a: "Monthly horoscopes are updated on the 1st of each month with fresh predictions for the entire month.",
+    },
+  ];
+
   return (
-    <div className="px-4 py-16">
+    <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Horoscopes", url: "https://fortunecrack.com/horoscope" },
-          { name: `${signTitle} Monthly`, url: `https://fortunecrack.com/horoscope/monthly/${sign}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Horoscopes", url: `${SITE_URL}/horoscope` },
+          { name: `${signTitle} Monthly`, url: `${SITE_URL}/horoscope/monthly/${sign}` },
         ]}
       />
+      <FAQPageJsonLd faqs={faqs} />
 
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-8">

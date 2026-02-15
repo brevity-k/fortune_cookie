@@ -9,47 +9,27 @@ import {
   FortuneCategory,
 } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { ZODIAC_SIGNS } from "@/lib/horoscopes";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const revalidate = 43200; // 12 hours — refresh at least twice daily
 
-interface ZodiacSign {
-  sign: string;
-  symbol: string;
-  element: "fire" | "earth" | "air" | "water";
-  dateRange: string;
-}
-
-const ZODIAC_SIGNS: ZodiacSign[] = [
-  { sign: "aries", symbol: "♈", element: "fire", dateRange: "Mar 21 – Apr 19" },
-  { sign: "taurus", symbol: "♉", element: "earth", dateRange: "Apr 20 – May 20" },
-  { sign: "gemini", symbol: "♊", element: "air", dateRange: "May 21 – Jun 20" },
-  { sign: "cancer", symbol: "♋", element: "water", dateRange: "Jun 21 – Jul 22" },
-  { sign: "leo", symbol: "♌", element: "fire", dateRange: "Jul 23 – Aug 22" },
-  { sign: "virgo", symbol: "♍", element: "earth", dateRange: "Aug 23 – Sep 22" },
-  { sign: "libra", symbol: "♎", element: "air", dateRange: "Sep 23 – Oct 22" },
-  { sign: "scorpio", symbol: "♏", element: "water", dateRange: "Oct 23 – Nov 21" },
-  { sign: "sagittarius", symbol: "♐", element: "fire", dateRange: "Nov 22 – Dec 21" },
-  { sign: "capricorn", symbol: "♑", element: "earth", dateRange: "Dec 22 – Jan 19" },
-  { sign: "aquarius", symbol: "♒", element: "air", dateRange: "Jan 20 – Feb 18" },
-  { sign: "pisces", symbol: "♓", element: "water", dateRange: "Feb 19 – Mar 20" },
-];
-
 const elementCategory: Record<string, FortuneCategory> = {
-  fire: "motivation",
-  earth: "career",
-  air: "philosophy",
-  water: "love",
+  Fire: "motivation",
+  Earth: "career",
+  Air: "philosophy",
+  Water: "love",
 };
 
 const elementColors: Record<string, string> = {
-  fire: "#e74c3c",
-  earth: "#27ae60",
-  air: "#9b59b6",
-  water: "#3498db",
+  Fire: "#e74c3c",
+  Earth: "#27ae60",
+  Air: "#9b59b6",
+  Water: "#3498db",
 };
 
 export function generateStaticParams() {
-  return ZODIAC_SIGNS.map((z) => ({ sign: z.sign }));
+  return ZODIAC_SIGNS.map((z) => ({ sign: z.key }));
 }
 
 export async function generateMetadata({
@@ -58,23 +38,26 @@ export async function generateMetadata({
   params: Promise<{ sign: string }>;
 }): Promise<Metadata> {
   const { sign } = await params;
-  const zodiac = ZODIAC_SIGNS.find((z) => z.sign === sign);
+  const zodiac = ZODIAC_SIGNS.find((z) => z.key === sign);
   if (!zodiac) return { title: "Zodiac Fortune" };
 
-  const title = `${zodiac.symbol} ${zodiac.sign.charAt(0).toUpperCase() + zodiac.sign.slice(1)} Fortune Today`;
-  const description = `Daily fortune cookie message for ${zodiac.sign.charAt(0).toUpperCase() + zodiac.sign.slice(1)} (${zodiac.dateRange}). Lucky numbers, personalized fortune, and cosmic guidance updated daily.`;
+  const title = `${zodiac.symbol} ${zodiac.name} Fortune Today`;
+  const description = `Daily fortune cookie message for ${zodiac.name} (${zodiac.dateRange}). Lucky numbers, personalized fortune, and cosmic guidance updated daily.`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: `${SITE_URL}/zodiac/${sign}`,
+    },
     openGraph: {
-      title: `${title} | Fortune Cookie`,
+      title: `${title} | ${SITE_NAME}`,
       description,
-      url: `https://fortunecrack.com/zodiac/${sign}`,
+      url: `${SITE_URL}/zodiac/${sign}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | Fortune Cookie`,
+      title: `${title} | ${SITE_NAME}`,
       description,
     },
   };
@@ -86,7 +69,7 @@ export default async function ZodiacPage({
   params: Promise<{ sign: string }>;
 }) {
   const { sign } = await params;
-  const zodiac = ZODIAC_SIGNS.find((z) => z.sign === sign);
+  const zodiac = ZODIAC_SIGNS.find((z) => z.key === sign);
 
   if (!zodiac) {
     return (
@@ -118,7 +101,7 @@ export default async function ZodiacPage({
   }
   luckyNumbers.sort((a, b) => a - b);
 
-  const signTitle = zodiac.sign.charAt(0).toUpperCase() + zodiac.sign.slice(1);
+  const signTitle = zodiac.name;
 
   const faqs = [
     {
@@ -139,9 +122,9 @@ export default async function ZodiacPage({
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Zodiac", url: "https://fortunecrack.com/zodiac/aries" },
-          { name: signTitle, url: `https://fortunecrack.com/zodiac/${sign}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Zodiac", url: `${SITE_URL}/zodiac/aries` },
+          { name: signTitle, url: `${SITE_URL}/zodiac/${sign}` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />
@@ -157,7 +140,7 @@ export default async function ZodiacPage({
             className="mt-3 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white"
             style={{ backgroundColor: elColor }}
           >
-            {zodiac.element.charAt(0).toUpperCase() + zodiac.element.slice(1)} Sign
+            {zodiac.element} Sign
           </span>
         </div>
 
@@ -224,14 +207,14 @@ export default async function ZodiacPage({
             Other Zodiac Signs
           </h2>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-            {ZODIAC_SIGNS.filter((z) => z.sign !== sign).map((z) => (
+            {ZODIAC_SIGNS.filter((z) => z.key !== sign).map((z) => (
               <Link
-                key={z.sign}
-                href={`/zodiac/${z.sign}`}
+                key={z.key}
+                href={`/zodiac/${z.key}`}
                 className="flex items-center gap-2 rounded-lg border border-gold/10 px-3 py-2 text-sm text-foreground/50 transition hover:border-gold/30 hover:text-gold"
               >
                 <span>{z.symbol}</span>
-                <span className="capitalize">{z.sign}</span>
+                <span>{z.name}</span>
               </Link>
             ))}
           </div>

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 import {
   ZODIAC_SIGNS,
   getWeeklyHoroscope,
   getWeeklyDate,
   formatWeekOf,
 } from "@/lib/horoscopes";
+import { SITE_URL } from "@/lib/constants";
 
 export const revalidate = 43200;
 
@@ -31,10 +32,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${zodiac.name.toLowerCase()} horoscope this week`,
       "weekly horoscope",
     ],
+    alternates: {
+      canonical: `${SITE_URL}/horoscope/weekly/${sign}`,
+    },
     openGraph: {
       title: `${zodiac.symbol} ${zodiac.name} Weekly Horoscope - Week of ${formatted} | Fortune Cookie`,
       description: `${zodiac.name} weekly horoscope with love, career, and life advice.`,
-      url: `https://fortunecrack.com/horoscope/weekly/${sign}`,
+      url: `${SITE_URL}/horoscope/weekly/${sign}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${zodiac.symbol} ${zodiac.name} Weekly Horoscope - Week of ${formatted}`,
+      description: `${zodiac.name} weekly horoscope with love, career, and life advice.`,
     },
   };
 }
@@ -44,22 +53,38 @@ export default async function WeeklyHoroscopePage({ params }: PageProps) {
   const zodiac = ZODIAC_SIGNS.find((s) => s.key === sign);
 
   if (!zodiac) {
-    return <div className="px-4 py-16 text-center text-foreground/50">Zodiac sign not found.</div>;
+    return (
+      <div className="bg-warm-gradient min-h-screen px-4 py-16 text-center text-foreground/50">
+        Zodiac sign not found.
+      </div>
+    );
   }
 
   const weekly = getWeeklyHoroscope(sign);
   const formattedWeek = formatWeekOf(getWeeklyDate());
   const signTitle = zodiac.name;
 
+  const faqs = [
+    {
+      q: `What is ${signTitle}'s weekly horoscope?`,
+      a: weekly ? `This week's ${signTitle} overview: "${weekly.overview.slice(0, 120)}..."` : `Check back for this week's ${signTitle} horoscope.`,
+    },
+    {
+      q: `When do weekly horoscopes update?`,
+      a: "Weekly horoscopes are updated every Sunday with fresh predictions for the coming week.",
+    },
+  ];
+
   return (
-    <div className="px-4 py-16">
+    <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Horoscopes", url: "https://fortunecrack.com/horoscope" },
-          { name: `${signTitle} Weekly`, url: `https://fortunecrack.com/horoscope/weekly/${sign}` },
+          { name: "Home", url: SITE_URL },
+          { name: "Horoscopes", url: `${SITE_URL}/horoscope` },
+          { name: `${signTitle} Weekly`, url: `${SITE_URL}/horoscope/weekly/${sign}` },
         ]}
       />
+      <FAQPageJsonLd faqs={faqs} />
 
       <article className="mx-auto max-w-2xl">
         <div className="text-center mb-8">
