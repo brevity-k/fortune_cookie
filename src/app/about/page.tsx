@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+  alternates: {
+    canonical: `${SITE_URL}/about`,
+  },
   openGraph: {
     title: `About ${SITE_NAME}`,
     description:

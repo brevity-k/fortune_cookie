@@ -5,9 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, GA_MEASUREMENT_ID } from "@/lib/constants";
 import "./globals.css";
-
-const GA_ID = "G-TMMGPRKTLD";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,12 +19,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Fortune Cookie - Break Your Virtual Fortune Cookie",
-    template: "%s | Fortune Cookie",
+    default: `${SITE_NAME} - Break Your Virtual Fortune Cookie`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Break a virtual fortune cookie with realistic physics and discover your fortune! Interactive web experience with multiple breaking styles.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "fortune cookie",
     "online fortune cookie",
@@ -37,19 +36,20 @@ export const metadata: Metadata = {
     "fortune of the day",
   ],
   openGraph: {
-    title: "Fortune Cookie - Break Your Virtual Fortune Cookie",
-    description:
-      "Break a virtual fortune cookie with realistic physics and discover your fortune!",
-    url: "https://fortunecrack.com",
-    siteName: "Fortune Cookie",
+    title: `${SITE_NAME} - Break Your Virtual Fortune Cookie`,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fortune Cookie - Break Your Virtual Fortune Cookie",
-    description:
-      "Break a virtual fortune cookie with realistic physics and discover your fortune!",
+    title: `${SITE_NAME} - Break Your Virtual Fortune Cookie`,
+    description: SITE_DESCRIPTION,
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -69,7 +69,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -77,7 +77,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_ID}');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
         {/*

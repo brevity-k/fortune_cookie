@@ -9,21 +9,25 @@ import {
   Fortune,
 } from "@/lib/fortuneEngine";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const revalidate = 43200; // 12 hours — refresh at least twice daily
 
 export const metadata: Metadata = {
   title: "Daily Fortune Cookie",
   description:
-    "Today's fortune cookie message — the same fortune for everyone, every day. Come back tomorrow for a new one! Free daily fortune at Fortune Cookie.",
+    `Today's fortune cookie message — the same fortune for everyone, every day. Come back tomorrow for a new one! Free daily fortune at ${SITE_NAME}.`,
+  alternates: {
+    canonical: `${SITE_URL}/daily`,
+  },
   openGraph: {
-    title: "Daily Fortune Cookie | Fortune Cookie",
+    title: `Daily Fortune Cookie | ${SITE_NAME}`,
     description: "Today's fortune cookie message — the same fortune for everyone, every day.",
-    url: "https://fortunecrack.com/daily",
+    url: `${SITE_URL}/daily`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daily Fortune Cookie | Fortune Cookie",
+    title: `Daily Fortune Cookie | ${SITE_NAME}`,
     description: "Today's fortune cookie message — the same fortune for everyone, every day.",
   },
 };
@@ -80,8 +84,8 @@ export default function DailyPage() {
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Daily Fortune", url: "https://fortunecrack.com/daily" },
+          { name: "Home", url: SITE_URL },
+          { name: "Daily Fortune", url: `${SITE_URL}/daily` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />

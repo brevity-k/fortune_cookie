@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
+import { StarRatingCompact } from "@/components/StarRating";
 import {
   ZODIAC_SIGNS,
   getDailyHoroscope,
   getDailyDate,
   formatDailyDate,
 } from "@/lib/horoscopes";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const revalidate = 43200;
 
@@ -23,28 +25,22 @@ export const metadata: Metadata = {
     "weekly horoscope",
     "monthly horoscope",
   ],
+  alternates: {
+    canonical: `${SITE_URL}/horoscope`,
+  },
   openGraph: {
-    title: "Daily Horoscopes & Zodiac Readings | Fortune Cookie",
+    title: `Daily Horoscopes & Zodiac Readings | ${SITE_NAME}`,
     description:
       "Free daily, weekly, and monthly horoscopes for all 12 zodiac signs. Discover what the stars have in store for you.",
-    url: "https://fortunecrack.com/horoscope",
+    url: `${SITE_URL}/horoscope`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Daily Horoscopes & Zodiac Readings | ${SITE_NAME}`,
+    description:
+      "Free daily, weekly, and monthly horoscopes for all 12 zodiac signs.",
   },
 };
-
-function StarRating({ rating, label }: { rating: number; label: string }) {
-  return (
-    <div className="flex items-center gap-1">
-      <span className="text-xs text-foreground/40 w-14">{label}</span>
-      <div className="flex gap-0.5">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <span key={i} className={i <= rating ? "text-gold" : "text-foreground/10"}>
-            ★
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const faqs = [
   {
@@ -66,11 +62,11 @@ export default function HoroscopeHub() {
   const formattedDate = formatDailyDate(dailyDate);
 
   return (
-    <div className="px-4 py-16">
+    <div className="bg-warm-gradient min-h-screen px-4 py-16">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://fortunecrack.com" },
-          { name: "Horoscopes", url: "https://fortunecrack.com/horoscope" },
+          { name: "Home", url: SITE_URL },
+          { name: "Horoscopes", url: `${SITE_URL}/horoscope` },
         ]}
       />
       <FAQPageJsonLd faqs={faqs} />
@@ -116,9 +112,9 @@ export default function HoroscopeHub() {
                       {daily.text}
                     </p>
                     <div className="space-y-1">
-                      <StarRating rating={daily.love} label="Love" />
-                      <StarRating rating={daily.career} label="Career" />
-                      <StarRating rating={daily.health} label="Health" />
+                      <StarRatingCompact rating={daily.love} label="Love" />
+                      <StarRatingCompact rating={daily.career} label="Career" />
+                      <StarRatingCompact rating={daily.health} label="Health" />
                     </div>
                   </>
                 )}
