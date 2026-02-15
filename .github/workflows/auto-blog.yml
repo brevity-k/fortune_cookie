@@ -100,7 +100,7 @@ jobs:
 
       - name: Commit blog tweet state
         run: |
-          git add scripts/x-blog-state.json
+          git add scripts/x-post-state.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update blog tweet state"
           git pull --rebase origin main
