@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Fortune, Rarity } from "@/lib/fortuneEngine";
+import { trackShare } from "@/lib/analytics";
+import { SITE_URL } from "@/lib/constants";
 
 interface ShareButtonsProps {
   fortune: Fortune | null;
@@ -27,10 +29,14 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
   if (!fortune || !visible) return null;
 
   const fortuneId = encodeFortuneId(fortune);
-  const shareUrl = `https://fortunecrack.com/f/${fortuneId}`;
+  const shareUrl = `${SITE_URL}/f/${fortuneId}`;
   const rarityEmoji = RARITY_EMOJI[fortune.rarity];
   const shareText = `${rarityEmoji} My fortune: "${fortune.text}" — Break your own at`;
   const fullText = `${shareText} ${shareUrl}`;
+
+  const handleShareClick = (platform: string) => {
+    trackShare(platform);
+  };
 
   const handleCopy = async () => {
     try {
@@ -62,6 +68,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on X"
+        onClick={() => handleShareClick("twitter")}
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -76,6 +83,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on Facebook"
+        onClick={() => handleShareClick("facebook")}
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -90,6 +98,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on WhatsApp"
+        onClick={() => handleShareClick("whatsapp")}
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -100,7 +109,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
 
       {/* Copy */}
       <button
-        onClick={handleCopy}
+        onClick={() => { handleShareClick("copy"); handleCopy(); }}
         aria-label="Copy fortune link"
         className="flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-2.5 text-sm text-gold transition hover:bg-gold/15"
       >

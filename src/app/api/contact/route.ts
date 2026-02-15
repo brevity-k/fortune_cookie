@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { SITE_URL, SITE_NAME, SITE_DOMAIN, CONTACT_EMAIL } from "@/lib/constants";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,8 +13,8 @@ export async function POST(req: NextRequest) {
     }
 
     const resend = new Resend(apiKey);
-    const ownerEmail = process.env.CONTACT_EMAIL || "your-email@example.com";
-    const fromEmail = process.env.FROM_EMAIL || "Fortune Cookie <onboarding@resend.dev>";
+    const ownerEmail = process.env.CONTACT_EMAIL || CONTACT_EMAIL;
+    const fromEmail = process.env.FROM_EMAIL || `${SITE_NAME} <onboarding@resend.dev>`;
 
     const { name, email, subject, message } = await req.json();
 
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: fromEmail,
       to: ownerEmail,
-      subject: `[Fortune Cookie] ${subject || "New Contact Form Message"}`,
+      subject: `[${SITE_NAME}] ${subject || "New Contact Form Message"}`,
       html: `
         <h2>New message from ${name}</h2>
         <p><strong>From:</strong> ${name} (${email})</p>
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: fromEmail,
       to: email,
-      subject: "Thanks for reaching out to Fortune Cookie!",
+      subject: `Thanks for reaching out to ${SITE_NAME}!`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #1a0e04; color: #f5e6d0; padding: 32px; border-radius: 12px;">
           <h1 style="color: #d4a04a; font-size: 24px; margin-bottom: 16px;">Thank you, ${name}!</h1>
@@ -54,11 +55,11 @@ export async function POST(req: NextRequest) {
             <p style="color: #f5e6d0aa; font-size: 14px; margin: 0; white-space: pre-wrap;">${message}</p>
           </div>
           <p style="color: #f5e6d0cc; line-height: 1.6;">
-            In the meantime, why not <a href="https://fortunecrack.com" style="color: #d4a04a;">break another fortune cookie</a>?
+            In the meantime, why not <a href="${SITE_URL}" style="color: #d4a04a;">break another fortune cookie</a>?
           </p>
           <hr style="border: none; border-top: 1px solid rgba(212,160,74,0.15); margin: 24px 0;" />
           <p style="color: #f5e6d088; font-size: 12px; margin: 0;">
-            Fortune Cookie | fortunecrack.com<br/>
+            ${SITE_NAME} | ${SITE_DOMAIN}<br/>
             This is an automated response. Please do not reply to this email.
           </p>
         </div>
