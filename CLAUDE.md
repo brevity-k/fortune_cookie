@@ -456,8 +456,8 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 | Secret | Purpose |
 |---|---|
 | `ANTHROPIC_API_KEY` | Claude API for blog auto-generation + quality checks + fortune generation + horoscopes |
-| `X_API_KEY` | X (Twitter) API key for automated tweets |
-| `X_API_SECRET` | X (Twitter) API secret |
+| `X_CONSUMER_KEY` | X (Twitter) consumer key for automated tweets |
+| `X_SECRET_KEY` | X (Twitter) secret key |
 | `X_ACCESS_TOKEN` | X (Twitter) user access token |
 | `X_ACCESS_TOKEN_SECRET` | X (Twitter) user access token secret |
 | (GITHUB_TOKEN) | Auto-provided by GitHub Actions for git push |
