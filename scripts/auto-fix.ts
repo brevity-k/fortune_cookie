@@ -105,6 +105,26 @@ function main() {
     }
   }
 
+  // Fix 7: Trim incomplete trailing sentence (truncation artifact)
+  const trimmed = fixedContent.trimEnd();
+  if (trimmed.length > 0 && !/[.!?'")\u2019\u201D]$/.test(trimmed)) {
+    // Find the last sentence-ending punctuation
+    const lastEnd = Math.max(
+      trimmed.lastIndexOf(". "),
+      trimmed.lastIndexOf(".\n"),
+      trimmed.lastIndexOf("! "),
+      trimmed.lastIndexOf("!\n"),
+      trimmed.lastIndexOf("? "),
+      trimmed.lastIndexOf("?\n"),
+    );
+    // Also check if the very last char before trimming is a sentence ender
+    const endsClean = /[.!?]$/.test(trimmed);
+    if (!endsClean && lastEnd > trimmed.length * 0.5) {
+      fixedContent = trimmed.slice(0, lastEnd + 1) + "\n";
+      fixes.push("Trimmed incomplete trailing sentence (likely truncation artifact)");
+    }
+  }
+
   if (fixes.length === 0) {
     log.ok(`No fixes needed for: ${slug}`);
     return;
