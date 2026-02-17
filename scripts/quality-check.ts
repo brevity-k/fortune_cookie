@@ -113,7 +113,11 @@ async function main() {
           messages: [
             {
               role: "user",
-              content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality. Return ONLY a JSON object:
+              content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality.
+
+Context: This post is published on fortunecrack.com (a fortune cookie website). One internal link to the site is expected and should NOT be penalized unless it is completely irrelevant to the surrounding text. Focus on: content quality, completeness (no truncated/mid-sentence endings), structure, readability, and SEO value.
+
+Return ONLY a JSON object:
 {"score": <number>, "feedback": "<one sentence>"}
 
 Title: ${data.title}
