@@ -14,7 +14,7 @@
 | Fortune System | Done | 1,031 fortunes, 8 categories, 4 rarities, streaks |
 | Cookie Consent Banner | Done | GDPR-compliant accept/reject with localStorage |
 | SEO (basic) | Done | Meta tags, Open Graph, Twitter cards, sitemap, robots.txt |
-| Blog Content | Done | 10 posts as MDX files in src/content/blog/ |
+| Blog Content | Done | 12 posts as MDX files in src/content/blog/ |
 | Blog MDX Migration | Done | MDX files + content loader, single source of truth |
 | Legal Pages | Done | Privacy Policy & Terms of Service |
 | About Page | Done | Technology breakdown, features, categories |
@@ -545,7 +545,7 @@ src/
 │   ├── Header.tsx            # Responsive nav
 │   └── Footer.tsx            # Footer links + Explore section
 ├── content/
-│   └── blog/                 # MDX blog posts with YAML frontmatter (10+ posts)
+│   └── blog/                 # MDX blog posts with YAML frontmatter (12+ posts)
 ├── lib/
 │   ├── blog.ts               # Blog content loader (getAllPosts, getPost)
 │   ├── fortuneEngine.ts      # Fortune logic, streaks, journal, seededRandom, category helpers
@@ -639,6 +639,14 @@ scripts/
 | halloween | Oct 15 – Oct 31 | mystery | 20 spooky/mystery fortunes |
 | thanksgiving | Nov 15 – Nov 28 | wisdom | 20 gratitude fortunes |
 | christmas | Dec 10 – Dec 25 | wisdom | 20 holiday/joy fortunes |
+
+---
+
+### Debugging GitHub Actions
+
+- `gh run view <id> --log-failed` — fastest way to see failure cause
+- `gh run view <id> --log 2>&1 | grep -E "pattern"` — search full logs
+- `continue-on-error: true` steps show ✓ in `gh run watch` even when they fail; check `steps.<id>.outcome`
 
 ---
 
