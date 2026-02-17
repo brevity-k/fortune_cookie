@@ -184,7 +184,7 @@ Requirements:
   const postResponse = await callWithRetry(() =>
     client.messages.create({
       model: "claude-sonnet-4-5-20250929",
-      max_tokens: 4096,
+      max_tokens: 8192,
       messages: [
         {
           role: "user",
@@ -197,13 +197,14 @@ Requirements:
 - Write 1,000-1,500 words of engaging, informative content
 - Use 4-6 ## H2 headings for scannability (NEVER use # H1 — the page template adds the H1)
 - Write in a warm, conversational, knowledgeable tone
-- Include exactly one natural reference linking to the site: [break a fortune cookie at fortunecrack.com](https://fortunecrack.com)
+- Naturally weave in ONE brief mention of fortunecrack.com — only where it fits the context organically (e.g., in a sentence about trying your luck or exploring fortune-telling traditions). Do NOT force a promotional link if it doesn't flow naturally. Use format: [anchor text](https://fortunecrack.com)
 - Every paragraph must add genuine value — no filler, no fluff, no generic statements
 - Do NOT include the title as a heading
 - Do NOT include frontmatter
 - Start directly with an engaging opening paragraph (no "In this article..." openings)
-- End with a thoughtful, memorable conclusion
-- Use specific facts, examples, and anecdotes where possible`,
+- End with a complete, thoughtful conclusion paragraph that wraps up the key takeaways. The conclusion MUST be a full, well-formed paragraph — never end mid-sentence
+- Use specific facts, examples, and anecdotes where possible
+- IMPORTANT: Make sure every sentence is complete. Double-check that the final paragraph ends properly with a full stop`,
         },
       ],
     }),
