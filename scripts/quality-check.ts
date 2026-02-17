@@ -122,7 +122,7 @@ Return ONLY a JSON object:
 
 Title: ${data.title}
 
-${content.slice(0, 6000)}`,
+${content}`,
             },
           ],
         }),
