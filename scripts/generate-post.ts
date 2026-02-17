@@ -184,7 +184,7 @@ Requirements:
   const postResponse = await callWithRetry(() =>
     client.messages.create({
       model: "claude-sonnet-4-5-20250929",
-      max_tokens: 8192,
+      max_tokens: 16384,
       messages: [
         {
           role: "user",
@@ -209,6 +209,11 @@ Requirements:
       ],
     }),
   );
+
+  if (postResponse.stop_reason === "max_tokens") {
+    log.error("API response was truncated (hit max_tokens). Post would be incomplete.");
+    process.exit(1);
+  }
 
   const content =
     postResponse.content[0].type === "text"
