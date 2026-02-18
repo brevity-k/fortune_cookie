@@ -19,7 +19,7 @@ import { log, requireEnv, callWithRetry } from "./lib/utils";
 import { ZODIAC_SIGNS } from "./lib/types";
 import type { FortunesFile } from "./lib/types";
 
-const SITE_URL = "https://fortunecrack.com";
+const SITE_URL = "https://www.fortunecrack.com";
 const MAX_TWEET_LENGTH = 280;
 
 // ---------------------------------------------------------------------------
