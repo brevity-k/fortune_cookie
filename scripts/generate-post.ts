@@ -197,7 +197,7 @@ Requirements:
 - Write 1,000-1,500 words of engaging, informative content
 - Use 4-6 ## H2 headings for scannability (NEVER use # H1 — the page template adds the H1)
 - Write in a warm, conversational, knowledgeable tone
-- Naturally weave in ONE brief mention of fortunecrack.com — only where it fits the context organically (e.g., in a sentence about trying your luck or exploring fortune-telling traditions). Do NOT force a promotional link if it doesn't flow naturally. Use format: [anchor text](https://fortunecrack.com)
+- Naturally weave in ONE brief mention of fortunecrack.com — only where it fits the context organically (e.g., in a sentence about trying your luck or exploring fortune-telling traditions). Do NOT force a promotional link if it doesn't flow naturally. Use format: [anchor text](https://www.fortunecrack.com)
 - Every paragraph must add genuine value — no filler, no fluff, no generic statements
 - Do NOT include the title as a heading
 - Do NOT include frontmatter
