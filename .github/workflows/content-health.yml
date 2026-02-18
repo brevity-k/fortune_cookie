@@ -124,7 +124,7 @@ jobs:
 
       - name: Verify key pages
         run: |
-          SITE_URL="https://fortunecrack.com"
+          SITE_URL="https://www.fortunecrack.com"
           PAGES=(
             "$SITE_URL"
             "$SITE_URL/blog"

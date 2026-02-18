@@ -5,7 +5,7 @@
  * live here so they can be updated in a single place.
  */
 
-export const SITE_URL = "https://fortunecrack.com";
+export const SITE_URL = "https://www.fortunecrack.com";
 export const SITE_DOMAIN = SITE_URL.replace(/^https?:\/\//, "");
 export const SITE_NAME = "Fortune Cookie";
 export const SITE_DESCRIPTION =
