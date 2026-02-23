@@ -1,12 +1,19 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { getDailyFortune, getRarityColor } from "@/lib/fortuneEngine";
+import { getDailyFortune, getRarityColor, Fortune } from "@/lib/fortuneEngine";
 
 const noop = () => () => {};
 
+// Cache the daily fortune so useSyncExternalStore always gets the same reference
+let _cachedDailyFortune: Fortune | null = null;
+const getCachedDailyFortune = () => {
+  if (!_cachedDailyFortune) _cachedDailyFortune = getDailyFortune();
+  return _cachedDailyFortune;
+};
+
 export default function FortuneOfTheDay() {
-  const fortune = useSyncExternalStore(noop, getDailyFortune, () => null);
+  const fortune = useSyncExternalStore(noop, getCachedDailyFortune, () => null);
 
   if (!fortune) return null;
 
