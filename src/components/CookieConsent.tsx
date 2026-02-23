@@ -1,23 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 const CONSENT_KEY = "cookie_consent";
 
 type ConsentValue = "accepted" | "rejected";
 
-export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+const noop = () => () => {};
+const getConsentNeeded = () => {
+  try {
+    return !localStorage.getItem(CONSENT_KEY);
+  } catch {
+    return false;
+  }
+};
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(CONSENT_KEY);
-      if (!stored) setVisible(true);
-    } catch {
-      // localStorage unavailable
-    }
-  }, []);
+export default function CookieConsent() {
+  const needsConsent = useSyncExternalStore(noop, getConsentNeeded, () => false);
+  const [dismissed, setDismissed] = useState(false);
 
   function handleConsent(value: ConsentValue) {
     try {
@@ -25,10 +26,10 @@ export default function CookieConsent() {
     } catch {
       // localStorage unavailable
     }
-    setVisible(false);
+    setDismissed(true);
   }
 
-  if (!visible) return null;
+  if (!needsConsent || dismissed) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
