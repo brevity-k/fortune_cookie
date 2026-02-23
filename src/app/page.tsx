@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useSyncExternalStore } from "react";
+import { useState, useCallback, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import FortuneReveal from "@/components/FortuneReveal";
 import FortuneOfTheDay from "@/components/FortuneOfTheDay";
@@ -18,6 +18,20 @@ const noopSubscribe = () => () => {};
 const getIsMobile = () =>
   typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 const getServerIsMobile = () => false;
+const getClientStreak = () => getStreak();
+const getClientTotal = () => {
+  try {
+    return parseInt(localStorage.getItem("fortune_total") || "0", 10);
+  } catch { return 0; }
+};
+
+// Cached initial fortune — generated once on first client access
+let _initialFortune: Fortune | null = null;
+const getInitialFortune = () => {
+  if (!_initialFortune) _initialFortune = getRandomFortune(getStreak());
+  return _initialFortune;
+};
+
 import { trackCookieBreak, trackFortuneReveal, trackNewCookie } from "@/lib/analytics";
 
 // Dynamic import for CookieCanvas (needs browser APIs)
@@ -34,45 +48,38 @@ const CookieCanvas = dynamic(() => import("@/components/CookieCanvas"), {
 });
 
 export default function Home() {
-  const [fortune, setFortune] = useState<Fortune | null>(null);
+  const isMobile = useSyncExternalStore(noopSubscribe, getIsMobile, getServerIsMobile);
+  const clientStreak = useSyncExternalStore(noopSubscribe, getClientStreak, () => 0);
+  const clientTotal = useSyncExternalStore(noopSubscribe, getClientTotal, () => 0);
+  const initialFortune = useSyncExternalStore(noopSubscribe, getInitialFortune, () => null);
+
+  // Session-level overrides (updated when user breaks cookies)
+  const [streakOverride, setStreakOverride] = useState<number | null>(null);
+  const [totalOverride, setTotalOverride] = useState<number | null>(null);
+  const streak = streakOverride ?? clientStreak;
+  const totalBroken = totalOverride ?? clientTotal;
+
+  // Fortune state — initial value from useSyncExternalStore, overridden on break/new cookie
+  const [fortuneOverride, setFortuneOverride] = useState<Fortune | null>(null);
+  const fortune = fortuneOverride ?? initialFortune;
   const [showFortune, setShowFortune] = useState(false);
   const [showShare, setShowShare] = useState(false);
-  const [streak, setStreak] = useState(0);
-  const [totalBroken, setTotalBroken] = useState(0);
-  const isMobile = useSyncExternalStore(noopSubscribe, getIsMobile, getServerIsMobile);
-
-  useEffect(() => {
-    setStreak(getStreak());
-    // Load total broken count
-    try {
-      const count = parseInt(localStorage.getItem("fortune_total") || "0", 10);
-      setTotalBroken(count);
-    } catch { /* empty */ }
-  }, []);
-
-  // Generate fortune on mount and on new cookie
-  const generateFortune = useCallback(() => {
-    const newFortune = getRandomFortune(streak);
-    setFortune(newFortune);
-    setShowFortune(false);
-    setShowShare(false);
-    return newFortune;
-  }, [streak]);
-
-  useEffect(() => {
-    generateFortune();
-  }, [generateFortune]);
 
   const handleBreak = useCallback(() => {
     trackCookieBreak("break");
     const newStreak = updateStreak();
-    setStreak(newStreak);
+    setStreakOverride(newStreak);
+
+    // Generate new fortune with updated streak
+    setFortuneOverride(getRandomFortune(newStreak));
+    setShowFortune(false);
+    setShowShare(false);
 
     // Increment total
     try {
       const count = parseInt(localStorage.getItem("fortune_total") || "0", 10) + 1;
       localStorage.setItem("fortune_total", count.toString());
-      setTotalBroken(count);
+      setTotalOverride(count);
     } catch { /* empty */ }
   }, []);
 
@@ -87,8 +94,10 @@ export default function Home() {
 
   const handleNewCookie = useCallback(() => {
     trackNewCookie();
-    generateFortune();
-  }, [generateFortune]);
+    setFortuneOverride(getRandomFortune(streak));
+    setShowFortune(false);
+    setShowShare(false);
+  }, [streak]);
 
   return (
     <div className="bg-warm-gradient">

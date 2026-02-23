@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getDailyFortune, Fortune, getRarityColor } from "@/lib/fortuneEngine";
+import { useSyncExternalStore } from "react";
+import { getDailyFortune, getRarityColor } from "@/lib/fortuneEngine";
+
+const noop = () => () => {};
 
 export default function FortuneOfTheDay() {
-  const [fortune, setFortune] = useState<Fortune | null>(null);
-
-  useEffect(() => {
-    setFortune(getDailyFortune());
-  }, []);
+  const fortune = useSyncExternalStore(noop, getDailyFortune, () => null);
 
   if (!fortune) return null;
 
