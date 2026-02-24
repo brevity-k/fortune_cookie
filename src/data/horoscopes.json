@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-02-23",
+    "date": "2026-02-24",
     "horoscopes": {
       "aries": {
-        "text": "Mars energizes your introspective side today, urging you to channel that trademark fire into planning rather than impulsive action. This winter's end brings clarity about which battles are worth fighting and which dreams deserve your warrior spirit. Trust that strategic patience now will lead to explosive progress come spring.",
+        "text": "Mars charges through your sector of dreams and rest, urging you to channel that famous fire into strategic planning rather than immediate action. This winter day calls for unusual patience—map out your spring conquests while conserving your energy. A conversation with a water sign brings unexpected clarity to a lingering question.",
         "love": 3,
         "career": 4,
-        "health": 4,
+        "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
         "mood": "determined"
       },
       "taurus": {
-        "text": "Venus whispers sweet promises of stability as you reassess your foundations today. The waning winter invites you to luxuriate in small comforts while refining your long-term financial and emotional investments. Your natural resilience shines when you honor both practicality and pleasure.",
+        "text": "Venus dances through your community sector, making this an ideal day to strengthen bonds with friends and collaborators. Your natural resilience shines as you help someone navigate a challenge you've already mastered. Financial opportunities may emerge through networking—keep your ears open at gatherings.",
         "love": 4,
-        "career": 3,
-        "health": 3,
+        "career": 5,
+        "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Mercury's dance through contemplative skies has you delightfully torn between gathering information and actually processing it all. Today favors depth over breadth—choose one fascinating subject and explore its hidden layers. Your clever mind benefits from quality reflection rather than quantity of distractions.",
+        "text": "Mercury's current position illuminates your professional ambitions, bringing recognition for your innovative ideas. The winter introspection period has sharpened your focus—now others notice your evolved perspective. Don't scatter your energy across too many projects; your power lies in selective commitment today.",
         "love": 3,
-        "career": 4,
-        "health": 2,
+        "career": 5,
+        "health": 3,
         "luckyNumber": 8,
         "luckyColor": "electric blue",
-        "mood": "curious"
-      },
-      "cancer": {
-        "text": "The Moon's gentle pull encourages you to nest deeply and honor your emotional weather without judgment. This February day asks you to distinguish between protective withdrawal and isolating fear. Your intuitive gifts are particularly sharp now—trust what your heart knows before your head catches up.",
-        "love": 5,
-        "career": 2,
-        "health": 4,
-        "luckyNumber": 29,
-        "luckyColor": "seafoam",
-        "mood": "intuitive"
-      },
-      "leo": {
-        "text": "The Sun illuminates your inner throne room today, reminding you that true leadership begins with self-mastery. Winter's final stretch invites you to rehearse your spring debut with quiet confidence rather than loud declarations. Polish your vision in private; the world will soon be your stage again.",
-        "love": 3,
-        "career": 5,
-        "health": 3,
-        "luckyNumber": 61,
-        "luckyColor": "gold",
-        "mood": "confident"
-      },
-      "virgo": {
-        "text": "Mercury sharpens your analytical edge to pristine perfection, making this an ideal day for detailed planning and system optimization. Your gift for discernment helps you separate wheat from chaff in both projects and relationships. Remember that progress, not perfection, is today's true measure of success.",
-        "love": 2,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 34,
-        "luckyColor": "charcoal",
         "mood": "focused"
       },
-      "libra": {
-        "text": "Venus guides you toward balance between solitary reflection and meaningful connection today. The winter's introspective energy doesn't mean abandoning your social nature—it means choosing quality over quantity in all partnerships. Aesthetic pursuits and diplomatic conversations both nourish your soul now.",
+      "cancer": {
+        "text": "The Moon's gentle influence encourages you to explore philosophical questions and expand your emotional horizons. This winter day rewards your introspective nature—journal, meditate, or simply daydream about future possibilities. Someone from a different background offers perspective that could shift your entire worldview.",
         "love": 4,
         "career": 3,
+        "health": 5,
+        "luckyNumber": 29,
+        "luckyColor": "seafoam",
+        "mood": "reflective"
+      },
+      "leo": {
+        "text": "The Sun's alignment brings intensity to shared resources and deep connections, pushing you beyond surface-level interactions. Your confidence attracts opportunities for transformation—embrace the vulnerability that comes with genuine intimacy. A financial matter requires your legendary courage to address directly.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 56,
+        "luckyColor": "gold",
+        "mood": "passionate"
+      },
+      "virgo": {
+        "text": "Mercury highlights partnerships, making collaboration especially fruitful today. Your analytical gifts are amplified when bouncing ideas off a trusted colleague or partner—two minds truly are better than one. Release perfectionist tendencies and appreciate the beauty in others' different approaches to problem-solving.",
+        "love": 5,
+        "career": 4,
         "health": 3,
-        "luckyNumber": 23,
+        "luckyNumber": 63,
         "luckyColor": "lavender",
         "mood": "harmonious"
       },
-      "scorpio": {
-        "text": "Pluto's transformative power churns beneath winter's frozen surface, preparing you for profound rebirth. Today's intensity asks you to sit with uncomfortable truths rather than rushing toward resolution. Your capacity for emotional depth is your superpower—use it to excavate treasures from your own mysterious depths.",
-        "love": 4,
+      "libra": {
+        "text": "Venus energizes your daily routines and wellness practices, making this perfect for establishing sustainable habits. Your natural grace helps you balance productivity with self-care—neither extreme serves you well. Small improvements to your workspace or health regimen yield surprisingly significant results over time.",
+        "love": 3,
         "career": 4,
-        "health": 2,
-        "luckyNumber": 7,
+        "health": 5,
+        "luckyNumber": 11,
+        "luckyColor": "pink",
+        "mood": "calm"
+      },
+      "scorpio": {
+        "text": "Pluto's transformative power flows through your creative and romantic sectors, intensifying your magnetic appeal. This winter day invites you to express your deepest passions through art, love, or playful experimentation. Trust your instincts completely—your intuition is operating at supernatural levels right now.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 77,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Jupiter expands your philosophical horizons even as winter asks you to explore inner rather than outer landscapes. Your adventurous spirit finds unexpected freedom in contemplative practices and visionary planning today. The journey inward proves just as thrilling as any physical expedition when you approach it with your characteristic enthusiasm.",
-        "love": 3,
-        "career": 3,
-        "health": 5,
-        "luckyNumber": 55,
+        "text": "Jupiter's influence draws your attention homeward, where emotional foundations need tending. Your adventurous spirit might resist, but nurturing your roots actually fuels future explorations. Family matters or domestic projects bring unexpected satisfaction—sometimes the greatest journey is inward.",
+        "love": 4,
+        "career": 2,
+        "health": 4,
+        "luckyNumber": 34,
         "luckyColor": "indigo",
-        "mood": "optimistic"
+        "mood": "reflective"
       },
       "capricorn": {
-        "text": "Saturn rewards your patient resilience as winter's lessons crystallize into practical wisdom. Today you're building something lasting from the raw materials of experience and discipline. Your ambition finds its sweetest expression when tempered with self-compassion and realistic timelines.",
-        "love": 2,
+        "text": "Saturn supports your communication efforts, giving your words extra authority and impact today. The winter season suits your ambitious nature—you're planning while others are merely dreaming. Local connections prove valuable; don't underestimate the power of your immediate network to advance long-term goals.",
+        "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 48,
-        "luckyColor": "navy",
+        "luckyNumber": 88,
+        "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Uranus sparks revolutionary insights about community, identity, and your unique contribution to the collective. This late winter moment invites you to innovate from within before manifesting outward change. Your vision for the future gains clarity when you honor both individuality and interconnection.",
+        "text": "Uranus activates your value sector, prompting innovative approaches to resources and self-worth. Your unique perspective on money and possessions challenges conventional wisdom—trust your avant-garde instincts. A creative solution to a financial puzzle emerges when you stop thinking in traditional terms.",
         "love": 3,
         "career": 4,
         "health": 4,
-        "luckyNumber": 11,
-        "luckyColor": "silver",
+        "luckyNumber": 22,
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune dissolves boundaries between dreaming and planning as your season approaches, blessing you with creative downloads and spiritual clarity. Today's introspective energy feels like home to your mystical soul. Channel your boundless imagination into concrete intentions that honor both fantasy and reality.",
+        "text": "Neptune illuminates your identity and personal expression, making this an enchanted day for self-discovery. Your intuitive gifts are heightened even beyond their usual mystical levels—pay attention to dreams and synchronicities. Others are drawn to your ethereal energy; use this magnetism to manifest your winter visions into spring realities.",
         "love": 5,
-        "career": 3,
-        "health": 3,
-        "luckyNumber": 76,
+        "career": 4,
+        "health": 5,
+        "luckyNumber": 49,
         "luckyColor": "coral",
-        "mood": "inspired"
+        "mood": "intuitive"
       }
     }
   },
