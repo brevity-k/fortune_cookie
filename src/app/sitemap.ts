@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { CATEGORIES } from "@/lib/fortuneEngine";
-import { ZODIAC_SIGNS } from "@/lib/horoscopes";
+import {
+  ZODIAC_SIGNS,
+  getDailyDate,
+  getWeeklyDate,
+  getMonthlyDate,
+} from "@/lib/horoscopes";
 import { SITE_URL } from "@/lib/constants";
 
 const baseUrl = SITE_URL;
@@ -15,16 +20,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Use actual data dates instead of new Date() to build Google's trust in lastmod signals
+  const dailyDate = new Date(getDailyDate() + "T00:00:00Z");
+  const weeklyDate = new Date(getWeeklyDate() + "T00:00:00Z");
+  const monthlyDate = new Date(getMonthlyDate() + "-01T00:00:00Z");
+
+  const latestPostDate = blogEntries.length > 0
+    ? new Date(Math.max(...blogEntries.map((e) => e.lastModified.getTime())))
+    : new Date("2026-02-12");
+
   const categoryEntries = CATEGORIES.map((cat) => ({
     url: `${baseUrl}/fortune/${cat}`,
-    lastModified: new Date(),
+    lastModified: dailyDate,
     changeFrequency: "daily" as const,
     priority: 0.7,
   }));
 
   const zodiacEntries = zodiacKeys.map((sign) => ({
     url: `${baseUrl}/zodiac/${sign}`,
-    lastModified: new Date(),
+    lastModified: dailyDate,
     changeFrequency: "daily" as const,
     priority: 0.7,
   }));
@@ -34,25 +48,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: dailyDate,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${baseUrl}/daily`,
-      lastModified: new Date(),
+      lastModified: dailyDate,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/lucky-numbers`,
-      lastModified: new Date(),
+      lastModified: dailyDate,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: latestPostDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
@@ -84,25 +98,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...zodiacEntries,
     {
       url: `${baseUrl}/horoscope`,
-      lastModified: new Date(),
+      lastModified: dailyDate,
       changeFrequency: "daily",
       priority: 0.9,
     },
     ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/daily/${sign}`,
-      lastModified: new Date(),
+      lastModified: dailyDate,
       changeFrequency: "daily" as const,
       priority: 0.8,
     })),
     ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/weekly/${sign}`,
-      lastModified: new Date(),
+      lastModified: weeklyDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
     ...zodiacKeys.map((sign) => ({
       url: `${baseUrl}/horoscope/monthly/${sign}`,
-      lastModified: new Date(),
+      lastModified: monthlyDate,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
