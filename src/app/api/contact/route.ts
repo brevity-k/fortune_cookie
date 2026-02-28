@@ -15,8 +15,41 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// In-memory rate limiting (per serverless instance)
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_MAX = 5;
+const rateLimitMap = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) ?? [];
+  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  rateLimitMap.set(ip, recent);
+  if (recent.length >= RATE_LIMIT_MAX) return true;
+  recent.push(now);
+  rateLimitMap.set(ip, recent);
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   try {
+    // CSRF protection: verify request origin
+    const origin = req.headers.get("origin");
+    if (!origin || !SITE_URL.startsWith(origin)) {
+      return NextResponse.json(
+        { error: "Forbidden." },
+        { status: 403 }
+      );
+    }
+
+    // Rate limiting by IP
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
@@ -51,7 +84,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (name.length > 100 || email.length > 254 || message.length > 5000) {
+    if (name.length > 100 || email.length > 254 || message.length > 5000 || (subject && subject.length > 200)) {
       return NextResponse.json(
         { error: "Input exceeds maximum allowed length." },
         { status: 400 }

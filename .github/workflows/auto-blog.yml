@@ -65,6 +65,9 @@ jobs:
         run: |
           set -e
           SLUG=$(cat .generated-slug)
+          if ! echo "$SLUG" | grep -qE '^[a-z0-9-]+$'; then
+            echo "Invalid slug format" && exit 1
+          fi
           echo "Quality check failed for $SLUG, regenerating..."
           rm -f "src/content/blog/${SLUG}.mdx"
           npx tsx scripts/generate-post.ts
@@ -78,6 +81,9 @@ jobs:
         run: |
           set -e
           SLUG=$(cat .generated-slug)
+          if ! echo "$SLUG" | grep -qE '^[a-z0-9-]+$'; then
+            echo "Invalid slug format" && exit 1
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "src/content/blog/${SLUG}.mdx"

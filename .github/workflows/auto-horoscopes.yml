@@ -41,31 +41,31 @@ jobs:
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INPUT_TYPE: ${{ github.event.inputs.type || 'auto' }}
         run: |
-          TYPE="${{ github.event.inputs.type || 'auto' }}"
-          if [ "$TYPE" = "auto" ]; then
+          if [ "$INPUT_TYPE" = "auto" ]; then
             npx tsx scripts/generate-horoscopes.ts
-          elif [ "$TYPE" = "all" ]; then
+          elif [ "$INPUT_TYPE" = "all" ]; then
             npx tsx scripts/generate-horoscopes.ts --all
           else
-            npx tsx scripts/generate-horoscopes.ts --$TYPE
+            npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE"
           fi
 
       - name: Retry on failure
         if: steps.generate.outcome == 'failure'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INPUT_TYPE: ${{ github.event.inputs.type || 'auto' }}
         run: |
           set -e
           echo "Retrying horoscope generation..."
           sleep 30
-          TYPE="${{ github.event.inputs.type || 'auto' }}"
-          if [ "$TYPE" = "auto" ]; then
+          if [ "$INPUT_TYPE" = "auto" ]; then
             npx tsx scripts/generate-horoscopes.ts
-          elif [ "$TYPE" = "all" ]; then
+          elif [ "$INPUT_TYPE" = "all" ]; then
             npx tsx scripts/generate-horoscopes.ts --all
           else
-            npx tsx scripts/generate-horoscopes.ts --$TYPE
+            npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE"
           fi
 
       - name: Validate JSON

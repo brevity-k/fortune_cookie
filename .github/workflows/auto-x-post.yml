@@ -39,9 +39,11 @@ jobs:
 
       - name: Determine tweet type
         id: mode
+        env:
+          INPUT_TYPE: ${{ github.event.inputs.type }}
         run: |
-          if [ -n "${{ github.event.inputs.type }}" ]; then
-            echo "type=${{ github.event.inputs.type }}" >> "$GITHUB_OUTPUT"
+          if [ -n "$INPUT_TYPE" ]; then
+            echo "type=$INPUT_TYPE" >> "$GITHUB_OUTPUT"
           else
             HOUR=$(date -u +%H)
             if [ "$HOUR" = "08" ]; then
@@ -59,7 +61,8 @@ jobs:
           X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-        run: npx tsx scripts/post-to-x.ts --${{ steps.mode.outputs.type }}
+          POST_TYPE: ${{ steps.mode.outputs.type }}
+        run: npx tsx scripts/post-to-x.ts --"$POST_TYPE"
 
       - name: Retry on failure
         if: steps.post.outcome == 'failure'
@@ -68,10 +71,11 @@ jobs:
           X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          POST_TYPE: ${{ steps.mode.outputs.type }}
         run: |
           echo "Retrying tweet post..."
           sleep 30
-          npx tsx scripts/post-to-x.ts --${{ steps.mode.outputs.type }}
+          npx tsx scripts/post-to-x.ts --"$POST_TYPE"
 
       - name: Commit post state
         run: |
