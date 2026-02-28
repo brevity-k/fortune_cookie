@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { SITE_URL, SITE_NAME, SITE_DOMAIN, CONTACT_EMAIL } from "@/lib/constants";
+import { SITE_URL, SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
 
 function escapeHtml(str: string): string {
   return str
@@ -26,7 +26,13 @@ export async function POST(req: NextRequest) {
     }
 
     const resend = new Resend(apiKey);
-    const ownerEmail = process.env.CONTACT_EMAIL || CONTACT_EMAIL;
+    const ownerEmail = process.env.CONTACT_EMAIL;
+    if (!ownerEmail) {
+      return NextResponse.json(
+        { error: "Contact email is not configured." },
+        { status: 503 }
+      );
+    }
     const fromEmail = process.env.FROM_EMAIL || `${SITE_NAME} <onboarding@resend.dev>`;
 
     const { name, email, subject, message } = await req.json();

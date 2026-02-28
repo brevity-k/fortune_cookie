@@ -10,7 +10,7 @@ export const SITE_DOMAIN = SITE_URL.replace(/^https?:\/\//, "");
 export const SITE_NAME = "Fortune Cookie";
 export const SITE_DESCRIPTION =
   "Break your virtual fortune cookie and discover your fortune! Interactive physics-based experience with 1,000+ unique fortunes.";
-export const CONTACT_EMAIL = "your-email@example.com";
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@fortunecrack.com";
 export const GA_MEASUREMENT_ID = "G-TMMGPRKTLD";
 
 // Fortune system limits (also defined in scripts/lib/types.ts for script-layer access)
