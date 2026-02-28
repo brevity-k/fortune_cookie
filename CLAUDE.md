@@ -1,8 +1,12 @@
 # Fortune Cookie - Project Progress & Status
 
+## Developer Identity Policy
+
+**STRICT:** Never disclose the developer's real name, personal email, or any GitHub accounts other than `brevity-k` in any code, commits, comments, PRs, issues, documentation, or AI-generated content related to this project. The only public identity for this project is `brevity-k`. Any references to other accounts or personal identifiers must be redacted. This rule applies to all AI assistants, automation scripts, and contributors.
+
 **Domain:** fortunecrack.com
 **Stack:** Next.js 16 + TypeScript + Pixi.js + Matter.js + GSAP + Howler.js
-**Last Audited:** 2026-02-12
+**Last Audited:** 2026-02-27
 
 ---
 
@@ -11,10 +15,10 @@
 | Area | Status | Notes |
 |---|---|---|
 | Core Interactive App | Done | 5 break methods, physics, sounds, animations |
-| Fortune System | Done | 1,031 fortunes, 8 categories, 4 rarities, streaks |
+| Fortune System | Done | 1,091 fortunes, 8 categories, 4 rarities, streaks |
 | Cookie Consent Banner | Done | GDPR-compliant accept/reject with localStorage |
 | SEO (basic) | Done | Meta tags, Open Graph, Twitter cards, sitemap, robots.txt |
-| Blog Content | Done | 12 posts as MDX files in src/content/blog/ |
+| Blog Content | Done | 14 posts as MDX files in src/content/blog/ |
 | Blog MDX Migration | Done | MDX files + content loader, single source of truth |
 | Legal Pages | Done | Privacy Policy & Terms of Service |
 | About Page | Done | Technology breakdown, features, categories |
@@ -33,7 +37,8 @@
 | PWA + Push Notifications | Not Started | Daily fortune push notification (deferred — Phase 6) |
 | Site Health Monitoring | Done | link-check, lighthouse, content-health (self-healing) workflows |
 | Self-Sufficient Automation | Done | Auto-close recovery, dedup issues, seasonal content, content validation (verified in Actions tab) |
-| Astrology Content | Not Started | Horoscopes, birth charts, compatibility — Phase 8 (NEW) |
+| Horoscope Pages (Phase 8A) | Done | 36 pages: daily/weekly/monthly × 12 signs + hub + OG images |
+| Astrology Content (Phase 8B-E) | Not Started | Compatibility, birth charts, tarot, moon fortune |
 | Auto X (Twitter) Posting | Done | 2 tweets/day: fortune (8AM UTC) + horoscope (2PM UTC) via twitter-api-v2 |
 | Testing | None | No test framework |
 
@@ -89,7 +94,7 @@
 ### Our Competitive Advantages
 
 - **Interactive physics-based experience** — unique in the fortune cookie niche (no competitor has this)
-- **1,031 curated fortunes** with rarity system (gamification)
+- **1,091 curated fortunes** with rarity system (gamification)
 - **Daily fortune mechanic** already exists
 - **MDX blog** ready for auto-generation at scale
 - **Dynamic OG images** already working for viral sharing
@@ -124,7 +129,7 @@ Interactive cracking UX (unique — nobody else has this)
 ### Completed Phases
 
 #### Phase 1-2: Core App + Fortune System (DONE)
-Interactive cookie breaking with 1,031 fortunes, 8 categories, 4 rarities, streaks.
+Interactive cookie breaking with 1,091 fortunes, 8 categories, 4 rarities, streaks.
 
 #### Phase 3: Auto-Blog Pipeline (DONE)
 Self-sufficient blog publishing 2-3 posts/week via Claude API + GitHub Actions.
@@ -138,6 +143,9 @@ Wordle-style shareable fortune result images via `/api/fortune-card` + `/f/[id]`
 #### Phase 7: Site Health Monitoring (DONE)
 link-check, lighthouse, content-health workflows.
 
+#### Phase 8A: Horoscope Pages (DONE)
+36 horoscope pages (daily/weekly/monthly × 12 signs) + hub page + OG images + JSON-LD FAQPage schema. Auto-generated daily via `auto-horoscopes.yml` workflow. Data stored in `src/data/horoscopes.json`. StarRating component for love/career/health display.
+
 ### Upcoming Phases
 
 #### Phase 6: PWA + Push Notifications (Deferred)
@@ -150,36 +158,21 @@ link-check, lighthouse, content-health workflows.
 - Notification click opens daily fortune page
 - Push notifications: 68% higher engagement, 7-15% open rate
 
-#### Phase 8: Astrology Content Expansion (NEW — High Priority)
+#### Phase 8: Astrology Content Expansion (Partially Complete)
 
 **Goal:** Tap into the massive astrology keyword universe (horoscope: 5M/mo, astrology: 3.3M/mo, zodiac signs: 2.7M/mo) by adding comprehensive astrology content that no fortune cookie site currently offers.
 
 **Why:** The gap between fortune cookie sites (minimal, ~1K traffic) and astrology sites (millions of visits) is enormous. By integrating real astrology content into our unique interactive experience, we bridge this gap and capture traffic from both keyword universes.
 
-##### 8A: Daily Horoscopes (Highest Traffic Potential)
+##### 8A: Daily Horoscopes — DONE
 
-**New routes:**
+36 pages live with OG images and auto-generation:
 ```
+/horoscope                  — Hub page with all 12 signs
 /horoscope/daily/[sign]     — 12 pages, updated daily via Claude API
 /horoscope/weekly/[sign]    — 12 pages, updated weekly
 /horoscope/monthly/[sign]   — 12 pages, updated monthly
-/horoscope                  — Hub page linking to all signs
 ```
-
-**Target keywords:**
-| Keyword | Monthly Searches | Competition |
-|---|---|---|
-| horoscope today | 1,500,000 | Very High |
-| daily horoscope | 823,000 | High |
-| [sign] horoscope today | 50K+ per sign | High |
-| weekly horoscope [sign] | 10K+ per sign | Medium |
-
-**Implementation:**
-- Claude API generates personalized daily/weekly/monthly horoscope text for each sign
-- Auto-generation workflow (daily at midnight UTC, like auto-blog)
-- Each page includes: horoscope text + "crack a fortune cookie for [sign]" CTA + lucky numbers
-- FAQPage JSON-LD schema for rich snippets
-- = **36 new indexable pages** (12 signs x 3 time periods)
 
 ##### 8B: Zodiac Compatibility Pages (Inherently Viral)
 
@@ -272,17 +265,17 @@ This creates **170+ additional SEO-optimized articles** over time.
 
 ##### Phase 8 SEO Impact Summary
 
-| Content Type | New Pages | Target Keywords |
-|---|---|---|
-| Daily/weekly/monthly horoscopes | 36 | horoscope today, daily horoscope |
-| Zodiac compatibility | 145 | zodiac compatibility, [sign] compatibility |
-| Birth chart | 1 | birth chart, natal chart |
-| Tarot cookie | 3 | tarot reading, daily tarot, yes/no tarot |
-| Moon fortune | 1 | moon phase fortune, moon reading |
-| Astrology blog articles | 170+ | Long-tail astrology keywords |
-| **Total new pages** | **356+** | |
+| Content Type | New Pages | Target Keywords | Status |
+|---|---|---|---|
+| Daily/weekly/monthly horoscopes | 36 | horoscope today, daily horoscope | Done |
+| Zodiac compatibility | 145 | zodiac compatibility, [sign] compatibility | Planned |
+| Birth chart | 1 | birth chart, natal chart | Planned |
+| Tarot cookie | 3 | tarot reading, daily tarot, yes/no tarot | Planned |
+| Moon fortune | 1 | moon phase fortune, moon reading | Planned |
+| Astrology blog articles | 170+ | Long-tail astrology keywords | Ongoing |
+| **Total new pages** | **356+** | | |
 
-**Combined with existing 30+ pages = 386+ indexed pages** (vs current ~30)
+**Current: 70+ indexed pages (was ~30). Target with remaining phases: 390+**
 
 #### Phase 9: Viral Mechanics Enhancement
 
@@ -347,31 +340,31 @@ fortunecrack.com
 | lucky numbers today | 10K-50K | Medium | /lucky-numbers |
 | [sign] fortune today | 1K-5K per sign | Low | /zodiac/[sign] |
 | zodiac fortune | 1K-5K | Low | /zodiac hub |
-| horoscope today | 1,500,000 | Very High | /horoscope (Phase 8) |
-| daily horoscope | 823,000 | High | /horoscope/daily (Phase 8) |
-| birth chart | 673,000 | Medium | /birth-chart (Phase 8) |
-| zodiac compatibility | 74,000 | Medium | /compatibility (Phase 8) |
-| tarot reading | 550,000 | High | /tarot (Phase 8) |
-| yes or no tarot | 135,000 | Medium | /tarot/yes-no (Phase 8) |
+| horoscope today | 1,500,000 | Very High | /horoscope (Live) |
+| daily horoscope | 823,000 | High | /horoscope/daily (Live) |
+| birth chart | 673,000 | Medium | /birth-chart (Phase 8C) |
+| zodiac compatibility | 74,000 | Medium | /compatibility (Phase 8B) |
+| tarot reading | 550,000 | High | /tarot (Phase 8D) |
+| yes or no tarot | 135,000 | Medium | /tarot/yes-no (Phase 8D) |
 
 ### Programmatic SEO Structure (Current + Planned)
 
 ```
-CURRENT (30+ pages):
+CURRENT (70+ pages):
 /                              — Homepage
 /daily                         — Daily fortune
 /lucky-numbers                 — Lucky numbers
 /fortune/[category]            — 8 category pages
 /zodiac/[sign]                 — 12 zodiac pages
-/blog/[slug]                   — 10+ blog posts
-/f/[id]                        — Fortune share landing
-/about, /contact, /privacy, /terms
-
-PHASE 8 ADDITIONS (356+ pages):
 /horoscope                     — Horoscope hub
 /horoscope/daily/[sign]        — 12 daily horoscopes
 /horoscope/weekly/[sign]       — 12 weekly horoscopes
 /horoscope/monthly/[sign]      — 12 monthly horoscopes
+/blog/[slug]                   — 14 blog posts
+/f/[id]                        — Fortune share landing
+/about, /contact, /privacy, /terms
+
+PLANNED ADDITIONS (Phase 8B-E, 320+ pages):
 /compatibility                 — Compatibility hub
 /compatibility/[sign1]-[sign2] — 144 pair pages
 /birth-chart                   — Birth chart fortune
@@ -382,7 +375,7 @@ PHASE 8 ADDITIONS (356+ pages):
 + 170+ blog articles
 ```
 
-### Content Auto-Generation Schedule (Phase 8)
+### Content Auto-Generation Schedule (Active)
 
 | Content | Frequency | Workflow | Claude API Cost |
 |---|---|---|---|
@@ -417,9 +410,9 @@ PHASE 8 ADDITIONS (356+ pages):
 
 ## Fortune Data
 
-- **Total:** 1,031+ fortunes in `src/data/fortunes.json` (auto-growing ~20/week)
-- **Categories:** wisdom (200), love (150), career (150), humor (150), motivation (150), philosophy (101), adventure (80), mystery (50)
-- **Rarities:** Common 63%, Rare 24%, Epic 8%, Legendary 5%
+- **Total:** 1,091 fortunes in `src/data/fortunes.json` (auto-growing ~20/week)
+- **Categories:** wisdom (200), love (170), career (150), humor (150), motivation (150), philosophy (101), mystery (90), adventure (80)
+- **Rarities:** Common 61%, Rare 23%, Epic 7%, Legendary 8%
 - **Daily Fortune:** Seeded RNG (mulberry32) — same fortune globally per day
 - **Auto-Growth:** `scripts/generate-fortunes.ts` adds ~20 fortunes/week to smallest category via Claude API
 
@@ -432,7 +425,7 @@ PHASE 8 ADDITIONS (356+ pages):
 
 ---
 
-## Blog Posts (10 Posts, All 500+ Words)
+## Blog Posts (14 Posts, All 500+ Words)
 
 | Slug | Words | Topic |
 |---|---|---|
@@ -446,6 +439,10 @@ PHASE 8 ADDITIONS (356+ pages):
 | famous-fortunes-that-came-true | ~1,600 | Stories |
 | zodiac-fortune-cookies-astrology-meets-wisdom | ~1,500 | Astrology |
 | why-we-need-small-joys | ~1,400 | Wellness |
+| beginners-guide-tarot-card-reading-symbols-meanings | ~1,500 | Tarot |
+| fortune-cookies-that-changed-lives | ~1,400 | Stories |
+| good-luck-charms-from-around-the-world | ~1,500 | Luck/Culture |
+| how-to-create-daily-gratitude-practice-fortune-cookies | ~1,400 | Wellness |
 
 Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Content loader in `src/lib/blog.ts` provides `getAllPosts()` and `getPost(slug)`. Rendered with `next-mdx-remote/rsc`.
 
@@ -496,7 +493,7 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 8. ~~Build auto-blog pipeline~~ Done (scripts + GitHub Actions)
 9. ~~Add shareable fortune card images~~ Done (Phase 4)
 10. ~~Create programmatic SEO pages~~ Done (Phase 5 — 23 routes)
-11. **Add daily horoscope pages** — Phase 8A (highest traffic potential)
+11. ~~Add daily horoscope pages~~ Done (Phase 8A — 36 pages + hub)
 12. **Add zodiac compatibility pages (144)** — Phase 8B (inherently viral)
 13. **Add birth chart fortune** — Phase 8C (unique differentiator)
 14. **Add tarot cookie feature** — Phase 8D
@@ -513,19 +510,36 @@ src/
 │   ├── page.tsx              # Homepage with interactive cookie
 │   ├── layout.tsx            # Root layout (GA/AdSense scripts here)
 │   ├── globals.css           # Theme variables, animations
-│   ├── sitemap.ts            # Dynamic sitemap (30+ entries)
+│   ├── sitemap.ts            # Dynamic sitemap (60+ entries)
 │   ├── robots.ts             # Search engine directives
+│   ├── icon.tsx              # Dynamic favicon
+│   ├── apple-icon.tsx        # Apple touch icon
+│   ├── opengraph-image.tsx   # Homepage OG image
+│   ├── twitter-image.tsx     # Homepage Twitter image
 │   ├── about/page.tsx
 │   ├── blog/page.tsx         # Blog index
 │   ├── blog/[slug]/page.tsx  # MDX blog post renderer (next-mdx-remote)
+│   ├── blog/[slug]/opengraph-image.tsx
 │   ├── api/contact/route.ts  # Contact form API (Resend)
 │   ├── api/fortune-card/route.tsx # Edge: OG image for fortune shares (1200x630)
 │   ├── contact/page.tsx
 │   ├── daily/page.tsx        # Daily fortune page + 7-day history
+│   ├── daily/opengraph-image.tsx
 │   ├── f/[id]/page.tsx       # Fortune share landing page (base64url encoded)
 │   ├── fortune/[category]/page.tsx  # 8 category fortune pages (SSG)
+│   ├── fortune/[category]/opengraph-image.tsx
+│   ├── horoscope/page.tsx           # Horoscope hub (all 12 signs)
+│   ├── horoscope/opengraph-image.tsx
+│   ├── horoscope/daily/[sign]/page.tsx        # 12 daily horoscope pages
+│   ├── horoscope/daily/[sign]/opengraph-image.tsx
+│   ├── horoscope/weekly/[sign]/page.tsx       # 12 weekly horoscope pages
+│   ├── horoscope/weekly/[sign]/opengraph-image.tsx
+│   ├── horoscope/monthly/[sign]/page.tsx      # 12 monthly horoscope pages
+│   ├── horoscope/monthly/[sign]/opengraph-image.tsx
 │   ├── zodiac/[sign]/page.tsx       # 12 zodiac fortune pages (SSG)
+│   ├── zodiac/[sign]/opengraph-image.tsx
 │   ├── lucky-numbers/page.tsx       # Daily lucky numbers page
+│   ├── lucky-numbers/opengraph-image.tsx
 │   ├── privacy/page.tsx
 │   └── terms/page.tsx
 ├── components/
@@ -542,16 +556,20 @@ src/
 │   ├── ContactForm.tsx       # Contact form with validation
 │   ├── AdUnit.tsx            # AdSense (disabled, no pub ID)
 │   ├── CookieConsent.tsx     # GDPR consent banner
+│   ├── StarRating.tsx        # Star rating display for horoscope pages
 │   ├── Header.tsx            # Responsive nav
 │   └── Footer.tsx            # Footer links + Explore section
 ├── content/
-│   └── blog/                 # MDX blog posts with YAML frontmatter (12+ posts)
+│   └── blog/                 # MDX blog posts with YAML frontmatter (14 posts)
 ├── lib/
 │   ├── blog.ts               # Blog content loader (getAllPosts, getPost)
+│   ├── constants.ts           # Site-wide configuration constants
 │   ├── fortuneEngine.ts      # Fortune logic, streaks, journal, seededRandom, category helpers
+│   ├── horoscopes.ts         # Horoscope data loader, ZODIAC_SIGNS, formatters
 │   └── analytics.ts          # GA4 event tracking (disabled)
 └── data/
-    └── fortunes.json         # 1,031+ fortunes (auto-growing weekly)
+    ├── fortunes.json         # 1,091 fortunes (auto-growing weekly)
+    └── horoscopes.json       # Daily/weekly/monthly horoscope data for 12 signs
 
 scripts/
 ├── generate-post.ts          # Two-stage Claude API blog post generator
@@ -562,28 +580,29 @@ scripts/
 ├── generate-seasonal.ts      # Seasonal holiday content generation via Claude API
 ├── validate-content.ts       # Data integrity validation (fortunes, horoscopes, blog)
 ├── post-to-x.ts              # Auto-post daily fortune/horoscope tweets to X (Twitter)
-└── seasonal-state.json       # Tracks which seasonal content has been generated per year
+├── lib/
+│   ├── types.ts              # Shared TypeScript types for scripts
+│   └── utils.ts              # Shared utility functions for scripts
+├── seasonal-state.json       # Tracks which seasonal content has been generated per year
+└── x-post-state.json         # Tracks X posting state (last dates, tweeted blog slugs)
 
 .github/workflows/
 ├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish
 ├── auto-fortunes.yml         # Cron (Sun 10AM UTC): generate 20 new fortunes + validate + publish
 ├── auto-horoscopes.yml       # Cron (Daily 6AM UTC): daily/weekly/monthly horoscopes for 12 signs
 ├── auto-seasonal.yml         # Cron (Mon 8AM UTC): seasonal content if holiday window active
-├── content-health.yml        # Weekly (Mon noon UTC): blog/horoscope/fortune freshness + URL pings + auto-triggers
 ├── auto-x-post.yml           # Cron (Daily 8AM+2PM UTC): fortune + horoscope tweets to X
+├── ci.yml                    # CI pipeline for pull requests (required status check)
+├── content-health.yml        # Weekly (Mon noon UTC): blog/horoscope/fortune freshness + URL pings + auto-triggers
+├── dependabot-automerge.yml  # Auto-merge Dependabot PRs after CI passes
 ├── link-check.yml            # Weekly (Mon 6AM UTC): broken link detection → deduplicated issues
 └── lighthouse.yml            # Weekly (Wed 6AM UTC): SEO + performance audit
 ```
 
-### Planned File Additions (Phase 8)
+### Planned File Additions (Phase 8B-E)
 
 ```
 src/app/
-├── horoscope/
-│   ├── page.tsx                    # Horoscope hub
-│   ├── daily/[sign]/page.tsx       # Daily horoscope (12 signs)
-│   ├── weekly/[sign]/page.tsx      # Weekly horoscope (12 signs)
-│   └── monthly/[sign]/page.tsx     # Monthly horoscope (12 signs)
 ├── compatibility/
 │   ├── page.tsx                    # Compatibility hub with pair selector
 │   └── [pair]/page.tsx             # 144 sign-pair pages (aries-taurus, etc.)
@@ -597,11 +616,7 @@ src/app/
     └── page.tsx                    # Moon phase fortune
 
 scripts/
-├── generate-horoscopes.ts         # Daily/weekly/monthly horoscope generation via Claude API
 └── generate-compatibility.ts      # One-time: generate 144 compatibility pages
-
-.github/workflows/
-└── auto-horoscope.yml             # Daily: generate horoscopes for all 12 signs
 ```
 
 ---
@@ -619,7 +634,8 @@ scripts/
 | Wed 6AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
 | Daily 8AM UTC | auto-x-post | Fortune tweet to X (Twitter) | Retry + issue + auto-close |
 | Daily 2PM UTC | auto-x-post | Rotating zodiac horoscope tweet to X | Retry + issue + auto-close |
-| On push | dependabot-updates | Auto-merge Dependabot PRs after CI passes | Auto-merge |
+| On PR | ci | CI pipeline: lint + build validation | Required check |
+| On push | dependabot-automerge | Auto-merge Dependabot PRs after CI passes | Auto-merge |
 
 ### Self-Corrective Mechanisms
 
