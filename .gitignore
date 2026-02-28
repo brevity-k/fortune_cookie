@@ -41,5 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# private business docs
+.private/
+
 # auto-blog temp files
 .generated-slug

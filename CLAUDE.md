@@ -24,7 +24,7 @@
 | About Page | Done | Technology breakdown, features, categories |
 | Contact Form | Done | Form with Resend auto-response + owner notification |
 | Social Sharing | Done | Twitter/X, Facebook, WhatsApp, clipboard |
-| Google Analytics | Done | GA4 enabled, ID: G-TMMGPRKTLD |
+| Google Analytics | Done | GA4 enabled |
 | Google AdSense | Not Active | 3 ad slots coded, publisher ID empty |
 | Environment Variables | Done | .env.local with Resend API key, .env.example committed |
 | Deployment | Done | Vercel, auto-deploys on push to main |
@@ -44,83 +44,9 @@
 
 ---
 
-## Growth Strategy (Research-Based, Updated 2026-02-12)
+## Growth Strategy
 
-### Competitive Landscape
-
-#### Tier 1: Dominant Astrology/Horoscope Sites (10M+ monthly visits)
-
-| Site | Monthly Visits | Key Strength |
-|---|---|---|
-| 16personalities.com | ~18.9M | MBTI test; 55% organic search; 9:58 avg session |
-| horoscope.com | ~11.5M | Broadest content: daily/weekly/monthly horoscopes + games |
-| astro.com (Astrodienst) | ~9.7M | Most respected birth chart calculator since 1990s |
-
-#### Tier 2: Major Players (3M-10M monthly visits)
-
-| Site | Monthly Visits | Key Strength |
-|---|---|---|
-| cafeastrology.com | ~4.1-5.4M | Free birth chart reports; 52% organic search |
-| astrology.com | ~3.3M | Brand name domain; includes fortune cookie game |
-| tarot.com | ~3.0M | 100+ tarot readings; 37% direct traffic |
-
-#### Tier 3: High-Growth Apps
-
-| App | Users | Key Strength |
-|---|---|---|
-| Co-Star | 30M+ registered | AI-personalized daily horoscopes; viral sharing |
-| CHANI | Top-grossing US | Premium astrology education; celebrity brand |
-| The Pattern | Millions | Psychological approach; relationship focus |
-
-#### Tier 4: Viral Test/Quiz Sites
-
-| Site | Monthly Visits | Key Strength |
-|---|---|---|
-| 16personalities.com | ~18.9M | 1B+ tests; 45+ languages; identity-based sharing |
-| ktestone.com | Millions | Korean origin; TikTok viral; beautiful character cards |
-| BuzzFeed Quizzes | Part of 100M+ | 92% completion rate; "which character are you" format |
-
-#### Tier 5: Fortune Cookie Sites (The Blue Ocean)
-
-| Site | Traffic | Notes |
-|---|---|---|
-| fortunecookiegenerator.com | ~1.2K/mo | Simple click-to-generate; minimal |
-| fortunecookiemessage.com | ~100K | Database of messages; no interactivity |
-| astrology.com/fortune-cookie | Part of astrology.com | ~60 messages; simple click; zero personalization |
-| horoscope.com/fortune-cookie | Part of horoscope.com | Basic divination game; no astrology integration |
-
-**Key Finding:** Fortune cookie websites are extremely low-competition. Even major astrology sites treat fortune cookies as throwaway mini-games with ~60 generic messages, no personalization, and no interactive experience. **This is a massive blue ocean.**
-
-### Our Competitive Advantages
-
-- **Interactive physics-based experience** — unique in the fortune cookie niche (no competitor has this)
-- **1,091 curated fortunes** with rarity system (gamification)
-- **Daily fortune mechanic** already exists
-- **MDX blog** ready for auto-generation at scale
-- **Dynamic OG images** already working for viral sharing
-- **12 zodiac pages + 8 category pages** already built
-- **Shareable fortune cards** with rarity badges
-
-### What Makes Top Sites Succeed
-
-1. **Daily ritual mechanic** — Wordle's "one thing per day" drives massive daily return visits
-2. **Shareable visual results** — Wordle's emoji grid generated 23.5M tweets; visual results are 40x more shared
-3. **Identity/personality content** — Quizzes achieve 80% participation, 90% completion; people share results that reflect their identity
-4. **Programmatic SEO** — Auto-generated pages targeting long-tail keywords at scale (horoscope.com has 200+ indexed pages)
-5. **Push notifications** — 68% higher engagement, 7-15% open rate vs 1-3% for email
-6. **Frictionless onboarding** — Zero sign-up, instant core experience; virality dies at barriers
-7. **Zodiac personalization** — Cafe Astrology built 5M+ monthly traffic entirely around free zodiac tools
-
-### The Winning Formula for FortuneCrack
-
-```
-Interactive cracking UX (unique — nobody else has this)
-+ Astrology/zodiac personalization (taps into massive keyword universe)
-+ Shareable visual results (proven by 16Personalities/Ktestone)
-+ Programmatic SEO (190+ pages targeting long-tail keywords)
-+ Daily refresh ritual (Co-Star's proven retention model)
-= Target: 500K-1M+ monthly visits
-```
+> Competitive analysis, traffic data, and growth targets are in `.private/business-strategy.md` (gitignored).
 
 ---
 
@@ -182,13 +108,6 @@ link-check, lighthouse, content-health workflows.
 /compatibility                  — Hub with interactive pair selector
 ```
 
-**Target keywords:**
-| Keyword | Monthly Searches | Competition |
-|---|---|---|
-| zodiac compatibility | 74,000 | Medium |
-| [sign1] and [sign2] compatibility | 5-20K per pair | Medium |
-| love compatibility test | 50,000+ | High |
-
 **Implementation:**
 - Pre-generated compatibility content for all 144 sign pairs
 - Love score, friendship score, communication rating, challenge areas
@@ -208,14 +127,6 @@ link-check, lighthouse, content-health workflows.
 - Personalized message based on chart
 - Result is highly shareable (feels personal, invites comparison)
 
-**Target keywords:**
-| Keyword | Monthly Searches | Competition |
-|---|---|---|
-| birth chart | 673,000 | Medium |
-| free birth chart | 90,500 | Medium |
-| natal chart | 246,000 | Medium |
-| birth chart compatibility | 90,500 | Medium |
-
 ##### 8D: Tarot Cookie (Hybrid Feature)
 
 **New routes:**
@@ -230,14 +141,6 @@ link-check, lighthouse, content-health workflows.
 - Daily card changes based on date seed
 - Love tarot and yes/no tarot as popular sub-types
 - Tarot.com gets 3M+ monthly visits primarily from tarot content
-
-**Target keywords:**
-| Keyword | Monthly Searches | Competition |
-|---|---|---|
-| tarot reading | 550,000 | High |
-| daily tarot | 60,500 | Medium |
-| yes or no tarot | 135,000 | Medium |
-| love tarot | 90,500 | Medium |
 
 ##### 8E: Moon Phase Fortune
 
@@ -307,45 +210,13 @@ fortunecrack.com
 
 #### Phase 10: Monetization
 
-**Phase 10A (0-100K visits):**
-- Google AdSense (after fortune reveal, not during interaction)
-- Already 3 ad slots coded; just needs publisher ID
-
-**Phase 10B (100K-500K visits):**
-- Premium readings: detailed birth-chart-based fortune cookie ($1-3)
-- Ad-free subscription ($2.99/month)
-- Sponsored/branded fortune cookies (partnerships)
-
-**Phase 10C (500K+ visits):**
-- Live astrologer consultations
-- Premium compatibility reports
-- Fortune cookie merchandise (physical cookies with custom fortunes)
-- API licensing (fortune cookie widget for other sites)
-
-**Market context:** Global astrology app market ~$3B (2024), projected $9B by 2030 (CAGR ~20%).
+> Pricing details and market analysis are in `.private/business-strategy.md` (gitignored).
 
 ---
 
 ## SEO Strategy
 
-### Primary Keyword Targets (Ranked by Opportunity)
-
-| Keyword | Monthly Searches | Competition | Our Page |
-|---|---|---|---|
-| fortune cookie online | 5K-10K | Very Low | Homepage |
-| virtual fortune cookie | 1K-5K | Very Low | Homepage |
-| fortune cookie generator | 5K-10K | Low | Homepage |
-| open fortune cookie | 1K-5K | Very Low | Homepage |
-| daily fortune | 10K-20K | Medium | /daily |
-| lucky numbers today | 10K-50K | Medium | /lucky-numbers |
-| [sign] fortune today | 1K-5K per sign | Low | /zodiac/[sign] |
-| zodiac fortune | 1K-5K | Low | /zodiac hub |
-| horoscope today | 1,500,000 | Very High | /horoscope (Live) |
-| daily horoscope | 823,000 | High | /horoscope/daily (Live) |
-| birth chart | 673,000 | Medium | /birth-chart (Phase 8C) |
-| zodiac compatibility | 74,000 | Medium | /compatibility (Phase 8B) |
-| tarot reading | 550,000 | High | /tarot (Phase 8D) |
-| yes or no tarot | 135,000 | Medium | /tarot/yes-no (Phase 8D) |
+> Keyword research data (search volumes, competition levels) is in `.private/business-strategy.md` (gitignored).
 
 ### Programmatic SEO Structure (Current + Planned)
 
@@ -377,14 +248,13 @@ PLANNED ADDITIONS (Phase 8B-E, 320+ pages):
 
 ### Content Auto-Generation Schedule (Active)
 
-| Content | Frequency | Workflow | Claude API Cost |
-|---|---|---|---|
-| Daily horoscopes (12 signs) | Daily | auto-horoscope.yml | ~$0.10/day |
-| Weekly horoscopes (12 signs) | Weekly | auto-horoscope.yml | ~$0.10/week |
-| Monthly horoscopes (12 signs) | Monthly | auto-horoscope.yml | ~$0.10/month |
-| Blog posts | 2-3x/week | auto-blog.yml (existing) | ~$0.20/week |
-| New fortunes | Weekly | auto-fortunes.yml (existing) | ~$0.10/week |
-| **Total** | | | **~$5-7/month** |
+| Content | Frequency | Workflow |
+|---|---|---|
+| Daily horoscopes (12 signs) | Daily | auto-horoscope.yml |
+| Weekly horoscopes (12 signs) | Weekly | auto-horoscope.yml |
+| Monthly horoscopes (12 signs) | Monthly | auto-horoscope.yml |
+| Blog posts | 2-3x/week | auto-blog.yml |
+| New fortunes | Weekly | auto-fortunes.yml |
 
 ---
 
@@ -485,7 +355,7 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 
 1. ~~Expand all blog posts to 500+ words each~~ Done
 2. ~~Migrate blog to MDX for easier authoring~~ Done
-3. ~~Enable Google Analytics~~ Done (G-TMMGPRKTLD)
+3. ~~Enable Google Analytics~~ Done
 4. ~~Add OG images for social sharing~~ Done
 5. ~~Add JSON-LD structured data~~ Done
 6. ~~Set up environment variables~~ Done
