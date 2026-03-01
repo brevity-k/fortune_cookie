@@ -92,19 +92,19 @@ export default function LuckyNumbersPage() {
         <div className="text-center mb-10">
           <div className="text-6xl mb-4">🍀</div>
           <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">Lucky Numbers Today</h1>
-          <p className="text-foreground/40 text-sm">{dateStr}</p>
+          <p className="text-muted text-sm">{dateStr}</p>
         </div>
 
         {/* Main Numbers */}
-        <div className="rounded-2xl border border-gold/20 bg-gold/5 p-5 sm:p-8 text-center mb-8">
-          <p className="text-xs uppercase tracking-wider text-foreground/30 mb-6">
+        <div className="rounded-2xl border border-border bg-background p-5 sm:p-8 text-center mb-8">
+          <p className="text-xs uppercase tracking-wider text-muted mb-6">
             Your Lucky Numbers
           </p>
           <div className="flex justify-center gap-2.5 sm:gap-4 flex-wrap mb-8">
             {numbers.map((n) => (
               <div
                 key={n}
-                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-gold/10 text-lg sm:text-xl font-bold text-gold"
+                className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 border-gold/30 bg-background text-lg sm:text-xl font-bold text-gold"
               >
                 {n}
               </div>
@@ -112,8 +112,8 @@ export default function LuckyNumbersPage() {
           </div>
 
           {/* Power Number */}
-          <div className="border-t border-gold/10 pt-6">
-            <p className="text-xs uppercase tracking-wider text-foreground/30 mb-3">
+          <div className="border-t border-border pt-6">
+            <p className="text-xs uppercase tracking-wider text-muted mb-3">
               Power Number
             </p>
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-amber bg-amber/15 text-2xl font-bold text-amber">
@@ -123,8 +123,8 @@ export default function LuckyNumbersPage() {
         </div>
 
         {/* Lucky Color */}
-        <div className="rounded-2xl border border-gold/15 bg-gold/5 p-6 text-center mb-8">
-          <p className="text-xs uppercase tracking-wider text-foreground/30 mb-3">
+        <div className="rounded-2xl border border-border bg-background p-6 text-center mb-8">
+          <p className="text-xs uppercase tracking-wider text-muted mb-3">
             Lucky Color of the Day
           </p>
           <div className="flex items-center justify-center gap-3">
@@ -132,27 +132,27 @@ export default function LuckyNumbersPage() {
               className="h-8 w-8 rounded-full"
               style={{ backgroundColor: luckyColor.hex }}
             />
-            <span className="text-lg font-semibold text-foreground/70">{luckyColor.name}</span>
+            <span className="text-lg font-semibold text-foreground/80">{luckyColor.name}</span>
           </div>
         </div>
 
         {/* Number Symbolism */}
-        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-6 mb-10">
+        <div className="rounded-2xl border border-border bg-background p-6 mb-10">
           <h2 className="text-lg font-semibold text-gold mb-3">The Power of Lucky Numbers</h2>
-          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+          <p className="text-sm text-muted leading-relaxed mb-3">
             Across cultures and centuries, certain numbers have carried special meaning. The number
             7 is considered lucky in Western traditions, rooted in its prevalence in nature and
             religion — seven days of the week, seven colors of the rainbow. In Chinese culture, 8
             is the luckiest number because it sounds like the word for prosperity. Meanwhile, 3
             symbolizes harmony in many Asian traditions, representing heaven, earth, and humanity.
           </p>
-          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+          <p className="text-sm text-muted leading-relaxed mb-3">
             Your daily lucky numbers are generated using a date-based algorithm, so everyone around
             the world sees the same set each day. Whether you use them for lottery picks, daily
             decisions, or just a fun ritual, they are a fresh set of possibilities delivered to you
             every morning.
           </p>
-          <p className="text-sm text-foreground/40">
+          <p className="text-sm text-muted">
             Numbers refresh at midnight UTC.
           </p>
         </div>
@@ -168,26 +168,26 @@ export default function LuckyNumbersPage() {
         </div>
 
         {/* Related Links */}
-        <div className="border-t border-gold/10 pt-8">
+        <div className="border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">
             More Fortune Fun
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/daily"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Daily Fortune
             </Link>
             <Link
               href="/zodiac/aries"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Zodiac Fortunes
             </Link>
             <Link
               href="/fortune/wisdom"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Fortune Categories
             </Link>

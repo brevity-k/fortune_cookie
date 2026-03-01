@@ -30,7 +30,7 @@ export default function AboutPage() {
           About Fortune Crack
         </h1>
 
-        <div className="space-y-6 text-foreground/70 leading-relaxed">
+        <div className="space-y-6 text-foreground/80 leading-relaxed">
           <p>
             Fortune Crack started with a simple question: why do fortune cookie websites feel so
             lifeless? A real fortune cookie is a tiny event — you hold it, crack it, hear the snap,

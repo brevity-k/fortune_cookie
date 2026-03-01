@@ -40,7 +40,7 @@ export default function BlogPage() {
       />
       <div className="mx-auto max-w-3xl">
         <h1 className="text-golden-shimmer mb-4 text-3xl sm:text-4xl font-bold">Blog</h1>
-        <p className="mb-12 text-foreground/50">
+        <p className="mb-12 text-muted">
           Stories, insights, and behind-the-scenes looks at the world of fortune cookies.
         </p>
 
@@ -48,10 +48,10 @@ export default function BlogPage() {
           {posts.map((post) => (
             <article
               key={post.slug}
-              className="group rounded-2xl border border-gold/10 bg-gold/5 p-6 transition hover:border-gold/20 hover:bg-gold/10"
+              className="group rounded-2xl border border-border bg-background p-6 transition hover:border-gold/20 hover:bg-gold/5"
             >
               <Link href={`/blog/${post.slug}`}>
-                <div className="mb-2 flex items-center gap-3 text-xs text-foreground/30">
+                <div className="mb-2 flex items-center gap-3 text-xs text-muted">
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -65,7 +65,7 @@ export default function BlogPage() {
                 <h2 className="mb-2 text-xl font-semibold text-gold transition group-hover:text-gold-light">
                   {post.title}
                 </h2>
-                <p className="text-sm leading-relaxed text-foreground/50">{post.excerpt}</p>
+                <p className="text-sm leading-relaxed text-muted">{post.excerpt}</p>
               </Link>
             </article>
           ))}

@@ -94,7 +94,7 @@ export default function DailyPage() {
         <div className="text-center mb-8">
           <div className="text-6xl mb-4">🥠</div>
           <h1 className="text-golden-shimmer text-3xl sm:text-4xl font-bold mb-2">Daily Fortune Cookie</h1>
-          <p className="text-foreground/40 text-sm">{dateStr}</p>
+          <p className="text-muted text-sm">{dateStr}</p>
         </div>
 
         {/* Today's Fortune */}
@@ -105,12 +105,12 @@ export default function DailyPage() {
             background: `radial-gradient(ellipse at center, ${rarityColor}08 0%, transparent 70%)`,
           }}
         >
-          <div className="absolute left-3 top-3 text-gold/30">✦</div>
-          <div className="absolute right-3 top-3 text-gold/30">✦</div>
-          <div className="absolute bottom-3 left-3 text-gold/30">✦</div>
-          <div className="absolute bottom-3 right-3 text-gold/30">✦</div>
+          <div className="absolute left-3 top-3 text-gold/20">✦</div>
+          <div className="absolute right-3 top-3 text-gold/20">✦</div>
+          <div className="absolute bottom-3 left-3 text-gold/20">✦</div>
+          <div className="absolute bottom-3 right-3 text-gold/20">✦</div>
 
-          <p className="text-xs uppercase tracking-wider text-foreground/30 mb-4">
+          <p className="text-xs uppercase tracking-wider text-muted mb-4">
             Today&apos;s Fortune
           </p>
           <p className="font-serif text-2xl leading-relaxed text-cream mb-4">
@@ -123,24 +123,24 @@ export default function DailyPage() {
             >
               {rarityLabel}
             </span>
-            <span className="text-xs text-foreground/30 capitalize">{fortune.category}</span>
+            <span className="text-xs text-muted capitalize">{fortune.category}</span>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-6 mb-10">
+        <div className="rounded-2xl border border-border bg-background p-6 mb-10">
           <h2 className="text-lg font-semibold text-gold mb-3">About Your Daily Fortune</h2>
-          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+          <p className="text-sm text-muted leading-relaxed mb-3">
             Every day at midnight UTC, a single fortune is chosen from our collection of over 1,000
             messages using a date-based algorithm. The result is the same for everyone — no matter
             where you are in the world, you and millions of others share the same fortune today.
           </p>
-          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+          <p className="text-sm text-muted leading-relaxed mb-3">
             This is what makes the Daily Fortune special. It turns a personal moment into a communal
             one. Friends compare notes, couples check if they got a love fortune, and strangers on
             social media bond over the same message. Come back tomorrow — your next fortune is
             already waiting.
           </p>
-          <p className="text-sm text-foreground/40">
+          <p className="text-sm text-muted">
             The past 7 days of fortunes are shown below so you never miss one.
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function DailyPage() {
         </div>
 
         {/* Past 7 Days */}
-        <div className="border-t border-gold/10 pt-8 mb-12">
+        <div className="border-t border-border pt-8 mb-12">
           <h2 className="text-xl font-semibold text-gold mb-6 text-center">Past 7 Days</h2>
           <div className="space-y-3">
             {pastFortunes.map(({ date, fortune: f }) => {
@@ -164,11 +164,11 @@ export default function DailyPage() {
               return (
                 <div
                   key={date}
-                  className="flex items-start gap-4 rounded-lg border border-gold/10 bg-gold/5 p-4"
+                  className="flex items-start gap-4 rounded-lg border border-border bg-background p-4"
                 >
-                  <div className="shrink-0 text-xs text-foreground/30 w-20 pt-0.5">{date}</div>
+                  <div className="shrink-0 text-xs text-muted w-20 pt-0.5">{date}</div>
                   <div className="flex-1">
-                    <p className="text-sm text-foreground/70">&ldquo;{f.text}&rdquo;</p>
+                    <p className="text-sm text-foreground/80">&ldquo;{f.text}&rdquo;</p>
                     <span
                       className="mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold text-white"
                       style={{ backgroundColor: rc }}
@@ -183,24 +183,24 @@ export default function DailyPage() {
         </div>
 
         {/* Related Links */}
-        <div className="border-t border-gold/10 pt-8">
+        <div className="border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">More to Explore</h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/lucky-numbers"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Lucky Numbers
             </Link>
             <Link
               href="/zodiac/aries"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Zodiac Fortunes
             </Link>
             <Link
               href="/fortune/wisdom"
-              className="rounded-full border border-gold/20 px-4 py-2.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold"
+              className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Fortune Categories
             </Link>
