@@ -202,6 +202,30 @@ export function updateStreak(): number {
   }
 }
 
+/**
+ * Generate a deterministic "fortune number" for display (like Wordle #847).
+ * Based on days since launch + a hash of the fortune text.
+ */
+export function getFortuneNumber(text: string): number {
+  const LAUNCH_DATE = new Date("2026-02-01");
+  const now = new Date();
+  const daysSinceLaunch = Math.floor((now.getTime() - LAUNCH_DATE.getTime()) / 86400000);
+  // Simple hash of text to add variance
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) {
+    hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+  }
+  return Math.abs(daysSinceLaunch * 1000 + (hash % 1000)) + 1;
+}
+
+/**
+ * Get today's global fortune number (same for everyone).
+ */
+export function getDailyFortuneNumber(): number {
+  const fortune = getDailyFortune();
+  return getFortuneNumber(fortune.text);
+}
+
 // Fortune journal (localStorage)
 export function saveToJournal(fortune: Fortune) {
   if (typeof window === "undefined") return;
