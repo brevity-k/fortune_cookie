@@ -105,6 +105,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             </time>
             <span>·</span>
             <span>{post.readTime}</span>
+            <span>·</span>
+            <span>By Fortune Crack Editorial Team</span>
           </div>
         </header>
 

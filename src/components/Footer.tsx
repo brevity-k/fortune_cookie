@@ -23,6 +23,7 @@ export default function Footer() {
               <Link href="/about" className="text-muted transition hover:text-gold">About</Link>
               <Link href="/blog" className="text-muted transition hover:text-gold">Blog</Link>
               <Link href="/contact" className="text-muted transition hover:text-gold">Contact</Link>
+              <Link href="/editorial-policy" className="text-muted transition hover:text-gold">Editorial Policy</Link>
             </div>
           </div>
 
@@ -30,8 +31,9 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-sm font-semibold text-foreground/80">Explore</h3>
             <div className="flex flex-col gap-2 text-sm">
+              <Link href="/daily" className="text-muted transition hover:text-gold">Daily Fortune</Link>
               <Link href="/lucky-numbers" className="text-muted transition hover:text-gold">Lucky Numbers</Link>
-              <Link href="/horoscope" className="text-muted transition hover:text-gold">Daily Horoscopes</Link>
+              <Link href="/horoscope" className="text-muted transition hover:text-gold">Horoscopes</Link>
               <Link href="/fortune/wisdom" className="text-muted transition hover:text-gold">Fortune Categories</Link>
               <Link href="/zodiac/aries" className="text-muted transition hover:text-gold">Zodiac Signs</Link>
             </div>

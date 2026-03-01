@@ -60,7 +60,8 @@ export function ArticleJsonLd({ title, description, slug, datePublished }: Artic
     dateModified: datePublished,
     author: {
       "@type": "Organization",
-      name: SITE_NAME,
+      name: "Fortune Crack Editorial Team",
+      url: `${SITE_URL}/about`,
     },
     publisher: {
       "@type": "Organization",
