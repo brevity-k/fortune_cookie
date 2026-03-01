@@ -111,12 +111,12 @@ export async function POST(req: NextRequest) {
         to: email,
         subject: `Thanks for reaching out to ${SITE_NAME}!`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #1a0e04; color: #f5e6d0; padding: 32px; border-radius: 12px;">
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f0b1a; color: #e8e0f0; padding: 32px; border-radius: 12px;">
             <h1 style="color: #d4a04a; font-size: 24px; margin-bottom: 16px;">Thank you, ${escapeHtml(name)}!</h1>
             <p style="color: #f5e6d0cc; line-height: 1.6;">
               We've received your message and will get back to you as soon as possible, usually within 24-48 hours.
             </p>
-            <div style="background: #2d1810; border: 1px solid rgba(212,160,74,0.2); border-radius: 8px; padding: 16px; margin: 24px 0;">
+            <div style="background: #1a1528; border: 1px solid rgba(212,160,74,0.2); border-radius: 8px; padding: 16px; margin: 24px 0;">
               <p style="color: #d4a04a; font-size: 14px; margin: 0 0 8px 0; font-weight: bold;">Your message:</p>
               <p style="color: #f5e6d0aa; font-size: 14px; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>

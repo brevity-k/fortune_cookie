@@ -24,12 +24,12 @@ export const STREAK_LEGENDARY_THRESHOLD = 30;
 
 // Category accent colors for fortune cards and UI
 export const CATEGORY_COLORS: Record<string, string> = {
-  wisdom: "#0d7377",
+  wisdom: "#11999e",
   love: "#e8475f",
   career: "#d4870e",
   humor: "#ff6b6b",
   motivation: "#f77f00",
-  philosophy: "#4a3f8a",
-  adventure: "#2d6a4f",
-  mystery: "#5a189a",
+  philosophy: "#6c5ce7",
+  adventure: "#40916c",
+  mystery: "#7c3aed",
 };
