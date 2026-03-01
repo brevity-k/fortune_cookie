@@ -7,38 +7,35 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 border-b border-gold/20 bg-background/80 backdrop-blur-md">
+    <header className="relative z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-2xl">🥠</span>
           <span className="text-golden-shimmer text-xl font-bold tracking-wide">
-            Fortune Cookie
+            Fortune Crack
           </span>
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
-          <Link href="/" className="text-foreground/70 transition hover:text-gold">
+          <Link href="/" className="text-foreground/60 transition hover:text-gold">
             Home
           </Link>
-          <Link href="/horoscope" className="text-foreground/70 transition hover:text-gold">
-            Horoscopes
+          <Link href="/daily" className="text-foreground/60 transition hover:text-gold">
+            Daily
           </Link>
-          <Link href="/blog" className="text-foreground/70 transition hover:text-gold">
+          <Link href="/blog" className="text-foreground/60 transition hover:text-gold">
             Blog
           </Link>
-          <Link href="/about" className="text-foreground/70 transition hover:text-gold">
+          <Link href="/about" className="text-foreground/60 transition hover:text-gold">
             About
-          </Link>
-          <Link href="/contact" className="text-foreground/70 transition hover:text-gold">
-            Contact
           </Link>
         </nav>
 
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 -mr-2 text-foreground/70 md:hidden"
+          className="p-2 -mr-2 text-foreground/60 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
@@ -54,22 +51,19 @@ export default function Header() {
 
       {/* Mobile nav */}
       {menuOpen && (
-        <nav className="border-t border-gold/10 bg-background/95 px-4 py-3 backdrop-blur-md md:hidden">
+        <nav className="border-t border-border bg-background/95 px-4 py-3 backdrop-blur-md md:hidden">
           <div className="flex flex-col gap-1 text-sm">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Home
             </Link>
-            <Link href="/horoscope" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
-              Horoscopes
+            <Link href="/daily" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
+              Daily
             </Link>
-            <Link href="/blog" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
+            <Link href="/blog" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Blog
             </Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
+            <Link href="/about" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               About
-            </Link>
-            <Link href="/contact" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/70 transition hover:text-gold">
-              Contact
             </Link>
           </div>
         </nav>
