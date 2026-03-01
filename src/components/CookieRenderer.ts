@@ -105,13 +105,13 @@ export class CookieRenderer {
     // Background gradient
     const bg = new Graphics();
     bg.roundRect(0, 0, this.width, this.height, 16);
-    bg.fill({ color: 0x1a0e04, alpha: 0.6 });
+    bg.fill({ color: 0xede5d8, alpha: 0.4 });
     this.app.stage.addChild(bg);
 
     // Ambient glow behind cookie
     const glow = new Graphics();
     glow.circle(this.cookieCX, this.cookieCY, this.cookieRadius * 2);
-    glow.fill({ color: 0xd4a04a, alpha: 0.08 });
+    glow.fill({ color: 0xd4a04a, alpha: 0.05 });
     this.app.stage.addChild(glow);
 
     // Cookie container (for transforms)

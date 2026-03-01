@@ -286,8 +286,8 @@ export default function CookieCanvas({
         ref={containerRef}
         className="cookie-canvas-container relative rounded-2xl overflow-hidden"
         style={{
-          background: "radial-gradient(ellipse at center, #2d1810 0%, #1a0e04 70%)",
-          boxShadow: "0 0 60px rgba(212, 160, 74, 0.15), inset 0 0 60px rgba(0,0,0,0.3)",
+          background: "radial-gradient(ellipse at center, #f5f0e8 0%, #ede5d8 70%)",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.06), inset 0 0 40px rgba(212, 160, 74, 0.08)",
         }}
       >
         <canvas
@@ -325,7 +325,7 @@ export default function CookieCanvas({
         {!isBroken && (
           <div
             className="pointer-events-none absolute bottom-8 left-0 right-0 text-center animate-pulse"
-            style={{ color: "#d4a04a", fontSize: 14, opacity: 0.6 }}
+            style={{ color: "#9c8b7a", fontSize: 14, opacity: 0.8 }}
           >
             {isMobile
               ? "Tap, drag, or shake your phone to break"
