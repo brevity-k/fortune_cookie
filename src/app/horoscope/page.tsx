@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Daily Horoscopes & Zodiac Readings",
   description:
     "Read your free daily, weekly, and monthly horoscope for all 12 zodiac signs. Get personalized astrology readings with love, career, and health predictions.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   keywords: [
     "horoscope today",
     "daily horoscope",

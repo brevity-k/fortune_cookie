@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${zodiac.name} Daily Horoscope Today - ${formatted}`,
     description: `Read today's ${zodiac.name} horoscope (${zodiac.dateRange}). Get your free daily astrology reading with love, career, and health predictions. Updated daily.`,
+    robots: {
+      index: false,
+      follow: true,
+    },
     keywords: [
       `${zodiac.name.toLowerCase()} horoscope today`,
       `${zodiac.name.toLowerCase()} daily horoscope`,

@@ -27,6 +27,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${zodiac.name} Weekly Horoscope - Week of ${formatted}`,
     description: `${zodiac.name} weekly horoscope for the week of ${formatted}. Get your free weekly astrology reading with love, career insights, and advice.`,
+    robots: {
+      index: false,
+      follow: true,
+    },
     keywords: [
       `${zodiac.name.toLowerCase()} weekly horoscope`,
       `${zodiac.name.toLowerCase()} horoscope this week`,

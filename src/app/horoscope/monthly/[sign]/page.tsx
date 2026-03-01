@@ -27,6 +27,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${zodiac.name} Monthly Horoscope - ${formatted}`,
     description: `${zodiac.name} horoscope for ${formatted}. Get your free monthly astrology reading with love, career, health predictions, and advice.`,
+    robots: {
+      index: false,
+      follow: true,
+    },
     keywords: [
       `${zodiac.name.toLowerCase()} monthly horoscope`,
       `${zodiac.name.toLowerCase()} horoscope ${formatted.toLowerCase()}`,
