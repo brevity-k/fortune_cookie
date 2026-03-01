@@ -155,32 +155,43 @@ export default function Home() {
         </section>
       )}
 
-      {/* Why Fortune Crack */}
+      {/* About Fortune Cookies */}
       <section className="mx-auto max-w-3xl px-4 py-10">
         <h2 className="text-2xl font-bold text-foreground/80 mb-4 text-center">
-          Why Fortune Crack?
+          The Story Behind the Cookie
         </h2>
         <div className="rounded-2xl border border-border bg-background p-8 space-y-4">
           <p className="leading-relaxed text-muted">
-            Fortune Crack is not just another fortune cookie website. We built something you can
-            actually <em>feel</em>. Using real-time physics simulation and WebGL rendering, every
-            cookie you break shatters into unique fragments that bounce, spin, and settle naturally.
-            The crack sounds, the particle effects, the slow reveal of your fortune — it all comes
-            together to recreate the tactile satisfaction of breaking a real cookie.
+            Despite being synonymous with Chinese restaurants in America, fortune cookies were
+            actually invented in California. Japanese immigrant Makoto Hagiwara is widely credited
+            with introducing them at San Francisco&apos;s Japanese Tea Garden in the early 1900s. The
+            cookies drew from the Japanese tradition of <em>tsujiura senbei</em> — crackers containing
+            paper fortunes sold at temples in Kyoto. During World War II, Japanese-American bakers
+            were interned, and Chinese-American manufacturers took over production, cementing the
+            cookie&apos;s association with Chinese cuisine.
           </p>
           <p className="leading-relaxed text-muted">
-            Most fortune cookie sites give you a random quote and call it a day. We wanted more.
-            Fortune Crack features over 1,000 handcrafted fortunes across eight categories — from
-            ancient wisdom and philosophical musings to career motivation and laugh-out-loud humor.
-            Each fortune carries a rarity tier, and the longer your daily streak, the better your
-            chances of discovering something truly legendary.
+            Psychologists call it the <em>Barnum effect</em> — our tendency to find personal meaning
+            in vague statements. Fortune cookies tap into this beautifully. A message like &ldquo;A
+            calm mind hears what a busy mind cannot&rdquo; feels uncannily relevant because our brains
+            naturally search for connections to our current circumstances. This isn&apos;t a flaw in
+            thinking — it&apos;s a feature. Studies show that brief moments of reflection, even prompted
+            by a cookie, can improve mood and encourage mindful pauses in our day.
           </p>
           <p className="leading-relaxed text-muted">
-            We also believe fortune cookies are better shared. Every day, everyone in the world
-            receives the same Daily Fortune — a shared moment of serendipity that connects strangers
-            across time zones. You can share any fortune to social media with a single tap, compare
-            lucky numbers with friends, or quietly save your favorites to a personal journal that
-            lives right in your browser.
+            Fortune Crack recreates this experience digitally with real-time physics simulation.
+            Every cookie shatters into unique fragments powered by Matter.js rigid-body dynamics,
+            rendered through Pixi.js WebGL, and animated with GSAP. We offer five distinct breaking
+            methods — click, drag, shake, double-tap, and squeeze — each producing different crack
+            patterns and sound responses via Howler.js. Our collection of over 1,000 handcrafted
+            fortunes spans eight categories and four rarity tiers, with streak bonuses that reward
+            daily visitors with rarer discoveries.
+          </p>
+          <p className="leading-relaxed text-muted">
+            Every day at midnight UTC, a date-seeded algorithm selects one fortune for everyone on
+            Earth. This shared Daily Fortune turns a personal moment into a communal one — friends
+            compare notes, couples check if they got a love fortune, and strangers bond over the
+            same message across time zones.
           </p>
         </div>
       </section>

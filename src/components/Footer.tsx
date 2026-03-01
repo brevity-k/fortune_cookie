@@ -32,6 +32,8 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-sm">
               <Link href="/lucky-numbers" className="text-muted transition hover:text-gold">Lucky Numbers</Link>
               <Link href="/horoscope" className="text-muted transition hover:text-gold">Daily Horoscopes</Link>
+              <Link href="/fortune/wisdom" className="text-muted transition hover:text-gold">Fortune Categories</Link>
+              <Link href="/zodiac/aries" className="text-muted transition hover:text-gold">Zodiac Signs</Link>
             </div>
           </div>
 
