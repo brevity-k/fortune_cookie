@@ -136,10 +136,26 @@ export default function LuckyNumbersPage() {
           </div>
         </div>
 
-        {/* Info */}
-        <p className="text-center text-sm text-foreground/30 mb-10">
-          Numbers refresh daily at midnight UTC. Everyone sees the same numbers each day.
-        </p>
+        {/* Number Symbolism */}
+        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-6 mb-10">
+          <h2 className="text-lg font-semibold text-gold mb-3">The Power of Lucky Numbers</h2>
+          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+            Across cultures and centuries, certain numbers have carried special meaning. The number
+            7 is considered lucky in Western traditions, rooted in its prevalence in nature and
+            religion — seven days of the week, seven colors of the rainbow. In Chinese culture, 8
+            is the luckiest number because it sounds like the word for prosperity. Meanwhile, 3
+            symbolizes harmony in many Asian traditions, representing heaven, earth, and humanity.
+          </p>
+          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+            Your daily lucky numbers are generated using a date-based algorithm, so everyone around
+            the world sees the same set each day. Whether you use them for lottery picks, daily
+            decisions, or just a fun ritual, they are a fresh set of possibilities delivered to you
+            every morning.
+          </p>
+          <p className="text-sm text-foreground/40">
+            Numbers refresh at midnight UTC.
+          </p>
+        </div>
 
         {/* CTA */}
         <div className="text-center mb-12">
