@@ -127,9 +127,23 @@ export default function DailyPage() {
           </div>
         </div>
 
-        <p className="text-center text-sm text-foreground/30 mb-10">
-          Everyone sees this same fortune today. Come back tomorrow for a new one!
-        </p>
+        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-6 mb-10">
+          <h2 className="text-lg font-semibold text-gold mb-3">About Your Daily Fortune</h2>
+          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+            Every day at midnight UTC, a single fortune is chosen from our collection of over 1,000
+            messages using a date-based algorithm. The result is the same for everyone — no matter
+            where you are in the world, you and millions of others share the same fortune today.
+          </p>
+          <p className="text-sm text-foreground/50 leading-relaxed mb-3">
+            This is what makes the Daily Fortune special. It turns a personal moment into a communal
+            one. Friends compare notes, couples check if they got a love fortune, and strangers on
+            social media bond over the same message. Come back tomorrow — your next fortune is
+            already waiting.
+          </p>
+          <p className="text-sm text-foreground/40">
+            The past 7 days of fortunes are shown below so you never miss one.
+          </p>
+        </div>
 
         {/* CTA */}
         <div className="text-center mb-12">
