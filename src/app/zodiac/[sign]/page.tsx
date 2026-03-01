@@ -28,6 +28,81 @@ const elementColors: Record<string, string> = {
   Water: "#3498db",
 };
 
+const SIGN_DESCRIPTIONS: Record<string, { personality: string; strengths: string; challenges: string; bestMatches: string }> = {
+  aries: {
+    personality: "Aries is the first sign of the zodiac, embodying the raw energy of new beginnings and bold initiative. Ruled by Mars, the planet of action and desire, Aries natives are natural-born leaders who thrive on competition and challenge. They possess an infectious enthusiasm that inspires those around them, often charging headfirst into situations where others hesitate. Their cardinal fire energy makes them pioneers who would rather forge a new path than follow an existing one.",
+    strengths: "Courageous, determined, confident, enthusiastic, honest",
+    challenges: "Impatient, short-tempered, impulsive, competitive to a fault",
+    bestMatches: "Leo, Sagittarius, Gemini",
+  },
+  taurus: {
+    personality: "Taurus is the zodiac's steadfast earth sign, ruled by Venus, the planet of love, beauty, and material comfort. Taureans are known for their unwavering determination and deep appreciation for life's sensory pleasures — fine food, art, music, and nature. They build their lives on stability and routine, preferring slow and steady progress over risky shortcuts. Once a Taurus commits to a goal or a relationship, their loyalty and persistence are virtually unshakeable.",
+    strengths: "Reliable, patient, practical, devoted, responsible",
+    challenges: "Stubborn, possessive, resistant to change, overly materialistic",
+    bestMatches: "Virgo, Capricorn, Cancer",
+  },
+  gemini: {
+    personality: "Gemini is the mutable air sign ruled by Mercury, the planet of communication and intellect. Geminis are endlessly curious, quick-witted, and socially versatile, able to adapt to any conversation or environment with remarkable ease. Often called the storytellers of the zodiac, they have a gift for language and a hunger for information that keeps them constantly learning. Their dual nature allows them to see multiple perspectives simultaneously, making them excellent mediators and creative thinkers.",
+    strengths: "Adaptable, outgoing, intelligent, eloquent, versatile",
+    challenges: "Indecisive, inconsistent, restless, prone to superficiality",
+    bestMatches: "Libra, Aquarius, Aries",
+  },
+  cancer: {
+    personality: "Cancer is the cardinal water sign ruled by the Moon, making its natives deeply intuitive, emotionally intelligent, and profoundly connected to home and family. Cancers possess an almost psychic ability to sense the moods and needs of those around them, often providing comfort before it is even requested. Beneath their protective shell lies a rich inner world of imagination and sentiment. They are the nurturers of the zodiac, creating safe spaces wherever they go and fiercely protecting those they love.",
+    strengths: "Nurturing, intuitive, loyal, empathetic, tenacious",
+    challenges: "Moody, overly sensitive, clingy, prone to holding grudges",
+    bestMatches: "Scorpio, Pisces, Taurus",
+  },
+  leo: {
+    personality: "Leo is the fixed fire sign ruled by the Sun, radiating warmth, charisma, and a magnetic presence that naturally draws others in. Leos are born performers with a generous heart and a strong desire to be recognized and appreciated for their contributions. Their creativity is boundless, and they approach life with a dramatic flair that turns everyday moments into memorable experiences. At their best, Leos are inspiring leaders who uplift everyone around them with genuine warmth and unwavering confidence.",
+    strengths: "Creative, passionate, generous, warm-hearted, cheerful",
+    challenges: "Arrogant, attention-seeking, inflexible, domineering",
+    bestMatches: "Aries, Sagittarius, Libra",
+  },
+  virgo: {
+    personality: "Virgo is the mutable earth sign ruled by Mercury, combining analytical intelligence with a deep desire to be of service. Virgos are the meticulous perfectionists of the zodiac, with an extraordinary eye for detail that allows them to spot flaws and inefficiencies others miss entirely. They express love through practical acts of care — organizing, problem-solving, and quietly ensuring everything runs smoothly. Behind their reserved exterior lies a sharp mind and a genuinely kind heart devoted to self-improvement and helping others thrive.",
+    strengths: "Analytical, hardworking, practical, detail-oriented, kind",
+    challenges: "Overly critical, perfectionist, worrisome, reserved",
+    bestMatches: "Taurus, Capricorn, Cancer",
+  },
+  libra: {
+    personality: "Libra is the cardinal air sign ruled by Venus, making its natives natural diplomats with a refined aesthetic sensibility and a deep longing for harmony in all things. Libras excel at seeing every side of an issue, which makes them fair-minded mediators but can also lead to prolonged indecision. They are drawn to beauty, partnership, and intellectual exchange, thriving in environments where collaboration and mutual respect are valued. Their social grace and charm make them some of the most beloved people in any group.",
+    strengths: "Diplomatic, fair-minded, social, gracious, cooperative",
+    challenges: "Indecisive, conflict-avoidant, people-pleasing, self-pitying",
+    bestMatches: "Gemini, Aquarius, Leo",
+  },
+  scorpio: {
+    personality: "Scorpio is the fixed water sign traditionally ruled by Mars and modernly by Pluto, giving its natives an intensity and emotional depth that few other signs can match. Scorpios are fiercely private, deeply perceptive, and driven by a relentless desire to uncover hidden truths beneath the surface. They experience life with extraordinary passion — when they love, they love completely, and when they commit to a purpose, they pursue it with laser-focused determination. Their transformative nature means they are constantly evolving, rising from challenges stronger than before.",
+    strengths: "Resourceful, passionate, brave, strategic, loyal",
+    challenges: "Jealous, secretive, controlling, prone to obsession",
+    bestMatches: "Cancer, Pisces, Virgo",
+  },
+  sagittarius: {
+    personality: "Sagittarius is the mutable fire sign ruled by Jupiter, the planet of expansion, abundance, and higher learning. Sagittarians are the adventurers and philosophers of the zodiac, driven by an insatiable curiosity about the world and a need for freedom and exploration. They are naturally optimistic, often seeing possibility where others see limitation, and their infectious enthusiasm makes them magnetic companions. Their love of truth and wisdom extends beyond physical travel into the realms of education, spirituality, and cross-cultural understanding.",
+    strengths: "Optimistic, adventurous, honest, philosophical, generous",
+    challenges: "Tactless, restless, overconfident, commitment-averse",
+    bestMatches: "Aries, Leo, Aquarius",
+  },
+  capricorn: {
+    personality: "Capricorn is the cardinal earth sign ruled by Saturn, the planet of discipline, structure, and long-term achievement. Capricorns are the master builders of the zodiac, approaching life with a strategic mindset and an unwavering work ethic that steadily carries them toward their ambitious goals. They value tradition, responsibility, and earned respect, often maturing into positions of authority and influence through sheer persistence. Beneath their serious exterior lies a dry wit and a deeply caring nature that reveals itself to those who earn their trust over time.",
+    strengths: "Disciplined, responsible, ambitious, patient, resourceful",
+    challenges: "Pessimistic, rigid, workaholic, emotionally guarded",
+    bestMatches: "Taurus, Virgo, Pisces",
+  },
+  aquarius: {
+    personality: "Aquarius is the fixed air sign traditionally ruled by Saturn and modernly by Uranus, the planet of innovation, rebellion, and sudden insight. Aquarians are the visionaries and humanitarians of the zodiac, driven by ideals of progress, equality, and collective well-being. They think in unconventional ways, often arriving at brilliant solutions that others would never consider, and they value intellectual freedom above almost everything else. Their detached perspective allows them to champion social causes with clarity, though it can sometimes make personal emotional connections feel more challenging.",
+    strengths: "Progressive, original, independent, humanitarian, intellectual",
+    challenges: "Emotionally detached, stubborn, contrarian, aloof",
+    bestMatches: "Gemini, Libra, Sagittarius",
+  },
+  pisces: {
+    personality: "Pisces is the mutable water sign ruled by Jupiter traditionally and Neptune in modern astrology, giving its natives a boundless imagination and a deeply compassionate, empathic nature. Pisceans are the dreamers and mystics of the zodiac, possessing an intuitive understanding of human emotion that borders on the psychic. They experience the world through feeling, often absorbing the energies and moods of those around them like an emotional sponge. Their creative gifts — in art, music, writing, or healing — flow from this profound connection to the unseen currents of life.",
+    strengths: "Compassionate, artistic, intuitive, gentle, wise",
+    challenges: "Escapist, overly trusting, fearful of confrontation, prone to martyrdom",
+    bestMatches: "Cancer, Scorpio, Capricorn",
+  },
+};
+
 export function generateStaticParams() {
   return ZODIAC_SIGNS.map((z) => ({ sign: z.key }));
 }
@@ -176,6 +251,30 @@ export default async function ZodiacPage({
             <span className="text-xs text-foreground/30 capitalize">{category}</span>
           </div>
         </div>
+
+        {/* About Sign */}
+        {SIGN_DESCRIPTIONS[sign] && (
+          <div className="rounded-2xl border border-border bg-background p-6 mb-10">
+            <h2 className="text-lg font-semibold text-gold mb-3">About {signTitle}</h2>
+            <p className="text-sm text-muted leading-relaxed mb-4">
+              {SIGN_DESCRIPTIONS[sign].personality}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p className="text-gold/70 font-medium mb-1">Strengths</p>
+                <p className="text-muted">{SIGN_DESCRIPTIONS[sign].strengths}</p>
+              </div>
+              <div>
+                <p className="text-gold/70 font-medium mb-1">Challenges</p>
+                <p className="text-muted">{SIGN_DESCRIPTIONS[sign].challenges}</p>
+              </div>
+              <div>
+                <p className="text-gold/70 font-medium mb-1">Best Matches</p>
+                <p className="text-muted">{SIGN_DESCRIPTIONS[sign].bestMatches}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Lucky Numbers */}
         <div className="rounded-2xl border border-border bg-background p-6 text-center mb-10">

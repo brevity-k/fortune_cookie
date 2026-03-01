@@ -167,6 +167,49 @@ export default function LuckyNumbersPage() {
           </Link>
         </div>
 
+        {/* Numerology Traditions */}
+        <div className="rounded-2xl border border-border bg-background p-6 mb-10">
+          <h2 className="text-lg font-semibold text-gold mb-3">The Tradition of Lucky Numbers</h2>
+          <div className="space-y-3 text-sm text-muted leading-relaxed">
+            <p>
+              Numerology — the belief that numbers carry inherent spiritual and symbolic significance — is
+              one of humanity&#39;s oldest metaphysical practices. In Chinese numerology, the number 8 is
+              considered supremely auspicious because the Mandarin word for eight (&#x201C;b&#x101;&#x201D;)
+              sounds remarkably similar to &#x201C;f&#x101;&#x201D;, meaning to prosper or generate wealth.
+              This association is so deeply held that phone numbers, license plates, and property addresses
+              containing 8 command premium prices across China, Hong Kong, and Taiwan. Conversely, the
+              number 4 is widely avoided because its pronunciation (&#x201C;s&#x236;&#x201D;) closely
+              resembles the word for death. Many East Asian buildings skip the fourth floor entirely, much
+              like some Western buildings omit the thirteenth.
+            </p>
+            <p>
+              Western numerology traces its roots to the Greek mathematician Pythagoras, who believed that
+              the universe could be understood through numbers. Pythagorean numerology assigns each letter
+              of the alphabet a single-digit value and reduces names and dates to core numbers between 1
+              and 9, each carrying a distinct personality: 1 represents leadership and independence, 7
+              signifies introspection and spiritual seeking, and 9 embodies compassion and universal love.
+              Master numbers 11, 22, and 33 are considered especially powerful and are not reduced further.
+              This system remains the foundation of most modern Western numerology readings.
+            </p>
+            <p>
+              Indian Vedic numerology, known as Sankhya Shastra, is rooted in ancient Hindu scripture and
+              links numbers to the nine planetary bodies (Navagraha) of Jyotish astrology. Each person is
+              governed by three key numbers derived from their birth date: the Psychic Number reflecting
+              inner personality, the Destiny Number revealing life purpose, and the Name Number influencing
+              public perception. The number 9, ruled by Mars, holds special reverence as the highest
+              single digit and a symbol of completion and spiritual wisdom.
+            </p>
+            <p>
+              The lucky numbers displayed on this page are generated using a date-seeded pseudorandom
+              algorithm, meaning every visitor around the world sees the same set of numbers on any given
+              day. The six main numbers are drawn from a pool of 1 through 49 without repetition, and the
+              power number is selected separately from 1 through 26. Numbers refresh automatically at
+              midnight UTC, giving you a fresh set of possibilities each morning — a modern daily ritual
+              inspired by centuries of numerological tradition.
+            </p>
+          </div>
+        </div>
+
         {/* Related Links */}
         <div className="border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">

@@ -68,6 +68,32 @@ const categoryFAQs: Record<FortuneCategory, { q: string; a: string }[]> = {
   ],
 };
 
+const CATEGORY_DESCRIPTIONS: Record<FortuneCategory, string> = {
+  wisdom:
+    "Wisdom fortune cookies draw from centuries of human insight, distilling the teachings of Eastern and Western philosophical traditions into brief, memorable phrases. Rooted in the Confucian, Taoist, and Buddhist proverbs that inspired the earliest fortune cookie messages in early twentieth-century America, these fortunes carry forward a long lineage of oral wisdom. They touch on patience, self-knowledge, humility, and the art of living well. What makes wisdom fortunes resonate so deeply is their universality — a single sentence about letting go or embracing change can feel startlingly relevant to someone facing a career crossroads, a difficult relationship, or an ordinary Tuesday afternoon. These messages work because they bypass analytical thinking and speak directly to lived experience. A good wisdom fortune does not lecture; it offers a gentle reframe that lingers in the mind long after the cookie is cracked.",
+
+  love:
+    "Love fortune cookies explore the full spectrum of human connection — the flutter of new attraction, the quiet comfort of long partnership, the courage required to be vulnerable, and the resilience needed after heartbreak. The tradition of seeking romantic guidance from oracles, astrologers, and divination tools stretches back thousands of years, from the love poetry of Rumi to the matchmaking rituals of ancient China. Fortune cookies inherited this impulse and made it casual and accessible. Love fortunes resonate because romantic uncertainty is one of the most universal human experiences; a short, hopeful message can provide reassurance when someone is deciding whether to confess feelings, repair a rift, or simply appreciate what they already have. The best love fortunes avoid sentimentality and instead capture an emotional truth — the kind of line you might underline in a novel and carry in your wallet.",
+
+  career:
+    "Career fortune cookies address the ambitions, anxieties, and daily realities of professional life. They draw on a rich tradition of proverbial guidance about hard work, opportunity, and perseverance found in cultures worldwide — from the industriousness celebrated in Benjamin Franklin's Poor Richard's Almanack to the Confucian emphasis on self-cultivation through disciplined effort. In the context of fortune cookies, career messages serve as miniature pep talks that arrive at exactly the right moment: before a job interview, during a difficult project, or in the quiet doubt of wondering whether your work matters. These fortunes resonate because work occupies a central place in modern identity, and a concise, well-timed reminder about patience, leadership, or creative risk-taking can shift someone's mindset for the rest of the day. The most effective career fortunes balance aspiration with realism, acknowledging struggle while pointing toward growth.",
+
+  humor:
+    "Humor fortune cookies honor the playful, irreverent side of the fortune cookie tradition. While many people associate fortune cookies with solemn proverbs, humor has always been part of the experience — from intentionally absurd predictions to fortunes that break the fourth wall. Comedy in fortune cookies draws on the long human tradition of using laughter as wisdom delivery: Aesop's fables used wit to teach morals, Zen masters told jokes to trigger insight, and court jesters spoke truths that advisors could not. A funny fortune works because it defuses the pretense of prophecy while still offering a small, genuine moment of delight. The surprise of unfolding a cookie and finding something that makes you laugh out loud is memorable in a way that earnest advice sometimes is not. Humor fortunes remind us that joy itself is a form of good fortune, and that not every message needs to be profound to be meaningful.",
+
+  motivation:
+    "Motivation fortune cookies tap into the human need for encouragement at moments of doubt, fatigue, or indecision. This category inherits a tradition that runs from ancient Stoic exercises in mental resilience through modern positive psychology research on self-efficacy and growth mindset. The power of a motivational fortune lies in its brevity and timing — a single sentence urging you to persist, to start, or to believe in your capacity for change can function like a psychological nudge at a pivotal moment. Research on implementation intentions and affirmations suggests that short, concrete statements of possibility genuinely influence behavior. Motivational fortunes resonate because they meet people in the gap between intention and action, offering not a plan but a push. The best ones avoid hollow cheerfulness and instead name the difficulty honestly before pointing toward what lies on the other side of effort and persistence.",
+
+  philosophy:
+    "Philosophy fortune cookies condense millennia of human inquiry into thought-provoking fragments. They draw from the traditions of Socratic questioning, existentialist reflection, Zen koans, and Taoist paradox — all modes of thinking that use brevity and surprise to unsettle habitual assumptions. Unlike wisdom fortunes, which tend to offer guidance, philosophy fortunes ask questions or present ideas that resist easy resolution: the nature of time, the paradox of choice, the relationship between self and other. This category connects to the ancient practice of philosophical aphorisms, from Heraclitus and Epictetus to Nietzsche and Wittgenstein, where a single sentence could reorient an entire worldview. Philosophy fortunes resonate because they invite active participation — the reader must sit with the idea, turn it over, and decide what it means. They appeal to people who enjoy intellectual play and who find comfort not in answers but in the quality of the questions themselves.",
+
+  adventure:
+    "Adventure fortune cookies speak to the restless, curious part of human nature that longs for novelty, exploration, and the thrill of the unfamiliar. This category draws from a deep cultural wellspring — the hero's journey described by Joseph Campbell, the wanderlust poetry of Basho and Whitman, and the traveler traditions of cultures from the Polynesian wayfinders to the Silk Road merchants. Adventure fortunes encourage stepping beyond the boundaries of routine, whether that means booking a trip, trying a new skill, or simply taking an unfamiliar route home. They resonate because modern life, for all its comforts, often feels constrained, and a brief, bold message about embracing the unknown can rekindle a sense of possibility. The most compelling adventure fortunes balance excitement with depth, suggesting that the real discovery is not the destination but the transformation that comes from saying yes to uncertainty.",
+
+  mystery:
+    "Mystery fortune cookies occupy the most enigmatic corner of the fortune cookie tradition, offering cryptic messages that resist immediate interpretation. They connect to humanity's oldest relationship with the unknown — the oracle at Delphi delivering ambiguous prophecies, the I Ching presenting hexagrams that demand contemplation, and the tarot reader laying out symbols that mean different things to different seekers. Mystery fortunes are deliberately open-ended; they work not by providing clarity but by creating a space for the reader's own intuition to surface. This category resonates because certainty is rarer than we pretend, and there is genuine comfort in a message that acknowledges the unknowable rather than papering over it with false confidence. A mysterious fortune invites you to sit with ambiguity, to notice what your mind reaches for when given an incomplete map. These are the fortunes people photograph, share, and return to — precisely because their meaning keeps shifting as the reader's life unfolds.",
+};
+
 export function generateStaticParams() {
   return CATEGORIES.map((category) => ({ category }));
 }
@@ -181,6 +207,14 @@ export default async function CategoryPage({
           </p>
           <p className="font-serif text-xl leading-relaxed text-cream">
             &ldquo;{featured.text}&rdquo;
+          </p>
+        </div>
+
+        {/* Category Description */}
+        <div className="rounded-2xl border border-border bg-background p-6 mb-12">
+          <h2 className="text-lg font-semibold text-gold mb-3">About {catTitle} Fortunes</h2>
+          <p className="text-sm text-muted leading-relaxed">
+            {CATEGORY_DESCRIPTIONS[cat]}
           </p>
         </div>
 
