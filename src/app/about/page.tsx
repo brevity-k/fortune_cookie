@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+    `Learn about ${SITE_NAME} and the Fortune Crack Editorial Team — astrology, fortune telling, and the interactive experience where you break a virtual fortune cookie to reveal your destiny.`,
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
     title: `About ${SITE_NAME}`,
     description:
-      `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+      `Learn about ${SITE_NAME} and the Fortune Crack Editorial Team — astrology, fortune telling, and the interactive experience where you break a virtual fortune cookie to reveal your destiny.`,
     url: `${SITE_URL}/about`,
   },
   twitter: {
     card: "summary_large_image",
     title: `About ${SITE_NAME}`,
     description:
-      `Learn about ${SITE_NAME} — the interactive web experience where you break a virtual fortune cookie to reveal your destiny.`,
+      `Learn about ${SITE_NAME} and the Fortune Crack Editorial Team — astrology, fortune telling, and the interactive experience where you break a virtual fortune cookie to reveal your destiny.`,
   },
 };
 
@@ -80,6 +81,133 @@ export default function AboutPage() {
             details — from the exact pitch of the crack sound to the way a fortune fades in letter
             by letter — because we think the internet could use more things that bring people a
             small, unexpected moment of joy.
+          </p>
+
+          {/* Editorial Team Section */}
+          <h2 className="text-xl font-semibold text-gold">The Fortune Crack Editorial Team</h2>
+          <p>
+            Behind every fortune, horoscope, and article on Fortune Crack is a dedicated editorial
+            team with deep expertise across the domains that make this site possible. We are the
+            Fortune Crack Editorial Team — a small group of writers, researchers, and developers
+            who share a fascination with how ancient traditions of divination, astrology, and
+            fortune telling intersect with modern psychology and technology.
+          </p>
+          <p>
+            Our team brings together four core areas of knowledge:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-muted">
+            <li>
+              <strong className="text-foreground/70">Astrology &amp; Divination</strong> — Our
+              astrology editors study Western tropical astrology, Chinese zodiac traditions, and
+              Vedic astrological systems. They write and review
+              our{" "}
+              <Link href="/horoscope" className="text-gold hover:underline">
+                daily, weekly, and monthly horoscopes
+              </Link>{" "}
+              for all twelve zodiac signs, ensuring each reading reflects genuine astrological
+              principles rather than vague generalities. Their work spans planetary transits, moon
+              phases, elemental affinities, and sign compatibility.
+            </li>
+            <li>
+              <strong className="text-foreground/70">Psychology &amp; Wellness</strong> — Fortune
+              telling has always been intertwined with human psychology — the Barnum effect, the
+              power of positive affirmation, the role of ritual in mental well-being. Our psychology
+              contributors ensure that our fortunes and content draw on established principles from
+              positive psychology, mindfulness research, and behavioral science. When we say a
+              fortune can brighten your day, we mean it in a way that is grounded in how people
+              actually process hopeful messages.
+            </li>
+            <li>
+              <strong className="text-foreground/70">Web Technology &amp; Interactive Design</strong>{" "}
+              — Fortune Crack is not a static quote generator. Our engineering team builds and
+              maintains the physics engine, particle systems, sound design, and animation pipelines
+              that make breaking a virtual cookie feel tangible. They also develop the infrastructure
+              behind our content automation, SEO optimization, and performance monitoring — the
+              invisible work that keeps the site fast, accessible, and discoverable.
+            </li>
+            <li>
+              <strong className="text-foreground/70">Cultural History &amp; Food Studies</strong> —
+              Fortune cookies sit at a fascinating crossroads of American, Japanese, and Chinese
+              culinary history. Our cultural contributors research the origins of fortune-telling
+              traditions, the migration of food customs across continents, and the stories behind
+              lucky charms and superstitions worldwide. Their research informs our{" "}
+              <Link href="/blog" className="text-gold hover:underline">
+                blog articles
+              </Link>{" "}
+              and ensures our content respects and accurately represents the traditions we draw from.
+            </li>
+          </ul>
+          <p>
+            Every piece of content published on Fortune Crack — whether it is a two-sentence
+            fortune, a 1,500-word blog post, or a daily horoscope — passes through our editorial
+            review process. We use a combination of human judgment and AI-assisted quality checks
+            to maintain consistency, accuracy, and readability across more than 1,000 fortunes and
+            dozens of articles. You can read more about how we create, review, and publish content
+            in our{" "}
+            <Link href="/editorial-policy" className="text-gold hover:underline">
+              Editorial Policy
+            </Link>
+            .
+          </p>
+
+          {/* Our Approach to Astrology Section */}
+          <h2 className="text-xl font-semibold text-gold">Our Approach to Astrology</h2>
+          <p>
+            Astrology occupies a unique space in human culture. It is not a predictive science in
+            the empirical sense, and we do not present it as one. Instead, we approach astrology
+            as what it has been for thousands of years: a rich symbolic language that helps people
+            reflect on their personalities, relationships, and life patterns. The value of a
+            horoscope is not in foretelling specific events — it is in prompting self-reflection
+            and offering a framework for thinking about the rhythms of daily life.
+          </p>
+          <p>
+            Our editorial philosophy rests on three principles:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-muted">
+            <li>
+              <strong className="text-foreground/70">Cultural respect over sensationalism</strong>{" "}
+              — We draw on Western tropical astrology, Chinese zodiac traditions, and Vedic
+              astrological systems with equal respect. Rather than reducing these traditions to
+              clickbait personality quizzes, we present their insights in context. When we describe
+              a Mercury retrograde or a lunar phase, we explain what the tradition actually teaches,
+              not just what generates clicks.
+            </li>
+            <li>
+              <strong className="text-foreground/70">Psychological grounding</strong> — Where
+              possible, we connect astrological themes to established psychological concepts.
+              The reason horoscopes resonate with millions of people is not magic — it is the
+              Barnum effect, confirmation bias, and the genuine human need for narrative and meaning.
+              We find this psychological dimension fascinating, not dismissive. Understanding
+              <em> why</em> a fortune feels personal makes the experience richer, not shallower.
+            </li>
+            <li>
+              <strong className="text-foreground/70">Research-backed content</strong> — Our
+              horoscopes and astrology articles are written by editors who study primary sources:
+              classical astrological texts, peer-reviewed psychology papers on belief and
+              well-being, and cultural histories of divination practices. We cite traditions
+              accurately, distinguish between different astrological systems, and never fabricate
+              planetary positions or celestial events. When we reference a transit or alignment,
+              it corresponds to actual astronomical data.
+            </li>
+          </ul>
+          <p>
+            We believe that fortune cookies, horoscopes, and tarot readings can coexist with
+            scientific literacy. You do not have to believe in destiny to enjoy cracking a cookie
+            and reading a message that makes you pause and think. That pause — that small moment
+            of reflection — is real, and it is what we design for. Whether you visit Fortune Crack
+            for your{" "}
+            <Link href="/horoscope" className="text-gold hover:underline">
+              daily horoscope
+            </Link>
+            , to explore our{" "}
+            <Link href="/blog" className="text-gold hover:underline">
+              articles on luck, culture, and astrology
+            </Link>
+            , or simply to{" "}
+            <Link href="/" className="text-gold hover:underline">
+              break a fortune cookie
+            </Link>{" "}
+            and see what the universe has to say, we are glad you are here.
           </p>
         </div>
       </article>
