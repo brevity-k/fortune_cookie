@@ -10,11 +10,8 @@ import {
   Fortune,
 } from "@/lib/fortuneEngine";
 import FortuneCard from "@/components/FortuneCard";
-import TodayStats from "@/components/TodayStats";
 import CookieGameSection from "@/components/CookieGameSection";
-import AdUnit from "@/components/AdUnit";
 import { FAQPageJsonLd } from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/constants";
 
 const faqs = [
   {
@@ -68,11 +65,6 @@ export default function Home() {
     <div className="bg-warm-gradient">
       <FAQPageJsonLd faqs={faqs} />
 
-      {/* Top Ad */}
-      <div className="mx-auto max-w-4xl px-4 pt-4">
-        <AdUnit slot="top-leaderboard" format="horizontal" />
-      </div>
-
       {/* Hero */}
       <section className="px-4 pb-4 pt-8 sm:pt-12 text-center">
         <h1 className="text-golden-shimmer mb-2 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl">
@@ -85,11 +77,6 @@ export default function Home() {
 
       {/* Cookie Game (client component) */}
       <CookieGameSection />
-
-      {/* Post-reveal Ad */}
-      <div className="mx-auto max-w-lg px-4 pt-4">
-        <AdUnit slot="post-reveal-rectangle" format="rectangle" />
-      </div>
 
       {/* Divider */}
       <div className="mx-auto my-10 max-w-xs border-t border-border" />
@@ -133,9 +120,6 @@ export default function Home() {
           })}
         </div>
       </section>
-
-      {/* Today's Stats */}
-      <TodayStats />
 
       {/* Latest Articles */}
       {posts.length > 0 && (
@@ -201,10 +185,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bottom Ad */}
-      <div className="mx-auto max-w-4xl px-4 pb-8">
-        <AdUnit slot="bottom-leaderboard" format="horizontal" />
-      </div>
     </div>
   );
 }

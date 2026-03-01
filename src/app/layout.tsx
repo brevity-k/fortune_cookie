@@ -63,6 +63,7 @@ export const metadata: Metadata = {
   verification: {
     google: "ZCXdRe1by41X6aFMTv2K5oFBADl4A6pMV6D2qutFueY",
   },
+  themeColor: "#0f0b1a",
 };
 
 export default function RootLayout({
@@ -85,15 +86,6 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
-        {/*
-          Google AdSense - uncomment and replace with your publisher ID:
-          <Script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} bg-warm-gradient min-h-screen antialiased`}
