@@ -30,7 +30,6 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-sm font-semibold text-foreground/80">Explore</h3>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/daily" className="text-muted transition hover:text-gold">Daily Fortune</Link>
               <Link href="/lucky-numbers" className="text-muted transition hover:text-gold">Lucky Numbers</Link>
               <Link href="/horoscope" className="text-muted transition hover:text-gold">Daily Horoscopes</Link>
             </div>

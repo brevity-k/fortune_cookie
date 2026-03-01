@@ -174,7 +174,7 @@ export default function LuckyNumbersPage() {
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/daily"
+              href="/"
               className="rounded-full border border-border px-4 py-2.5 text-sm text-muted transition hover:border-gold/30 hover:text-gold"
             >
               Daily Fortune

@@ -4,6 +4,15 @@ const nextConfig: NextConfig = {
   reactStrictMode: false, // Disabled: Pixi.js/Matter.js/GSAP cause issues with strict mode double-renders
   poweredByHeader: false,
   trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: "/daily",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

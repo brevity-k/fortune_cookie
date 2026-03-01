@@ -21,8 +21,8 @@ export default function Header() {
           <Link href="/" className="text-foreground/60 transition hover:text-gold">
             Home
           </Link>
-          <Link href="/daily" className="text-foreground/60 transition hover:text-gold">
-            Daily
+          <Link href="/lucky-numbers" className="text-foreground/60 transition hover:text-gold">
+            Lucky Numbers
           </Link>
           <Link href="/blog" className="text-foreground/60 transition hover:text-gold">
             Blog
@@ -56,8 +56,8 @@ export default function Header() {
             <Link href="/" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Home
             </Link>
-            <Link href="/daily" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
-              Daily
+            <Link href="/lucky-numbers" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
+              Lucky Numbers
             </Link>
             <Link href="/blog" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Blog
