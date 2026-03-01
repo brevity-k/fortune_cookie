@@ -104,7 +104,7 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
 
         {daily && (
           <div
-            className="relative overflow-hidden rounded-2xl border border-gold/15 p-8 text-center mb-8"
+            className="relative overflow-hidden rounded-2xl border border-border p-8 text-center mb-8"
             style={{ background: "radial-gradient(ellipse at center, rgba(212,175,55,0.05) 0%, transparent 70%)" }}
           >
             <div className="absolute left-3 top-3 text-gold/30">✦</div>
@@ -123,15 +123,15 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
             </div>
 
             <div className="grid grid-cols-3 gap-3">
-              <div className="text-center rounded-lg border border-gold/10 bg-gold/5 p-3">
+              <div className="text-center rounded-lg border border-border bg-background p-3">
                 <p className="text-xs text-foreground/30 mb-1">Lucky Number</p>
                 <p className="text-xl font-bold text-gold">{daily.luckyNumber}</p>
               </div>
-              <div className="text-center rounded-lg border border-gold/10 bg-gold/5 p-3">
+              <div className="text-center rounded-lg border border-border bg-background p-3">
                 <p className="text-xs text-foreground/30 mb-1">Lucky Color</p>
                 <p className="text-sm font-semibold text-gold capitalize">{daily.luckyColor}</p>
               </div>
-              <div className="text-center rounded-lg border border-gold/10 bg-gold/5 p-3">
+              <div className="text-center rounded-lg border border-border bg-background p-3">
                 <p className="text-xs text-foreground/30 mb-1">Mood</p>
                 <p className="text-sm font-semibold text-gold capitalize">{daily.mood}</p>
               </div>
@@ -140,10 +140,10 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
         )}
 
         <div className="flex flex-col sm:flex-row gap-3 mb-8">
-          <Link href={`/horoscope/weekly/${sign}`} className="flex-1 text-center rounded-full border border-gold/20 px-6 py-3 text-sm text-gold transition hover:bg-gold/10">
+          <Link href={`/horoscope/weekly/${sign}`} className="flex-1 text-center rounded-full border border-border px-6 py-3 text-sm text-gold transition hover:bg-gold/10">
             {signTitle} Weekly Horoscope
           </Link>
-          <Link href={`/horoscope/monthly/${sign}`} className="flex-1 text-center rounded-full border border-gold/20 px-6 py-3 text-sm text-gold transition hover:bg-gold/10">
+          <Link href={`/horoscope/monthly/${sign}`} className="flex-1 text-center rounded-full border border-border px-6 py-3 text-sm text-gold transition hover:bg-gold/10">
             {signTitle} Monthly Horoscope
           </Link>
         </div>
@@ -154,14 +154,14 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
           </Link>
         </div>
 
-        <div className="border-t border-gold/10 pt-8">
+        <div className="border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">Other Zodiac Signs</h2>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
             {ZODIAC_SIGNS.filter((s) => s.key !== sign).map((s) => (
               <Link
                 key={s.key}
                 href={`/horoscope/daily/${s.key}`}
-                className="flex items-center gap-2 rounded-lg border border-gold/10 px-3 py-2 text-sm text-foreground/50 transition hover:border-gold/30 hover:text-gold"
+                className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm text-foreground/50 transition hover:border-gold/30 hover:text-gold"
               >
                 <span>{s.symbol}</span>
                 <span>{s.name}</span>

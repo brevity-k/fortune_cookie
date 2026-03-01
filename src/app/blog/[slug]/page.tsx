@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <MDXRemote source={post.content} components={components} />
         </div>
 
-        <div className="mt-12 border-t border-gold/10 pt-8">
+        <div className="mt-12 border-t border-border pt-8">
           <Link href="/blog" className="text-gold transition hover:text-gold-light">
             ← Read more articles
           </Link>

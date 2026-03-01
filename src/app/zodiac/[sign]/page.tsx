@@ -178,7 +178,7 @@ export default async function ZodiacPage({
         </div>
 
         {/* Lucky Numbers */}
-        <div className="rounded-2xl border border-gold/15 bg-gold/5 p-6 text-center mb-10">
+        <div className="rounded-2xl border border-border bg-background p-6 text-center mb-10">
           <h2 className="text-lg font-semibold text-gold mb-4">
             Lucky Numbers for {signTitle}
           </h2>
@@ -186,7 +186,7 @@ export default async function ZodiacPage({
             {luckyNumbers.map((n) => (
               <div
                 key={n}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-sm font-bold text-gold"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-sm font-bold text-gold"
               >
                 {n}
               </div>
@@ -206,7 +206,7 @@ export default async function ZodiacPage({
         </div>
 
         {/* Browse Other Signs */}
-        <div className="border-t border-gold/10 pt-8">
+        <div className="border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">
             Other Zodiac Signs
           </h2>
@@ -215,7 +215,7 @@ export default async function ZodiacPage({
               <Link
                 key={z.key}
                 href={`/zodiac/${z.key}`}
-                className="flex items-center gap-2 rounded-lg border border-gold/10 px-3 py-2 text-sm text-foreground/50 transition hover:border-gold/30 hover:text-gold"
+                className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm text-foreground/50 transition hover:border-gold/30 hover:text-gold"
               >
                 <span>{z.symbol}</span>
                 <span>{z.name}</span>

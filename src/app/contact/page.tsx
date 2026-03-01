@@ -34,7 +34,7 @@ export default function ContactPage() {
 
           <ContactForm />
 
-          <div className="rounded-2xl border border-gold/10 bg-gold/5 p-8">
+          <div className="rounded-2xl border border-border bg-background p-8">
             <h2 className="mb-4 text-xl font-semibold text-gold">Other Ways to Reach Us</h2>
 
             <div className="space-y-4">
@@ -55,7 +55,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gold/10 bg-gold/5 p-8">
+          <div className="rounded-2xl border border-border bg-background p-8">
             <h2 className="mb-4 text-xl font-semibold text-gold">Submit a Fortune</h2>
             <p className="text-foreground/50">
               Have a great fortune phrase idea? We&apos;re always looking to expand our collection

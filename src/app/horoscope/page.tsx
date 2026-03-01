@@ -95,7 +95,7 @@ export default function HoroscopeHub() {
               <Link
                 key={sign.key}
                 href={`/horoscope/daily/${sign.key}`}
-                className="group rounded-2xl border border-gold/10 p-5 transition hover:border-gold/30 hover:bg-gold/5"
+                className="group rounded-2xl border border-border p-5 transition hover:border-gold/30 hover:bg-gold/5"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-3xl">{sign.symbol}</span>
@@ -105,7 +105,7 @@ export default function HoroscopeHub() {
                     </h2>
                     <p className="text-xs text-foreground/40">{sign.dateRange}</p>
                   </div>
-                  <span className="ml-auto text-xs px-2 py-0.5 rounded-full border border-gold/10 text-foreground/40">
+                  <span className="ml-auto text-xs px-2 py-0.5 rounded-full border border-border text-foreground/40">
                     {sign.element}
                   </span>
                 </div>
@@ -153,7 +153,7 @@ export default function HoroscopeHub() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-gold/10 p-6">
+        <div className="rounded-2xl border border-border p-6">
           <h2 className="text-lg font-semibold text-gold mb-3">
             About Our Horoscopes
           </h2>

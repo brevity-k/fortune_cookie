@@ -61,10 +61,10 @@ export default function ContactForm() {
   }
 
   const inputClasses =
-    "w-full rounded-lg border border-gold/15 bg-white/5 px-4 py-3 text-foreground placeholder:text-foreground/30 transition focus:border-gold/40 focus:outline-none focus:ring-1 focus:ring-gold/20";
+    "w-full rounded-lg border border-border bg-white/5 px-4 py-3 text-foreground placeholder:text-foreground/30 transition focus:border-gold/40 focus:outline-none focus:ring-1 focus:ring-gold/20";
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-gold/10 bg-gold/5 p-8">
+    <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-background p-8">
       <h2 className="mb-6 text-xl font-semibold text-gold">Send a Message</h2>
 
       <div className="space-y-4">

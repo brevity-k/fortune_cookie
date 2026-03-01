@@ -192,7 +192,7 @@ export default async function CategoryPage({
           {samples.map((f, i) => (
             <div
               key={i}
-              className="rounded-lg border border-gold/10 bg-gold/5 px-4 py-3 text-sm text-foreground/70"
+              className="rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground/70"
             >
               &ldquo;{f.text}&rdquo;
             </div>
@@ -210,7 +210,7 @@ export default async function CategoryPage({
         </div>
 
         {/* Browse other categories */}
-        <div className="mt-16 border-t border-gold/10 pt-8">
+        <div className="mt-16 border-t border-border pt-8">
           <h2 className="text-lg font-semibold text-gold mb-4 text-center">
             Explore Other Categories
           </h2>
@@ -219,7 +219,7 @@ export default async function CategoryPage({
               <Link
                 key={c}
                 href={`/fortune/${c}`}
-                className="rounded-full border border-gold/20 px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold capitalize"
+                className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground/50 transition hover:border-gold/40 hover:text-gold capitalize"
               >
                 {c}
               </Link>
