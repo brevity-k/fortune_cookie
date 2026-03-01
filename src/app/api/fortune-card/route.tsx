@@ -11,11 +11,22 @@ const VALID_CATEGORIES = [
 
 const VALID_RARITIES = ["common", "rare", "epic", "legendary"];
 
-const RARITY_COLORS: Record<string, string> = {
-  common: "#d4a04a",
-  rare: "#4a90d9",
-  epic: "#9b59b6",
-  legendary: "#e74c3c",
+const CATEGORY_COLORS: Record<string, string> = {
+  wisdom: "#0d7377",
+  love: "#e8475f",
+  career: "#d4870e",
+  humor: "#ff6b6b",
+  motivation: "#f77f00",
+  philosophy: "#4a3f8a",
+  adventure: "#2d6a4f",
+  mystery: "#5a189a",
+};
+
+const RARITY_STARS: Record<string, string> = {
+  common: "★★☆☆☆",
+  rare: "★★★☆☆",
+  epic: "★★★★☆",
+  legendary: "★★★★★",
 };
 
 const RARITY_LABELS: Record<string, string> = {
@@ -30,86 +41,81 @@ export async function GET(request: NextRequest) {
   let text = searchParams.get("text") || "A fortune awaits you";
   const category = searchParams.get("category") || "wisdom";
   const rarity = searchParams.get("rarity") || "common";
+  const num = searchParams.get("num") || "1";
 
-  // Validate inputs
   if (text.length > 300) text = text.slice(0, 300);
   const validCategory = VALID_CATEGORIES.includes(category) ? category : "wisdom";
   const validRarity = VALID_RARITIES.includes(rarity) ? rarity : "common";
-
-  const rarityColor = RARITY_COLORS[validRarity];
+  const bgColor = CATEGORY_COLORS[validCategory];
+  const stars = RARITY_STARS[validRarity];
   const rarityLabel = RARITY_LABELS[validRarity];
 
   return new ImageResponse(
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #1a0e04 0%, #3d2216 50%, #1a0e04 100%)",
+          background: `linear-gradient(135deg, ${bgColor} 0%, ${bgColor}dd 50%, ${bgColor}bb 100%)`,
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "sans-serif",
+          fontFamily: "Georgia, serif",
           padding: 60,
+          color: "white",
         }}
       >
-        <div style={{ fontSize: 80, marginBottom: 24, display: "flex" }}>🥠</div>
         <div
           style={{
-            fontSize: 36,
-            fontWeight: 700,
-            color: "#f5e6d0",
+            fontSize: 40,
+            fontWeight: 400,
             textAlign: "center",
-            lineHeight: 1.3,
+            lineHeight: 1.4,
             maxWidth: 900,
-            marginBottom: 24,
+            marginBottom: 40,
             display: "flex",
           }}
         >
-          {`"${text}"`}
+          {`\u201C${text}\u201D`}
         </div>
+        <div
+          style={{
+            width: 100,
+            height: 1,
+            backgroundColor: "rgba(255,255,255,0.3)",
+            marginBottom: 30,
+            display: "flex",
+          }}
+        />
         <div
           style={{
             display: "flex",
             alignItems: "center",
             gap: 12,
-            marginBottom: 32,
+            marginBottom: 30,
+            fontSize: 18,
           }}
         >
-          <div
-            style={{
-              backgroundColor: rarityColor,
-              color: "white",
-              padding: "4px 14px",
-              borderRadius: 20,
-              fontSize: 14,
-              fontWeight: 700,
-              display: "flex",
-            }}
-          >
-            {rarityLabel}
-          </div>
-          <div
-            style={{
-              color: "rgba(245, 230, 208, 0.4)",
-              fontSize: 14,
-              textTransform: "capitalize",
-              display: "flex",
-            }}
-          >
-            {validCategory}
-          </div>
+          <span style={{ display: "flex", opacity: 0.9 }}>{stars}</span>
+          <span style={{ display: "flex", opacity: 0.7 }}>{rarityLabel}</span>
+          <span style={{ display: "flex", opacity: 0.3 }}>&middot;</span>
+          <span style={{ display: "flex", opacity: 0.7, textTransform: "capitalize" }}>{validCategory}</span>
         </div>
         <div
           style={{
-            fontSize: 16,
-            color: "#d4a04a",
+            fontSize: 14,
             letterSpacing: 2,
             display: "flex",
+            alignItems: "center",
+            gap: 8,
+            opacity: 0.5,
           }}
         >
-          {SITE_DOMAIN}
+          <span style={{ display: "flex" }}>🥠</span>
+          <span style={{ display: "flex" }}>Fortune Crack #{num}</span>
+          <span style={{ display: "flex" }}>&middot;</span>
+          <span style={{ display: "flex" }}>{SITE_DOMAIN}</span>
         </div>
       </div>
     ),
