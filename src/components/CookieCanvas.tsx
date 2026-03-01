@@ -286,8 +286,8 @@ export default function CookieCanvas({
         ref={containerRef}
         className="cookie-canvas-container relative rounded-2xl overflow-hidden"
         style={{
-          background: "radial-gradient(ellipse at center, #f5f0e8 0%, #ede5d8 70%)",
-          boxShadow: "0 4px 30px rgba(0,0,0,0.06), inset 0 0 40px rgba(212, 160, 74, 0.08)",
+          background: "radial-gradient(ellipse at center, #1a1528 0%, #0f0b1a 70%)",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.3), inset 0 0 40px rgba(212, 160, 74, 0.06)",
         }}
       >
         <canvas
@@ -325,7 +325,7 @@ export default function CookieCanvas({
         {!isBroken && (
           <div
             className="pointer-events-none absolute bottom-8 left-0 right-0 text-center animate-pulse"
-            style={{ color: "#9c8b7a", fontSize: 14, opacity: 0.8 }}
+            style={{ color: "#8b7fa8", fontSize: 14, opacity: 0.8 }}
           >
             {isMobile
               ? "Tap, drag, or shake your phone to break"
@@ -341,12 +341,12 @@ export default function CookieCanvas({
             <div
               className="rounded px-6 py-3 text-center"
               style={{
-                backgroundColor: "rgba(245, 230, 200, 0.95)",
+                backgroundColor: "rgba(26, 21, 40, 0.95)",
                 border: "1px solid rgba(212, 160, 74, 0.3)",
                 maxWidth: 280,
               }}
             >
-              <p style={{ color: "#4a3520", fontSize: 13, fontFamily: "Georgia, serif" }}>
+              <p style={{ color: "#e8e0f0", fontSize: 13, fontFamily: "Georgia, serif" }}>
                 {fortune}
               </p>
             </div>

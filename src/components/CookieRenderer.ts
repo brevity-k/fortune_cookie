@@ -105,7 +105,7 @@ export class CookieRenderer {
     // Background gradient
     const bg = new Graphics();
     bg.roundRect(0, 0, this.width, this.height, 16);
-    bg.fill({ color: 0xede5d8, alpha: 0.4 });
+    bg.fill({ color: 0x1a1528, alpha: 0.4 });
     this.app.stage.addChild(bg);
 
     // Ambient glow behind cookie
@@ -381,7 +381,7 @@ export class CookieRenderer {
 
     // Paper background
     g.roundRect(paperX, paperY, paperW, paperH, 4);
-    g.fill({ color: 0xf5e6c8 });
+    g.fill({ color: 0x1a1230 });
     g.stroke({ width: 1, color: 0xd4a04a, alpha: 0.3 });
 
     // Animate in
