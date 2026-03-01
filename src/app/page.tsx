@@ -189,24 +189,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog Teaser / SEO Content */}
+      {/* Why Fortune Crack */}
       <section className="mx-auto max-w-3xl px-4 py-12">
         <h2 className="text-golden-shimmer mb-4 text-center text-2xl font-bold">
-          The Magic of Fortune Cookies
+          Why Fortune Crack?
         </h2>
-        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-8">
-          <p className="mb-4 leading-relaxed text-foreground/60">
-            Fortune cookies have been a beloved tradition for over a century, bringing moments of
-            surprise and delight to millions around the world. Originally popularized in California
-            in the early 1900s, these crispy treats with hidden messages have become a staple of
-            dining culture and a symbol of hope and possibility.
+        <div className="rounded-2xl border border-gold/10 bg-gold/5 p-8 space-y-4">
+          <p className="leading-relaxed text-foreground/60">
+            Fortune Crack is not just another fortune cookie website. We built something you can
+            actually <em>feel</em>. Using real-time physics simulation and WebGL rendering, every
+            cookie you break shatters into unique fragments that bounce, spin, and settle naturally.
+            The crack sounds, the particle effects, the slow reveal of your fortune — it all comes
+            together to recreate the tactile satisfaction of breaking a real cookie.
           </p>
           <p className="leading-relaxed text-foreground/60">
-            Our digital fortune cookie brings that same magic to your screen. With realistic
-            physics-based breaking animations and over 1,000 unique fortunes, every visit is a
-            new experience. Whether you prefer wisdom, humor, or mystery, there&apos;s a fortune
-            waiting just for you.
+            Most fortune cookie sites give you a random quote and call it a day. We wanted more.
+            Fortune Crack features over 1,000 handcrafted fortunes across eight categories — from
+            ancient wisdom and philosophical musings to career motivation and laugh-out-loud humor.
+            Each fortune carries a rarity tier, and the longer your daily streak, the better your
+            chances of discovering something truly legendary.
           </p>
+          <p className="leading-relaxed text-foreground/60">
+            We also believe fortune cookies are better shared. Every day, everyone in the world
+            receives the same Daily Fortune — a shared moment of serendipity that connects strangers
+            across time zones. You can share any fortune to social media with a single tap, compare
+            lucky numbers with friends, or quietly save your favorites to a personal journal that
+            lives right in your browser.
+          </p>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="mx-auto max-w-3xl px-4 pb-12">
+        <h2 className="text-golden-shimmer mb-4 text-center text-2xl font-bold">
+          How It Works
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-xl border border-gold/10 bg-gold/5 p-6 text-center">
+            <div className="text-3xl mb-3">1</div>
+            <h3 className="text-sm font-semibold text-gold mb-2">Break</h3>
+            <p className="text-xs text-foreground/50">
+              Choose your style — tap, drag, shake, double-tap, or squeeze the cookie to crack it open.
+            </p>
+          </div>
+          <div className="rounded-xl border border-gold/10 bg-gold/5 p-6 text-center">
+            <div className="text-3xl mb-3">2</div>
+            <h3 className="text-sm font-semibold text-gold mb-2">Read</h3>
+            <p className="text-xs text-foreground/50">
+              Watch your fortune reveal itself letter by letter. Check the rarity — did you get a Legendary?
+            </p>
+          </div>
+          <div className="rounded-xl border border-gold/10 bg-gold/5 p-6 text-center">
+            <div className="text-3xl mb-3">3</div>
+            <h3 className="text-sm font-semibold text-gold mb-2">Share</h3>
+            <p className="text-xs text-foreground/50">
+              Share your fortune on Twitter, Facebook, or WhatsApp. Save it to your journal for later.
+            </p>
+          </div>
         </div>
       </section>
 
