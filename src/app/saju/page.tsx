@@ -39,29 +39,24 @@ export const metadata: Metadata = {
 
 const FAQS = [
   {
-    question: "What is 사주 (Four Pillars of Destiny)?",
-    answer:
-      "사주 (also known as Four Pillars of Destiny or 四柱推命) is a traditional Korean and East Asian fortune-telling system. It uses the year, month, day, and hour of your birth to create four \"pillars,\" each consisting of a Heavenly Stem and Earthly Branch. These pillars reveal your elemental balance, personality traits, and fortune cycles.",
+    q: "What is 사주 (Four Pillars of Destiny)?",
+    a: "사주 (also known as Four Pillars of Destiny or 四柱推命) is a traditional Korean and East Asian fortune-telling system. It uses the year, month, day, and hour of your birth to create four \"pillars,\" each consisting of a Heavenly Stem and Earthly Branch. These pillars reveal your elemental balance, personality traits, and fortune cycles.",
   },
   {
-    question: "How are the Four Pillars calculated?",
-    answer:
-      "Each pillar is derived from the 60-year sexagenary cycle (육십갑자). The year and month use solar term boundaries (절기), not calendar months. The day pillar comes from a continuous cycle, and the hour pillar maps your birth hour to one of 12 two-hour periods. All calculations are deterministic — the same birth data always produces the same chart.",
+    q: "How are the Four Pillars calculated?",
+    a: "Each pillar is derived from the 60-year sexagenary cycle (육십갑자). The year and month use solar term boundaries (절기), not calendar months. The day pillar comes from a continuous cycle, and the hour pillar maps your birth hour to one of 12 two-hour periods. All calculations are deterministic — the same birth data always produces the same chart.",
   },
   {
-    question: "What are the Five Elements (오행)?",
-    answer:
-      "The Five Elements — Wood (木), Fire (火), Earth (土), Metal (金), and Water (水) — form the foundation of 사주 analysis. Each of the eight characters in your four pillars carries an element. The balance between these elements, especially relative to your Day Master (일간), determines your favorable and unfavorable elements.",
+    q: "What are the Five Elements (오행)?",
+    a: "The Five Elements — Wood (木), Fire (火), Earth (土), Metal (金), and Water (水) — form the foundation of 사주 analysis. Each of the eight characters in your four pillars carries an element. The balance between these elements, especially relative to your Day Master (일간), determines your favorable and unfavorable elements.",
   },
   {
-    question: "What is a Day Master (일간)?",
-    answer:
-      "Your Day Master is the Heavenly Stem of your Day Pillar. It represents your core self and determines how all other elements in your chart interact with you. A strong Day Master means the element of the self is well-supported; a weak one benefits from support from generating elements.",
+    q: "What is a Day Master (일간)?",
+    a: "Your Day Master is the Heavenly Stem of your Day Pillar. It represents your core self and determines how all other elements in your chart interact with you. A strong Day Master means the element of the self is well-supported; a weak one benefits from support from generating elements.",
   },
   {
-    question: "What are Major Luck Cycles (대운)?",
-    answer:
-      "대운 (Major Luck Cycles) are 10-year periods that influence your life fortune. They are calculated from your month pillar and progress forward or backward based on your gender and year stem. Each cycle brings different elemental energies that interact with your birth chart.",
+    q: "What are Major Luck Cycles (대운)?",
+    a: "대운 (Major Luck Cycles) are 10-year periods that influence your life fortune. They are calculated from your month pillar and progress forward or backward based on your gender and year stem. Each cycle brings different elemental energies that interact with your birth chart.",
   },
 ];
 
@@ -165,12 +160,12 @@ export default function SajuPage() {
           </h2>
           <div className="space-y-4">
             {FAQS.map((faq) => (
-              <details key={faq.question} className="rounded-xl border border-border/30 bg-white/3">
+              <details key={faq.q} className="rounded-xl border border-border/30 bg-white/3">
                 <summary className="cursor-pointer p-4 font-medium text-foreground/80 hover:text-gold transition">
-                  {faq.question}
+                  {faq.q}
                 </summary>
                 <p className="px-4 pb-4 text-sm text-foreground/50 leading-relaxed">
-                  {faq.answer}
+                  {faq.a}
                 </p>
               </details>
             ))}
