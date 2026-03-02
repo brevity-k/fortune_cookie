@@ -20,12 +20,15 @@
     "x:post": "tsx scripts/post-to-x.ts --both",
     "x:fortune": "tsx scripts/post-to-x.ts --fortune",
     "x:horoscope": "tsx scripts/post-to-x.ts --horoscope",
-    "x:blog": "tsx scripts/post-to-x.ts --blog-all"
+    "x:blog": "tsx scripts/post-to-x.ts --blog-all",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
     "howler": "^2.2.4",
+    "korean-lunar-calendar": "^0.3.6",
     "matter-js": "^0.20.0",
     "next": "16.1.6",
     "next-mdx-remote": "^6.0.0",
@@ -47,6 +50,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "twitter-api-v2": "^1.29.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.0.18"
   }
 }
