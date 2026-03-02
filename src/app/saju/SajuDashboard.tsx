@@ -6,6 +6,7 @@ import SajuOnboarding from "@/components/saju/SajuOnboarding";
 import SajuChart from "@/components/saju/SajuChart";
 import FiveElementsBar from "@/components/saju/FiveElementsBar";
 import MajorLuckTimeline from "@/components/saju/MajorLuckTimeline";
+import SajuInterpretation from "@/components/saju/SajuInterpretation";
 import { formatPillar } from "@/lib/saju/format";
 import { getCurrentDayPillar, getCurrentMonthPillar, getCurrentYearPillar } from "@/lib/saju/current-luck";
 
@@ -70,6 +71,9 @@ export default function SajuDashboard() {
       <div className="rounded-2xl border border-border bg-background p-6">
         <SajuChart fourPillars={chart.fourPillars} />
       </div>
+
+      {/* AI Interpretation */}
+      <SajuInterpretation chart={chart} />
 
       {/* Five Elements */}
       <div className="rounded-2xl border border-border bg-background p-6">

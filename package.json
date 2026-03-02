@@ -25,6 +25,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
     "howler": "^2.2.4",
@@ -38,7 +39,6 @@
     "resend": "^6.9.3"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.78.0",
     "@tailwindcss/postcss": "^4",
     "@types/howler": "^2.2.12",
     "@types/matter-js": "^0.20.2",
