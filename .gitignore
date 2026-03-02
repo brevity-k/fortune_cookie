@@ -46,3 +46,6 @@ next-env.d.ts
 
 # auto-blog temp files
 .generated-slug
+
+# worktrees
+.worktrees/
