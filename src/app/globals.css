@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0b1a;
-  --background-secondary: #1a1528;
+  --background: #1a1429;
+  --background-secondary: #251e38;
   --foreground: #e8e0f0;
   --gold: #d4a04a;
   --gold-light: #f0d68a;
@@ -11,7 +11,7 @@
   --cream: #f5e6d0;
   --paper: #f5e6d0;
   --muted: #8b7fa8;
-  --border: #2a2440;
+  --border: #342d50;
 }
 
 @theme inline {
@@ -39,7 +39,7 @@ body {
 
 /* Dark mystical gradient background */
 .bg-warm-gradient {
-  background: linear-gradient(180deg, #0f0b1a 0%, #1a1230 50%, #0f0b1a 100%);
+  background: linear-gradient(180deg, #1a1429 0%, #231840 50%, #1a1429 100%);
 }
 
 /* Golden shimmer text */
