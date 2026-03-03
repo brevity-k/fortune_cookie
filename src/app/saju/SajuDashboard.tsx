@@ -1,12 +1,22 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
+import { useSearchParams } from "next/navigation";
 import { getSajuProfile, clearSajuProfile, type SajuProfile } from "@/lib/saju/profile";
+import { usePremium } from "@/lib/saju/use-premium";
+import { savePremiumToken } from "@/lib/saju/premium";
 import SajuOnboarding from "@/components/saju/SajuOnboarding";
 import SajuChart from "@/components/saju/SajuChart";
 import FiveElementsBar from "@/components/saju/FiveElementsBar";
 import MajorLuckTimeline from "@/components/saju/MajorLuckTimeline";
 import SajuInterpretation from "@/components/saju/SajuInterpretation";
+import PremiumGate from "@/components/saju/PremiumGate";
+import DailyReading from "@/components/saju/DailyReading";
+import MonthlyOutlook from "@/components/saju/MonthlyOutlook";
+import YearlyForecast from "@/components/saju/YearlyForecast";
+import CompatibilityCheck from "@/components/saju/CompatibilityCheck";
+import LuckyDayCalendar from "@/components/saju/LuckyDayCalendar";
+import SubscriptionManager from "@/components/saju/SubscriptionManager";
 import { formatPillar } from "@/lib/saju/format";
 import { getCurrentDayPillar, getCurrentMonthPillar, getCurrentYearPillar } from "@/lib/saju/current-luck";
 
@@ -17,6 +27,32 @@ const getServerProfile = () => null;
 export default function SajuDashboard() {
   const storedProfile = useSyncExternalStore(noop, getProfile, getServerProfile);
   const [profile, setProfile] = useState<SajuProfile | null>(storedProfile);
+  const { isPremium, loading: premiumLoading, subscribe, restore, manageSubscription } = usePremium();
+  const searchParams = useSearchParams();
+
+  // Handle Stripe checkout redirect: verify session_id and save token
+  useEffect(() => {
+    const sessionId = searchParams.get('session_id');
+    if (!sessionId) return;
+
+    async function verifySession() {
+      try {
+        const res = await fetch('/api/subscribe/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId }),
+        });
+        if (res.ok) {
+          const { token } = await res.json();
+          savePremiumToken(token);
+          window.history.replaceState({}, '', '/saju');
+          window.location.reload();
+        }
+      } catch { /* silent fail — user can retry */ }
+    }
+
+    verifySession();
+  }, [searchParams]);
 
   function handleComplete(p: SajuProfile) {
     setProfile(p);
@@ -108,6 +144,29 @@ export default function SajuDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Premium: Daily Reading */}
+      <PremiumGate
+        isPremium={isPremium}
+        loading={premiumLoading}
+        onSubscribe={subscribe}
+        onRestore={restore}
+      >
+        <DailyReading chart={chart} />
+      </PremiumGate>
+
+      {/* Premium: More Features (visible only to premium users) */}
+      {isPremium && (
+        <>
+          <LuckyDayCalendar chart={chart} />
+          <MonthlyOutlook chart={chart} />
+          <YearlyForecast chart={chart} />
+          <CompatibilityCheck chart={chart} />
+        </>
+      )}
+
+      {/* Subscription Manager (for premium users) */}
+      {isPremium && <SubscriptionManager onManage={manageSubscription} />}
 
       {/* Reset */}
       <div className="text-center">

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
@@ -72,7 +73,9 @@ export default function SajuPage() {
       <FAQPageJsonLd faqs={FAQS} />
 
       <main className="mx-auto max-w-4xl px-4 py-10">
-        <SajuDashboard />
+        <Suspense fallback={<div className="text-center py-10 text-foreground/30">Loading...</div>}>
+          <SajuDashboard />
+        </Suspense>
 
         {/* Educational content (always visible for SEO) */}
         <section className="mt-16 space-y-8">
