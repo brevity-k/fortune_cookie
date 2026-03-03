@@ -1,4 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeAll } from 'vitest';
+
+beforeAll(() => {
+  process.env.PREMIUM_JWT_SECRET = 'test-secret-for-vitest-minimum-256-bits-long-enough';
+});
 
 // Mock jose module with vi.fn() for jwtVerify so we can override per-test
 const mockJwtVerify = vi.fn().mockResolvedValue({
