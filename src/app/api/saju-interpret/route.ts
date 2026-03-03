@@ -22,7 +22,11 @@ export async function POST(req: NextRequest) {
   try {
     // CSRF protection
     const origin = req.headers.get("origin");
-    if (!origin || !SITE_URL.startsWith(origin)) {
+    const isAllowedOrigin =
+      origin &&
+      (SITE_URL.startsWith(origin) ||
+        (process.env.NODE_ENV === "development" && origin.startsWith("http://localhost")));
+    if (!isAllowedOrigin) {
       return NextResponse.json({ error: "Forbidden." }, { status: 403 });
     }
 

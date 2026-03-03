@@ -11,6 +11,10 @@ export interface SajuProfile {
 
 const STORAGE_KEY = 'saju_profile';
 
+// Cache for useSyncExternalStore — must return the same reference when data hasn't changed
+let cachedRaw: string | null = null;
+let cachedProfile: SajuProfile | null = null;
+
 export function saveSajuProfile(birthInfo: BirthInfo): SajuProfile {
   const fourPillars = calculateFourPillars(birthInfo);
   const fiveElements = analyzeFiveElements(fourPillars);
@@ -23,7 +27,10 @@ export function saveSajuProfile(birthInfo: BirthInfo): SajuProfile {
   };
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+    const json = JSON.stringify(profile);
+    localStorage.setItem(STORAGE_KEY, json);
+    cachedRaw = json;
+    cachedProfile = profile;
   }
 
   return profile;
@@ -32,10 +39,19 @@ export function saveSajuProfile(birthInfo: BirthInfo): SajuProfile {
 export function getSajuProfile(): SajuProfile | null {
   if (typeof window === 'undefined') return null;
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return null;
+  if (!raw) {
+    cachedRaw = null;
+    cachedProfile = null;
+    return null;
+  }
+  if (raw === cachedRaw) return cachedProfile;
   try {
-    return JSON.parse(raw) as SajuProfile;
+    cachedRaw = raw;
+    cachedProfile = JSON.parse(raw) as SajuProfile;
+    return cachedProfile;
   } catch {
+    cachedRaw = null;
+    cachedProfile = null;
     return null;
   }
 }
@@ -43,5 +59,7 @@ export function getSajuProfile(): SajuProfile | null {
 export function clearSajuProfile(): void {
   if (typeof window !== 'undefined') {
     localStorage.removeItem(STORAGE_KEY);
+    cachedRaw = null;
+    cachedProfile = null;
   }
 }
