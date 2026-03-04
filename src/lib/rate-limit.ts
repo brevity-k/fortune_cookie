@@ -21,3 +21,6 @@ export const astroAIRatelimit = createLimiter('astro-ai', 5, '1 d');
 
 /** Contact form: 5 requests per hour per IP */
 export const contactRatelimit = createLimiter('contact', 5, '1 h');
+
+/** Premium fortune: 30 requests per day per user */
+export const premiumFortuneRatelimit = createLimiter('premium-fortune', 30, '1 d');
