@@ -72,9 +72,6 @@ export default function SajuDashboard() {
         <SajuChart fourPillars={chart.fourPillars} />
       </div>
 
-      {/* AI Interpretation */}
-      <SajuInterpretation chart={chart} />
-
       {/* Five Elements */}
       <div className="rounded-2xl border border-border bg-background p-6">
         <FiveElementsBar analysis={chart.fiveElements} />
@@ -108,6 +105,9 @@ export default function SajuDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Interpretation */}
+      <SajuInterpretation chart={chart} />
 
       {/* Reset */}
       <div className="text-center">
