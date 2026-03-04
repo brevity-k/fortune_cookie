@@ -7,6 +7,7 @@ import {
   Body,
 } from 'astronomy-engine';
 import type { Planet } from './types';
+import type { Body as BodyType } from 'astronomy-engine';
 
 /**
  * Mean North Node calculation.
@@ -32,16 +33,16 @@ function getMeanNorthNodeLongitude(date: Date): number {
  * Map our Planet type to the astronomy-engine Body enum.
  * Returns null for Sun, Moon, and NorthNode which need special handling.
  */
-function planetToBody(planet: Planet): string | null {
-  const map: Partial<Record<Planet, string>> = {
-    Mercury: Body.Mercury,
-    Venus: Body.Venus,
-    Mars: Body.Mars,
-    Jupiter: Body.Jupiter,
-    Saturn: Body.Saturn,
-    Uranus: Body.Uranus,
-    Neptune: Body.Neptune,
-    Pluto: Body.Pluto,
+function planetToBody(planet: Planet): BodyType | null {
+  const map: Partial<Record<Planet, BodyType>> = {
+    Mercury: Body.Mercury as BodyType,
+    Venus: Body.Venus as BodyType,
+    Mars: Body.Mars as BodyType,
+    Jupiter: Body.Jupiter as BodyType,
+    Saturn: Body.Saturn as BodyType,
+    Uranus: Body.Uranus as BodyType,
+    Neptune: Body.Neptune as BodyType,
+    Pluto: Body.Pluto as BodyType,
   };
   return map[planet] ?? null;
 }
