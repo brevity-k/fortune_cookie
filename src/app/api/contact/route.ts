@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE_URL, SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
+import { contactRatelimit } from "@/lib/rate-limit";
 
 function escapeHtml(str: string): string {
   return str
@@ -13,22 +14,6 @@ function escapeHtml(str: string): string {
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// In-memory rate limiting (per serverless instance)
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const RATE_LIMIT_MAX = 5;
-const rateLimitMap = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const timestamps = rateLimitMap.get(ip) ?? [];
-  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  rateLimitMap.set(ip, recent);
-  if (recent.length >= RATE_LIMIT_MAX) return true;
-  recent.push(now);
-  rateLimitMap.set(ip, recent);
-  return false;
 }
 
 export async function POST(req: NextRequest) {
@@ -44,11 +29,14 @@ export async function POST(req: NextRequest) {
 
     // Rate limiting by IP
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
-    if (isRateLimited(ip)) {
-      return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
-        { status: 429 }
-      );
+    if (contactRatelimit) {
+      const { success } = await contactRatelimit.limit(ip);
+      if (!success) {
+        return NextResponse.json(
+          { error: "Too many requests. Please try again later." },
+          { status: 429 }
+        );
+      }
     }
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
