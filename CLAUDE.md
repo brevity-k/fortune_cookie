@@ -40,6 +40,7 @@
 | Horoscope Pages (Phase 8A) | Done | 36 pages: daily/weekly/monthly × 12 signs + hub + OG images |
 | Astrology Content (Phase 8B-E) | Not Started | Compatibility, birth charts, tarot, moon fortune |
 | Auto X (Twitter) Posting | Done | 2 tweets/day: fortune (8AM UTC) + horoscope (2PM UTC) via twitter-api-v2 |
+| Premium Personalized Fortune | Done | Supabase Auth + DB, user learning, AI fortune gen, dashboard |
 | Testing | None | No test framework |
 
 ---
@@ -71,6 +72,61 @@ link-check, lighthouse, content-health workflows.
 
 #### Phase 8A: Horoscope Pages (DONE)
 36 horoscope pages (daily/weekly/monthly × 12 signs) + hub page + OG images + JSON-LD FAQPage schema. Auto-generated daily via `auto-horoscopes.yml` workflow. Data stored in `src/data/horoscopes.json`. StarRating component for love/career/health display.
+
+#### Premium Personalized Fortune System (DONE)
+
+AI-powered personalized daily fortunes based on user's saju/natal chart + accumulated life context.
+
+**Architecture:** Supabase Auth (Google OAuth + email magic link) + Supabase DB (profiles, user_charts, user_context, daily_fortunes) + Claude Haiku for fortune generation + Upstash Redis rate limiting.
+
+**Routes:**
+```
+/login                — Sign in (Google OAuth + email magic link, noindex)
+/premium              — Marketing page with features, pricing, how-it-works
+/my-fortune           — Dashboard: track selector, daily check-in, 5 category fortune cards (noindex)
+/auth/callback        — OAuth callback with open-redirect prevention
+/api/my-fortune       — POST: fortune generation API (auth + subscription + rate limit + cache + AI)
+```
+
+**User Learning Flow:**
+1. User enters saju or natal chart → chart auto-synced to Supabase if authenticated
+2. 4-step onboarding wizard (interests, life changes, concerns, goals) → saved to `user_context`
+3. Daily check-in (rotating prompts, once/day) → saved to `user_context`
+4. AI uses chart data + accumulated context to generate personalized fortunes
+5. 5 categories: Daily Overview, Love & Relationships, Career & Money, Health & Wellness, Monthly Outlook
+6. Fortunes cached per user/track/category/date in `daily_fortunes` table
+
+**Security:**
+- RLS policies prevent client-side subscription escalation
+- CSRF origin validation on fortune API (strict equality)
+- Rate limiter fails closed (503 if Upstash unavailable)
+- Prompt injection defense: user data wrapped in `<user_data>` XML tags
+- Input sanitization (truncation + control char stripping)
+- AI response validation (type checks, range clamping, string truncation)
+- Open redirect prevention on auth callback
+
+**Dependencies:** `@supabase/ssr`, `@supabase/supabase-js`
+
+**Branch:** `feat/premium-personalized-fortune`
+
+##### Prerequisites (manual, before deployment)
+
+1. Create Supabase project at https://supabase.com
+2. Enable Google OAuth in Supabase Auth → Providers → Google
+3. Enable Email magic link in Supabase Auth → Providers → Email
+4. Run `supabase/migrations/001_premium_schema.sql` in Supabase SQL Editor
+5. Add to `.env.local` and Vercel environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase anon/public key
+6. Ensure `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are configured (required — rate limiter fails closed)
+7. Ensure `ANTHROPIC_API_KEY` is configured (required for fortune generation)
+
+##### Known Security Considerations (Medium/Low, tracked)
+
+- `user_context` table has no row count limit — potential storage abuse (mitigate via DB trigger)
+- Client-side chart sync allows arbitrary JSON in `chart_data` (mitigate via server-side validation)
+- `active_tracks` update has TOCTOU race condition (mitigate via PostgreSQL `array_append`)
+- `daily_fortunes` INSERT RLS allows client-side cache writes (user can only affect own data)
 
 ### Upcoming Phases
 
@@ -322,7 +378,9 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 
 | Secret | Purpose |
 |---|---|
-| `ANTHROPIC_API_KEY` | Claude API for blog auto-generation + quality checks + fortune generation + horoscopes |
+| `ANTHROPIC_API_KEY` | Claude API for blog/fortune/horoscope auto-generation + premium fortune gen |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL for premium system |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key for premium system |
 | `X_CONSUMER_KEY` | X (Twitter) consumer key for automated tweets |
 | `X_SECRET_KEY` | X (Twitter) secret key |
 | `X_ACCESS_TOKEN` | X (Twitter) user access token |
@@ -392,6 +450,13 @@ src/
 │   ├── blog/[slug]/opengraph-image.tsx
 │   ├── api/contact/route.ts  # Contact form API (Resend)
 │   ├── api/fortune-card/route.tsx # Edge: OG image for fortune shares (1200x630)
+│   ├── api/my-fortune/route.ts    # Premium fortune generation API
+│   ├── auth/callback/route.ts     # OAuth callback with redirect protection
+│   ├── login/page.tsx             # Login page (server wrapper, noindex)
+│   ├── login/client.tsx           # Login form (Google OAuth + email magic link)
+│   ├── my-fortune/page.tsx        # Premium dashboard (server, auth-gated)
+│   ├── my-fortune/client.tsx      # Premium dashboard (client)
+│   ├── premium/page.tsx           # Premium marketing page
 │   ├── contact/page.tsx
 │   ├── daily/page.tsx        # Daily fortune page + 7-day history
 │   ├── daily/opengraph-image.tsx
@@ -427,8 +492,13 @@ src/
 │   ├── AdUnit.tsx            # AdSense (disabled, no pub ID)
 │   ├── CookieConsent.tsx     # GDPR consent banner
 │   ├── StarRating.tsx        # Star rating display for horoscope pages
-│   ├── Header.tsx            # Responsive nav
-│   └── Footer.tsx            # Footer links + Explore section
+│   ├── Header.tsx            # Responsive nav (+ AuthButton)
+│   ├── Footer.tsx            # Footer links + Explore section (+ premium links)
+│   ├── auth/
+│   │   └── AuthButton.tsx    # Sign in / My Fortune toggle
+│   └── premium/
+│       ├── OnboardingQuestions.tsx  # 4-step onboarding wizard
+│       └── DailyCheckIn.tsx        # Daily context check-in
 ├── content/
 │   └── blog/                 # MDX blog posts with YAML frontmatter (14 posts)
 ├── lib/
@@ -436,10 +506,23 @@ src/
 │   ├── constants.ts           # Site-wide configuration constants
 │   ├── fortuneEngine.ts      # Fortune logic, streaks, journal, seededRandom, category helpers
 │   ├── horoscopes.ts         # Horoscope data loader, ZODIAC_SIGNS, formatters
-│   └── analytics.ts          # GA4 event tracking (disabled)
+│   ├── analytics.ts          # GA4 event tracking (disabled)
+│   ├── subscription.ts       # Profile/subscription helpers (Supabase)
+│   ├── rate-limit.ts         # Upstash Redis rate limiters (+ premium fortune)
+│   ├── supabase/
+│   │   ├── client.ts         # Browser Supabase client
+│   │   ├── server.ts         # Server Supabase client (cookie mgmt)
+│   │   └── middleware.ts     # Session refresh + /my-fortune route protection
+│   └── premium/
+│       └── prompts.ts        # English prompt builders for saju/astro fortune gen
+├── middleware.ts              # Next.js middleware (Supabase session refresh)
 └── data/
     ├── fortunes.json         # 1,091 fortunes (auto-growing weekly)
     └── horoscopes.json       # Daily/weekly/monthly horoscope data for 12 signs
+
+supabase/
+└── migrations/
+    └── 001_premium_schema.sql  # Premium DB schema (profiles, charts, context, fortunes + RLS)
 
 scripts/
 ├── generate-post.ts          # Two-stage Claude API blog post generator
