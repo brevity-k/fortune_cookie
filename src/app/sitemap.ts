@@ -171,6 +171,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...horoscopeEntries,
     ...categoryEntries,
     ...zodiacEntries,
+    {
+      url: `${baseUrl}/premium`,
+      lastModified: staticPageDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
     ...learnEntries,
     ...blogEntries,
   ];

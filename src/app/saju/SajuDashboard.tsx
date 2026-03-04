@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { getSajuProfile, clearSajuProfile, type SajuProfile } from "@/lib/saju/profile";
+import { createClient } from "@/lib/supabase/client";
+import Link from "next/link";
 import SajuOnboarding from "@/components/saju/SajuOnboarding";
 import SajuChart from "@/components/saju/SajuChart";
 import FiveElementsBar from "@/components/saju/FiveElementsBar";
@@ -17,6 +19,35 @@ const getServerProfile = () => null;
 export default function SajuDashboard() {
   const storedProfile = useSyncExternalStore(noop, getProfile, getServerProfile);
   const [profile, setProfile] = useState<SajuProfile | null>(storedProfile);
+
+  // Sync chart to Supabase if authenticated
+  useEffect(() => {
+    if (!profile) return;
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) return;
+      supabase.from('user_charts').upsert({
+        user_id: user.id,
+        track: 'saju',
+        chart_data: profile.chart,
+        birth_info: profile.birthInfo,
+      }, { onConflict: 'user_id,track' }).then(({ error }) => {
+        if (error) console.error('Chart sync error:', error.message);
+        else {
+          // Add saju to active_tracks if not already present
+          supabase.from('profiles').select('active_tracks').eq('id', user.id).single()
+            .then(({ data }) => {
+              const tracks: string[] = data?.active_tracks || [];
+              if (!tracks.includes('saju')) {
+                supabase.from('profiles').update({
+                  active_tracks: [...tracks, 'saju'],
+                }).eq('id', user.id).then(() => {});
+              }
+            });
+        }
+      });
+    });
+  }, [profile]);
 
   function handleComplete(p: SajuProfile) {
     setProfile(p);
@@ -108,6 +139,13 @@ export default function SajuDashboard() {
 
       {/* Interpretation */}
       <SajuInterpretation chart={chart} />
+
+      {/* Premium CTA */}
+      <div className="rounded-2xl border border-gold/20 bg-gold/5 p-6 text-center">
+        <p className="text-sm text-foreground/60">
+          🔮 <Link href="/login?redirect=/my-fortune" className="text-gold underline underline-offset-2 hover:text-gold/80 transition">Sign in</Link> to save your chart and get personalized daily fortunes
+        </p>
+      </div>
 
       {/* Reset */}
       <div className="text-center">

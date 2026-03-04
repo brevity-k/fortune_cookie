@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import {
   getAstroProfile,
   clearAstroProfile,
 } from "@/lib/astro/profile";
 import type { AstroProfile } from "@/lib/astro/types";
+import { createClient } from "@/lib/supabase/client";
+import Link from "next/link";
 import AstroOnboarding from "@/components/astro/AstroOnboarding";
 import NatalChartWheel from "@/components/astro/NatalChartWheel";
 import PlanetTable from "@/components/astro/PlanetTable";
@@ -24,6 +26,34 @@ export default function AstroDashboard() {
     getServerProfile
   );
   const [profile, setProfile] = useState<AstroProfile | null>(storedProfile);
+
+  // Sync chart to Supabase if authenticated
+  useEffect(() => {
+    if (!profile) return;
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) return;
+      supabase.from('user_charts').upsert({
+        user_id: user.id,
+        track: 'astro',
+        chart_data: profile.chart,
+        birth_info: profile.birthInfo,
+      }, { onConflict: 'user_id,track' }).then(({ error }) => {
+        if (error) console.error('Chart sync error:', error.message);
+        else {
+          supabase.from('profiles').select('active_tracks').eq('id', user.id).single()
+            .then(({ data }) => {
+              const tracks: string[] = data?.active_tracks || [];
+              if (!tracks.includes('astro')) {
+                supabase.from('profiles').update({
+                  active_tracks: [...tracks, 'astro'],
+                }).eq('id', user.id).then(() => {});
+              }
+            });
+        }
+      });
+    });
+  }, [profile]);
 
   function handleComplete(p: AstroProfile) {
     setProfile(p);
@@ -98,6 +128,13 @@ export default function AstroDashboard() {
 
       {/* AI Interpretation (free) */}
       <AstroInterpretation chart={chart} birthInfo={birthInfo} />
+
+      {/* Premium CTA */}
+      <div className="rounded-2xl border border-gold/20 bg-gold/5 p-6 text-center">
+        <p className="text-sm text-foreground/60">
+          🌌 <Link href="/login?redirect=/my-fortune" className="text-gold underline underline-offset-2 hover:text-gold/80 transition">Sign in</Link> to save your chart and get personalized daily fortunes
+        </p>
+      </div>
 
       {/* Reset */}
       <div className="text-center">
