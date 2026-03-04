@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 interface DailyCheckInProps {
@@ -20,8 +20,15 @@ function getTodayKey(): string {
   return `premium_checkin_${today}`;
 }
 
+const noop = () => () => {};
+const getCheckedIn = () => {
+  try { return localStorage.getItem(getTodayKey()) === '1'; } catch { return false; }
+};
+const getServerCheckedIn = () => true; // SSR: assume checked in (hide widget)
+
 export default function DailyCheckIn({ onSubmit }: DailyCheckInProps) {
-  const [dismissed, setDismissed] = useState(true);
+  const alreadyCheckedIn = useSyncExternalStore(noop, getCheckedIn, getServerCheckedIn);
+  const [dismissed, setDismissed] = useState(false);
   const [text, setText] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -29,16 +36,7 @@ export default function DailyCheckIn({ onSubmit }: DailyCheckInProps) {
 
   const prompt = PROMPTS[new Date().getDate() % PROMPTS.length];
 
-  useEffect(() => {
-    try {
-      const done = localStorage.getItem(getTodayKey());
-      setDismissed(done === '1');
-    } catch {
-      setDismissed(false);
-    }
-  }, []);
-
-  if (dismissed || saved) return null;
+  if (alreadyCheckedIn || dismissed || saved) return null;
 
   function markDone() {
     try {
