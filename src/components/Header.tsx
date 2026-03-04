@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import AuthButton from "@/components/auth/AuthButton";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +40,7 @@ export default function Header() {
           <Link href="/about" className="text-foreground/60 transition hover:text-gold">
             About
           </Link>
+          <AuthButton />
         </nav>
 
         {/* Mobile menu button */}
@@ -83,6 +85,9 @@ export default function Header() {
             <Link href="/about" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               About
             </Link>
+            <div className="py-2">
+              <AuthButton />
+            </div>
           </div>
         </nav>
       )}
