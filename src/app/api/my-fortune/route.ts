@@ -3,6 +3,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { createClient } from '@/lib/supabase/server';
 import { isSubscribed } from '@/lib/subscription';
 import { premiumFortuneRatelimit } from '@/lib/rate-limit';
+import { SITE_URL } from '@/lib/constants';
 import {
   buildSajuFortunePrompt,
   buildAstroFortunePrompt,
@@ -25,6 +26,16 @@ function getTodayDateString(): string {
 }
 
 export async function POST(request: Request) {
+  // CSRF origin check
+  const origin = request.headers.get('origin');
+  const isAllowedOrigin =
+    origin &&
+    (origin === SITE_URL ||
+      (process.env.NODE_ENV === 'development' && origin.startsWith('http://localhost')));
+  if (!isAllowedOrigin) {
+    return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
+  }
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: 'AI service is currently unavailable.' }, { status: 503 });
@@ -41,15 +52,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Premium subscription required.' }, { status: 403 });
   }
 
-  // Rate limit by user ID (30 req/day)
-  if (premiumFortuneRatelimit) {
-    const { success, reset } = await premiumFortuneRatelimit.limit(user.id);
-    if (!success) {
-      return NextResponse.json(
-        { error: 'Daily request limit reached. Please try again tomorrow.' },
-        { status: 429, headers: { 'Retry-After': Math.ceil((reset - Date.now()) / 1000).toString() } },
-      );
-    }
+  // Rate limit by user ID (30 req/day) — fail closed if limiter unavailable
+  if (!premiumFortuneRatelimit) {
+    console.error('Premium fortune rate limiter not initialized — Upstash may be misconfigured');
+    return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+  }
+  const { success, reset } = await premiumFortuneRatelimit.limit(user.id);
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Daily request limit reached. Please try again tomorrow.' },
+      { status: 429, headers: { 'Retry-After': Math.ceil((reset - Date.now()) / 1000).toString() } },
+    );
   }
 
   let body: { track?: string; category?: string };
@@ -139,10 +152,19 @@ export async function POST(request: Request) {
       const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
       const fortune = JSON.parse(cleaned);
 
-      // Validate
-      if (!fortune.title || !fortune.content || typeof fortune.intensity !== 'number') {
+      // Validate structure and ranges
+      if (
+        typeof fortune.title !== 'string' || !fortune.title ||
+        typeof fortune.content !== 'string' || !fortune.content ||
+        typeof fortune.intensity !== 'number' ||
+        fortune.intensity < 1 || fortune.intensity > 5
+      ) {
         return NextResponse.json({ error: 'AI response format error.' }, { status: 500 });
       }
+      // Clamp intensity and truncate strings for safety
+      fortune.intensity = Math.round(Math.min(5, Math.max(1, fortune.intensity)));
+      fortune.title = String(fortune.title).slice(0, 100);
+      fortune.content = String(fortune.content).slice(0, 1000);
 
       // Cache
       const contextIds = (contextRows || []).map((r) => r.id);
