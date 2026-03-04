@@ -1,25 +1,17 @@
 "use client";
 
-import { useState, useEffect, useSyncExternalStore } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useSyncExternalStore } from "react";
 import {
   getAstroProfile,
   clearAstroProfile,
 } from "@/lib/astro/profile";
 import type { AstroProfile } from "@/lib/astro/types";
-import { usePremium } from "@/lib/saju/use-premium";
-import { savePremiumToken } from "@/lib/saju/premium";
 import AstroOnboarding from "@/components/astro/AstroOnboarding";
 import NatalChartWheel from "@/components/astro/NatalChartWheel";
 import PlanetTable from "@/components/astro/PlanetTable";
 import BalanceBar from "@/components/astro/BalanceBar";
 import AspectGrid from "@/components/astro/AspectGrid";
 import AstroInterpretation from "@/components/astro/AstroInterpretation";
-import PremiumGate from "@/components/saju/PremiumGate";
-import DailyTransit from "@/components/astro/DailyTransit";
-import MonthlyForecast from "@/components/astro/MonthlyForecast";
-import AstroCompatibility from "@/components/astro/AstroCompatibility";
-import SubscriptionManager from "@/components/saju/SubscriptionManager";
 
 const noop = () => () => {};
 const getProfile = () => getAstroProfile();
@@ -32,40 +24,6 @@ export default function AstroDashboard() {
     getServerProfile
   );
   const [profile, setProfile] = useState<AstroProfile | null>(storedProfile);
-  const {
-    isPremium,
-    loading: premiumLoading,
-    subscribe,
-    restore,
-    manageSubscription,
-  } = usePremium();
-  const searchParams = useSearchParams();
-
-  // Handle Stripe checkout redirect: verify session_id and save token
-  useEffect(() => {
-    const sessionId = searchParams.get("session_id");
-    if (!sessionId) return;
-
-    async function verifySession() {
-      try {
-        const res = await fetch("/api/subscribe/verify", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionId }),
-        });
-        if (res.ok) {
-          const { token } = await res.json();
-          savePremiumToken(token);
-          window.history.replaceState({}, "", "/horoscope/birth-chart");
-          window.location.reload();
-        }
-      } catch {
-        /* silent fail -- user can retry */
-      }
-    }
-
-    verifySession();
-  }, [searchParams]);
 
   function handleComplete(p: AstroProfile) {
     setProfile(p);
@@ -140,27 +98,6 @@ export default function AstroDashboard() {
 
       {/* AI Interpretation (free) */}
       <AstroInterpretation chart={chart} birthInfo={birthInfo} />
-
-      {/* Premium: Daily Transit Reading */}
-      <PremiumGate
-        isPremium={isPremium}
-        loading={premiumLoading}
-        onSubscribe={subscribe}
-        onRestore={restore}
-      >
-        <DailyTransit chart={chart} />
-      </PremiumGate>
-
-      {/* Premium: More Features (visible only to premium users) */}
-      {isPremium && (
-        <>
-          <MonthlyForecast chart={chart} />
-          <AstroCompatibility chart={chart} />
-        </>
-      )}
-
-      {/* Subscription Manager (for premium users) */}
-      {isPremium && <SubscriptionManager onManage={manageSubscription} />}
 
       {/* Reset */}
       <div className="text-center">
