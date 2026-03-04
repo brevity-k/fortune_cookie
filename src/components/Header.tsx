@@ -24,6 +24,9 @@ export default function Header() {
           <Link href="/horoscope" className="text-foreground/60 transition hover:text-gold">
             Horoscopes
           </Link>
+          <Link href="/horoscope/birth-chart" className="text-foreground/60 transition hover:text-gold">
+            Birth Chart
+          </Link>
           <Link href="/saju" className="text-foreground/60 transition hover:text-gold">
             Saju (사주)
           </Link>
@@ -64,6 +67,9 @@ export default function Header() {
             </Link>
             <Link href="/horoscope" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Horoscopes
+            </Link>
+            <Link href="/horoscope/birth-chart" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
+              Birth Chart
             </Link>
             <Link href="/saju" onClick={() => setMenuOpen(false)} className="py-2 text-foreground/60 transition hover:text-gold">
               Saju (사주)

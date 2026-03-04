@@ -46,6 +46,7 @@ export default function Footer() {
               <Link href="/daily" className="text-muted transition hover:text-gold">Daily Fortune</Link>
               <Link href="/lucky-numbers" className="text-muted transition hover:text-gold">Lucky Numbers</Link>
               <Link href="/horoscope" className="text-muted transition hover:text-gold">Horoscopes</Link>
+              <Link href="/horoscope/birth-chart" className="text-muted transition hover:text-gold">Birth Chart</Link>
               <Link href="/saju" className="text-muted transition hover:text-gold">Saju (사주)</Link>
               <Link href="/learn" className="text-muted transition hover:text-gold">Learn</Link>
               <Link href="/fortune/wisdom" className="text-muted transition hover:text-gold">Fortune Categories</Link>

@@ -162,6 +162,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/horoscope/birth-chart`,
+      lastModified: staticPageDate,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
     ...horoscopeEntries,
     ...categoryEntries,
     ...zodiacEntries,
