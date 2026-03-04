@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { NatalChart } from "@/lib/astro/types";
 
 interface Interpretation {
@@ -49,45 +49,37 @@ interface Props {
 }
 
 export default function AstroInterpretation({ chart, birthInfo }: Props) {
-  const [interpretation, setInterpretation] = useState<Interpretation | null>(null);
+  const [interpretation, setInterpretation] = useState<Interpretation | null>(() => {
+    const key = getCacheKey(birthInfo);
+    return getCachedInterpretation(key);
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const key = getCacheKey(birthInfo);
-    const cached = getCachedInterpretation(key);
-    if (cached) {
-      setInterpretation(cached);
-      return;
-    }
+  async function handleGenerate() {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/astro/interpret", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chart }),
+      });
 
-    async function fetchInterpretation() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/astro/interpret", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chart }),
-        });
-
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get interpretation.");
-        }
-
-        const data = await res.json();
-        setInterpretation(data);
-        cacheInterpretation(key, data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || "Failed to get interpretation.");
       }
-    }
 
-    fetchInterpretation();
-  }, [chart, birthInfo]);
+      const data = await res.json();
+      setInterpretation(data);
+      cacheInterpretation(getCacheKey(birthInfo), data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   if (loading) {
     return (
@@ -113,6 +105,23 @@ export default function AstroInterpretation({ chart, birthInfo }: Props) {
         <p className="text-sm text-foreground/40">
           {error}
         </p>
+      </div>
+    );
+  }
+
+  if (!interpretation && !loading && !error) {
+    return (
+      <div className="rounded-2xl border border-border bg-background p-6 text-center">
+        <h3 className="mb-2 text-lg font-semibold text-gold">AI Natal Chart Reading</h3>
+        <p className="mb-4 text-sm text-foreground/40">
+          Get a personalized AI interpretation of your natal chart.
+        </p>
+        <button
+          onClick={handleGenerate}
+          className="rounded-full bg-gold px-6 py-2 text-sm font-medium text-background hover:bg-gold/90 transition"
+        >
+          Generate Interpretation
+        </button>
       </div>
     );
   }
