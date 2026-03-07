@@ -115,7 +115,7 @@ export default function NatalChartWheel({ chart }: Props) {
   // House number labels (midpoint between consecutive cusps)
   const houseLabels = chart.houses.map((h, i) => {
     const nextI = (i + 1) % 12;
-    let a1 = toChartAngle(h.longitude);
+    const a1 = toChartAngle(h.longitude);
     let a2 = toChartAngle(chart.houses[nextI].longitude);
     if (a2 < a1) a2 += 360;
     const midA = ((a1 + a2) / 2) % 360;
