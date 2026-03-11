@@ -184,6 +184,19 @@ export default function Home() {
       </section>
 
       {/* Cookie Game (client component) */}
+      <section className="mx-auto max-w-2xl px-4 pt-6 pb-2">
+        <h2 className="text-2xl font-bold text-foreground/80 mb-2 text-center">
+          Break Your Fortune Cookie
+        </h2>
+        <p className="text-sm text-muted text-center max-w-lg mx-auto">
+          Our interactive fortune cookie uses real-time 2D physics powered by Matter.js and WebGL
+          rendering through Pixi.js. Try five different breaking methods — tap, drag, shake,
+          double-tap, or squeeze — each producing unique crack patterns, particle effects, and
+          sounds. Break a cookie to reveal one of over 1,000 original fortunes across eight
+          categories and four rarity tiers. Your daily streak improves your odds of finding rare
+          and legendary fortunes.
+        </p>
+      </section>
       <CookieGameSection />
 
       {/* Explore Fortune & Astrology */}

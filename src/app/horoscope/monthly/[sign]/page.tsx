@@ -172,6 +172,22 @@ export default async function MonthlyHoroscopePage({ params }: PageProps) {
       q: `When do monthly horoscopes update?`,
       a: "Monthly horoscopes are updated on the 1st of each month with fresh predictions for the entire month.",
     },
+    {
+      q: `How is a monthly horoscope different from a weekly one for ${signTitle}?`,
+      a: `A monthly horoscope for ${signTitle} tracks the full arc of the lunar cycle — from the New Moon's intention-setting energy to the Full Moon's culmination — and how slower-moving planets like Jupiter and Saturn shape the month's major themes. While weekly readings focus on Mercury and Venus sign changes, the monthly view reveals longer patterns in career, relationships, and personal growth that unfold over four weeks rather than seven days.`,
+    },
+    {
+      q: `What role does the Moon play in ${signTitle}'s monthly horoscope?`,
+      a: `The Moon completes a full cycle each month, passing through all twelve zodiac signs. For ${signTitle} (${zodiac.element} sign), the most significant lunar events are the New Moon, which sets the month's intention, and the Full Moon, which brings something to completion or release. When either lunation falls in ${zodiac.element.toLowerCase()} signs, the month's themes feel especially personal and energetically aligned for ${signTitle}.`,
+    },
+    {
+      q: `How should I use my monthly horoscope alongside daily readings?`,
+      a: "Think of your monthly horoscope as the chapter outline and your daily horoscope as the page-by-page story. Read the monthly forecast at the start of the month to understand the big themes — career shifts, relationship developments, financial opportunities — then check your daily reading for specific timing guidance. The monthly horoscope helps you set goals; the daily reading helps you execute them day by day.",
+    },
+    {
+      q: `Do retrograde planets affect ${signTitle}'s monthly horoscope?`,
+      a: `Yes, retrograde periods significantly shape monthly forecasts. Mercury retrograde (three to four times per year) affects communication and planning for all signs. For ${signTitle}, the most impactful retrogrades involve planets connected to the ${zodiac.element.toLowerCase()} element. During retrograde months, the horoscope shifts focus from initiating new projects to reviewing, revising, and reconnecting with unfinished business.`,
+    },
   ];
 
   return (

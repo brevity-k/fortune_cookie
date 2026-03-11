@@ -40,9 +40,23 @@ export default function BlogPage() {
       />
       <div className="mx-auto max-w-3xl">
         <h1 className="text-golden-shimmer mb-4 text-3xl sm:text-4xl font-bold">Blog</h1>
-        <p className="mb-12 text-muted">
-          Stories, insights, and behind-the-scenes looks at the world of fortune cookies.
-        </p>
+        <div className="mb-12 space-y-3 text-muted leading-relaxed">
+          <p>
+            Stories, insights, and deep dives into the world of fortune cookies, astrology, and the
+            traditions behind everyday rituals of luck and reflection.
+          </p>
+          <p>
+            Our articles explore the cultural history of fortune cookies — from their origins as
+            Japanese <em>tsujiura senbei</em> to their place in American dining — alongside the
+            psychology of fortune telling, including the Barnum effect and the science of positive
+            affirmation. We cover astrology fundamentals like zodiac compatibility, planetary
+            transits, and tarot card meanings, as well as wellness topics such as gratitude
+            practices, morning rituals, and the role of small joys in daily life. Whether you are
+            curious about why lucky numbers feel meaningful, how different cultures use charms and
+            superstitions, or the real stories behind fortunes that came true, you will find
+            something worth reading here.
+          </p>
+        </div>
 
         <div className="space-y-8">
           {posts.map((post) => (

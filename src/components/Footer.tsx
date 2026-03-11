@@ -23,7 +23,7 @@ export default function Footer() {
               <Link href="/about" className="text-muted transition hover:text-gold">About</Link>
               <Link href="/blog" className="text-muted transition hover:text-gold">Blog</Link>
               <Link href="/contact" className="text-muted transition hover:text-gold">Contact</Link>
-              <Link href="/editorial-policy" className="text-muted transition hover:text-gold">Editorial Policy</Link>
+              <Link href="/editorial-policy" className="text-muted transition hover:text-gold">Content Policy</Link>
             </div>
           </div>
 

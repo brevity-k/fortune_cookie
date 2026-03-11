@@ -172,6 +172,18 @@ export default async function WeeklyHoroscopePage({ params }: PageProps) {
       q: `When do weekly horoscopes update?`,
       a: "Weekly horoscopes are updated every Sunday with fresh predictions for the coming week.",
     },
+    {
+      q: `How is a weekly horoscope different from a daily horoscope for ${signTitle}?`,
+      a: `A daily horoscope focuses on the Moon's sign changes and fast aspects that affect your mood and energy hour by hour. A weekly horoscope for ${signTitle} takes a broader view, tracking how Mercury, Venus, and Mars interact with ${zodiac.element.toLowerCase()} energy over seven days. This gives you a better picture for planning important meetings, dates, or decisions rather than reacting to each day individually.`,
+    },
+    {
+      q: `What planetary transits matter most for ${signTitle} this week?`,
+      a: `${signTitle}'s weekly reading is shaped by the position and aspects of its ruling planet, the current lunar phase, and any sign changes by Mercury or Venus during the week. When faster-moving planets form aspects to the outer planets (Jupiter, Saturn, Uranus, Neptune, Pluto), those weeks tend to carry stronger themes for ${signTitle} — especially if the aspect activates ${zodiac.element.toLowerCase()} signs.`,
+    },
+    {
+      q: `Should I read the weekly horoscope for my Sun sign or Rising sign?`,
+      a: "Astrologers recommend reading both. Your Sun sign reflects your core identity and conscious goals, while your Rising sign (ascendant) describes how the world perceives you and how transiting planets move through your houses. Many people find the Rising sign horoscope more accurate for timing external events, while the Sun sign reading resonates more with internal themes and motivations.",
+    },
   ];
 
   return (
