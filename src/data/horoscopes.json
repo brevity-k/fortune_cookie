@@ -1,191 +1,191 @@
 {
   "daily": {
-    "date": "2026-03-21",
+    "date": "2026-03-22",
     "horoscopes": {
       "aries": {
-        "text": "Happy solar return, Aries! As the Sun enters your sign on this first day of spring, you're bursting with renewed vitality and purpose. Mars energizes your ambitions now—launch that project you've been contemplating, as the universe fully supports bold new beginnings.",
+        "text": "Happy solar return, Aries! As the Sun blazes into your sign today, you're bursting with fresh energy and ready to conquer new territory. Mars fuels your ambitions with unstoppable drive—just remember to pace yourself so you don't burn out before April.",
         "love": 4,
         "career": 5,
-        "health": 4,
-        "luckyNumber": 1,
+        "health": 3,
+        "luckyNumber": 22,
         "luckyColor": "crimson",
         "mood": "energetic"
       },
       "taurus": {
-        "text": "Venus whispers secrets in your final house of rest, encouraging you to slow down before your birthday season arrives. This is a powerful time for introspection and releasing what no longer serves your highest good. Trust that this quiet period is preparing you for something magnificent.",
+        "text": "With spring's arrival, Venus whispers secrets of completion and inner preparation. This is your time to rest before your own season begins, so embrace quiet reflection and tie up loose ends. Trust that what's brewing beneath the surface will soon blossom beautifully.",
         "love": 3,
         "career": 3,
         "health": 4,
-        "luckyNumber": 17,
+        "luckyNumber": 47,
         "luckyColor": "emerald",
         "mood": "reflective"
       },
       "gemini": {
-        "text": "Mercury's playful energy lights up your social sphere, making this an ideal day for networking and reconnecting with friends. Your ideas are flowing freely, and others are genuinely captivated by your vision. A chance encounter could spark an exciting collaborative opportunity.",
+        "text": "Mercury's playful dance today sparks fascinating connections and unexpected conversations. Your social calendar fills up as friends seek your witty perspective on springtime possibilities. A creative collaboration could lead somewhere truly exciting if you follow your curiosity.",
         "love": 4,
         "career": 4,
-        "health": 3,
-        "luckyNumber": 33,
+        "health": 4,
+        "luckyNumber": 13,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "The Moon's gentle influence helps you find your footing in career matters today. Spring's arrival reminds you that growth sometimes requires stepping out of your shell, dear Cancer. Your nurturing approach to leadership wins you admirers in unexpected places.",
+        "text": "The Moon's gentle influence today encourages you to focus on your career ambitions and public reputation. While others rush headlong into spring, your measured approach wins respect from authority figures. Plant professional seeds now that will bear fruit in the coming months.",
         "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 4,
+        "luckyNumber": 68,
         "luckyColor": "silver",
-        "mood": "determined"
+        "mood": "ambitious"
       },
       "leo": {
-        "text": "The Sun's move into Aries ignites your adventurous ninth house, calling you toward new horizons. Whether through travel, learning, or philosophical exploration, expansion is your theme. Your natural confidence shines even brighter when you embrace unfamiliar territory.",
+        "text": "The Sun's shift into fiery Aries ignites your adventurous spirit and thirst for new experiences. This is an excellent day to expand your horizons—whether through learning, travel planning, or philosophical exploration. Your natural confidence attracts exciting opportunities from unexpected quarters.",
         "love": 5,
         "career": 4,
         "health": 5,
-        "luckyNumber": 21,
+        "luckyNumber": 31,
         "luckyColor": "gold",
         "mood": "adventurous"
       },
       "virgo": {
-        "text": "Mercury's grounded position helps you tackle financial and resource matters with unusual clarity. Spring cleaning extends to your budget and values—consider what truly deserves your investment of time and energy. Your analytical gifts are particularly sharp right now.",
+        "text": "Mercury sharpens your analytical abilities today, making this ideal for deep research or transformative financial decisions. Spring's renewal energy pushes you to release what no longer serves you—physical clutter or emotional baggage alike. Trust your instincts about what deserves your precious attention.",
         "love": 3,
         "career": 4,
         "health": 4,
-        "luckyNumber": 58,
+        "luckyNumber": 56,
         "luckyColor": "teal",
         "mood": "focused"
       },
       "libra": {
-        "text": "Venus graces your relationship sector with harmony and understanding, making this an exquisite day for connection. The spring equinox brings perfect balance to your life, dear Libra, reminding you that partnerships thrive when both give and receive equally. Romance blossoms under your gentle touch.",
+        "text": "As Venus highlights your partnership sector, spring brings fresh energy to important relationships. Whether romantic or professional, collaborations flourish under today's harmonious skies. Someone's enthusiasm proves contagious—let yourself be swept up in their vision while maintaining your graceful balance.",
         "love": 5,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 7,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 8,
         "luckyColor": "pink",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "Pluto's transformative power urges you to revolutionize your daily routines and wellness practices. This spring renewal isn't superficial for you—it's a complete metamorphosis from within. Pay attention to your body's whispers before they become shouts.",
+        "text": "Pluto's transformative power combines with spring's renewal to revolutionize your daily routines and wellness habits. This is the perfect moment to commit to positive changes that honor your body and spirit. Your intensity becomes an asset when channeled into meaningful self-improvement.",
         "love": 2,
         "career": 3,
         "health": 5,
-        "luckyNumber": 88,
+        "luckyNumber": 91,
         "luckyColor": "maroon",
-        "mood": "intense"
+        "mood": "determined"
       },
       "sagittarius": {
-        "text": "Jupiter's expansive energy meets spring's fresh promise in your creative and romantic sector—prepare for delightful surprises! Your natural optimism is infectious today, drawing opportunities and admirers to you like a magnet. This is your moment to play, create, and celebrate life's abundance.",
+        "text": "Jupiter's generous influence fills your heart with creative passion and playful romance as spring arrives. Your optimism is absolutely magnetic today—others can't help but gravitate toward your joyful energy. Take a chance on expressing yourself authentically; the universe supports your bold self-expression.",
         "love": 5,
-        "career": 4,
+        "career": 3,
         "health": 4,
-        "luckyNumber": 9,
-        "luckyColor": "purple",
-        "mood": "optimistic"
+        "luckyNumber": 77,
+        "luckyColor": "orange",
+        "mood": "playful"
       },
       "capricorn": {
-        "text": "Saturn steadies your foundation as spring begins, encouraging you to focus on home and family matters. Your ambitions are important, but so is the sanctuary you've built. A patient, methodical approach to domestic projects yields satisfying results that last beyond this season.",
-        "love": 3,
-        "career": 3,
-        "health": 3,
+        "text": "Saturn's steady hand guides you toward creating more harmony in your home and family life. Spring's arrival reminds you that strong foundations require both structure and nurturing—find that balance today. Invest time in making your personal space reflect the sanctuary you deserve.",
+        "love": 4,
+        "career": 2,
+        "health": 4,
         "luckyNumber": 44,
         "luckyColor": "charcoal",
         "mood": "grounded"
       },
       "aquarius": {
-        "text": "Uranus sparks innovative thinking in your communication zone today—your unique perspective is exactly what someone needs to hear. Spring's arrival fuels your intellectual curiosity and desire to share revolutionary ideas. A short journey or learning opportunity could open unexpected doors.",
-        "love": 4,
+        "text": "Uranus sparks brilliant ideas and revolutionary thinking as spring energizes your communication zone. Your unique perspective is exactly what others need to hear right now, so don't hold back. A short trip or learning opportunity could completely shift your trajectory—stay open to spontaneous detours.",
+        "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 11,
+        "luckyNumber": 15,
         "luckyColor": "indigo",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune's dreamy influence combines with practical financial matters as you close out your solar year. Trust your intuition about money and resources—your psychic gifts extend to material realms too. Spring whispers that abundance flows when you align your spending with your deepest values.",
+        "text": "Neptune's dreamy influence combines with practical spring energy to help you manifest financial abundance. Your intuition about resources and values is particularly sharp—trust those gut feelings about investments of time or money. What you nurture now will grow beautifully over the coming season.",
         "love": 4,
-        "career": 3,
+        "career": 4,
         "health": 4,
-        "luckyNumber": 72,
+        "luckyNumber": 39,
         "luckyColor": "seafoam",
         "mood": "intuitive"
       }
     }
   },
   "weekly": {
-    "weekOf": "2026-03-15",
+    "weekOf": "2026-03-22",
     "horoscopes": {
       "aries": {
-        "overview": "Mars aligns harmoniously with Jupiter this week, igniting your natural pioneering spirit with expansive opportunities. The spring equinox amplifies your solar return energy, making this a powerfully auspicious time for bold new ventures.",
-        "love": "Venus in your communication sector encourages authentic expression of desires, creating magnetic attraction. Single Rams may find themselves drawn to someone intellectually stimulating, while partnered Aries discover deeper intimacy through vulnerable conversation.",
-        "career": "Your ruling planet's favorable aspect to Saturn provides the discipline to channel your enthusiasm into tangible results. This is the week to present ambitious proposals or negotiate for the recognition you deserve.",
-        "advice": "Trust your instincts but temper impulsiveness with strategic planning. The cosmic climate rewards courage paired with wisdom."
+        "overview": "As the Sun enters your sign this week, you're infused with renewed vitality and a magnetic confidence that draws opportunities your way. Mars in your communications sector amplifies your voice, making this an ideal time to assert your vision and initiate bold conversations that have been simmering beneath the surface.",
+        "love": "Venus dancing through your partnership zone creates an irresistible allure, drawing both new and existing connections into deeper territory. Your ruling planet Mars encourages direct communication about desires, though remember that passion need not overpower tenderness.",
+        "career": "With Mercury forming a supportive trine to your career sector, your ideas gain traction with decision-makers who finally recognize your innovative approach. The New Moon on the 29th plants seeds for a significant professional beginning that will unfold over the coming months.",
+        "advice": "Channel your abundant fire energy into creation rather than conflict. Trust that your authentic enthusiasm is your greatest asset this week."
       },
       "taurus": {
-        "overview": "Venus moves through your inner world, asking you to clarify what truly brings you pleasure and security. Mercury's transit through your spiritual sector deepens intuitive knowing, preparing you for powerful transformations ahead.",
-        "love": "Emotional vulnerability becomes your greatest strength as the Moon illuminates hidden relationship dynamics. This is a week for releasing outdated patterns and embracing authentic connection that honors your evolving values.",
-        "career": "Financial opportunities emerge through unexpected channels, particularly involving partnerships or shared resources. Your methodical approach gains traction as Saturn supports your long-term professional vision.",
-        "advice": "Allow yourself to rest and integrate recent changes. True growth honors both action and stillness."
+        "overview": "Jupiter's expansive influence in your sign continues to broaden your horizons, though this week calls for introspection as the Sun illuminates your subconscious realm. A subtle shift is occurring beneath the surface, preparing you for your upcoming solar return with quiet transformation.",
+        "love": "Venus, your ruling planet, moves through territory that emphasizes shared resources and emotional intimacy, inviting you to explore vulnerability as a strength. A sextile from Neptune to your relationship sector softens any rough edges, encouraging forgiveness and renewed tenderness.",
+        "career": "Mercury's position suggests that behind-the-scenes work and strategic planning will serve you better than public displays this week. Focus on refining your long-term vision rather than seeking immediate recognition.",
+        "advice": "Release what no longer serves your growth, even if it once felt comfortable. Rest is not weakness but preparation for the powerful emergence awaiting you next month."
       },
       "gemini": {
-        "overview": "Mercury's dynamic aspects stimulate your social sphere, bringing fascinating new connections and collaborative possibilities. The spring energy activates your networking sector, making this ideal for community engagement and idea exchange.",
-        "love": "Communication flows effortlessly, allowing you to express nuanced feelings with clarity and charm. Coupled Geminis rediscover playfulness, while singles attract potential partners through authentic self-expression and intellectual curiosity.",
-        "career": "Your versatility becomes a valuable asset as multiple projects demand your attention and adaptability. Jupiter's influence expands professional horizons, potentially through teaching, writing, or media-related opportunities.",
-        "advice": "Focus scattered energy by prioritizing quality conversations over superficial interactions. Depth creates lasting impact."
+        "overview": "Mercury, your ruling planet, forms dynamic aspects that heighten your already formidable mental agility and social magnetism this week. The emphasis on your community sector brings opportunities to connect with kindred spirits who share your vision for collaborative innovation.",
+        "love": "With Venus activating your romance and pleasure zone, your natural charm reaches peak expression, attracting admirers who appreciate your wit and versatility. For those coupled, playful communication reignites the spark that first brought you together.",
+        "career": "Networking proves exceptionally fruitful as Jupiter aspects your professional reputation, opening doors through unexpected connections and social circles. Your ability to bridge different groups and translate complex ideas into accessible language makes you invaluable.",
+        "advice": "Follow your curiosity wherever it leads—seemingly random conversations may contain the missing piece to a puzzle you've been solving. Document your ideas now; they'll prove prescient in weeks to come."
       },
       "cancer": {
-        "overview": "The Moon's nodal shift emphasizes your career ambitions and public reputation, calling you into greater visibility. Emotional intelligence becomes your professional superpower as you navigate complex interpersonal dynamics with grace.",
-        "love": "Nurturing energy flows both ways this week, reminding you that receiving care is as important as giving it. Venus aspects invite you to create sanctuary within relationships, deepening bonds through shared vulnerability and domestic harmony.",
-        "career": "Recognition arrives for past efforts as authority figures notice your dedication and emotional insight. This is an opportune moment to advocate for advancement or take on leadership roles that align with your values.",
-        "advice": "Honor your sensitivity as strength, not weakness. Your intuitive perception guides you toward right action."
+        "overview": "The Sun's journey through your career sector illuminates your professional path, bringing recognition for the nurturing leadership style that is uniquely yours. The Moon's nodes suggest you're at a karmic crossroads between personal security and public contribution.",
+        "love": "Venus transiting your domestic sector turns your attention homeward, where emotional foundations require tending before external expansion can feel safe. A square from Mars indicates the need to address underlying tensions with compassionate directness rather than retreating into your protective shell.",
+        "career": "This week marks a pinnacle moment in your professional trajectory as authority figures take notice of your consistent dedication and emotional intelligence. The New Moon later in the week plants seeds for a project that honors both your ambition and your need for meaningful impact.",
+        "advice": "Trust your intuition about which opportunities align with your deeper purpose. Your sensitivity is not a liability but your greatest navigational tool."
       },
       "leo": {
-        "overview": "The Sun's approach to your expansion sector ignites wanderlust and philosophical questioning, urging you beyond familiar territories. Jupiter's supportive aspects promise growth through education, travel, or spiritual exploration.",
-        "love": "Romantic expression reaches new heights of creativity and generosity as Venus harmonizes with your solar ruler. Your natural warmth draws admirers, but genuine connection requires moving beyond performance into authentic presence.",
-        "career": "Creative projects gain momentum and visibility, attracting appreciation from influential observers. Your leadership shines brightest when you inspire others through example rather than demanding center stage.",
-        "advice": "Balance confidence with humility. True royalty serves the greater good."
+        "overview": "As the Sun radiates through your expansion sector, your natural enthusiasm finds expression through learning, teaching, or embarking on an adventure that stretches your sense of possibility. Jupiter's supportive angle to your sign amplifies your confidence and attracts fortunate circumstances that feel almost destined.",
+        "love": "Communication becomes the cornerstone of intimacy this week as Mercury activates your relationship zone, encouraging authentic dialogue about future dreams and shared philosophies. Your warmth draws others close, though ensure you're listening as much as you're shining.",
+        "career": "Creative projects gain momentum, particularly those that allow you to mentor others or share your expertise on a broader platform. Recognition comes through generosity—the more you elevate others, the more your own light intensifies.",
+        "advice": "Expand beyond your comfort zone while remaining rooted in your authentic self. Your natural leadership inspires others when it comes from service rather than ego."
       },
       "virgo": {
-        "overview": "Mercury's transformative journey through your depths invites psychological excavation and healing conversations. Pluto's aspects support releasing perfectionist tendencies that no longer serve your evolution.",
-        "love": "Intimacy deepens as you risk showing imperfect, unpolished aspects of yourself to trusted partners. This vulnerability paradoxically strengthens bonds, revealing that acceptance flourishes where judgment dissolves.",
-        "career": "Analytical skills combine with intuitive insight, making you invaluable in problem-solving and strategic planning. Financial matters benefit from thorough research, particularly regarding investments or shared resources.",
-        "advice": "Perfectionism blocks progress; embrace messy growth. Your worthiness isn't contingent on flawless execution."
+        "overview": "The Sun's transit through your transformation sector calls you to release perfectionist tendencies and embrace the messy beauty of profound change. Mercury, your ruling planet, forms aspects that sharpen your analytical gifts while encouraging you to trust intuitive knowing alongside empirical evidence.",
+        "love": "Venus in your partnership zone deepens your capacity for intimacy, though this week's aspects suggest vulnerability might feel uncomfortable for your typically reserved nature. Opening to emotional complexity—including the irrational—strengthens bonds more than any carefully managed presentation.",
+        "career": "Your meticulous attention to detail proves invaluable in resolving a complex work situation that has stymied others. A trine from Saturn rewards your disciplined approach with tangible progress toward long-term professional goals.",
+        "advice": "Healing comes through acceptance rather than fixing. Allow yourself to be imperfect and witness how this authenticity actually increases your effectiveness."
       },
       "libra": {
-        "overview": "Venus graces your partnership sector, enhancing all collaborative endeavors with grace and magnetic attraction. The spring equinox activates your relationship axis, bringing karmic connections and opportunities for balanced give-and-take.",
-        "love": "Romantic prospects flourish as your natural charm operates at peak capacity, drawing potential partners who mirror your evolving values. Existing relationships benefit from renewed commitment and aesthetic experiences shared together.",
-        "career": "Partnerships prove professionally fruitful, whether through formal contracts or creative collaborations. Your diplomatic skills navigate potential conflicts, transforming tension into productive compromise and mutual benefit.",
-        "advice": "Maintain your center while accommodating others. True partnership requires self-knowledge, not self-sacrifice."
+        "overview": "The Sun illuminates your partnership sector, bringing relationships into sharp focus and highlighting the balance between your own needs and others' expectations. Venus, your ruling planet, moves through intense territory, suggesting that superficial harmony no longer satisfies—you're craving authentic connection.",
+        "love": "This is a week of reckoning and renewal in intimate relationships as you're called to address what's been swept under the rug in service of peacekeeping. Mars aspects encourage courageous honesty, and you may be surprised to find that truth-telling deepens rather than damages your bonds.",
+        "career": "Collaborative projects flourish under your diplomatic guidance, though you'll need to assert your vision rather than defaulting to consensus. Your ability to see multiple perspectives becomes a strategic advantage in negotiations.",
+        "advice": "True balance includes honoring your own needs, not just maintaining external equilibrium. Practice saying what you mean, even when it disrupts temporary peace."
       },
       "scorpio": {
-        "overview": "Pluto's retrograde preparation invites deep reflection on power dynamics and transformational patterns in your life. Mars energizes your daily routines, providing stamina for regenerative practices and meaningful work.",
-        "love": "Emotional intensity seeks constructive outlets as superficial interactions fail to satisfy your soul's hunger. Authentic intimacy requires courageous truth-telling and willingness to be witnessed in your full complexity.",
-        "career": "Your investigative nature uncovers hidden information that proves professionally valuable, positioning you as an indispensable resource. Focused determination overcomes obstacles that would deter less persistent signs.",
-        "advice": "Channel intensity into creation, not destruction. Your power magnifies when directed with conscious intention."
+        "overview": "The Sun's movement through your routine and wellness sector calls for attention to the daily rituals that either support or sabotage your deeper transformation. Pluto, your ruling planet, continues its generational shift, empowering you to restructure your life from the foundation upward.",
+        "love": "Intensity reaches new heights as Venus activates your relationship zone, drawing you toward connections that transform rather than simply comfort. For those in partnership, this week offers an opportunity to recommit at a more profound level or release what has completed its purpose.",
+        "career": "Your laser focus and willingness to tackle what others avoid positions you as indispensable in resolving a complex work challenge. Recognition comes through your ability to see beneath surface explanations to core issues.",
+        "advice": "Channel your powerful emotions into purposeful action rather than rumination. Your capacity for regeneration is your superpower—trust the death-rebirth cycle."
       },
       "sagittarius": {
-        "overview": "Jupiter's expansive influence in your creativity sector amplifies optimism and adventurous self-expression. The spring season resonates with your fire element, igniting enthusiasm for spontaneous joy and philosophical exploration.",
-        "love": "Playfulness returns to romantic connections as you remember that love should feel like adventure, not obligation. Your authentic enthusiasm attracts kindred spirits who appreciate your unfiltered honesty and generous spirit.",
-        "career": "Professional growth arrives through teaching, international connections, or sharing your unique perspective with wider audiences. Your vision inspires others, but follow-through determines whether inspiration becomes manifestation.",
-        "advice": "Balance expansion with commitment. Freedom flourishes within chosen containers, not endless drift."
+        "overview": "The Sun blazes through your creativity and pleasure sector, reigniting your natural exuberance and reminding you that joy is not frivolous but essential fuel for your expansive spirit. Jupiter, your ruling planet, continues its beneficent journey, opening doors to opportunities that align with your philosophical truth.",
+        "love": "Romance and playfulness take center stage as you attract attention through your authentic enthusiasm and adventurous spirit. Your ruling planet's aspects suggest that someone from a different background or culture could capture your interest, offering the intellectual stimulation you crave.",
+        "career": "Creative projects and risk-taking are favored, particularly those that allow you to educate, inspire, or share your vision with wider audiences. Your optimism proves contagious, attracting collaborators and supporters to your cause.",
+        "advice": "Follow your bliss without apology—your joy gives others permission to do the same. Balance your expansive vision with attention to practical details that ground your dreams."
       },
       "capricorn": {
-        "overview": "Saturn's steady influence grounds you while spring's renewal energy invites softening around home and emotional foundations. This week emphasizes private reflection and strengthening your inner sanctuary before public endeavors.",
-        "love": "Vulnerability challenges your self-sufficient tendencies, yet reveals that intimacy deepens through mutual support, not isolated achievement. Allow trusted partners to witness your uncertainties alongside your competence.",
-        "career": "Your reputation for reliability opens doors to increased responsibility and recognition from authority figures. Long-term planning yields tangible progress as patience and persistence demonstrate their cumulative power.",
-        "advice": "Success includes emotional fulfillment, not just external accomplishment. Tend your inner world with equal diligence."
+        "overview": "The Sun's journey through your foundations and family sector turns your attention to roots, both ancestral and emotional, that require tending before your next ambitious climb. Saturn, your ruling planet, supports patient work on internal security that will stabilize future achievements.",
+        "love": "Emotional availability may feel challenging as your focus turns inward, yet this introspection ultimately strengthens your capacity for authentic intimacy. Venus aspects suggest that creating sanctuary at home—literally or emotionally—becomes an act of love.",
+        "career": "While professional matters may take a backseat to personal priorities this week, behind-the-scenes strategy and planning set the stage for public success in coming months. Your disciplined approach to long-term goals continues to compound.",
+        "advice": "Success includes emotional fulfillment, not just external achievement. Tend to your inner foundation with the same dedication you bring to worldly ambitions."
       },
       "aquarius": {
-        "overview": "Uranus activates your communication sector with innovative ideas and unconventional connections that challenge conventional thinking. Mercury's aspects favor intellectual collaboration and sharing progressive visions with receptive audiences.",
-        "love": "Authentic individuality attracts compatible partners who appreciate your uniqueness rather than demanding conformity. Friendship forms the foundation of lasting romance as mental stimulation proves as essential as emotional connection.",
-        "career": "Revolutionary ideas gain traction as collective consciousness shifts toward your forward-thinking perspective. Collaborative projects benefit from your ability to synthesize diverse viewpoints into cohesive vision.",
-        "advice": "Honor emotional needs alongside intellectual pursuits. Detachment serves analysis, not avoidance."
+        "overview": "The Sun activates your communication sector, amplifying your innovative ideas and desire to share your unique perspective with your immediate community. Uranus, your ruling planet, continues to shake up areas of your life that have grown stagnant, liberating you from outdated patterns.",
+        "love": "Intellectual connection takes priority as you seek partners who stimulate your mind and respect your need for freedom within intimacy. Mercury's aspects favor honest conversations about relationship structures that honor both individuality and togetherness.",
+        "career": "Your progressive ideas gain traction as others begin to catch up to your forward-thinking vision. Networking and knowledge-sharing prove particularly fruitful, especially through technology or community organizing.",
+        "advice": "Your differences are your gifts—stop trying to fit conventional molds. The right people will appreciate your authenticity without requiring you to dim your brilliance."
       },
       "pisces": {
-        "overview": "The Sun illuminates your sign during this potent spring week, activating personal renewal and clarifying your evolving identity. Neptune's influence deepens spiritual sensitivity while Jupiter expands possibilities for manifesting dreams into reality.",
-        "love": "Romantic idealism finds grounding through conscious choice and clear communication of boundaries alongside boundless compassion. Your empathic nature attracts those seeking healing, but ensure reciprocity sustains the exchange.",
-        "career": "Creative and spiritual talents gain recognition as others perceive the value in your unique offerings. Financial opportunities emerge through artistic pursuits or healing modalities that honor your intuitive gifts.",
-        "advice": "Dream boldly while walking practical steps toward manifestation. Your vision requires embodiment, not just imagination."
+        "overview": "With the Sun just departing your sign, you're transitioning from a period of intense self-focus to practical application of the insights you've received. Neptune, your ruling planet, continues to dissolve boundaries between dream and reality, inviting you to trust your visions while grounding them in tangible form.",
+        "love": "Venus moving through your sign extends the romantic and magnetic energy you've been emanating, drawing admirers who see your ethereal beauty and emotional depth. Your compassionate nature attracts those seeking genuine connection, though discernment remains essential.",
+        "career": "Financial opportunities emerge as the Sun illuminates your resources sector, rewarding your creative contributions with tangible compensation. Your imaginative solutions to practical problems demonstrate that spirituality and pragmatism need not be separate.",
+        "advice": "Ground your dreams in actionable steps this week. Your sensitivity is strength when paired with healthy boundaries that protect your energy."
       }
     }
   },
