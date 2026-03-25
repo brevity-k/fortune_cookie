@@ -4,7 +4,7 @@ import { Geist, Geist_Mono, Lora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
-import AdSenseScript from "@/components/AdSenseScript";
+import { AdsProvider } from "@/components/AdsContext";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, GA_MEASUREMENT_ID } from "@/lib/constants";
 import "./globals.css";
@@ -97,13 +97,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} bg-warm-gradient min-h-screen antialiased`}
       >
-        <OrganizationJsonLd />
-        <WebSiteJsonLd />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <CookieConsent />
-        <AdSenseScript />
+        <AdsProvider>
+          <OrganizationJsonLd />
+          <WebSiteJsonLd />
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <CookieConsent />
+        </AdsProvider>
       </body>
     </html>
   );

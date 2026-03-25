@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { SuppressAds } from "@/components/AdsContext";
 import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
+      <SuppressAds />
       <div className="mx-auto max-w-2xl">
         <h1 className="text-golden-shimmer mb-6 text-3xl sm:text-4xl font-bold">Contact Us</h1>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SuppressAds } from "@/components/AdsContext";
 import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
+      <SuppressAds />
       <article className="mx-auto max-w-2xl">
         <h1 className="text-golden-shimmer mb-6 text-3xl sm:text-4xl font-bold">Terms of Service</h1>
         <p className="mb-8 text-sm text-foreground/40">Last updated: February 2026</p>

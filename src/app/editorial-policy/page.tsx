@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SuppressAds } from "@/components/AdsContext";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 export default function EditorialPolicyPage() {
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
+      <SuppressAds />
       <article className="mx-auto max-w-2xl">
         <BreadcrumbJsonLd
           items={[
