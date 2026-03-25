@@ -16,6 +16,7 @@ import fs from "fs";
 import path from "path";
 import { ZODIAC_SIGN_KEYS } from "./lib/types";
 import { log } from "./lib/utils";
+import { VALID_ARCHETYPE_NAMES } from "./lib/archetypes";
 
 const ROOT = process.cwd();
 const FORTUNES_PATH = path.join(ROOT, "src/data/fortunes.json");
@@ -262,6 +263,15 @@ function validateBlog() {
     const h1Count = (body.match(/^# [^#]/gm) || []).length;
     if (h1Count > 0) {
       logWarn(`${file}: has ${h1Count} H1 heading(s) — page template provides H1`);
+    }
+
+    // Check archetype field (soft validation — optional for legacy posts)
+    const archetypeMatch = frontmatter.match(/^archetype:\s*['"]?([a-z-]+)['"]?/m);
+    if (archetypeMatch) {
+      const archetype = archetypeMatch[1];
+      if (!(VALID_ARCHETYPE_NAMES as readonly string[]).includes(archetype)) {
+        logWarn(`${file}: invalid archetype "${archetype}" (valid: ${VALID_ARCHETYPE_NAMES.join(", ")})`);
+      }
     }
 
     valid++;
