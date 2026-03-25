@@ -18,6 +18,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { callWithRetry, extractJson, log } from "./lib/utils";
+import { ARCHETYPES } from "./lib/archetypes";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
@@ -33,6 +34,11 @@ function getSlug(): string {
   if (fs.existsSync(SLUG_FILE)) return fs.readFileSync(SLUG_FILE, "utf-8").trim();
   log.error("No slug provided. Pass as argument or run generate-post.ts first.");
   process.exit(1);
+}
+
+function getQualityRules(archetype: string | undefined) {
+  const match = ARCHETYPES.find((a) => a.name === archetype);
+  return match?.qualityRules ?? { h2Minimum: 3, internalLinkRequired: true };
 }
 
 async function main() {
@@ -74,21 +80,28 @@ async function main() {
     result.pass = false;
   }
 
-  // 3. H2 count
+  // 3. H2 count (archetype-aware)
   const h2Count = (content.match(/^## /gm) || []).length;
-  log.info(`H2 headings: ${h2Count}`);
-  if (h2Count < 3) {
-    result.issues.push(`Too few H2 headings: ${h2Count} (min 3)`);
+  const rules = getQualityRules(data.archetype);
+  log.info(`H2 headings: ${h2Count} (min: ${rules.h2Minimum}, archetype: ${data.archetype || "legacy"})`);
+  if (h2Count < rules.h2Minimum) {
+    result.issues.push(`Too few H2 headings: ${h2Count} (min ${rules.h2Minimum} for ${data.archetype || "legacy"})`);
     result.pass = false;
   }
 
-  // 4. Internal link
+  // 4. Internal link (archetype-aware)
   const hasInternalLink =
-    content.includes("fortunecrack.com") || content.includes("/blog/");
-  log.info(`Internal link: ${hasInternalLink ? "yes" : "no"}`);
+    content.includes("fortunecrack.com") ||
+    content.includes("](/") ||
+    content.includes("/blog/");
+  log.info(`Internal link: ${hasInternalLink ? "yes" : "no"} (required: ${rules.internalLinkRequired ? "hard" : "soft"})`);
   if (!hasInternalLink) {
-    result.issues.push("No internal link to fortunecrack.com found");
-    result.pass = false;
+    if (rules.internalLinkRequired) {
+      result.issues.push("No internal link found (required for this archetype)");
+      result.pass = false;
+    } else {
+      log.warn("No internal link found (optional for this archetype)");
+    }
   }
 
   // 5. No H1 headings
@@ -115,7 +128,11 @@ async function main() {
               role: "user",
               content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality.
 
-Context: This post is published on fortunecrack.com (a fortune cookie website). One internal link to the site is expected and should NOT be penalized unless it is completely irrelevant to the surrounding text. Focus on: content quality, completeness (no truncated/mid-sentence endings), structure, readability, and SEO value.
+Context: This post is published on fortunecrack.com (a fortune cookie website). The post archetype is "${data.archetype || "legacy"}".
+
+Archetype-specific criteria:${data.archetype === "midnight-question" ? " Does the opening create emotional recognition? Is there a genuine reframe?" : ""}${data.archetype === "honest-answer" ? " Does it acknowledge the obvious answer first? Is the real answer surprising?" : ""}${data.archetype === "one-thing-deeply" ? " Does it stay focused on one subject? Are there sensory details?" : ""}${data.archetype === "counterintuitive-truth" ? " Is the contrarian claim supported by specific, verifiable evidence?" : ""}${data.archetype === "list-that-teaches" ? " Does every list item include a specific, actionable suggestion?" : ""}${data.archetype === "timely-transit" ? " Does it reference a real astrological event with an accurate date? Are the action items concrete?" : ""}
+
+General criteria: content quality, completeness (no truncated endings), structure, readability, SEO value. Internal links to the site are expected and should NOT be penalized.
 
 Return ONLY a JSON object:
 {"score": <number>, "feedback": "<one sentence>"}
