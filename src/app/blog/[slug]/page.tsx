@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    ...(post.noindex && { robots: { index: false, follow: true } }),
     alternates: {
       canonical: `${SITE_URL}/blog/${slug}`,
     },

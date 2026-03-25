@@ -12,6 +12,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   archetype?: string;
+  noindex?: boolean;
 }
 
 /**
@@ -27,10 +28,11 @@ function parseBlogPost(slug: string, raw: string): BlogPost | null {
     const readTime = String(data.readTime || "");
     const excerpt = String(data.excerpt || "");
     const archetype = data.archetype ? String(data.archetype) : undefined;
+    const noindex = data.noindex === true;
 
     if (!title || !date) return null;
 
-    return { slug, title, date, readTime, excerpt, content, archetype };
+    return { slug, title, date, readTime, excerpt, content, archetype, ...(noindex && { noindex }) };
   } catch {
     return null;
   }
