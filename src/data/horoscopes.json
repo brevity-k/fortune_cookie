@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-03-24",
+    "date": "2026-03-25",
     "horoscopes": {
       "aries": {
-        "text": "As the Sun enters your sign today, Aries, you're experiencing a powerful surge of cosmic energy that marks your personal new year. Mars, your ruling planet, encourages bold action in career matters—don't hold back from sharing that innovative idea. This is your moment to shine and set intentions for the months ahead.",
+        "text": "As Mars energizes your sign during this vibrant spring season, you're brimming with unstoppable momentum. Channel this fiery drive into projects that have been waiting for your attention—the universe is clearing the path ahead. Just remember to pace yourself; even warriors need rest between battles.",
         "love": 4,
         "career": 5,
-        "health": 4,
+        "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
         "mood": "energetic"
       },
       "taurus": {
-        "text": "Venus whispers secrets of introspection today, inviting you to slow down and reflect on what truly brings you joy. Financial opportunities may appear from unexpected sources, but trust your instincts before committing. The spring energy supports gentle release of what no longer serves your higher purpose.",
+        "text": "Venus whispers sweet encouragement as spring blooms mirror your own personal renaissance. A financial opportunity may present itself today, so keep your practical eye open for unexpected windfalls. Trust your instincts when it comes to matters of value—both material and emotional.",
         "love": 3,
-        "career": 3,
+        "career": 4,
         "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
-        "mood": "reflective"
+        "mood": "grounded"
       },
       "gemini": {
-        "text": "Mercury's harmonious alignment sparks your social nature, making this an ideal day for networking and reconnecting with old friends. Your communication skills are especially sharp—use them to negotiate or present ideas. A creative collaboration could blossom into something beautifully unexpected by evening.",
+        "text": "Mercury's playful dance brings exciting conversations and unexpected connections your way. This is an excellent day to network, brainstorm, or simply let your curiosity lead you down fascinating rabbit holes. Your versatile mind is your greatest asset right now—use it freely.",
         "love": 4,
-        "career": 4,
+        "career": 3,
         "health": 3,
-        "luckyNumber": 8,
+        "luckyNumber": 23,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "The Moon's gentle influence today brings emotional clarity and a desire to nurture your home environment. Focus on creating sanctuary spaces where you can recharge your sensitive soul. A heartfelt conversation with someone close could deepen your bond in meaningful ways.",
+        "text": "The Moon's gentle pull encourages you to honor your emotional landscape today. Spring's renewal energy invites you to release old hurts and make space for fresh beginnings in your heart. A quiet moment of self-care this evening will replenish your sensitive soul more than you expect.",
         "love": 5,
         "career": 2,
         "health": 4,
-        "luckyNumber": 29,
+        "luckyNumber": 7,
         "luckyColor": "seafoam",
-        "mood": "intuitive"
+        "mood": "reflective"
       },
       "leo": {
-        "text": "The Sun's transition amplifies your natural magnetism, drawing admiring eyes your way both personally and professionally. Channel this radiant energy into creative projects that showcase your unique talents. Your confidence is infectious—lead with your generous heart and watch doors open effortlessly.",
-        "love": 4,
+        "text": "The Sun illuminates your creative sector, making this a perfect day to showcase your talents. Your natural charisma is absolutely magnetic right now, drawing admirers and opportunities alike. Don't dim your light for anyone—spring is your stage, and you're meant to shine brightly.",
+        "love": 5,
         "career": 4,
-        "health": 5,
-        "luckyNumber": 63,
+        "health": 4,
+        "luckyNumber": 31,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "Mercury's alignment favors detailed work and analytical thinking—perfect for tackling that complex project you've been avoiding. Health routines established today will yield long-term benefits, so consider starting a new wellness practice. Trust your meticulous nature; it's guiding you toward perfection in all the right ways.",
+        "text": "Mercury sharpens your already keen analytical abilities, making this ideal for tackling complex problems. Your attention to detail will be particularly appreciated in professional settings today. Remember that perfection is a journey, not a destination—give yourself grace as you grow.",
         "love": 2,
         "career": 5,
-        "health": 5,
-        "luckyNumber": 51,
+        "health": 3,
+        "luckyNumber": 54,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "Venus graces you with enhanced diplomatic abilities, making this an excellent day for resolving conflicts or negotiating win-win solutions. Romance blooms under gentle spring skies—open your heart to new possibilities. Balance is your superpower today; use it to harmonize competing demands with grace.",
+        "text": "Venus graces you with enhanced diplomatic skills and an eye for beauty that's even sharper than usual. Relationships flourish under your careful cultivation today, so reach out to those you cherish. Balance is your keyword—find harmony between giving to others and honoring your own needs.",
         "love": 5,
         "career": 3,
-        "health": 3,
-        "luckyNumber": 24,
+        "health": 4,
+        "luckyNumber": 88,
         "luckyColor": "lavender",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "Pluto's deep currents stir transformative energies within you, urging release of outdated patterns that restrict your growth. Your intuition is razor-sharp—trust those gut feelings about people and situations. A professional breakthrough awaits those brave enough to embrace vulnerability as strength.",
+        "text": "Pluto's transformative power surges through your depths, urging you to shed what no longer serves your evolution. This spring day brings powerful insights if you're willing to look honestly at your shadow side. Trust the process of metamorphosis—you're becoming something magnificent.",
         "love": 3,
         "career": 4,
         "health": 3,
-        "luckyNumber": 76,
+        "luckyNumber": 13,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Jupiter's expansive influence calls you toward new horizons—whether physical travel or intellectual exploration, answer that wanderlust! Your optimism is contagious today, inspiring others to dream bigger alongside you. Financial gains may come through educational pursuits or publishing ventures.",
+        "text": "Jupiter expands your horizons, and spring's adventurous energy matches your restless spirit perfectly. A spontaneous opportunity for travel or learning may arise—say yes! Your optimism is contagious today, spreading joy wherever your journey takes you.",
         "love": 4,
         "career": 4,
-        "health": 4,
-        "luckyNumber": 12,
-        "luckyColor": "amber",
+        "health": 5,
+        "luckyNumber": 69,
+        "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "Saturn's steady hand supports your ambitious goals, rewarding disciplined effort with tangible progress toward long-term objectives. Professional recognition is within reach—don't be shy about claiming credit for your achievements. Structure and planning now will prevent chaos later this spring.",
-        "love": 2,
+        "text": "Saturn's steady hand guides you toward significant progress on long-term goals today. Your disciplined approach is paying dividends, though success may come in quieter forms than you expect. Spring reminds you that even mountains were built one stone at a time—keep building.",
+        "love": 3,
         "career": 5,
-        "health": 4,
-        "luckyNumber": 88,
+        "health": 2,
+        "luckyNumber": 26,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Uranus sparks brilliant innovation in your thinking today—those unconventional ideas deserve attention and development. Group activities and humanitarian causes call to your progressive spirit. Don't be surprised if you become the catalyst for positive change in your community or workplace.",
-        "love": 3,
+        "text": "Uranus electrifies your sector of innovation, bringing breakthrough ideas that could revolutionize your approach to old problems. Your unconventional perspective is exactly what's needed today, so don't hold back those brilliant insights. Collaboration with like-minded visionaries amplifies your impact exponentially.",
+        "love": 2,
         "career": 4,
-        "health": 3,
-        "luckyNumber": 35,
-        "luckyColor": "indigo",
+        "health": 4,
+        "luckyNumber": 91,
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune's dreamy influence heightens your already powerful intuition and creative abilities—artistic pursuits flow effortlessly from your soul. Spring renewal energy invites you to plant seeds for compassionate projects that serve others. Listen to your dreams tonight; they carry important messages from your subconscious.",
-        "love": 5,
+        "text": "Neptune enhances your already powerful intuition, creating almost psychic clarity about situations and people around you. This spring day invites you to trust your dreams—both sleeping and waking—as they contain important messages. Your compassionate nature heals not just others, but yourself as well.",
+        "love": 4,
         "career": 3,
-        "health": 4,
-        "luckyNumber": 7,
-        "luckyColor": "teal",
-        "mood": "inspired"
+        "health": 5,
+        "luckyNumber": 12,
+        "luckyColor": "coral",
+        "mood": "intuitive"
       }
     }
   },
