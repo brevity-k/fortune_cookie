@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
 import Header from "@/components/Header";
@@ -66,6 +66,9 @@ export const metadata: Metadata = {
       "naver-site-verification": ["eeb044732c7a4df75e5530136e3dfe6a7eb71d09"],
     },
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#0f0b1a",
 };
 

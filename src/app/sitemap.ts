@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? new Date(Math.max(...blogEntries.map((e) => e.lastModified.getTime())))
     : new Date("2026-02-12");
 
-  const staticPageDate = new Date("2026-02-12");
+  const staticPageDate = new Date("2026-03-11");
 
   // Horoscope pages: hub + daily/weekly/monthly for all 12 signs
   const horoscopeEntries: MetadataRoute.Sitemap = [
@@ -69,13 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Daily fortune page
-  const dailyEntry: MetadataRoute.Sitemap[number] = {
-    url: `${baseUrl}/daily`,
-    lastModified: today,
-    changeFrequency: "daily" as const,
-    priority: 0.7,
-  };
+  // /daily permanently redirects to homepage — omitted from sitemap
 
   // Editorial policy page
   const editorialEntry: MetadataRoute.Sitemap[number] = {
@@ -118,7 +112,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1,
     },
-    dailyEntry,
     {
       url: `${baseUrl}/lucky-numbers`,
       lastModified: today,

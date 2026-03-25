@@ -186,7 +186,7 @@ export default function HoroscopeHub() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          <Link href="/daily" className="text-xs text-gold/60 hover:text-gold transition border border-border rounded-full px-3 py-1">
+          <Link href="/" className="text-xs text-gold/60 hover:text-gold transition border border-border rounded-full px-3 py-1">
             Daily Fortune →
           </Link>
           <Link href="/lucky-numbers" className="text-xs text-gold/60 hover:text-gold transition border border-border rounded-full px-3 py-1">

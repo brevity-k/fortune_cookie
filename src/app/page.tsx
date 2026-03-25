@@ -107,9 +107,8 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {/* Today's Fortune */}
-          <Link
-            href="/daily"
-            className="group rounded-xl border border-border bg-background p-5 transition hover:border-gold/30 hover:shadow-sm"
+          <div
+            className="rounded-xl border border-border bg-background p-5"
           >
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xl">&#x1F960;</span>
@@ -126,7 +125,7 @@ export default function Home() {
             >
               {getRarityLabel(dailyFortune.rarity)} &middot; {dailyFortune.category}
             </span>
-          </Link>
+          </div>
 
           {/* Today's Horoscope Highlight */}
           <Link
