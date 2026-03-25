@@ -1,26 +1,33 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useMemo, useEffect, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
+import { ADSENSE_PUB_ID } from "@/lib/constants";
 
 const AdsContext = createContext<{ suppress: () => void }>({ suppress: () => {} });
 
-export function AdsProvider({ children }: { children: ReactNode }) {
+/** Leaf component: resets suppression on navigation without re-rendering the tree */
+function AdsResetter({ onReset }: { onReset: () => void }) {
   const pathname = usePathname();
+  useEffect(() => { onReset(); }, [pathname, onReset]);
+  return null;
+}
+
+export function AdsProvider({ children }: { children: ReactNode }) {
   const [suppressed, setSuppressed] = useState(false);
 
-  // Reset on navigation so ads re-enable for content pages
-  useEffect(() => {
-    setSuppressed(false);
-  }, [pathname]);
+  const suppress = useCallback(() => setSuppressed(true), []);
+  const reset = useCallback(() => setSuppressed(false), []);
+  const value = useMemo(() => ({ suppress }), [suppress]);
 
   return (
-    <AdsContext.Provider value={{ suppress: () => setSuppressed(true) }}>
+    <AdsContext.Provider value={value}>
+      <AdsResetter onReset={reset} />
       {children}
       {!suppressed && (
         <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7561681382580308"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUB_ID}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
