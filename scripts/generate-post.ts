@@ -17,17 +17,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { callWithRetry, extractJson, log } from "./lib/utils";
+import { ARCHETYPES } from "./lib/archetypes";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
-
-const CONTENT_PILLARS = [
-  "Luck & Superstition — lucky charms, rituals, cultural beliefs, science of luck",
-  "Wellness & Mindfulness — positive psychology, daily rituals, gratitude, small joys",
-  "Astrology & Spirituality — zodiac, tarot, divination history, fortune-telling cultures",
-  "Fun Lists & Stories — real-life fortune stories, viral moments, listicles",
-  "Food & Culture — dessert traditions, Asian cuisine, cultural fusion, food history",
-];
 
 interface TopicResult {
   title: string;
@@ -62,10 +55,10 @@ async function main() {
     existingTitles.push(data.title);
   }
 
-  // Rotate content pillars based on post count
-  const pillarIndex = existingFiles.length % CONTENT_PILLARS.length;
-  const pillar = CONTENT_PILLARS[pillarIndex];
-  log.info(`Content pillar: ${pillar}`);
+  // Rotate archetypes based on post count
+  const archetypeIndex = existingFiles.length % ARCHETYPES.length;
+  const archetype = ARCHETYPES[archetypeIndex];
+  log.info(`Archetype: ${archetype.name}`);
   log.info(`Existing posts: ${existingFiles.length}`);
 
   // Stage 1: Topic selection
@@ -78,10 +71,10 @@ async function main() {
           role: "user",
           content: `You are a blog content strategist for fortunecrack.com, an interactive fortune cookie website where users can virtually break fortune cookies.
 
-Content pillar for this post: "${pillar}"
+${archetype.topicPrompt}
 
 Existing blog post titles (DO NOT duplicate these topics):
-${existingTitles.map((t) => `- ${t}`).join("\n")}
+${existingTitles.map((t) => "- " + t).join("\n")}
 
 Generate ONE new blog post topic. Return ONLY a JSON object with no other text:
 {
@@ -95,8 +88,7 @@ Requirements:
 - Title must be engaging and include a target keyword
 - Slug: lowercase, hyphens only, no special characters
 - Excerpt: under 155 characters, compelling for search results
-- Topic must be completely unique from existing posts
-- Related to fortune cookies, luck, wisdom, or the content pillar theme`,
+- Topic must be completely unique from existing posts`,
         },
       ],
     }),
@@ -126,10 +118,10 @@ Requirements:
               role: "user",
               content: `You are a blog content strategist for fortunecrack.com, an interactive fortune cookie website where users can virtually break fortune cookies.
 
-Content pillar for this post: "${pillar}"
+${archetype.topicPrompt}
 
 Existing blog post titles (DO NOT duplicate these topics):
-${existingTitles.map((t) => `- ${t}`).join("\n")}
+${existingTitles.map((t) => "- " + t).join("\n")}
 
 Slugs that are already taken (DO NOT reuse): ${[...existingSlugs, finalTopic.slug].join(", ")}
 
@@ -145,8 +137,7 @@ Requirements:
 - Title must be engaging and include a target keyword
 - Slug: lowercase, hyphens only, no special characters
 - Excerpt: under 155 characters, compelling for search results
-- Topic must be completely unique from existing posts
-- Related to fortune cookies, luck, wisdom, or the content pillar theme`,
+- Topic must be completely unique from existing posts`,
             },
           ],
         }),
@@ -193,18 +184,15 @@ Requirements:
 Title: "${finalTopic.title}"
 Target keywords: ${finalTopic.keywords.join(", ")}
 
-Requirements:
-- Write 1,000-1,500 words of engaging, informative content
-- Use 4-6 ## H2 headings for scannability (NEVER use # H1 — the page template adds the H1)
-- Write in a warm, conversational, knowledgeable tone
-- Naturally weave in ONE brief mention of fortunecrack.com — only where it fits the context organically (e.g., in a sentence about trying your luck or exploring fortune-telling traditions). Do NOT force a promotional link if it doesn't flow naturally. Use format: [anchor text](https://www.fortunecrack.com)
-- Every paragraph must add genuine value — no filler, no fluff, no generic statements
+${archetype.writingPrompt}
+
+Additional requirements:
+- Use ## H2 headings for sections (NEVER use # H1 — the page template adds the H1)
 - Do NOT include the title as a heading
 - Do NOT include frontmatter
-- Start directly with an engaging opening paragraph (no "In this article..." openings)
-- End with a complete, thoughtful conclusion paragraph that wraps up the key takeaways. The conclusion MUST be a full, well-formed paragraph — never end mid-sentence
-- Use specific facts, examples, and anecdotes where possible
-- IMPORTANT: Make sure every sentence is complete. Double-check that the final paragraph ends properly with a full stop`,
+- Start directly with an engaging opening paragraph
+- End with a complete, thoughtful conclusion. The conclusion MUST be a full, well-formed paragraph — never end mid-sentence
+- IMPORTANT: Make sure every sentence is complete`,
         },
       ],
     }),
@@ -236,6 +224,7 @@ Requirements:
     date: today,
     readTime,
     excerpt: finalTopic.excerpt,
+    archetype: archetype.name,
   });
 
   // Write the file
