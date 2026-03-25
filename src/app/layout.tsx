@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Lora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import AdSenseScript from "@/components/AdSenseScript";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, GA_MEASUREMENT_ID } from "@/lib/constants";
 import "./globals.css";
@@ -92,11 +93,6 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7561681382580308"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} bg-warm-gradient min-h-screen antialiased`}
@@ -107,6 +103,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <CookieConsent />
+        <AdSenseScript />
       </body>
     </html>
   );
