@@ -7,7 +7,11 @@
  * Environment:
  *   ANTHROPIC_API_KEY - Claude API key (required)
  *
- * Two-stage process: (1) topic selection with slug collision retry, (2) full post writing.
+ * Three-stage process:
+ *   1. Topic selection with slug collision retry (Sonnet — fast, cheap)
+ *   2. Research gathering — specific facts, names, anecdotes (Sonnet)
+ *   3. Full post writing with research context (Opus — depth and quality)
+ *
  * Writes the MDX file to src/content/blog/ and saves the slug to .generated-slug for
  * downstream scripts (auto-fix.ts, quality-check.ts).
  */
@@ -22,11 +26,23 @@ import { ARCHETYPES } from "./lib/archetypes";
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
 
+const TOPIC_MODEL = "claude-sonnet-4-5-20250929";
+const RESEARCH_MODEL = "claude-sonnet-4-5-20250929";
+const WRITING_MODEL = "claude-opus-4-20250514";
+
 interface TopicResult {
   title: string;
   slug: string;
   excerpt: string;
   keywords: string[];
+}
+
+interface ResearchResult {
+  keyFacts: string[];
+  people: string[];
+  anecdotes: string[];
+  numbers: string[];
+  sensoryDetails: string[];
 }
 
 function validateTopic(obj: unknown): TopicResult {
@@ -37,6 +53,39 @@ function validateTopic(obj: unknown): TopicResult {
   if (!Array.isArray(t.keywords)) throw new Error("Topic missing 'keywords' array");
   if (!/^[a-z0-9-]+$/.test(t.slug)) throw new Error(`Invalid slug format: "${t.slug}"`);
   return t as unknown as TopicResult;
+}
+
+function validateResearch(obj: unknown): ResearchResult {
+  const r = obj as Record<string, unknown>;
+  return {
+    keyFacts: Array.isArray(r.keyFacts) ? r.keyFacts.map(String) : [],
+    people: Array.isArray(r.people) ? r.people.map(String) : [],
+    anecdotes: Array.isArray(r.anecdotes) ? r.anecdotes.map(String) : [],
+    numbers: Array.isArray(r.numbers) ? r.numbers.map(String) : [],
+    sensoryDetails: Array.isArray(r.sensoryDetails) ? r.sensoryDetails.map(String) : [],
+  };
+}
+
+function formatResearchContext(research: ResearchResult): string {
+  const sections: string[] = [];
+
+  if (research.keyFacts.length > 0) {
+    sections.push(`KEY FACTS (weave these into your narrative):\n${research.keyFacts.map((f) => `- ${f}`).join("\n")}`);
+  }
+  if (research.people.length > 0) {
+    sections.push(`NAMED PEOPLE (mention by name in the post):\n${research.people.map((p) => `- ${p}`).join("\n")}`);
+  }
+  if (research.anecdotes.length > 0) {
+    sections.push(`ANECDOTES & STORIES (use at least one):\n${research.anecdotes.map((a) => `- ${a}`).join("\n")}`);
+  }
+  if (research.numbers.length > 0) {
+    sections.push(`SPECIFIC NUMBERS (include in the text):\n${research.numbers.map((n) => `- ${n}`).join("\n")}`);
+  }
+  if (research.sensoryDetails.length > 0) {
+    sections.push(`SENSORY DETAILS (use for vivid descriptions):\n${research.sensoryDetails.map((s) => `- ${s}`).join("\n")}`);
+  }
+
+  return sections.join("\n\n");
 }
 
 async function main() {
@@ -61,10 +110,11 @@ async function main() {
   log.info(`Archetype: ${archetype.name}`);
   log.info(`Existing posts: ${existingFiles.length}`);
 
-  // Stage 1: Topic selection
+  // ── Stage 1: Topic selection (Sonnet — fast) ──────────────────────────
+  log.step("Stage 1: Topic selection");
   const topicResponse = await callWithRetry(() =>
     client.messages.create({
-      model: "claude-sonnet-4-5-20250929",
+      model: TOPIC_MODEL,
       max_tokens: 500,
       messages: [
         {
@@ -111,7 +161,7 @@ Requirements:
 
       const retryResponse = await callWithRetry(() =>
         client.messages.create({
-          model: "claude-sonnet-4-5-20250929",
+          model: TOPIC_MODEL,
           max_tokens: 500,
           messages: [
             {
@@ -171,10 +221,64 @@ Requirements:
   log.info(`Slug: ${finalTopic.slug}`);
   log.info(`Excerpt: ${finalTopic.excerpt}`);
 
-  // Stage 2: Write the post
+  // ── Stage 2: Research gathering (Sonnet — facts and specifics) ─────────
+  log.step("Stage 2: Research gathering");
+  let researchContext = "";
+
+  try {
+    const researchResponse = await callWithRetry(() =>
+      client.messages.create({
+        model: RESEARCH_MODEL,
+        max_tokens: 2000,
+        messages: [
+          {
+            role: "user",
+            content: `${archetype.researchPrompt}
+
+Topic: "${finalTopic.title}"
+Keywords: ${finalTopic.keywords.join(", ")}
+
+Gather 8-12 specific, concrete facts with named sources for this topic. Remember: only include facts you are confident are real and verifiable.`,
+          },
+        ],
+      }),
+    );
+
+    const researchText =
+      researchResponse.content[0].type === "text"
+        ? researchResponse.content[0].text
+        : "";
+    const researchObj = extractJson(researchText, "object");
+    const research = validateResearch(researchObj);
+    researchContext = formatResearchContext(research);
+
+    const totalFacts =
+      research.keyFacts.length +
+      research.people.length +
+      research.anecdotes.length +
+      research.numbers.length +
+      research.sensoryDetails.length;
+    log.info(`Research gathered: ${totalFacts} items across ${[
+      research.keyFacts.length && "facts",
+      research.people.length && "people",
+      research.anecdotes.length && "anecdotes",
+      research.numbers.length && "numbers",
+      research.sensoryDetails.length && "sensory",
+    ].filter(Boolean).join(", ")}`);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    log.warn(`Research stage failed: ${msg}. Proceeding without research context.`);
+  }
+
+  // ── Stage 3: Write the post (Opus — depth and quality) ─────────────────
+  log.step("Stage 3: Writing post");
+  const researchSection = researchContext
+    ? `\n\nRESEARCH MATERIAL (use these specific facts, names, and details in your writing — do not ignore them):\n\n${researchContext}`
+    : "";
+
   const postResponse = await callWithRetry(() =>
     client.messages.create({
-      model: "claude-sonnet-4-5-20250929",
+      model: WRITING_MODEL,
       max_tokens: 16384,
       messages: [
         {
@@ -185,6 +289,7 @@ Title: "${finalTopic.title}"
 Target keywords: ${finalTopic.keywords.join(", ")}
 
 ${archetype.writingPrompt}
+${researchSection}
 
 Additional requirements:
 - Use ## H2 headings for sections (NEVER use # H1 — the page template adds the H1)
@@ -192,7 +297,8 @@ Additional requirements:
 - Do NOT include frontmatter
 - Start directly with an engaging opening paragraph
 - End with a complete, thoughtful conclusion. The conclusion MUST be a full, well-formed paragraph — never end mid-sentence
-- IMPORTANT: Make sure every sentence is complete`,
+- IMPORTANT: Make sure every sentence is complete
+- IMPORTANT: The post must be AT LEAST 1,400 words. Shorter posts will be rejected.`,
         },
       ],
     }),
@@ -237,6 +343,7 @@ Additional requirements:
   log.ok(`Post written: ${filePath}`);
   log.info(`Word count: ${wordCount}`);
   log.info(`Read time: ${readTime}`);
+  log.info(`Model: ${WRITING_MODEL}`);
 
   // GitHub Actions outputs
   if (process.env.GITHUB_OUTPUT) {

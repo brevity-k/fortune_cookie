@@ -72,11 +72,11 @@ async function main() {
     result.pass = false;
   }
 
-  // 2. Word count
+  // 2. Word count (raised to 1,200 for in-depth quality)
   const wordCount = content.trim().split(/\s+/).length;
   log.info(`Word count: ${wordCount}`);
-  if (wordCount < 600) {
-    result.issues.push(`Word count too low: ${wordCount} (min 600)`);
+  if (wordCount < 1200) {
+    result.issues.push(`Word count too low: ${wordCount} (min 1,200)`);
     result.pass = false;
   }
 
@@ -113,7 +113,28 @@ async function main() {
     result.pass = false;
   }
 
-  // 6. AI quality review (only if structural checks pass)
+  // 6. Specificity check — posts must contain concrete details
+  // Count capitalized multi-word proper nouns (e.g., "Richard Wiseman", "University of Hertfordshire")
+  const properNounPattern = /[A-Z][a-z]+(?:\s+(?:of\s+(?:the\s+)?)?[A-Z][a-z]+)+/g;
+  const properNouns = content.match(properNounPattern) || [];
+  // Deduplicate
+  const uniqueProperNouns = [...new Set(properNouns)];
+  log.info(`Proper nouns found: ${uniqueProperNouns.length} unique (${uniqueProperNouns.slice(0, 5).join(", ")}${uniqueProperNouns.length > 5 ? "..." : ""})`);
+  if (uniqueProperNouns.length < 3) {
+    result.issues.push(`Too few proper nouns: ${uniqueProperNouns.length} (min 3). Posts need named people, places, or institutions.`);
+    result.pass = false;
+  }
+
+  // 7. Numbers check — posts must include specific numbers for concreteness
+  const numberPattern = /\b\d[\d,.]+\b/g;
+  const numbers = content.match(numberPattern) || [];
+  log.info(`Specific numbers found: ${numbers.length}`);
+  if (numbers.length < 3) {
+    result.issues.push(`Too few specific numbers: ${numbers.length} (min 3). Posts need concrete measurements, dates, or statistics.`);
+    result.pass = false;
+  }
+
+  // 8. AI quality review (only if structural checks pass)
   if (result.pass && process.env.ANTHROPIC_API_KEY) {
     log.info("Running AI quality review...");
     const client = new Anthropic();
@@ -126,11 +147,18 @@ async function main() {
           messages: [
             {
               role: "user",
-              content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 6 is the minimum acceptable quality.
+              content: `Rate this blog post on a scale of 1-10 for quality, engagement, and SEO value. Be strict — a 7 is the minimum acceptable quality.
 
 Context: This post is published on fortunecrack.com (a fortune cookie website). The post archetype is "${data.archetype || "legacy"}".
 
 Archetype-specific criteria:${data.archetype === "midnight-question" ? " Does the opening create emotional recognition? Is there a genuine reframe?" : ""}${data.archetype === "honest-answer" ? " Does it acknowledge the obvious answer first? Is the real answer surprising?" : ""}${data.archetype === "one-thing-deeply" ? " Does it stay focused on one subject? Are there sensory details?" : ""}${data.archetype === "counterintuitive-truth" ? " Is the contrarian claim supported by specific, verifiable evidence?" : ""}${data.archetype === "list-that-teaches" ? " Does every list item include a specific, actionable suggestion?" : ""}${data.archetype === "timely-transit" ? " Does it reference a real astrological event with an accurate date? Are the action items concrete?" : ""}
+
+DEPTH criteria (critical — score below 7 if any are missing):
+- Does the post contain NAMED sources (researchers, institutions, specific people)?
+- Does it include SPECIFIC numbers, dates, or measurements?
+- Does it use SENSORY or VIVID language (not just abstract explanations)?
+- Does it tell at least one SPECIFIC story or anecdote?
+- Would a reader learn something they couldn't get from a generic article on the same topic?
 
 General criteria: content quality, completeness (no truncated endings), structure, readability, SEO value. Internal links to the site are expected and should NOT be penalized.
 
@@ -162,8 +190,8 @@ ${content}`,
       } else {
         result.score = score;
         log.info(`AI quality score: ${score}/10 — ${feedback}`);
-        if (score < 6) {
-          result.issues.push(`AI quality score too low: ${score}/10`);
+        if (score < 7) {
+          result.issues.push(`AI quality score too low: ${score}/10 (min 7)`);
           result.pass = false;
         }
       }
