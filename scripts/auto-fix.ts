@@ -106,22 +106,31 @@ function main() {
   }
 
   // Fix 7: Trim incomplete trailing sentence (truncation artifact)
+  // Narrative archetypes (midnight-question, one-thing-deeply) may use
+  // stylistic endings like em-dashes or ellipses — don't trim those.
+  const narrativeArchetypes = ["midnight-question", "one-thing-deeply"];
+  const isNarrative = narrativeArchetypes.includes(String(fixedData.archetype || ""));
   const trimmed = fixedContent.trimEnd();
-  if (trimmed.length > 0 && !/[.!?'")\u2019\u201D]$/.test(trimmed)) {
-    // Find the last sentence-ending punctuation
-    const lastEnd = Math.max(
-      trimmed.lastIndexOf(". "),
-      trimmed.lastIndexOf(".\n"),
-      trimmed.lastIndexOf("! "),
-      trimmed.lastIndexOf("!\n"),
-      trimmed.lastIndexOf("? "),
-      trimmed.lastIndexOf("?\n"),
-    );
-    // Also check if the very last char before trimming is a sentence ender
-    const endsClean = /[.!?]$/.test(trimmed);
-    if (!endsClean && lastEnd > trimmed.length * 0.5) {
-      fixedContent = trimmed.slice(0, lastEnd + 1) + "\n";
-      fixes.push("Trimmed incomplete trailing sentence (likely truncation artifact)");
+
+  if (trimmed.length > 0) {
+    const validEnding = isNarrative
+      ? /[.!?'")\u2019\u201D\u2014\u2026]$/ // allow em-dash and ellipsis for narrative
+      : /[.!?'")\u2019\u201D]$/;
+
+    if (!validEnding.test(trimmed)) {
+      const lastEnd = Math.max(
+        trimmed.lastIndexOf(". "),
+        trimmed.lastIndexOf(".\n"),
+        trimmed.lastIndexOf("! "),
+        trimmed.lastIndexOf("!\n"),
+        trimmed.lastIndexOf("? "),
+        trimmed.lastIndexOf("?\n"),
+      );
+      const endsClean = /[.!?]$/.test(trimmed);
+      if (!endsClean && lastEnd > trimmed.length * 0.5) {
+        fixedContent = trimmed.slice(0, lastEnd + 1) + "\n";
+        fixes.push("Trimmed incomplete trailing sentence (likely truncation artifact)");
+      }
     }
   }
 
