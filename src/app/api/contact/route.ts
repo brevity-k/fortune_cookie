@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   try {
     // CSRF protection: verify request origin
     const origin = req.headers.get("origin");
-    if (!origin || !SITE_URL.startsWith(origin)) {
+    if (!origin || origin !== SITE_URL) {
       return NextResponse.json(
         { error: "Forbidden." },
         { status: 403 }
