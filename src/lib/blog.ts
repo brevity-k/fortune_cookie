@@ -11,6 +11,7 @@ export interface BlogPost {
   readTime: string;
   excerpt: string;
   content: string;
+  archetype?: string;
 }
 
 /**
@@ -25,10 +26,11 @@ function parseBlogPost(slug: string, raw: string): BlogPost | null {
     const date = String(data.date || "");
     const readTime = String(data.readTime || "");
     const excerpt = String(data.excerpt || "");
+    const archetype = data.archetype ? String(data.archetype) : undefined;
 
     if (!title || !date) return null;
 
-    return { slug, title, date, readTime, excerpt, content };
+    return { slug, title, date, readTime, excerpt, content, archetype };
   } catch {
     return null;
   }
