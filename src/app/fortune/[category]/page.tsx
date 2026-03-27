@@ -204,6 +204,8 @@ const CATEGORY_RELATED_POSTS: Record<FortuneCategory, { slug: string; title: str
   ],
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return CATEGORIES.map((category) => ({ category }));
 }

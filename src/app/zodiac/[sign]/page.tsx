@@ -265,6 +265,8 @@ const SIGN_PROFILES: Record<string, {
   },
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ZODIAC_SIGNS.map((z) => ({ sign: z.key }));
 }

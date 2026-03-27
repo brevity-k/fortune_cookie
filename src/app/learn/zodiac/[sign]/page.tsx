@@ -4,6 +4,8 @@ import { zodiacProfiles } from "@/data/learn/zodiac-profiles";
 import { ZODIAC_SIGNS } from "@/lib/horoscopes";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ZODIAC_SIGNS.map((s) => ({ sign: s.key }));
 }

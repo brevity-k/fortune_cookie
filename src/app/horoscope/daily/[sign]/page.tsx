@@ -113,6 +113,8 @@ const SIGN_INSIGHTS: Record<string, { title: string; content: string[] }> = {
 
 type PageProps = { params: Promise<{ sign: string }> };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ZODIAC_SIGNS.map((s) => ({ sign: s.key }));
 }
