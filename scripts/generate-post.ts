@@ -20,7 +20,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { callWithRetry, extractJson, log } from "./lib/utils";
+import { callWithRetry, extractJson, log, streamMessage } from "./lib/utils";
 import { ARCHETYPES } from "./lib/archetypes";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
@@ -277,7 +277,7 @@ Gather 8-12 specific, concrete facts with named sources for this topic. Remember
     : "";
 
   const postResponse = await callWithRetry(() =>
-    client.messages.create({
+    streamMessage(client, {
       model: WRITING_MODEL,
       max_tokens: 16384,
       messages: [

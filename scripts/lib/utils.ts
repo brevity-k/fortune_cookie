@@ -12,6 +12,8 @@
  * - ensureFileExists: Create data files with defaults on first run
  */
 
+import Anthropic from "@anthropic-ai/sdk";
+import type { MessageParam } from "@anthropic-ai/sdk/resources/messages";
 import fs from "fs";
 
 // ---------------------------------------------------------------------------
@@ -40,6 +42,23 @@ export async function callWithRetry<T>(
     }
   }
   throw new Error("Unreachable");
+}
+
+// ---------------------------------------------------------------------------
+// Streaming API call
+// ---------------------------------------------------------------------------
+
+/**
+ * Calls the Anthropic messages API using streaming to avoid the SDK's
+ * 10-minute timeout on non-streaming requests.  Returns the same shape
+ * as `client.messages.create()` so callers don't need to change.
+ */
+export async function streamMessage(
+  client: Anthropic,
+  params: { model: string; max_tokens: number; messages: MessageParam[] },
+): Promise<Anthropic.Message> {
+  const response = await client.messages.stream(params);
+  return response.finalMessage();
 }
 
 // ---------------------------------------------------------------------------

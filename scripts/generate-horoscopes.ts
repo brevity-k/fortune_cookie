@@ -15,7 +15,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
-import { callWithRetry, extractJson, requireEnv, ensureFileExists, log } from "./lib/utils";
+import { callWithRetry, extractJson, requireEnv, ensureFileExists, log, streamMessage } from "./lib/utils";
 import { ZODIAC_SIGNS } from "./lib/types";
 
 const DATA_FILE = path.join(process.cwd(), "src/data/horoscopes.json");
@@ -79,7 +79,7 @@ async function generateDaily(client: Anthropic): Promise<Record<string, unknown>
   const signList = ZODIAC_SIGNS.map((s) => `${s.name} (${s.element}, ruled by ${s.ruler})`).join("\n");
 
   const response = await callWithRetry(() =>
-    client.messages.create({
+    streamMessage(client, {
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 4000,
       messages: [{
@@ -114,7 +114,7 @@ async function generateWeekly(client: Anthropic): Promise<Record<string, unknown
   const signList = ZODIAC_SIGNS.map((s) => `${s.name} (${s.element}, ruled by ${s.ruler})`).join("\n");
 
   const response = await callWithRetry(() =>
-    client.messages.create({
+    streamMessage(client, {
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 6000,
       messages: [{
@@ -146,7 +146,7 @@ async function generateMonthly(client: Anthropic): Promise<Record<string, unknow
   const signList = ZODIAC_SIGNS.map((s) => `${s.name} (${s.element}, ruled by ${s.ruler})`).join("\n");
 
   const response = await callWithRetry(() =>
-    client.messages.create({
+    streamMessage(client, {
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 8000,
       messages: [{
