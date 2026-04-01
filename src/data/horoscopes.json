@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-03-31",
+    "date": "2026-04-01",
     "horoscopes": {
       "aries": {
-        "text": "Mars ignites your solar return with electrifying energy as spring mirrors your fiery spirit perfectly. This is your moment to initiate bold projects and fearlessly pursue what sets your soul ablaze. Trust your instincts today—they're sharper than ever.",
+        "text": "Mars charges forward in your sector of self-discovery, making this April Fool's Day anything but a joke for your ambitions. Your natural leadership shines brilliantly as spring's renewal energy aligns perfectly with your pioneering spirit. Take bold action today—the universe rewards your courage.",
         "love": 4,
         "career": 5,
         "health": 4,
-        "luckyNumber": 17,
+        "luckyNumber": 7,
         "luckyColor": "crimson",
         "mood": "energetic"
       },
       "taurus": {
-        "text": "Venus whispers sweet encouragement as you feel the urge to plant seeds—both literal and metaphorical. Financial opportunities bloom around you, but patience remains your greatest asset. Take time to savor spring's sensory pleasures; they'll replenish your spirit.",
+        "text": "Venus whispers sweet possibilities as you enter your birthday season with grounded confidence. Financial opportunities bloom like spring flowers, but patience remains your greatest asset. Trust your instincts about a creative project that's been gestating through winter.",
         "love": 5,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 42,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 22,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Mercury dances through your communication sector, making you the most sought-after conversationalist today. New connections formed now carry surprising potential, so keep your calendar flexible. Your curious mind finds inspiration in the most unexpected places.",
+        "text": "Mercury's playful dance activates your social sphere, bringing delightful conversations and unexpected connections. Your wit is sharper than ever today, though you might accidentally prank yourself with an impulsive commitment. Keep things light and enjoy the mental stimulation flowing your way.",
         "love": 3,
-        "career": 4,
-        "health": 3,
-        "luckyNumber": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 15,
         "luckyColor": "electric blue",
-        "mood": "curious"
+        "mood": "playful"
       },
       "cancer": {
-        "text": "The Moon's gentle pull invites introspection as spring's renewal stirs your emotional depths. Home and family matters require your nurturing touch, bringing deep satisfaction. Honor your need for quiet moments—they're where your greatest wisdom emerges.",
+        "text": "The Moon's gentle pull encourages introspection as spring awakens dormant emotions within your sensitive soul. Home and family matters take center stage, offering opportunities to nurture both yourself and loved ones. Don't suppress feelings today—they're guideposts to important truths.",
         "love": 4,
         "career": 2,
         "health": 5,
-        "luckyNumber": 28,
-        "luckyColor": "silver",
-        "mood": "reflective"
+        "luckyNumber": 33,
+        "luckyColor": "seafoam",
+        "mood": "intuitive"
       },
       "leo": {
-        "text": "The Sun illuminates your creative sector with golden brilliance, making you magnetic and unstoppable. Recognition comes naturally today, but remember to share the spotlight generously. Your warmth inspires others to reach for their own greatness.",
+        "text": "The Sun illuminates your sector of adventure and expansion, urging you to step into the spotlight with renewed vitality. Your charisma is magnetic today, drawing admirers and opportunities alike. Channel this radiant energy into a passion project that showcases your unique talents.",
         "love": 5,
-        "career": 5,
-        "health": 3,
-        "luckyNumber": 1,
+        "career": 4,
+        "health": 4,
+        "luckyNumber": 9,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "Mercury sharpens your analytical gifts as spring cleaning extends to both space and mind. Organizing systems now will yield efficiency rewards for months to come. Health-conscious choices feel particularly aligned with your natural rhythms today.",
-        "love": 2,
-        "career": 4,
-        "health": 5,
-        "luckyNumber": 63,
-        "luckyColor": "teal",
-        "mood": "focused"
-      },
-      "libra": {
-        "text": "Venus graces you with diplomatic superpowers perfect for resolving lingering tensions. Balance returns as you find the sweet spot between giving and receiving. Aesthetic projects flourish under today's harmonious energies—trust your impeccable taste.",
-        "love": 5,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 22,
-        "luckyColor": "lavender",
-        "mood": "harmonious"
-      },
-      "scorpio": {
-        "text": "Pluto's transformative power surges through your depths, urging you to release what no longer serves. Spring's renewal resonates with your phoenix-like ability to regenerate and emerge stronger. Secret information revealed today shifts your perspective dramatically.",
-        "love": 3,
-        "career": 4,
-        "health": 3,
-        "luckyNumber": 88,
-        "luckyColor": "maroon",
-        "mood": "intense"
-      },
-      "sagittarius": {
-        "text": "Jupiter expands your horizons as wanderlust intensifies with spring's arrival. Educational pursuits or philosophical discussions ignite your enthusiasm and point toward exciting new directions. Book that adventure—your optimism creates its own luck today.",
-        "love": 4,
-        "career": 4,
-        "health": 4,
-        "luckyNumber": 9,
-        "luckyColor": "purple",
-        "mood": "adventurous"
-      },
-      "capricorn": {
-        "text": "Saturn rewards your persistent efforts with tangible progress on long-term goals. Professional recognition arrives as others finally appreciate your dedication and strategic thinking. Allow yourself a moment of pride—you've earned this milestone.",
+        "text": "Mercury sharpens your analytical mind to razor precision, making today ideal for tackling complex problems or organizing your springtime goals. Your attention to detail uncovers solutions others miss, but remember to balance productivity with rest. Small improvements yield significant results.",
         "love": 2,
         "career": 5,
         "health": 3,
         "luckyNumber": 44,
+        "luckyColor": "navy",
+        "mood": "focused"
+      },
+      "libra": {
+        "text": "Venus graces your partnership sector with harmonious energy, making collaboration and compromise flow effortlessly. Spring's balance mirrors your own need for equilibrium in all relationships. A creative endeavor benefits from your refined aesthetic sense and diplomatic approach.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 18,
+        "luckyColor": "lavender",
+        "mood": "harmonious"
+      },
+      "scorpio": {
+        "text": "Pluto's transformative power churns beneath the surface as spring's rebirth resonates with your regenerative nature. Trust your legendary intuition about a situation that seems too good to be true—you're reading the undercurrents correctly. Intensity is your superpower today; use it wisely.",
+        "love": 3,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 8,
+        "luckyColor": "maroon",
+        "mood": "intense"
+      },
+      "sagittarius": {
+        "text": "Jupiter expands your horizons just as spring invites exploration and growth in every direction. Wanderlust calls strongly, whether physical travel or intellectual journeys through learning something new. Your optimism is contagious—share it generously and watch opportunities multiply.",
+        "love": 4,
+        "career": 4,
+        "health": 5,
+        "luckyNumber": 27,
+        "luckyColor": "orange",
+        "mood": "adventurous"
+      },
+      "capricorn": {
+        "text": "Saturn's steady influence helps you build lasting foundations as spring encourages practical yet ambitious goal-setting. Your disciplined approach to a long-term project finally shows tangible progress. Remember that even mountains were once molehills—celebrate small victories along your climb.",
+        "love": 3,
+        "career": 5,
+        "health": 2,
+        "luckyNumber": 52,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Uranus sparks innovative breakthroughs that could revolutionize your approach to persistent challenges. Your unique perspective is exactly what your community needs right now—speak up boldly. Collaborative projects benefit from your forward-thinking vision.",
+        "text": "Uranus sparks brilliant innovation in your creative sector, making April Fool's Day perfectly suited to your unconventional genius. Revolutionary ideas demand expression, so don't censor your unique vision to please traditionalists. Your forward-thinking perspective is exactly what's needed now.",
         "love": 3,
-        "career": 5,
+        "career": 4,
         "health": 4,
-        "luckyNumber": 71,
+        "luckyNumber": 63,
         "luckyColor": "indigo",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Neptune enhances your already profound intuitive abilities as spring awakens your creative muse. Artistic expressions flow effortlessly, connecting you to universal truths. Trust the dreams and visions visiting you now—they contain important guidance for your path ahead.",
+        "text": "Neptune's mystical waters deepen as spring's renewal awakens your already vivid imagination and spiritual awareness. Dreams carry important messages today, so pay attention to symbols and synchronicities. Your compassion is a healing force—trust your empathic gifts to guide you toward meaningful connections.",
         "love": 5,
         "career": 3,
-        "health": 4,
-        "luckyNumber": 36,
-        "luckyColor": "seafoam",
-        "mood": "intuitive"
+        "health": 3,
+        "luckyNumber": 11,
+        "luckyColor": "teal",
+        "mood": "inspired"
       }
     }
   },
@@ -190,91 +190,91 @@
     }
   },
   "monthly": {
-    "month": "2026-03",
+    "month": "2026-04",
     "horoscopes": {
       "aries": {
-        "overview": "As spring awakens and the Sun enters your sign around March 20th, you're infused with dynamic energy and bold confidence. Mars, your ruling planet, energizes your sector of friendships and future visions, urging you to connect with communities that share your passions. This is your month to initiate, lead, and remind the world why you're the zodiac's trailblazer. The renewal season mirrors your own nature—fearless, pioneering, and always ready for the next adventure.",
-        "love": "Venus dancing through your social sector brings romantic opportunities through group settings and shared ideals. If you're coupled, collaborating on a shared dream strengthens your bond; if single, a friendship could evolve into something more intriguing.",
-        "career": "Your professional ambitions receive a powerful boost as Mercury enhances communication skills that showcase your leadership abilities. This is the perfect time to pitch bold ideas, launch new projects, or step into a role that demands courage and initiative.",
-        "health": "Channel your abundant Mars-driven energy into physical activities that challenge you—competitive sports, intense workouts, or outdoor adventures that honor spring's vitality. Balance your fiery nature with adequate rest to avoid burnout.",
-        "advice": "Trust your instincts and take that leap you've been contemplating. Your natural courage is your greatest asset this month, so act decisively while remaining open to collaborative magic."
+        "overview": "Happy solar return, Aries! April ignites your personal new year with the Sun blazing through your sign until the 19th, amplifying your natural leadership and pioneering spirit. As Mars, your ruling planet, moves through sensitive Cancer, you're learning to balance assertiveness with emotional intelligence. The lunar eclipse on April 13th activates your axis of self and partnership, bringing clarity about what you truly need from your closest relationships.",
+        "love": "Vulnerability becomes your superpower this month as Mars in Cancer softens your approach to intimacy. The eclipse mid-month may bring a pivotal conversation or revelation that reshapes an important relationship, releasing old patterns that no longer serve your growth.",
+        "career": "Your professional magnetism peaks during Aries season, drawing exciting opportunities and recognition for your innovative ideas. After the Sun enters Taurus on the 19th, shift your focus to consolidating resources and building sustainable structures around your ambitions.",
+        "health": "Channel your abundant fire energy through physical movement, but honor the emotional processing that Mars in Cancer demands. Spring's renewal invites you to establish healthier boundaries between action and rest, preventing the burnout that comes from constant doing.",
+        "advice": "Trust that true courage includes knowing when to pause and feel. Your greatest breakthroughs this April come from honoring both your warrior spirit and your tender heart."
       },
       "taurus": {
-        "overview": "March invites you into a period of introspection before your solar return arrives in late April. Venus, your ruling planet, guides you toward clarifying what truly matters in your values and resources. The first stirrings of spring echo your own earthy rhythm—steady, purposeful, and connected to nature's patient unfolding. Use this time to complete old business and plant seeds for the abundant season ahead.",
-        "love": "Romance takes on a more serious, meaningful tone as you seek depth over superficial connections. Existing relationships benefit from honest conversations about long-term security and shared values, while singles attract partners through professional or goal-oriented environments.",
-        "career": "Your reputation and public standing receive favorable attention, making this an excellent month for career advancement or recognition. Focus on demonstrating your reliability and expertise, as decision-makers are noticing your consistent dedication.",
-        "health": "Ground yourself through sensory experiences—gardening, cooking nourishing meals, or massage therapy that honors your body's wisdom. Your physical wellbeing thrives when you maintain regular routines that connect you to earth's rhythms.",
-        "advice": "Release what no longer serves your growth and trust the quiet preparation happening beneath the surface. Like spring's hidden roots, your patient efforts are creating the foundation for future abundance."
+        "overview": "April begins with an introspective prelude as the Sun illuminates your twelfth house of closure and spiritual integration until the 19th. Your birthday season commences when the Sun enters your sign, just as Venus, your ruling planet, dances through Pisces then Aries, awakening your magnetism and creative expression. The lunar eclipse on April 13th highlights your work-life balance, inviting you to release perfectionist tendencies that drain your vital energy.",
+        "love": "Venus in mystical Pisces deepens your romantic sensibilities early in the month, drawing soulful connections and heightening your intuitive understanding of loved ones. After Venus enters Aries on the 5th, your desires become clearer and bolder—don't be afraid to initiate what your heart truly wants.",
+        "career": "The eclipse in your work sector demands honest assessment of your daily routines and service to others. Taurus season brings renewed confidence in your professional worth, making late April ideal for negotiations, launches, or asking for what you deserve.",
+        "health": "Rest deeply during the first half of April, allowing your body and psyche to complete an important healing cycle. Once the Sun enters your sign, vitality returns with spring's full bloom—embrace movement that connects you to earth and pleasure.",
+        "advice": "Release what you've been carrying that was never yours to hold. Your birthday season promises fresh starts, but only after you've honored the necessary endings."
       },
       "gemini": {
-        "overview": "Expansive energy floods your worldview as Jupiter continues its journey through your sector of philosophy and distant horizons. March brings Mercury, your ruling planet, into dynamic aspects that sharpen your already brilliant communication gifts. Your curiosity is at an all-time high, and spring's renewal invites you to explore new subjects, cultures, or perspectives that broaden your mental landscape. This is a month for learning, teaching, and connecting diverse ideas into innovative patterns.",
-        "love": "Intellectual stimulation becomes the pathway to your heart, as you crave conversations that challenge and expand your thinking. Long-distance connections or relationships with people from different backgrounds hold special appeal, while existing partnerships thrive through shared learning adventures.",
-        "career": "Professional opportunities may arise through publishing, education, travel, or international connections. Your ability to communicate complex ideas with clarity and charm makes you invaluable in collaborative projects that require innovative thinking.",
-        "health": "Mental stimulation is essential, but so is preventing mental exhaustion from information overload. Balance your active mind with breathing exercises, short walks that change your environment, and social connections that rejuvenate rather than drain.",
-        "advice": "Say yes to opportunities that stretch your mind and spirit beyond familiar boundaries. Your adaptability is your superpower—use it to weave together seemingly unrelated threads into something brilliantly original."
+        "overview": "April activates your social networks and future visions as the Sun illuminates your eleventh house through the 19th, connecting you with kindred spirits and collaborative opportunities. Mercury, your ruling planet, moves through Aries and then your sign, accelerating communication and bringing mental clarity to long-brewing ideas. The lunar eclipse on April 13th spotlights your creative expression and joy sectors, asking what authentic pleasure means to you beyond external validation.",
+        "love": "Friendship and romance blend beautifully this month, with potential for connections that stimulate both your mind and heart. The eclipse may bring a creative or romantic revelation, helping you distinguish between what genuinely lights you up and what you pursue out of habit or obligation.",
+        "career": "Your networking abilities shine brilliantly, opening doors through conversations and community connections rather than traditional channels. When Mercury enters Gemini after April 16th, your communication becomes irresistibly persuasive—pitch ideas, write, teach, and share your multifaceted brilliance.",
+        "health": "Mental stimulation feeds you, but notice if your nervous system becomes overstimulated by constant input. Spring invites you to practice presence with one thing at a time, discovering that depth can be as nourishing as variety.",
+        "advice": "Your ideas have extraordinary value right now—trust them enough to share generously. The connections you cultivate this April will bear fruit throughout the year ahead."
       },
       "cancer": {
-        "overview": "Deep transformation continues as you navigate profound shifts in how you share resources, intimacy, and power with others. The Moon, your ruling planet, moves through its monthly cycle with particular emphasis on your emotional foundations and closest relationships. Spring's renewal asks you to shed protective shells that no longer serve your growth, trusting that vulnerability can lead to profound connection. This is a month of emotional alchemy—transforming fear into trust and loss into wisdom.",
-        "love": "Intensity and authenticity define your romantic landscape as superficial connections no longer satisfy your soul's hunger. Existing relationships deepen through honest conversations about shared finances, intimacy, or psychological patterns, while singles attract transformative connections that challenge them to grow.",
-        "career": "Financial partnerships, joint ventures, or opportunities involving other people's resources come into focus. Your intuitive understanding of emotional undercurrents gives you an advantage in negotiations or collaborative financial planning.",
-        "health": "Honor your cyclical nature and the Moon's rhythms by tracking your energy patterns and emotional needs throughout the month. Water therapy, whether through baths, swimming, or time near natural water sources, provides deep healing.",
-        "advice": "Trust the process of release and regeneration unfolding in your life. What feels like an ending is actually making space for a more authentic version of yourself to emerge."
+        "overview": "Your professional realm takes center stage as the Sun illuminates your tenth house of career and public recognition through April 19th, amplifying your visibility and leadership potential. Mars, currently traveling through your sign, grants you unusual courage and initiative—use this warrior energy wisely to advocate for yourself and your ambitions. The lunar eclipse on April 13th falls in your home and foundation sector, potentially bringing family matters or living situations to an emotional turning point.",
+        "love": "With Mars energizing your sign, you're expressing desires more directly than usual, which can be refreshingly clarifying in relationships. The eclipse invites deep emotional honesty about your roots and what foundation you need to feel truly secure in intimacy.",
+        "career": "This is your moment to step into the spotlight you've been preparing for, Cancer—your efforts are being noticed by the right people. The Sun's movement through your most public houses supports promotions, launches, or bold professional moves that align with your authentic purpose.",
+        "health": "Mars in your sign provides physical vitality but can also manifest as restlessness or irritability if emotions aren't processed consciously. Prioritize outlets that honor both your warrior and nurturer sides—perhaps martial arts, vigorous gardening, or dance that moves feelings through your body.",
+        "advice": "Your sensitivity is not separate from your strength—it is your strength. Lead this month with the full spectrum of what you feel, and watch how your authenticity inspires others."
       },
       "leo": {
-        "overview": "Relationships take center stage as the cosmos illuminates your partnership sector with focused attention. The Sun's journey through spring signs highlights the balance between your radiant individuality and your connections with significant others. This is a month to shine not just as a solo performer but as part of a dynamic duo or collaborative ensemble. Your generous heart and natural leadership find new expression through partnership rather than purely independent ventures.",
-        "love": "Romance flourishes as you discover the joy of truly seeing and being seen by another. Committed relationships reach new levels of mutual appreciation and creative collaboration, while singles attract partners who match their warmth and confidence.",
-        "career": "Professional partnerships, client relationships, or collaborative projects bring opportunities for recognition and success. Your ability to inspire others while honoring their contributions creates win-win situations that advance everyone's goals.",
-        "health": "Your vitality is strong, but remember that even the Sun needs the Moon—balance your outward-focused energy with moments of reception and rest. Creative expression and playful movement keep your heart, both literal and metaphorical, strong.",
-        "advice": "Let others share the spotlight and discover how collaboration amplifies rather than diminishes your light. True leadership includes knowing when to support others' brilliance."
+        "overview": "April expands your horizons as the Sun journeys through your ninth house of adventure, higher learning, and philosophical exploration until the 19th. Your ruling Sun then enters grounded Taurus, shifting your focus to career foundations and long-term ambitions. The lunar eclipse on April 13th illuminates your communication sector, potentially bringing important conversations, learning opportunities, or sibling/neighbor dynamics to a crescendo that demands authentic expression.",
+        "love": "Romance takes on an adventurous quality this month, with potential for connections that expand your worldview or reignite passion through shared exploration. Speak your truth boldly during the eclipse period—your voice carries creative power that can transform stagnant relationship patterns.",
+        "career": "Your vision extends beyond immediate concerns toward larger possibilities and meaningful work that reflects your values. After the 19th, Taurus season supports practical steps toward professional goals, especially those requiring patience, strategy, and collaboration with established structures.",
+        "health": "Spring's renewal calls you outdoors and into movement that feels joyful rather than obligatory—your lion heart thrives on play. The eclipse may bring awareness to how you communicate with your own body; listen to its wisdom with the same generosity you extend to others.",
+        "advice": "Your natural radiance multiplies when directed toward purposes larger than personal glory. Seek teachers, philosophies, and adventures that challenge you to grow beyond familiar territories."
       },
       "virgo": {
-        "overview": "March activates your daily routines, health practices, and service-oriented work with renewed purpose and energy. Mercury, your ruling planet, sharpens your already analytical mind, helping you refine systems and improve efficiency in all areas of life. Spring's theme of renewal perfectly aligns with your natural inclination toward purification and optimization. This is your month to implement healthy habits, organize your environment, and offer your considerable skills in meaningful service.",
-        "love": "Romance may take a practical turn as you appreciate partners who support your daily wellbeing and share your values around health and routine. Small, thoughtful gestures of service become the language of love, and relationships improve through attention to daily details.",
-        "career": "Your meticulous attention to detail and problem-solving abilities make you indispensable at work. This is an excellent time to streamline processes, tackle complex projects, or volunteer your expertise in ways that showcase your analytical gifts.",
-        "health": "Your body responds beautifully to refined nutrition, organized exercise routines, and preventive care practices. Listen to the subtle messages your physical vessel communicates, and honor the mind-body connection through practices like yoga or mindful movement.",
-        "advice": "Perfection is an illusion, but progress is always possible. Focus on sustainable improvements rather than overwhelming overhauls, trusting that small, consistent changes create lasting transformation."
+        "overview": "April draws you into deeper waters as the Sun illuminates your eighth house of transformation, shared resources, and psychological depths through the 19th. Mercury, your ruling planet, travels through bold Aries and then communicative Gemini, helping you articulate insights from your inner explorations. The lunar eclipse on April 13th activates your financial and self-worth axis, bringing clarity about what you truly value beyond productivity and usefulness to others.",
+        "love": "Intimacy deepens this month as you're willing to explore emotional territories you usually analyze from a safe distance. Vulnerability, though uncomfortable for your discerning nature, becomes the gateway to the soul-level connections you secretly crave but rarely allow yourself.",
+        "career": "Collaborative projects and shared resources come into focus, requiring trust and negotiation rather than your preferred self-sufficiency. The eclipse illuminates your earning potential and asks whether your compensation reflects your true worth—practical Virgo, it's time to reassess.",
+        "health": "Your healing journey goes deeper than symptoms this month, inviting exploration of emotional and energetic patterns beneath physical manifestations. Spring's renewal supports releasing control and trusting your body's innate wisdom, even when it doesn't follow logical protocols.",
+        "advice": "Perfection is an illusion that keeps you from the messy, beautiful reality of being human. This April, practice letting people see you unpolished—your authenticity is far more magnetic than your capability."
       },
       "libra": {
-        "overview": "Creative self-expression and joyful experiences take priority as the cosmos illuminates your sector of pleasure, romance, and artistic pursuits. Venus, your ruling planet, encourages you to embrace what brings authentic delight rather than simply maintaining harmony for others. Spring's arrival invites you to color outside the lines, take romantic risks, and rediscover the playful spirit that may have been buried under responsibilities. This is a month to remember that beauty and joy are not luxuries but essential nutrients for your soul.",
-        "love": "Romance blooms with cinematic intensity as your natural charm and grace reach peak magnetism. Existing relationships benefit from injecting more play, spontaneity, and creative expression, while singles attract attention through their artistic or social pursuits.",
-        "career": "Creative projects, presentation skills, or work involving aesthetics, entertainment, or children bring opportunities for recognition. Your diplomatic abilities help you navigate workplace dynamics while advancing initiatives that require both vision and collaboration.",
-        "health": "Joy is medicine—prioritize activities that make your heart sing and your spirit soar. Balance your social nature with adequate rest, and consider creative movement like dance that combines physical activity with artistic expression.",
-        "advice": "Give yourself permission to prioritize pleasure without guilt. Your wellbeing depends on feeding your soul with beauty, creativity, and experiences that remind you why life is worth celebrating."
+        "overview": "Relationships take center stage as the Sun illuminates your seventh house of partnership through April 19th, highlighting both personal and professional collaborations. Venus, your ruling planet, moves from dreamy Pisces into fiery Aries, shifting your approach to love from receptive to initiatory. The lunar eclipse on April 13th falls directly in your sign, marking a powerful personal turning point that asks you to honor your individual needs alongside your natural tendency toward harmony and compromise.",
+        "love": "The eclipse in your sign is a cosmic invitation to reclaim parts of yourself you've softened or surrendered for the sake of keeping peace. When Venus enters Aries on the 5th, your desires become clearer and less negotiable—practice asking for what you want without apology or excessive diplomacy.",
+        "career": "Partnerships prove pivotal this month, whether forming new alliances or renegotiating existing collaborations to reflect evolved priorities. Your diplomatic gifts serve you well, but the eclipse reminds you that fairness includes honoring your own voice, not just mediating everyone else's.",
+        "health": "Balance, your eternal quest, may require paradoxical acceptance that some seasons emphasize one side of the scales more than the other. Spring invites you to physical practices that help you feel your center—yoga, dance, or martial arts that train you to be both graceful and strong.",
+        "advice": "True partnership can only exist between two whole people. This April, your greatest gift to your relationships is becoming more fully, unapologetically yourself."
       },
       "scorpio": {
-        "overview": "Your attention turns inward toward home, family, and emotional foundations as March emphasizes your private sanctuary and deepest roots. Pluto, your modern ruling planet, continues its transformative work on your sense of identity and personal power. Spring's renewal energy invites you to clear emotional clutter from your domestic space and psyche, creating room for new growth from the ground up. This is a month for deep feeling, ancestral healing, and strengthening the foundation from which all else in your life grows.",
-        "love": "Intimacy deepens through vulnerability and emotional availability rather than passionate intensity alone. Sharing your private world and inner feelings strengthens bonds, while creating a beautiful, secure home environment enhances romantic connection.",
-        "career": "Behind-the-scenes work, research, or projects you can develop from a home base prove most productive. Your psychological insight and investigative abilities give you an edge in understanding hidden dynamics or developing strategies away from public scrutiny.",
-        "health": "Emotional health is the gateway to physical wellbeing this month—address unprocessed feelings through journaling, therapy, or trusted confidants. Create a home environment that feels like a healing sanctuary supporting your deepest restoration.",
-        "advice": "Trust the power of retreat and introspection. The most profound transformations happen in darkness and privacy, like seeds germinating underground before they break through to light."
+        "overview": "April illuminates your daily rhythms and service as the Sun travels through your sixth house until the 19th, inviting refinement of your routines and health practices. Pluto, your modern ruling planet, continues its transformative journey through Aquarius in your home sector, slowly revolutionizing your understanding of roots and foundation. The lunar eclipse on April 13th falls in your twelfth house of spirituality and release, calling you to surrender control and trust the unseen forces that guide your transformation.",
+        "love": "Intimacy deepens through small, daily acts of care and attention rather than grand gestures this month. The eclipse encourages releasing old relationship patterns rooted in fear or the need to control outcomes—true power in love comes from vulnerability, not vigilance.",
+        "career": "Your meticulous attention to craft and willingness to serve excellence positions you for quiet but significant professional advancement. Focus on mastering your skills and improving systems rather than seeking recognition; your competence speaks louder than self-promotion.",
+        "health": "This is an excellent month to address health matters you've been avoiding or to establish sustainable wellness routines that honor your body's needs. The eclipse supports releasing addictive patterns or escapist habits, replacing them with practices that genuinely restore your formidable energy.",
+        "advice": "Your intensity is a gift, but not everything requires your full investigative powers. Practice discernment about where to direct your passion, and allow spring's lighter energy to occasionally soften your serious depths."
       },
       "sagittarius": {
-        "overview": "Communication, learning, and local connections energize your March as Jupiter, your ruling planet, continues expanding your daily experiences and curious mind. Your natural enthusiasm finds expression through teaching, writing, or sharing your philosophical insights in accessible ways. Spring's arrival mirrors your own optimistic spirit—eager to explore, connect, and discover what lies just beyond the next horizon. This is a month for short journeys, stimulating conversations, and gathering information that feeds your ever-growing wisdom.",
-        "love": "Intellectual connection and good humor form the foundation of romantic appeal this month. Relationships thrive through engaging conversations, shared learning experiences, and maintaining enough freedom to explore individual interests while staying connected.",
-        "career": "Communication-based projects, marketing, teaching, or sales activities bring opportunities for growth. Your ability to inspire others with your vision and enthusiasm makes you an effective spokesperson for ideas or initiatives requiring passionate advocacy.",
-        "health": "Keep your restless energy moving through varied physical activities that prevent boredom—hiking new trails, trying different workout classes, or active social sports. Mental stimulation is as important as physical exercise for your overall wellbeing.",
-        "advice": "Stay curious and open to learning from unexpected sources. The wisdom you seek may arrive through casual conversations or nearby adventures rather than distant quests."
+        "overview": "April activates your fifth house of creativity, romance, and joyful self-expression as the Sun illuminates this playful sector through the 19th. Jupiter, your ruling planet, continues expanding your domestic realm and emotional foundations, helping you create a home base that supports your adventurous spirit. The lunar eclipse on April 13th highlights your friendships and community connections, potentially bringing certain social circles to a completion while opening space for new kindred spirits who match your evolving vision.",
+        "love": "Romance and creative passion intertwine beautifully this month—let your playful, spontaneous nature lead the way. The eclipse may shift your social landscape, and with it, your romantic opportunities; trust that departures make room for connections that truly celebrate your philosophical and adventurous heart.",
+        "career": "Your natural enthusiasm and creative vision inspire others, making this an excellent month for presentations, pitches, or projects that benefit from your optimistic energy. After the Sun enters Taurus on the 19th, attention shifts to practical daily execution of your grand visions.",
+        "health": "Spring's renewal calls you outdoors and into activities that feel like play rather than exercise—hike, dance, explore new trails that feed your need for movement and discovery. Joy itself is medicine for your sign; prioritize what makes you laugh and feel vibrantly alive.",
+        "advice": "Your vision is naturally expansive, but this April, find the sacred in small, present moments. Sometimes the greatest adventure is being fully here, now, with what's directly in front of you."
       },
       "capricorn": {
-        "overview": "Financial security, personal resources, and self-worth occupy your focus as March illuminates what you value most deeply. Saturn, your ruling planet, continues its sobering but supportive work on building sustainable structures in your life. Spring's theme of new growth takes practical form for you—planting seeds that will yield tangible results through patient cultivation. This is a month to assess your resources honestly, invest in quality over quantity, and remember that true security comes from within before it manifests externally.",
-        "love": "Relationships are evaluated through the lens of stability, loyalty, and shared values around security and resources. Demonstrating love through practical support and building toward shared material goals strengthens partnerships rooted in reality.",
-        "career": "Your reputation for reliability and competence attracts opportunities to increase income or advance professionally. Focus on showcasing your expertise, negotiating fair compensation, and building financial foundations that support long-term ambitions.",
-        "health": "Your body appreciates quality nutrition, structured routines, and traditional wellness practices that have stood the test of time. Address dental or bone health, and remember that sustainable self-care is built through consistent small practices rather than extreme measures.",
-        "advice": "Trust in slow, steady progress over quick wins. Your commitment to building something lasting will be rewarded, even if results don't appear as rapidly as you'd like."
+        "overview": "April draws your attention homeward as the Sun illuminates your fourth house of family, roots, and emotional foundation through the 19th. Saturn, your ruling planet, continues its journey through Pisces in your communication sector, teaching you to express authority through compassion and intuitive wisdom. The lunar eclipse on April 13th peaks in your career house, potentially bringing professional recognition, completion, or a pivotal choice about your public direction.",
+        "love": "Emotional intimacy deepens as you allow loved ones to see the private, vulnerable self you usually reserve for only your closest circle. The eclipse may shift your public commitments, which in turn affects time and energy available for relationships—honest conversations about priorities serve everyone.",
+        "career": "The eclipse in your tenth house marks a significant milestone or turning point in your professional journey, possibly bringing recognition you've steadily worked toward. Your natural leadership shines, but remember that true authority includes emotional intelligence, not just competence and achievement.",
+        "health": "Tend to your foundation this month—quality rest, nourishing foods, and emotional processing create the stability from which your ambitions can sustainably grow. Spring invites you to soften your driven nature occasionally, trusting that strategic rest enhances rather than impedes your long-term goals.",
+        "advice": "Your mountain goat determination has carried you far, but this April, honor that even mountains have roots that run deep and need tending. Professional success means little without an emotional foundation to hold it."
       },
       "aquarius": {
-        "overview": "Your solar return season extends its glow into March as the cosmos highlights your personal identity, appearance, and fresh starts. Uranus, your modern ruling planet, continues revolutionizing your domestic sphere and emotional foundations, asking you to balance innovation with security. Spring's renewal perfectly aligns with your own reinvention—this is your time to debut a new version of yourself that honors both your unique genius and your human need for belonging. March invites you to lead with authenticity while building bridges of connection.",
-        "love": "Your magnetic individuality attracts attention and admiration, drawing potential partners who appreciate your unconventional perspective. Existing relationships thrive when you're given freedom to be authentically yourself while maintaining emotional connection and presence.",
-        "career": "Personal initiatives, leadership opportunities, or projects that showcase your innovative thinking and humanitarian vision bring recognition. Your ability to see future trends positions you as a valuable asset in progressive environments.",
-        "health": "Honor your unique constitution by experimenting with wellness approaches that might seem unconventional but resonate with your individual needs. Community fitness or group wellness activities satisfy your social nature while supporting physical health.",
-        "advice": "Balance your natural independence with the recognition that meaningful connection enriches rather than constrains your freedom. You can be both unique and understood."
+        "overview": "Communication and learning take center stage as the Sun illuminates your third house through April 19th, energizing your already active mind with curiosity and connections. Uranus, your ruling planet, continues its revolutionary journey through Taurus in your domestic sector, slowly but surely transforming your relationship with home and security. The lunar eclipse on April 13th falls in your ninth house of expansion and belief systems, potentially challenging perspectives you've outgrown and opening doors to new philosophical territories.",
+        "love": "Intellectual connection proves essential in romantic matters this month—you need partners who can engage your innovative mind and unconventional perspectives. The eclipse invites you to question relationship beliefs you've inherited rather than consciously chosen; true intimacy requires authenticity, not conformity.",
+        "career": "Your networking abilities and communication skills open unexpected doors, especially through technology, innovation, or community organizing. Share your visionary ideas generously—your ability to see patterns and future possibilities offers value that more conventional thinkers cannot provide.",
+        "health": "Your nervous system requires particular attention this month, as mental stimulation can tip into overstimulation for your electric sign. Ground your airy nature through practices that connect you to body and earth—even rebels need roots to effectively revolutionize.",
+        "advice": "Your vision of the future is valuable, but don't become so focused on what could be that you miss what is. This April, practice presence alongside your natural forward-thinking orientation."
       },
       "pisces": {
-        "overview": "As the Sun moves through your sign until March 20th, you're immersed in profound spiritual renewal and intuitive downloads. Neptune, your ruling planet, continues dissolving boundaries in your communication sector, enhancing your already empathic and artistic expression. This is your season of completion before a new cycle begins—a time for rest, reflection, and honoring the mystical dimensions of existence. March invites you to trust your dreams, both literal and metaphorical, as they contain wisdom about your soul's next chapter.",
-        "love": "Romance carries a dreamy, almost fated quality as your sensitivity and compassion reach peak expression. Spiritual or creative connections deepen relationships, though you must maintain healthy boundaries to avoid losing yourself in another person's needs or energy.",
-        "career": "Behind-the-scenes work, creative projects, or roles involving healing, spirituality, or the arts align with your current energy. Your intuitive understanding of emotional undercurrents makes you valuable in situations requiring empathy and imagination.",
-        "health": "Your permeable boundaries require extra protection through adequate sleep, time near water, and limiting exposure to harsh environments or energies. Practices like meditation, gentle yoga, or sound healing support your sensitive nervous system.",
-        "advice": "Honor the sacred pause before new beginnings by resting, releasing, and trusting the invisible realm where transformation gestates. What seems like an ending is actually preparing space for rebirth."
+        "overview": "April highlights your values and resources as the Sun travels through your second house until the 19th, inviting practical attention to finances and self-worth. Neptune, your ruling planet, continues its long journey through your sign, dissolving old identity structures and inviting you to embody your most spiritually authentic self. The lunar eclipse on April 13th activates your eighth house of deep transformation, shared resources, and psychological depths, calling you to release what you've been carrying for others.",
+        "love": "Venus begins the month in your sign before entering Aries on the 5th, shifting your romantic energy from receptive and dreamy to more direct and assertive about desires. The eclipse invites honest examination of patterns where you merge too completely with others, losing yourself in the process of loving them.",
+        "career": "Focus on building tangible value and sustainable income streams that honor your creative and spiritual gifts without requiring you to sacrifice your wellbeing. Your intuitive understanding of collective needs positions you to offer services the world genuinely needs, if you can ground your vision in practical form.",
+        "health": "Boundaries become essential this month, particularly energetic ones—your porous nature absorbs others' emotions and needs, depleting your vitality. Spring's renewal supports establishing practices that help you distinguish what's yours to feel and carry versus what belongs to others.",
+        "advice": "Your compassion is limitless, but your human vessel has limits that deserve respect. This April, practice the radical act of caring for yourself with the same tenderness you extend to everyone else."
       }
     }
   }
