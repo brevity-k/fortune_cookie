@@ -54,8 +54,6 @@ describe('calculateAscendant', () => {
 
     // With 12 samples spread across 24 hours, we should span a broad range
     // Check that there is significant spread (not all similar)
-    const min = Math.min(...longitudes);
-    const max = Math.max(...longitudes);
     // The range should cover a significant portion of 360 degrees
     // (Though wrap-around can complicate this, at least some consecutive
     // values should differ significantly)

@@ -130,7 +130,7 @@ export default function CookieCanvas({
         });
       }, 600);
     },
-    [fortune, onBreak, onFortuneReveal]
+    [onBreak, onFortuneReveal]
   );
 
   const handleReset = useCallback(() => {

@@ -18,7 +18,6 @@ const noopSubscribe = () => () => {};
 const getIsMobile = () =>
   typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 const getServerIsMobile = () => false;
-const getClientStreak = () => getStreak();
 
 let _initialFortune: Fortune | null = null;
 const getInitialFortune = () => {

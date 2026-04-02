@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Fortune, Rarity, getRarityLabel, getFortuneNumber } from "@/lib/fortuneEngine";
+import { Fortune, getRarityLabel, getFortuneNumber } from "@/lib/fortuneEngine";
 import { trackShare } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/constants";
 

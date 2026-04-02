@@ -15,7 +15,7 @@ import fs from "fs";
 import path from "path";
 import { callWithRetry, extractJson, requireEnv, log } from "./lib/utils";
 import { MAX_FORTUNES } from "./lib/types";
-import type { CategoryData, FortunesFile } from "./lib/types";
+import type { FortunesFile } from "./lib/types";
 
 const FORTUNES_PATH = path.join(process.cwd(), "src/data/fortunes.json");
 

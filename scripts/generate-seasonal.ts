@@ -15,7 +15,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
 import { callWithRetry, extractJson, requireEnv, log } from "./lib/utils";
-import type { CategoryData, FortunesFile } from "./lib/types";
+import type { FortunesFile } from "./lib/types";
 
 const ROOT = process.cwd();
 const FORTUNES_PATH = path.join(ROOT, "src/data/fortunes.json");
