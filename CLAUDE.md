@@ -6,7 +6,7 @@
 
 **Domain:** fortunecrack.com
 **Stack:** Next.js 16 + TypeScript + Pixi.js + Matter.js + GSAP + Howler.js
-**Last Audited:** 2026-02-27
+**Last Audited:** 2026-04-01
 
 ---
 
@@ -40,7 +40,7 @@
 | Horoscope Pages (Phase 8A) | Done | 36 pages: daily/weekly/monthly × 12 signs + hub + OG images |
 | Astrology Content (Phase 8B-E) | Not Started | Compatibility, birth charts, tarot, moon fortune |
 | Auto X (Twitter) Posting | Done | 2 tweets/day: fortune (8AM UTC) + horoscope (2PM UTC) via twitter-api-v2 |
-| Testing | None | No test framework |
+| Testing | Done | Vitest + 25 test files (saju, astro libs) |
 
 ---
 
@@ -459,7 +459,7 @@ scripts/
 .github/workflows/
 ├── auto-blog.yml             # Cron (Tue/Fri 9AM UTC): generate + validate + publish
 ├── auto-fortunes.yml         # Cron (Sun 10AM UTC): generate 20 new fortunes + validate + publish
-├── auto-horoscopes.yml       # Cron (Daily 6AM UTC): daily/weekly/monthly horoscopes for 12 signs
+├── auto-horoscopes.yml       # Cron (Daily 5AM UTC): daily/weekly/monthly horoscopes for 12 signs
 ├── auto-seasonal.yml         # Cron (Mon 8AM UTC): seasonal content if holiday window active
 ├── auto-x-post.yml           # Cron (Daily 8AM+2PM UTC): fortune + horoscope tweets to X
 ├── ci.yml                    # CI pipeline for pull requests (required status check)
@@ -495,13 +495,13 @@ scripts/
 
 | Schedule | Workflow | What It Does | Self-Healing |
 |----------|----------|-------------|-------------|
-| Daily 6AM UTC | auto-horoscopes | Daily/weekly/monthly horoscopes for 12 signs | Retry + issue + auto-close |
+| Daily 5AM UTC | auto-horoscopes | Daily/weekly/monthly horoscopes for 12 signs | Retry + issue + auto-close |
 | Tue/Fri 9AM UTC | auto-blog | Blog post: generate + fix + quality check + retry | Retry + issue + auto-close |
 | Sun 10AM UTC | auto-fortunes | 20 new fortunes to smallest category (cap: 3000) | Retry + issue + auto-close |
 | Mon 6AM UTC | link-check | Broken link detection | Deduplicated issues |
 | Mon 8AM UTC | auto-seasonal | Seasonal content if holiday window active | Issue + auto-close |
 | Mon noon UTC | content-health | Blog/horoscope/fortune freshness + URL pings + auto-trigger stale pipelines | Issue + auto-trigger |
-| Wed 6AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
+| Wed 7AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
 | Daily 8AM UTC | auto-x-post | Fortune tweet to X (Twitter) | Retry + issue + auto-close |
 | Daily 2PM UTC | auto-x-post | Rotating zodiac horoscope tweet to X | Retry + issue + auto-close |
 | On PR | ci | CI pipeline: lint + build validation | Required check |
