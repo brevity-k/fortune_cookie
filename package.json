@@ -25,7 +25,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.80.0",
+    "@anthropic-ai/sdk": "^0.82.0",
+    "@atproto/api": "^0.19.5",
     "@stripe/stripe-js": "^9.0.0",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
