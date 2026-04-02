@@ -40,6 +40,7 @@
 | Horoscope Pages (Phase 8A) | Done | 36 pages: daily/weekly/monthly × 12 signs + hub + OG images |
 | Astrology Content (Phase 8B-E) | Not Started | Compatibility, birth charts, tarot, moon fortune |
 | Auto X (Twitter) Posting | Done | 2 tweets/day: fortune (8AM UTC) + horoscope (2PM UTC) via twitter-api-v2 |
+| Auto Bluesky Posting | Done | Mirrors X posts to Bluesky via @atproto/api |
 | Testing | Done | Vitest + 25 test files (saju, astro libs) |
 
 ---
@@ -327,6 +328,8 @@ Blog system uses **MDX files** in `src/content/blog/` with YAML frontmatter. Con
 | `X_SECRET_KEY` | X (Twitter) secret key |
 | `X_ACCESS_TOKEN` | X (Twitter) user access token |
 | `X_ACCESS_TOKEN_SECRET` | X (Twitter) user access token secret |
+| `BLUESKY_HANDLE` | Bluesky handle (e.g. user.bsky.social) |
+| `BLUESKY_APP_PASSWORD` | Bluesky app password for API access |
 | (GITHUB_TOKEN) | Auto-provided by GitHub Actions for git push |
 
 ---
@@ -450,6 +453,7 @@ scripts/
 ├── generate-seasonal.ts      # Seasonal holiday content generation via Claude API
 ├── validate-content.ts       # Data integrity validation (fortunes, horoscopes, blog)
 ├── post-to-x.ts              # Auto-post daily fortune/horoscope tweets to X (Twitter)
+├── post-to-bluesky.ts        # Auto-post daily fortune/horoscope/blog to Bluesky
 ├── lib/
 │   ├── types.ts              # Shared TypeScript types for scripts
 │   └── utils.ts              # Shared utility functions for scripts
@@ -502,8 +506,8 @@ scripts/
 | Mon 8AM UTC | auto-seasonal | Seasonal content if holiday window active | Issue + auto-close |
 | Mon noon UTC | content-health | Blog/horoscope/fortune freshness + URL pings + auto-trigger stale pipelines | Issue + auto-trigger |
 | Wed 7AM UTC | lighthouse | SEO, performance, accessibility audit | Issue |
-| Daily 8AM UTC | auto-x-post | Fortune tweet to X (Twitter) | Retry + issue + auto-close |
-| Daily 2PM UTC | auto-x-post | Rotating zodiac horoscope tweet to X | Retry + issue + auto-close |
+| Daily 8AM UTC | auto-x-post | Fortune post to X + Bluesky | Retry + issue + auto-close |
+| Daily 2PM UTC | auto-x-post | Rotating zodiac horoscope post to X + Bluesky | Retry + issue + auto-close |
 | On PR | ci | CI pipeline: lint + build validation | Required check |
 | On push | dependabot-automerge | Auto-merge Dependabot PRs after CI passes | Auto-merge |
 

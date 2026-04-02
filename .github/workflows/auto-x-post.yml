@@ -77,11 +77,20 @@ jobs:
           sleep 30
           npx tsx scripts/post-to-x.ts --"$POST_TYPE"
 
+      - name: Post to Bluesky
+        if: always()
+        continue-on-error: true
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          POST_TYPE: ${{ steps.mode.outputs.type }}
+        run: npx tsx scripts/post-to-bluesky.ts --"$POST_TYPE"
+
       - name: Commit post state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/x-post-state.json
+          git add scripts/x-post-state.json scripts/bsky-post-state.json
           git diff --cached --quiet && exit 0
           git commit -m "chore: update X post state"
           git pull --rebase origin main
