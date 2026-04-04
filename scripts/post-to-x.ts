@@ -149,10 +149,12 @@ async function postTweet(text: string): Promise<void> {
     3,
     10000,
     (err) => {
-      // Log full X API error details for CI debugging
-      if (err && typeof err === "object" && "data" in err) {
-        const apiErr = err as { code: number; data?: unknown };
-        log.error(`X API response: ${JSON.stringify(apiErr.data)}`);
+      if (err && typeof err === "object") {
+        const apiErr = err as { code?: number; data?: unknown };
+        // Log full X API error details for CI debugging
+        if (apiErr.data) {
+          log.error(`X API response: ${JSON.stringify(apiErr.data)}`);
+        }
         // Don't retry auth/permission errors — they won't resolve on retry
         if (apiErr.code === 401 || apiErr.code === 403) return false;
       }

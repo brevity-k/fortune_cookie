@@ -62,7 +62,7 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           POST_TYPE: ${{ steps.mode.outputs.type }}
-        run: npx tsx scripts/post-to-x.ts --"$POST_TYPE"
+        run: npx tsx scripts/post-to-x.ts --"$POST_TYPE" 2>&1 | tee /tmp/x-post-output.txt
 
       - name: Retry on failure
         if: steps.post.outcome == 'failure'
@@ -73,6 +73,11 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           POST_TYPE: ${{ steps.mode.outputs.type }}
         run: |
+          # Don't retry auth/permission errors — they won't resolve on retry
+          if grep -q "code 401\|code 403" /tmp/x-post-output.txt 2>/dev/null; then
+            echo "Auth/permission error (401/403) detected — skipping retry"
+            exit 1
+          fi
           echo "Retrying tweet post..."
           sleep 30
           npx tsx scripts/post-to-x.ts --"$POST_TYPE"
