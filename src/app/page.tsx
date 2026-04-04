@@ -12,13 +12,14 @@ import {
 } from "@/lib/fortuneEngine";
 import { ZODIAC_SIGNS, getDailyHoroscope } from "@/lib/horoscopes";
 import FortuneCard from "@/components/FortuneCard";
+import DailyFortuneCard from "@/components/DailyFortuneCard";
 import CookieGameSection from "@/components/CookieGameSection";
 import { FAQPageJsonLd } from "@/components/JsonLd";
 
 const faqs = [
   {
     q: "How does the daily fortune work?",
-    a: "Every day, a single fortune is selected using a date-based algorithm. Everyone around the world sees the same fortune on the same day. It changes at midnight UTC.",
+    a: "Every day, a single fortune is selected using a date-based algorithm. The fortune changes at your local midnight, so you always get a fresh fortune when your day starts.",
   },
   {
     q: "Can I see yesterday's fortune?",
@@ -106,26 +107,15 @@ export default function Home() {
           Featured Today
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {/* Today's Fortune */}
-          <div
-            className="rounded-xl border border-border bg-background p-5"
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl">&#x1F960;</span>
-              <span className="text-xs font-semibold text-foreground/60 uppercase tracking-wider">
-                Daily Fortune
-              </span>
-            </div>
-            <p className="text-sm text-foreground/80 line-clamp-2 mb-2" style={{ fontFamily: "var(--font-lora), Georgia, serif" }}>
-              &ldquo;{dailyFortune.text}&rdquo;
-            </p>
-            <span
-              className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold text-white"
-              style={{ backgroundColor: getRarityColor(dailyFortune.rarity) }}
-            >
-              {getRarityLabel(dailyFortune.rarity)} &middot; {dailyFortune.category}
-            </span>
-          </div>
+          {/* Today's Fortune (timezone-aware on client) */}
+          <DailyFortuneCard
+            fallback={{
+              text: dailyFortune.text,
+              category: dailyFortune.category,
+              rarity: dailyFortune.rarity,
+              number: dailyNumber,
+            }}
+          />
 
           {/* Today's Horoscope Highlight */}
           <Link
