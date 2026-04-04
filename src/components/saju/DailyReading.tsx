@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import type { SajuChart } from "@/lib/saju/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 
 interface DailyReadingData {
   energy: string;
@@ -56,14 +55,11 @@ export default function DailyReading({ chart }: Props) {
     async function fetchReading() {
       setLoading(true);
       setError("");
-      const token = getPremiumToken();
       try {
         const res = await fetch("/api/saju/daily", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
           body: JSON.stringify({ chart }),
         });
         if (!res.ok) {

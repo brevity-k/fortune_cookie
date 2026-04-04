@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { SITE_URL } from '@/lib/constants';
-import { verifyPremiumToken, signPremiumToken } from '@/lib/saju/premium';
+import { verifyPremiumToken, signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const isAllowedOrigin =
       origin &&
       (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && origin.startsWith('http://localhost')));
+        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
     if (!isAllowedOrigin) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
@@ -22,8 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const authHeader = req.headers.get('authorization');
-    const token = authHeader?.replace('Bearer ', '');
+    const token = req.cookies.get(PREMIUM_COOKIE_NAME)?.value;
     if (!token) {
       return NextResponse.json({ error: 'No token provided.' }, { status: 401 });
     }
@@ -61,7 +60,9 @@ export async function POST(req: NextRequest) {
     }
 
     const newToken = await signPremiumToken(customerId);
-    return NextResponse.json({ token: newToken });
+    const response = NextResponse.json({ success: true });
+    response.cookies.set(PREMIUM_COOKIE_NAME, newToken, premiumCookieOptions());
+    return response;
   } catch (error) {
     console.error('Refresh error:', error);
     return NextResponse.json(

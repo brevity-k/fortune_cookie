@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import type { SajuChart } from "@/lib/saju/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 
 interface YearlyForecastData {
   overview: string;
@@ -60,14 +59,11 @@ export default function YearlyForecast({ chart }: Props) {
     async function fetchForecast() {
       setLoading(true);
       setError("");
-      const token = getPremiumToken();
       try {
         const res = await fetch("/api/saju/yearly", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
           body: JSON.stringify({ chart }),
         });
         if (!res.ok) {

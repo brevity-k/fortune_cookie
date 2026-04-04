@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { NatalChart, AstroBirthInfo } from "@/lib/astro/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 import { calculateNatalChart } from "@/lib/astro/natal-chart";
 
 interface CompatibilityData {
@@ -109,13 +108,10 @@ export default function AstroCompatibility({ chart }: Props) {
       };
       const chartB = calculateNatalChart(birthInfoB);
 
-      const token = getPremiumToken();
       const res = await fetch("/api/astro/compatibility", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ chartA: chart, chartB }),
       });
       if (!res.ok) {

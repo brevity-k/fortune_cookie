@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import type { NatalChart } from "@/lib/astro/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 
 interface MonthlyForecastData {
   theme: string;
@@ -61,14 +60,11 @@ export default function MonthlyForecast({ chart }: Props) {
     async function fetchForecast() {
       setLoading(true);
       setError("");
-      const token = getPremiumToken();
       try {
         const res = await fetch("/api/astro/monthly", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
           body: JSON.stringify({ chart }),
         });
         if (!res.ok) {

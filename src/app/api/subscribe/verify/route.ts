@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { SITE_URL } from '@/lib/constants';
-import { signPremiumToken } from '@/lib/saju/premium';
+import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const isAllowedOrigin =
       origin &&
       (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && origin.startsWith('http://localhost')));
+        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
     if (!isAllowedOrigin) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
@@ -39,7 +39,9 @@ export async function POST(req: NextRequest) {
       : session.customer.id;
 
     const token = await signPremiumToken(customerId);
-    return NextResponse.json({ token });
+    const response = NextResponse.json({ success: true });
+    response.cookies.set(PREMIUM_COOKIE_NAME, token, premiumCookieOptions());
+    return response;
   } catch (error) {
     console.error('Verify error:', error);
     return NextResponse.json(

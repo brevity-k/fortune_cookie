@@ -42,9 +42,12 @@ describe('premium token helpers', () => {
     expect(payload).toBeNull();
   });
 
-  it('getPremiumToken returns null on server', async () => {
-    const { getPremiumToken } = await import('@/lib/saju/premium');
-    // In test env (no window), should return null
-    expect(getPremiumToken()).toBeNull();
+  it('premiumCookieOptions returns correct options', async () => {
+    const { premiumCookieOptions } = await import('@/lib/saju/premium');
+    const opts = premiumCookieOptions();
+    expect(opts.httpOnly).toBe(true);
+    expect(opts.sameSite).toBe('strict');
+    expect(opts.path).toBe('/');
+    expect(opts.maxAge).toBe(86400);
   });
 });

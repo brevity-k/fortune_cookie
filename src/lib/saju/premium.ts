@@ -1,7 +1,7 @@
-// src/lib/saju/premium.ts
+// src/lib/saju/premium.ts — server-side only (JWT signing/verification)
 import { SignJWT, jwtVerify } from 'jose';
 
-const STORAGE_KEY = 'saju_premium_token';
+export const PREMIUM_COOKIE_NAME = 'saju_premium_token';
 const TOKEN_EXPIRY = '24h';
 
 function getSecret(): Uint8Array {
@@ -32,19 +32,12 @@ export async function verifyPremiumToken(token: string): Promise<PremiumPayload 
   }
 }
 
-export function savePremiumToken(token: string): void {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(STORAGE_KEY, token);
-  }
-}
-
-export function getPremiumToken(): string | null {
-  if (typeof window === 'undefined') return null;
-  return localStorage.getItem(STORAGE_KEY);
-}
-
-export function clearPremiumToken(): void {
-  if (typeof window !== 'undefined') {
-    localStorage.removeItem(STORAGE_KEY);
-  }
+export function premiumCookieOptions() {
+  return {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict' as const,
+    path: '/',
+    maxAge: 60 * 60 * 24, // 24 hours
+  };
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { SajuChart, Gender } from "@/lib/saju/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 import { calculateFourPillars } from "@/lib/saju/four-pillars";
 import { analyzeFiveElements } from "@/lib/saju/five-elements";
 import { calculateMajorLuckCycles } from "@/lib/saju/major-luck";
@@ -94,13 +93,10 @@ export default function CompatibilityCheck({ chart }: Props) {
       const majorLuckCyclesB = calculateMajorLuckCycles(birthInfoB, fourPillarsB);
       const chartB: SajuChart = { birthInfo: birthInfoB, fourPillars: fourPillarsB, fiveElements: fiveElementsB, majorLuckCycles: majorLuckCyclesB };
 
-      const token = getPremiumToken();
       const res = await fetch("/api/saju/compatibility", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ chartA: chart, chartB }),
       });
       if (!res.ok) {

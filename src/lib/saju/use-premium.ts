@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import { getPremiumToken, savePremiumToken, clearPremiumToken } from './premium';
 
 interface PremiumState {
   isPremium: boolean;
@@ -16,41 +15,31 @@ export function usePremium(): PremiumState {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function checkToken() {
-      const token = getPremiumToken();
-      if (!token) {
-        setIsPremium(false);
-        setLoading(false);
-        return;
-      }
-
-      // Try to refresh if we have a token
+    async function checkStatus() {
       try {
-        const res = await fetch('/api/subscribe/refresh', {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await fetch('/api/subscribe/status', {
+          credentials: 'same-origin',
         });
-
         if (res.ok) {
-          const { token: newToken } = await res.json();
-          savePremiumToken(newToken);
-          setIsPremium(true);
+          const { isPremium: premium } = await res.json();
+          setIsPremium(premium);
         } else {
-          clearPremiumToken();
           setIsPremium(false);
         }
       } catch {
-        // Network error — trust existing token if present
-        setIsPremium(!!token);
+        setIsPremium(false);
       }
       setLoading(false);
     }
 
-    checkToken();
+    checkStatus();
   }, []);
 
   const subscribe = useCallback(async () => {
-    const res = await fetch('/api/subscribe/checkout', { method: 'POST' });
+    const res = await fetch('/api/subscribe/checkout', {
+      method: 'POST',
+      credentials: 'same-origin',
+    });
     if (!res.ok) throw new Error('Failed to start checkout');
     const { url } = await res.json();
     window.location.href = url;
@@ -61,23 +50,20 @@ export function usePremium(): PremiumState {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
+      credentials: 'same-origin',
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       return body.error || 'Failed to restore subscription.';
     }
-    const { token } = await res.json();
-    savePremiumToken(token);
     setIsPremium(true);
     return null;
   }, []);
 
   const manageSubscription = useCallback(async () => {
-    const token = getPremiumToken();
-    if (!token) return;
     const res = await fetch('/api/subscribe/portal', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'same-origin',
     });
     if (!res.ok) return;
     const { url } = await res.json();

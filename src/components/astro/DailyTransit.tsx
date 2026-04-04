@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import type { NatalChart } from "@/lib/astro/types";
-import { getPremiumToken } from "@/lib/saju/premium";
 
 interface DailyTransitData {
   energy: string;
@@ -57,14 +56,11 @@ export default function DailyTransit({ chart }: Props) {
     async function fetchReading() {
       setLoading(true);
       setError("");
-      const token = getPremiumToken();
       try {
         const res = await fetch("/api/astro/daily", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
           body: JSON.stringify({ chart }),
         });
         if (!res.ok) {

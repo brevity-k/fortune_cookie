@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { SITE_URL } from '@/lib/constants';
-import { signPremiumToken } from '@/lib/saju/premium';
+import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
@@ -24,12 +24,12 @@ export async function POST(req: NextRequest) {
     const isAllowedOrigin =
       origin &&
       (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && origin.startsWith('http://localhost')));
+        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
     if (!isAllowedOrigin) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+    const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
@@ -75,7 +75,9 @@ export async function POST(req: NextRequest) {
     }
 
     const token = await signPremiumToken(customer.id);
-    return NextResponse.json({ token });
+    const response = NextResponse.json({ success: true });
+    response.cookies.set(PREMIUM_COOKIE_NAME, token, premiumCookieOptions());
+    return response;
   } catch (error) {
     console.error('Restore error:', error);
     return NextResponse.json(

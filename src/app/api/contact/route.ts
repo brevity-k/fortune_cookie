@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Rate limiting by IP
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+    const ip = req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
     if (contactRatelimit) {
       const { success } = await contactRatelimit.limit(ip);
       if (!success) {
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
       }
     }
     const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
+    if (!apiKey || !apiKey.startsWith('re_')) {
       return NextResponse.json(
         { error: "Email service is not configured." },
         { status: 503 }

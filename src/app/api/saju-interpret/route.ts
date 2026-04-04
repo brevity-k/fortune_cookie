@@ -10,13 +10,13 @@ export async function POST(req: NextRequest) {
     const isAllowedOrigin =
       origin &&
       (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === "development" && origin.startsWith("http://localhost")));
+        (process.env.NODE_ENV === "development" && (origin === "http://localhost:3000" || origin === "http://127.0.0.1:3000")));
     if (!isAllowedOrigin) {
       return NextResponse.json({ error: "Forbidden." }, { status: 403 });
     }
 
     // Rate limiting
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+    const ip = req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
     if (sajuAIRatelimit) {
       const { success } = await sajuAIRatelimit.limit(ip);
       if (!success) {
