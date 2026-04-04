@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",
-    "@atproto/api": "^0.19.5",
+    "@atproto/api": "^0.19.6",
     "@stripe/stripe-js": "^9.0.1",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
