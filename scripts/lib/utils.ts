@@ -23,18 +23,25 @@ import fs from "fs";
 /**
  * Retries an async function up to `maxAttempts` times with a fixed delay
  * between failures.  Logs each retry so CI output is traceable.
+ *
+ * @param shouldRetry  Optional callback to decide if the error is retryable.
+ *                     Return `false` to fail immediately (e.g. 401/403).
  */
 export async function callWithRetry<T>(
   fn: () => Promise<T>,
   maxAttempts = 3,
   delayMs = 30000,
+  shouldRetry?: (err: unknown) => boolean,
 ): Promise<T> {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
       return await fn();
     } catch (err) {
-      if (attempt === maxAttempts) throw err;
       const msg = err instanceof Error ? err.message : String(err);
+      if (attempt === maxAttempts || (shouldRetry && !shouldRetry(err))) {
+        console.log(`[error] ${msg}`);
+        throw err;
+      }
       console.log(
         `[retry] Attempt ${attempt}/${maxAttempts} failed: ${msg}. Retrying in ${delayMs / 1000}s...`,
       );

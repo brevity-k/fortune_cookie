@@ -148,6 +148,16 @@ async function postTweet(text: string): Promise<void> {
     () => client.v2.tweet(text),
     3,
     10000,
+    (err) => {
+      // Log full X API error details for CI debugging
+      if (err && typeof err === "object" && "data" in err) {
+        const apiErr = err as { code: number; data?: unknown };
+        log.error(`X API response: ${JSON.stringify(apiErr.data)}`);
+        // Don't retry auth/permission errors — they won't resolve on retry
+        if (apiErr.code === 401 || apiErr.code === 403) return false;
+      }
+      return true; // retry transient errors
+    },
   );
   log.ok(`Tweet posted (ID: ${result.data.id})`);
 }
@@ -299,6 +309,7 @@ async function main() {
 
   const state = loadState();
   const today = todayString();
+  const errors: string[] = [];
 
   if (doFortune) {
     if (state.lastFortuneDate === today) {
@@ -307,9 +318,15 @@ async function main() {
       log.step("Posting daily fortune tweet");
       const tweet = buildFortuneTweet();
       log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
-      await postTweet(tweet);
-      state.lastFortuneDate = today;
-      saveState(state);
+      try {
+        await postTweet(tweet);
+        state.lastFortuneDate = today;
+        saveState(state);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        log.error(`Fortune tweet failed: ${msg}`);
+        errors.push(`fortune: ${msg}`);
+      }
     }
   }
 
@@ -320,15 +337,26 @@ async function main() {
       log.step("Posting horoscope tweet");
       const tweet = buildHoroscopeTweet();
       log.info(`Tweet (${tweet.length} chars):\n${tweet}`);
-      await postTweet(tweet);
-      state.lastHoroscopeDate = today;
-      saveState(state);
+      try {
+        await postTweet(tweet);
+        state.lastHoroscopeDate = today;
+        saveState(state);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        log.error(`Horoscope tweet failed: ${msg}`);
+        errors.push(`horoscope: ${msg}`);
+      }
     }
   }
 
   if (doBlog || doBlogAll) {
     log.step("Posting blog tweet(s)");
     await postBlogTweets(doBlogAll);
+  }
+
+  if (errors.length > 0) {
+    log.error(`Failed posts: ${errors.join("; ")}`);
+    process.exit(1);
   }
 
   log.ok("Done!");
