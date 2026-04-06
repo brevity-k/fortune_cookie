@@ -291,7 +291,15 @@ Target keywords: ${finalTopic.keywords.join(", ")}
 ${archetype.writingPrompt}
 ${researchSection}
 
-Additional requirements:
+VOICE AND STYLE GUIDELINES:
+- Write in a warm, conversational editorial voice — like a trusted friend who knows things, not a researcher presenting findings.
+- Include specific examples, anecdotes, or scenarios — not just abstract advice.
+- Vary paragraph lengths. Some short (1-2 sentences). Some longer. Not every paragraph should be the same size.
+- Not every post needs to be a listicle. Use narrative, Q&A, essay, or storytelling formats where they fit the topic.
+- Avoid generic AI writing patterns: "In today's fast-paced world", "Let's dive in", "In conclusion", "Whether you're X or Y", "Have you ever wondered", "It's no secret that".
+- Do not use the word "tapestry" or "rich tapestry" in any context.
+
+FORMAT REQUIREMENTS:
 - Use ## H2 headings for sections (NEVER use # H1 — the page template adds the H1)
 - Do NOT include the title as a heading
 - Do NOT include frontmatter
