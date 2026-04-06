@@ -33,83 +33,99 @@ export default function AboutPage() {
 
         <div className="space-y-6 text-foreground/80 leading-relaxed">
           <p>
-            Fortune Crack started with a simple question: why do fortune cookie websites feel so
-            lifeless? A real fortune cookie is a tiny event — you hold it, crack it, hear the snap,
-            and pull out a slip of paper with your fate scribbled on it. That moment of anticipation
-            and surprise is the whole point. We wanted to bring that feeling to the screen.
-          </p>
-
-          <p>
-            So we built something different. Fortune Crack uses real-time 2D physics powered by
-            Matter.js, WebGL rendering through Pixi.js, and cinematic animations with GSAP to
-            create a fortune cookie you can actually <em>break</em>. Every fragment is a physics
-            object that cracks, bounces, and tumbles. The sound of the break, the shower of
-            particles, the slow typewriter reveal of your fortune — these details matter because
-            they turn a click into an experience.
-          </p>
-
-          <h2 className="text-xl font-semibold text-gold">More Than Random Quotes</h2>
-          <p>
-            We did not want to serve recycled inspirational quotes from a database. Fortune Crack
-            features over 1,000 original fortunes across eight carefully chosen categories: wisdom,
-            love, career, humor, motivation, philosophy, adventure, and mystery. Each fortune
-            carries a rarity level — Common, Rare, Epic, or Legendary — and your daily streak
-            improves your odds of discovering the rarest ones. It is a small game layered on top of
-            a simple ritual, and it gives you a reason to come back every day.
-          </p>
-
-          <h2 className="text-xl font-semibold text-gold">Five Ways to Break</h2>
-          <p>
-            We believe in giving you choices. Tap three times for a quick smash. Drag your finger
-            across the cookie to throw it. Shake your mouse — or your phone — to rattle it apart.
-            Double-tap for a two-stage dramatic crack, or press and hold to squeeze it open slowly.
-            Each method triggers a different breaking pattern, so the experience changes every time.
-          </p>
-
-          <h2 className="text-xl font-semibold text-gold">A Shared Daily Moment</h2>
-          <p>
-            Every day, Fortune Crack selects one fortune for the entire world. Using a date-based
-            seed, everyone who visits sees the same Daily Fortune — a shared slice of serendipity.
-            Friends compare their fortunes on social media. Couples check together over morning
-            coffee. It is a small thing, but small things are what fortune cookies are all about.
-          </p>
-
-          <h2 className="text-xl font-semibold text-gold">Horoscopes &amp; Zodiac</h2>
-          <p>
-            Beyond fortune cookies, Fortune Crack offers{" "}
-            <Link href="/horoscope" className="text-gold hover:underline">
-              daily, weekly, and monthly horoscopes
-            </Link>{" "}
-            for all twelve zodiac signs. Each reading is freshly written and draws on traditional
-            astrological frameworks — planetary transits, elemental associations, and sign
-            characteristics — rather than vague generalities. Whether you take astrology seriously
-            or just enjoy it as a daily ritual, the horoscopes are designed to prompt reflection
-            and give you something specific to think about.
-          </p>
-
-          <h2 className="text-xl font-semibold text-gold">Built for Delight</h2>
-          <p>
-            Fortune Crack is built with Next.js for speed, Tailwind CSS for clean design, and a
-            physics engine that runs at 60 frames per second on every device. We obsess over the
-            details — from the exact pitch of the crack sound to the way a fortune fades in letter
-            by letter — because we think the internet could use more things that bring people a
-            small, unexpected moment of joy.
-          </p>
-
-          <p>
-            Whether you visit Fortune Crack for your{" "}
-            <Link href="/horoscope" className="text-gold hover:underline">
-              daily horoscope
-            </Link>
-            , to explore our{" "}
-            <Link href="/blog" className="text-gold hover:underline">
-              articles on luck, culture, and astrology
-            </Link>
-            , or simply to{" "}
+            Fortune Crack is an interactive fortune cookie experience at{" "}
             <Link href="/" className="text-gold hover:underline">
-              break a fortune cookie
+              fortunecrack.com
+            </Link>
+            . The site combines a physics-based cookie-breaking game with a growing library of
+            original fortunes, daily horoscopes for all twelve zodiac signs, zodiac profiles, and
+            articles on luck, astrology, and cultural traditions.
+          </p>
+
+          <h2 className="text-xl font-semibold text-gold">What You&apos;ll Find Here</h2>
+          <ul className="list-disc list-inside space-y-2 text-foreground/70">
+            <li>
+              <strong>Interactive Fortune Cookie</strong> — physics-based breaking with five
+              distinct methods, powered by Matter.js rigid-body dynamics and Pixi.js WebGL
+              rendering
+            </li>
+            <li>
+              <strong>1,000+ Original Fortunes</strong> — 8 categories (wisdom, love, career,
+              humor, motivation, philosophy, adventure, mystery) across 4 rarity tiers (Common,
+              Rare, Epic, Legendary)
+            </li>
+            <li>
+              <strong>Daily Horoscopes</strong> — readings for all 12 zodiac signs, updated every
+              morning based on traditional Western astrology principles
+            </li>
+            <li>
+              <strong>Weekly &amp; Monthly Forecasts</strong> — extended outlooks for each sign,
+              refreshed on a regular schedule
+            </li>
+            <li>
+              <strong>Zodiac Profiles</strong> — per-sign fortune pages with category breakdowns
+            </li>
+            <li>
+              <strong>Lucky Numbers</strong> — date-seeded daily lucky numbers so everyone sees the
+              same set on a given day
+            </li>
+            <li>
+              <strong>Blog</strong> — articles covering fortune cookie history, astrology, the
+              psychology of luck, and cultural traditions around the world
+            </li>
+          </ul>
+
+          <h2 className="text-xl font-semibold text-gold">How It Works</h2>
+          <p>
+            The cookie-breaking interaction runs on real-time 2D physics. Matter.js handles
+            rigid-body dynamics so each fragment cracks, bounces, and settles based on the force
+            applied. Pixi.js renders everything through WebGL for smooth animation at high frame
+            rates. Breaking a cookie also triggers crack sounds, a particle effect burst, and a
+            typewriter-style reveal of your fortune.
+          </p>
+          <p>
+            Five breaking methods are available: triple-tap smash, drag-to-throw, shake,
+            double-tap dramatic crack, and press-and-hold squeeze. Each produces a different
+            breaking pattern.
+          </p>
+          <p>
+            The Daily Fortune uses a date-seeded random number generator (mulberry32 algorithm), so
+            every visitor on the same calendar day sees the same fortune globally. The daily streak
+            system tracks consecutive visits and adjusts the rarity distribution in your favor as
+            your streak grows.
+          </p>
+
+          <h2 className="text-xl font-semibold text-gold">Our Approach</h2>
+          <p>
+            Horoscopes are generated daily based on traditional Western astrology principles:
+            planetary rulers, elemental associations (fire, earth, air, water), and the established
+            characteristics of each sign. They are produced on a fixed schedule — daily horoscopes
+            update each morning, weekly forecasts update each week, and monthly outlooks update at
+            the start of each month.
+          </p>
+          <p>
+            The fortune collection spans 8 categories and grows on a weekly basis. Blog content
+            covers a range of topics — from the{" "}
+            <Link href="/blog/history-of-fortune-cookies" className="text-gold hover:underline">
+              history of fortune cookies
             </Link>{" "}
-            and see what the universe has to say, we are glad you are here.
+            to the{" "}
+            <Link
+              href="/blog/psychology-of-fortune-telling"
+              className="text-gold hover:underline"
+            >
+              psychology of fortune telling
+            </Link>
+            . All content on the site is updated on a regular, documented schedule.
+          </p>
+
+          <h2 className="text-xl font-semibold text-gold">Get in Touch</h2>
+          <p>
+            Questions, feedback, or just want to say hello? Visit the{" "}
+            <Link href="/contact" className="text-gold hover:underline">
+              contact page
+            </Link>{" "}
+            and send a message.
           </p>
         </div>
       </article>
