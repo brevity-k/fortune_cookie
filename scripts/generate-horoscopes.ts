@@ -84,15 +84,30 @@ async function generateDaily(client: Anthropic): Promise<Record<string, unknown>
       max_tokens: 4000,
       messages: [{
         role: "user",
-        content: `You are an expert astrologer writing daily horoscopes. Generate today's horoscope for all 12 zodiac signs.
+        content: `You are writing daily horoscopes for fortunecrack.com. Generate today's horoscope for all 12 zodiac signs.
 
 Date: ${getToday()}. Season: ${getSeasonContext()}.
-Write engaging, warm English. Reference planetary movements. Each sign: 2-3 sentences (40-80 words). Vary tone.
+
+VOICE GUIDELINES:
+- Write like a knowledgeable friend giving advice over coffee, not a textbook or newspaper column.
+- Vary sentence structure across signs. Some horoscopes should open with a question, some with an observation, some with advice.
+- Mix practical daily suggestions ("call that person back", "take the longer route home") with reflective moments.
+- Vary length naturally: some signs get 2 sentences, others 3-4. Not every horoscope should be the same length.
+- Reference planetary movements where relevant, but do not start every horoscope with a planet name.
+
+DO NOT USE THESE PATTERNS:
+- "Mars charges through your X sector"
+- "Venus graces your Y house"
+- "The cosmos aligns to bring"
+- "Planetary energies suggest"
+- "Celestial bodies indicate"
+- "The stars are aligned for"
+- Starting 3+ horoscopes with the same sentence structure
 
 Signs: ${signList}
 
 Output JSON object with lowercase sign keys. Each value:
-- "text": string (2-3 sentences)
+- "text": string (2-4 sentences, 40-100 words, varied per sign)
 - "love": number 1-5
 - "career": number 1-5
 - "health": number 1-5
@@ -119,8 +134,11 @@ async function generateWeekly(client: Anthropic): Promise<Record<string, unknown
       max_tokens: 6000,
       messages: [{
         role: "user",
-        content: `Expert astrologer writing weekly horoscopes. Week of: ${getWeekStart()}. Season: ${getSeasonContext()}.
-English with depth. Reference planetary aspects. Each section: 2-3 sentences.
+        content: `Writing weekly horoscopes for fortunecrack.com. Week of: ${getWeekStart()}. Season: ${getSeasonContext()}.
+
+VOICE: Warm, conversational, like a knowledgeable friend. Vary sentence structure across signs. Mix practical advice with reflection. Do not start sections with planet names. Avoid "the cosmos aligns" and similar cliches.
+
+Each section: 2-3 sentences with varied length across signs.
 
 Signs: ${signList}
 
@@ -151,8 +169,11 @@ async function generateMonthly(client: Anthropic): Promise<Record<string, unknow
       max_tokens: 8000,
       messages: [{
         role: "user",
-        content: `Expert astrologer writing monthly horoscopes for ${monthName}. Season: ${getSeasonContext()}.
-English with depth and warmth. Reference major transits. Each section: 2-4 sentences.
+        content: `Writing monthly horoscopes for fortunecrack.com for ${monthName}. Season: ${getSeasonContext()}.
+
+VOICE: Warm, editorial, conversational. Vary structure across signs — some overviews should open with a question, some with a bold statement, some with a specific scenario. Reference major transits where relevant but do not lead with planet names. Avoid cliches like "the cosmos aligns" or "celestial energies suggest."
+
+Each section: 2-4 sentences with naturally varied length.
 
 Signs: ${signList}
 
