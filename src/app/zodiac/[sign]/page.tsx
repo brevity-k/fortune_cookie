@@ -265,6 +265,72 @@ const SIGN_PROFILES: Record<string, {
   },
 };
 
+const SIGN_NARRATIVES: Record<string, string> = {
+  aries: "If you have ever watched someone leap before looking and somehow land perfectly, you have probably witnessed an Aries in their element. This is the sign that trusts momentum over planning, and more often than not, the gamble pays off. Their fortune cookie fortunes tend to hit hardest when they are about action — not because Aries needs encouragement to act, but because seeing their instinct validated in writing gives them a rare moment of pause to appreciate what they already know.",
+  taurus: "There is a specific kind of calm that Taurus carries. It is not the calm of someone who has never faced difficulty but of someone who has decided, quietly and firmly, that they will not be moved by it. Taurus reads fortune cookies the way they approach most things: slowly, savoring the moment, turning the words over before deciding what to keep. The fortunes that stick with them are the ones about patience and lasting value — the ones that confirm what the Bull has always suspected about how the world really works.",
+  gemini: "Gemini reads a fortune cookie and immediately thinks of three different interpretations, two counterarguments, and a story it reminds them of. This is not indecision. It is a mind that refuses to accept the first answer when there might be a better one underneath. The fortunes that land for Gemini are the ones with a twist — the ones that seem to say one thing but reveal something deeper on a second read.",
+  cancer: "Cancer does not just read a fortune — they feel it. The words on that little slip of paper have a way of finding the exact tender spot that Cancer was trying not to think about. This is a sign that processes the world through emotion first and logic second, and the fortunes that move them most are the ones about home, belonging, and the quiet courage it takes to let people in.",
+  leo: "Leo opens a fortune cookie the way they do everything else: with flair. They read it aloud to the table, gauge the reaction, and then decide whether to frame it or forget it. But beneath the performance is a sign that genuinely wants their fortune to mean something. The messages that stay with Leo are the ones about generosity and creative courage — reminders that their light is not just for show but for warming everyone around them.",
+  virgo: "Virgo reads a fortune cookie and immediately evaluates whether it is grammatically correct, factually plausible, and relevant to their current situation. This is not cynicism — it is care. Virgo takes words seriously because they understand that language shapes thought. The fortunes that break through their analytical filter are the precise ones, the ones that name something specific rather than offering vague encouragement.",
+  libra: "Libra holds the fortune slip between their fingers and weighs it, almost literally, against what they already believe. This sign is always calibrating — not because they lack conviction but because they want their convictions to be fair. Fortune cookies work for Libra when they offer a nudge toward a decision the Scales have been quietly circling for weeks.",
+  scorpio: "Scorpio does not trust fortune cookies. They do not trust anything that offers easy answers. But every once in a while, a fortune lands with the precision of a scalpel, cutting straight to something Scorpio has been carrying alone. Those are the ones they fold up and slip into their wallet without telling anyone. Scorpio's relationship with fortune is intensely private — they do not share what resonates because sharing would dilute its power.",
+  sagittarius: "Sagittarius treats fortune cookies the way they treat most of life: as a game with real stakes and no guaranteed rules. They crack the cookie fast, read the fortune faster, and are already planning how to test it before the crumbs hit the table. The fortunes that excite Sagittarius are the ones that point somewhere — toward a trip, an idea, a question worth chasing across three continents.",
+  capricorn: "Capricorn reads a fortune cookie and files it under 'possibly useful, pending verification.' This is a sign that has learned not to trust easy promises because the things they value most — achievement, respect, lasting security — are earned through effort, not luck. The fortunes that Capricorn quietly respects are the ones about discipline and long games, the ones that treat success as something built rather than bestowed.",
+  aquarius: "Aquarius reads a fortune cookie and wonders who wrote it, what algorithm selected it, and whether the entire fortune cookie industry is an underappreciated sociological experiment. They are not being difficult — they are being Aquarius. The fortunes that actually land for this sign are the ones about collective good and unconventional thinking, the ones that validate their suspicion that the world needs different answers than the ones it has been settling for.",
+  pisces: "Pisces does not read a fortune cookie so much as absorb it. The words sink in slowly, mixing with whatever Pisces was already feeling, and by the time the fortune has settled, it has become something larger and more personal than what was actually printed on the paper. This is the sign that finds meaning everywhere, and fortune cookies are just one more channel through which the universe sends its quiet messages.",
+};
+
+const SIGN_FAQS: Record<string, { q: string; a: string }[]> = {
+  aries: [
+    { q: "Why are Aries fortunes focused on action and initiative?", a: "Aries is ruled by Mars, the planet of drive and physical energy. Fortunes drawn from the motivation category align with this cardinal fire sign's natural impulse to lead and start new things." },
+    { q: "What time of year is Aries season?", a: "Aries season runs from March 21 to April 19, marking the beginning of the astrological year and the spring equinox in the Northern Hemisphere." },
+  ],
+  taurus: [
+    { q: "Why does Taurus get career-themed fortunes?", a: "Taurus is an earth sign ruled by Venus, connecting material comfort with aesthetic appreciation. Career fortunes reflect Taurus's practical nature and talent for building lasting value." },
+    { q: "What makes Taurus compatible with other earth signs?", a: "Earth signs (Taurus, Virgo, Capricorn) share a grounded, practical approach to life. They understand each other's need for stability, routine, and tangible results." },
+  ],
+  gemini: [
+    { q: "Why are Gemini fortunes drawn from philosophy?", a: "Gemini is an air sign ruled by Mercury, the planet of communication and intellect. Philosophy fortunes match Gemini's love of ideas, mental exploration, and seeing things from multiple angles." },
+    { q: "Is it true that Geminis are two-faced?", a: "This is a common misconception. Gemini's dual nature (symbolized by the Twins) represents mental versatility — the ability to hold multiple perspectives simultaneously, not insincerity." },
+  ],
+  cancer: [
+    { q: "Why are Cancer fortunes connected to love?", a: "Cancer is a water sign ruled by the Moon, governing emotions, intuition, and nurturing. Love fortunes resonate with Cancer's deep emotional intelligence and devotion to the people they care about." },
+    { q: "How does the Moon affect Cancer's daily fortune?", a: "The Moon changes signs every 2-3 days, making Cancer more emotionally dynamic than other signs. Daily fortunes can feel especially relevant because Cancer's mood shifts naturally align with lunar cycles." },
+  ],
+  leo: [
+    { q: "What kind of fortunes resonate most with Leo?", a: "Leo is ruled by the Sun and drawn to fortunes about creativity, leadership, and generosity. As a fire sign, motivation-category fortunes match Leo's natural desire to inspire and be recognized." },
+    { q: "Why is Leo associated with creativity?", a: "The Sun, Leo's ruling planet, represents self-expression and vitality. Leo governs the fifth house of creativity, romance, and joy — making creative pursuits central to the Lion's identity." },
+  ],
+  virgo: [
+    { q: "Why does Virgo get career fortunes like Taurus?", a: "Both are earth signs, but for different reasons. Virgo's Mercury rulership channels earth energy toward analytical work, systems improvement, and practical service. Career fortunes align with Virgo's focus on meaningful, detail-oriented work." },
+    { q: "Is Virgo really the most health-conscious sign?", a: "Virgo rules the sixth house of health and daily routines. This sign has a natural awareness of how habits, diet, and environment affect wellbeing — making them genuinely attuned to health-related guidance." },
+  ],
+  libra: [
+    { q: "Why are Libra fortunes philosophical?", a: "Libra is an air sign ruled by Venus, combining intellectual curiosity with a deep concern for fairness and beauty. Philosophy fortunes match Libra's natural tendency to weigh ideas and seek balance between opposing viewpoints." },
+    { q: "How does Venus influence Libra differently than Taurus?", a: "Venus expresses through Taurus as physical sensuality and material comfort. Through Libra, Venus manifests as aesthetic harmony, social grace, and the pursuit of balanced relationships." },
+  ],
+  scorpio: [
+    { q: "Why are Scorpio fortunes about love rather than mystery?", a: "Scorpio is a water sign, and despite its intense reputation, its core drive is deep emotional connection. Love fortunes speak to Scorpio's capacity for transformative intimacy and fierce loyalty." },
+    { q: "What role does Pluto play in Scorpio's fortune?", a: "Pluto, Scorpio's modern ruler, governs transformation, hidden depths, and regeneration. Scorpio's fortunes often carry an extra layer of meaning — what appears on the surface is rarely the full story." },
+  ],
+  sagittarius: [
+    { q: "Why does Sagittarius get motivation-themed fortunes?", a: "Sagittarius is a fire sign ruled by Jupiter, the planet of expansion and optimism. Motivation fortunes align with the Archer's natural enthusiasm, love of adventure, and belief that the best is yet to come." },
+    { q: "What makes Sagittarius the traveler of the zodiac?", a: "Jupiter's influence gives Sagittarius an insatiable curiosity about the world. The ninth house, which Sagittarius rules, governs long-distance travel, higher education, and cross-cultural understanding." },
+  ],
+  capricorn: [
+    { q: "How do career fortunes align with Capricorn's nature?", a: "Capricorn is ruled by Saturn, the planet of discipline and long-term achievement. As an earth sign ruling the tenth house of career and public life, professional fortunes speak directly to Capricorn's core ambitions." },
+    { q: "Why is Capricorn considered the most ambitious sign?", a: "Saturn's influence gives Capricorn a natural understanding of delayed gratification. They are willing to put in years of steady effort for goals that other signs would abandon, making their ambition uniquely persistent." },
+  ],
+  aquarius: [
+    { q: "Why does Aquarius receive philosophy fortunes?", a: "Aquarius is an air sign co-ruled by Saturn and Uranus, combining structured thinking with revolutionary ideas. Philosophy fortunes match Aquarius's drive to question assumptions and envision better systems." },
+    { q: "Is Aquarius really the most independent sign?", a: "Uranus, Aquarius's modern ruler, governs freedom and unconventional thinking. Aquarians value intellectual autonomy and often prefer to chart their own course rather than follow established paths." },
+  ],
+  pisces: [
+    { q: "Why are Pisces fortunes connected to love?", a: "Pisces is a water sign co-ruled by Jupiter and Neptune, governing compassion, intuition, and spiritual connection. Love fortunes resonate with Pisces's boundless empathy and capacity for deep emotional bonds." },
+    { q: "How does Neptune shape Pisces's experience of fortune?", a: "Neptune dissolves boundaries between self and others, giving Pisces an almost psychic sensitivity. Fortunes often feel deeply personal to Pisces because they naturally find meaning and connection in symbolic language." },
+  ],
+};
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -347,20 +413,12 @@ export default async function ZodiacPage({
   const signTitle = zodiac.name;
   const profile = SIGN_PROFILES[sign];
 
-  const faqs = [
-    {
-      q: `What is today's fortune for ${signTitle}?`,
-      a: `Today's fortune for ${signTitle} is: "${fortune.text}" — a ${category} fortune drawn from your ${zodiac.element} element.`,
-    },
-    {
-      q: `What are the lucky numbers for ${signTitle} today?`,
-      a: `Today's lucky numbers for ${signTitle} are: ${luckyNumbers.join(", ")}. These refresh daily.`,
-    },
-    {
-      q: `How are ${signTitle} fortunes selected?`,
-      a: `${signTitle} is a ${zodiac.element} sign, so fortunes are drawn from the ${category} category. A date-based seed ensures everyone with the same sign sees the same fortune each day.`,
-    },
-  ];
+  const baseFaq = {
+    q: `What is today's fortune for ${signTitle}?`,
+    a: `Today's fortune for ${signTitle} is: "${fortune.text}" — a ${category} fortune drawn from your ${zodiac.element} element.`,
+  };
+  const signSpecificFaqs = SIGN_FAQS[sign] || [];
+  const faqs = [baseFaq, ...signSpecificFaqs];
 
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
@@ -387,6 +445,13 @@ export default async function ZodiacPage({
             {zodiac.element} Sign
           </span>
         </div>
+
+        {/* Sign Narrative */}
+        {SIGN_NARRATIVES[sign] && (
+          <p className="text-center text-sm text-muted leading-relaxed max-w-lg mx-auto mt-4 mb-8">
+            {SIGN_NARRATIVES[sign]}
+          </p>
+        )}
 
         {/* Today's Fortune */}
         <div
@@ -450,6 +515,10 @@ export default async function ZodiacPage({
             </div>
           </div>
         )}
+
+        <p className="text-xs text-foreground/30 text-center mb-6">
+          Based on traditional Western astrology
+        </p>
 
         {/* Fortune Cookie Wisdom */}
         {profile && (
