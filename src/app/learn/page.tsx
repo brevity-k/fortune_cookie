@@ -26,8 +26,8 @@ const guides = [
   {
     title: "Zodiac Signs",
     description:
-      "Complete guide to all 12 zodiac signs — personality traits, compatibility, and strengths",
-    href: "/learn/zodiac-signs",
+      "Zodiac sign profiles with daily fortunes, personality insights, and compatibility",
+    href: "/zodiac/aries",
     emoji: "\u2648",
   },
   {

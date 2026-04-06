@@ -27,7 +27,7 @@ export default function TarotBasicsLearnPage() {
       slug="tarot-basics"
       relatedLinks={[
         { title: "Moon Phases Guide", href: "/learn/moon-phases" },
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "Daily Horoscopes", href: "/horoscope" },
       ]}
     />

@@ -26,7 +26,7 @@ export default function ElementsLearnPage() {
       data={elementsData}
       slug="elements"
       relatedLinks={[
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "Planets in Astrology", href: "/learn/planets" },
         { title: "Daily Horoscopes", href: "/horoscope" },
       ]}

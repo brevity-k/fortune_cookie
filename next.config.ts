@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/learn/zodiac-signs",
+        destination: "/zodiac/aries",
+        permanent: true,
+      },
+      {
+        source: "/learn/zodiac/:sign",
+        destination: "/zodiac/:sign",
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -26,7 +26,7 @@ export default function ChineseZodiacLearnPage() {
       data={chineseZodiacData}
       slug="chinese-zodiac"
       relatedLinks={[
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "Numerology", href: "/learn/numerology" },
         { title: "Fortune Cookie History", href: "/learn/fortune-cookie-history" },
       ]}

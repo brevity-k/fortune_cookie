@@ -27,7 +27,7 @@ export default function FortuneCookieHistoryLearnPage() {
       slug="fortune-cookie-history"
       relatedLinks={[
         { title: "About Fortune Cookie", href: "/about" },
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "Blog", href: "/blog" },
       ]}
     />

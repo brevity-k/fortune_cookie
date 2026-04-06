@@ -27,7 +27,7 @@ export default function PlanetsLearnPage() {
       slug="planets"
       relatedLinks={[
         { title: "Astrological Houses", href: "/learn/houses" },
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "The Four Elements", href: "/learn/elements" },
       ]}
     />

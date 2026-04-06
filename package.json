@@ -52,6 +52,8 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vercel/node": "^5.7.0",
+    "@vercel/og": "^0.11.1",
     "eslint": "^9",
     "eslint-config-next": "^16.2.2",
     "tailwindcss": "^4",

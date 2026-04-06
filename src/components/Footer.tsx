@@ -31,7 +31,7 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-sm font-semibold text-foreground/80">Learn</h3>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/learn/zodiac-signs" className="text-muted transition hover:text-gold">Zodiac Signs</Link>
+              <Link href="/zodiac/aries" className="text-muted transition hover:text-gold">Zodiac Signs</Link>
               <Link href="/learn/numerology" className="text-muted transition hover:text-gold">Numerology</Link>
               <Link href="/learn/tarot-basics" className="text-muted transition hover:text-gold">Tarot Basics</Link>
               <Link href="/learn/moon-phases" className="text-muted transition hover:text-gold">Moon Phases</Link>

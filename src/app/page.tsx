@@ -195,7 +195,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {[
-            { emoji: "\u2648", title: "Zodiac Signs", href: "/learn/zodiac-signs" },
+            { emoji: "\u2648", title: "Zodiac Signs", href: "/zodiac/aries" },
             { emoji: "\uD83D\uDD2E", title: "Daily Horoscopes", href: "/horoscope" },
             { emoji: "\uD83D\uDD22", title: "Lucky Numbers", href: "/lucky-numbers" },
             { emoji: "\uD83E\uDE90", title: "Planets Guide", href: "/learn/planets" },

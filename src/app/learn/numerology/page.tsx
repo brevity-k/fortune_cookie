@@ -27,7 +27,7 @@ export default function NumerologyLearnPage() {
       slug="numerology"
       relatedLinks={[
         { title: "Lucky Numbers", href: "/lucky-numbers" },
-        { title: "Zodiac Signs Guide", href: "/learn/zodiac-signs" },
+        { title: "Zodiac Signs Guide", href: "/zodiac/aries" },
         { title: "Fortune Cookie History", href: "/learn/fortune-cookie-history" },
       ]}
     />

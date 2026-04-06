@@ -81,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Learn section pages
   const learnSlugs = [
-    "zodiac-signs", "elements", "planets", "houses", "numerology",
+    "elements", "planets", "houses", "numerology",
     "fortune-cookie-history", "tarot-basics", "moon-phases", "chinese-zodiac",
   ];
   const learnEntries: MetadataRoute.Sitemap = [
@@ -93,12 +93,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...learnSlugs.map((slug) => ({
       url: `${baseUrl}/learn/${slug}`,
-      lastModified: staticPageDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-    ...ZODIAC_SIGNS.map((sign) => ({
-      url: `${baseUrl}/learn/zodiac/${sign.key}`,
       lastModified: staticPageDate,
       changeFrequency: "monthly" as const,
       priority: 0.7,
