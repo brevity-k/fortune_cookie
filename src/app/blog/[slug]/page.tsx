@@ -118,6 +118,19 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
+          <div className="rounded-xl border border-border bg-background p-5 mb-6">
+            <p className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">
+              About Fortune Crack
+            </p>
+            <p className="text-sm text-muted leading-relaxed">
+              Fortune Crack is a daily fortune and astrology destination featuring 1,000+ original
+              fortunes, daily horoscopes for all 12 zodiac signs, and in-depth zodiac insights.
+              Content is updated every day.{" "}
+              <Link href="/about" className="text-gold hover:underline">
+                Learn more about us
+              </Link>
+            </p>
+          </div>
           <Link href="/blog" className="text-gold transition hover:text-gold-light">
             ← Read more articles
           </Link>
