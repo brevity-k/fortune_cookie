@@ -111,6 +111,72 @@ const SIGN_INSIGHTS: Record<string, { title: string; content: string[] }> = {
   },
 };
 
+const SIGN_DAILY_CONTEXT: Record<string, string> = {
+  aries: "Aries daily readings are driven by Mars, which shifts aspects every few days. When Mars is well-aspected, expect your horoscope to highlight bold opportunities. When Mars faces tension, the reading will steer you toward patience — a word Aries hears often but rarely enjoys.",
+  taurus: "Your daily horoscope tracks Venus closely. Because Venus moves through each sign for about a month, Taurus readings tend to have a consistent emotional undertone that shifts gradually rather than dramatically from day to day.",
+  gemini: "Mercury, your ruler, is the fastest-moving planet in astrology. This makes Gemini's daily horoscope more variable than most — the tone and focus can shift noticeably from one day to the next as Mercury forms and dissolves aspects rapidly.",
+  cancer: "No other sign's daily horoscope changes as frequently as Cancer's. The Moon, your ruler, shifts signs every two to two and a half days and changes aspects every few hours, making each day's reading genuinely distinct.",
+  leo: "The Sun moves about one degree per day, forming subtle but meaningful aspects with other planets. Leo's daily horoscope reflects these gradual shifts — small changes in energy and focus that build toward larger themes over weeks.",
+  virgo: "Like Gemini, Virgo is ruled by Mercury, but your daily horoscope filters Mercury's energy through an earth-sign lens. Where Gemini's readings emphasize ideas, yours tend to focus on practical improvements and health.",
+  libra: "Venus shapes your daily reading much as it does Taurus, but through an air-sign filter. Libra's horoscope tends to emphasize social dynamics, aesthetic choices, and the balance between your needs and others'.",
+  scorpio: "Scorpio's daily horoscope draws from both Mars (traditional ruler) and Pluto (modern ruler). This dual influence creates readings with both surface-level action guidance and deeper undercurrents about transformation.",
+  sagittarius: "Jupiter, your ruler, moves slowly — spending about a year in each sign. This gives Sagittarius daily readings a consistent philosophical backdrop, with day-to-day variation coming from faster-moving planets interacting with Jupiter's position.",
+  capricorn: "Saturn, your ruler, is the slowest of the traditional planets. Capricorn's daily readings carry a steady, disciplined undertone that shifts only gradually, with daily variation coming from the Moon and inner planets.",
+  aquarius: "Uranus, your modern ruler, moves so slowly that its influence is generational. Your daily horoscope gets its day-to-day variation from faster planets, but Uranus provides an underlying theme of innovation that colors every reading.",
+  pisces: "Neptune's influence on your daily horoscope is subtle and pervasive rather than sharp and specific. Pisces readings often have a dreamlike quality, with practical guidance woven into more intuitive, feeling-based language.",
+};
+
+const DAILY_SIGN_FAQS: Record<string, { q: string; a: string }[]> = {
+  aries: [
+    { q: "When is the best time to read an Aries daily horoscope?", a: "Aries energy peaks in the morning. Reading your horoscope early helps you channel Mars-driven initiative into the day's first decisions." },
+    { q: "How does Mars retrograde affect Aries daily readings?", a: "Mars retrograde (roughly every two years) slows Aries' natural momentum. During these periods, daily horoscopes often shift focus from action to reflection and strategy." },
+  ],
+  taurus: [
+    { q: "Why do Taurus daily horoscopes often mention finances?", a: "Taurus rules the second house of money and values. Venus, your ruler, connects material comfort with personal worth, making financial themes a natural part of your daily reading." },
+    { q: "How do Moon transits affect Taurus daily readings?", a: "When the Moon transits earth signs (Taurus, Virgo, Capricorn), your daily horoscope tends to be more grounded and productive. Water sign Moons bring out your emotional depth." },
+  ],
+  gemini: [
+    { q: "Why does Gemini's daily horoscope change so much?", a: "Mercury, your ruler, is the fastest planet in the solar system. It forms and dissolves aspects rapidly, giving Gemini the most variable daily readings of any sign." },
+    { q: "How does Mercury retrograde affect Gemini specifically?", a: "Mercury retrogrades hit Gemini harder than most signs because Mercury is your personal ruler. Daily readings during these periods emphasize reviewing, revising, and reconnecting rather than starting new projects." },
+  ],
+  cancer: [
+    { q: "Why are Cancer horoscopes so emotionally specific?", a: "The Moon, Cancer's ruler, governs emotions and changes signs every 2-3 days. This lunar sensitivity makes Cancer's daily reading the most emotionally nuanced in the zodiac." },
+    { q: "Do Full Moons affect Cancer more than other signs?", a: "Yes. As a Moon-ruled sign, Cancer feels Full Moon energy more intensely. Daily horoscopes around the Full Moon often address emotional release, relationship clarity, and heightened intuition." },
+  ],
+  leo: [
+    { q: "What does it mean when Leo's career rating is high?", a: "High career ratings for Leo typically coincide with the Sun forming positive aspects to Jupiter or Mars. These are days when your natural leadership and charisma are especially effective." },
+    { q: "How does Leo season (July-August) affect daily readings?", a: "During Leo season, the Sun is in your home sign, amplifying your natural confidence and vitality. Daily horoscopes during this period tend to be more empowering and action-oriented." },
+  ],
+  virgo: [
+    { q: "Why does the Virgo daily horoscope mention health so often?", a: "Virgo rules the sixth house of health and daily routines. Mercury, your ruler, connects your mental state to physical wellbeing, making health a consistent theme in your readings." },
+    { q: "When is Virgo's daily horoscope most accurate?", a: "Virgo readings tend to be most resonant when Mercury is direct and moving through earth or water signs. These periods align Mercury's analytical energy with Virgo's practical nature." },
+  ],
+  libra: [
+    { q: "Why do Libra horoscopes focus on relationships?", a: "Libra rules the seventh house of partnerships. Venus, your ruler, orients your daily experience around connection, balance, and how you relate to others." },
+    { q: "How do Venus transits affect Libra's daily reading?", a: "When Venus is in a compatible sign (air or fire), Libra daily horoscopes emphasize social success and creative flow. Challenging Venus aspects bring relationship lessons to the foreground." },
+  ],
+  scorpio: [
+    { q: "Why are Scorpio horoscopes more intense than other signs?", a: "Scorpio is co-ruled by Mars (action, desire) and Pluto (transformation, depth). This dual rulership gives Scorpio readings a layered quality that addresses both surface events and deeper psychological currents." },
+    { q: "How do Pluto transits affect Scorpio daily readings?", a: "Pluto moves slowly, so its influence creates long background themes in Scorpio's daily horoscope. Day-to-day variation comes from faster planets, but Pluto sets the deeper transformative context." },
+  ],
+  sagittarius: [
+    { q: "Why do Sagittarius horoscopes mention travel and learning?", a: "Sagittarius rules the ninth house of long-distance travel, higher education, and philosophical exploration. Jupiter, your ruler, expands whatever it touches, making these themes central to your daily reading." },
+    { q: "What makes Jupiter transits significant for Sagittarius?", a: "Jupiter spends about a year in each sign. When it enters a new sign, the background theme of your daily horoscope shifts noticeably, coloring your readings for the entire year." },
+  ],
+  capricorn: [
+    { q: "Why do Capricorn daily horoscopes emphasize long-term thinking?", a: "Saturn, your ruler, is the planet of time, discipline, and earned achievement. Capricorn daily readings naturally reflect Saturn's orientation toward sustainable progress rather than quick wins." },
+    { q: "How does Saturn return affect Capricorn readings?", a: "Saturn return (around ages 29 and 58) is especially significant for Capricorn. During these periods, daily horoscopes carry extra weight around themes of maturity, responsibility, and life structure." },
+  ],
+  aquarius: [
+    { q: "Why does the Aquarius horoscope mention innovation?", a: "Uranus, your modern ruler, governs sudden insight, technology, and unconventional thinking. Daily readings for Aquarius often highlight moments where breaking from routine leads to breakthroughs." },
+    { q: "How is Aquarius different from other air signs in daily readings?", a: "While Gemini's readings emphasize communication and Libra's focus on relationships, Aquarius daily horoscopes center on collective progress, intellectual independence, and systemic thinking." },
+  ],
+  pisces: [
+    { q: "Why do Pisces daily horoscopes feel dreamlike?", a: "Neptune, your modern ruler, governs dreams, intuition, and the dissolution of boundaries. This gives Pisces readings a more poetic, feeling-based quality compared to other signs." },
+    { q: "How does Neptune retrograde affect Pisces daily readings?", a: "Neptune retrograde (about five months each year) brings clarity to areas where Pisces may have been idealizing. Daily horoscopes during this period tend to be more grounded and reality-focused." },
+  ],
+};
+
 type PageProps = { params: Promise<{ sign: string }> };
 
 export const dynamicParams = false;
@@ -167,16 +233,12 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
   const formattedDate = formatDailyDate(getDailyDate());
   const signTitle = zodiac.name;
 
-  const faqs = [
-    {
-      q: `What is today's horoscope for ${signTitle}?`,
-      a: daily ? `Today's ${signTitle} horoscope: "${daily.text.slice(0, 120)}..."` : `Check back for today's ${signTitle} horoscope.`,
-    },
-    {
-      q: `What are ${signTitle}'s lucky numbers today?`,
-      a: daily ? `Today's lucky number for ${signTitle} is ${daily.luckyNumber}. Lucky color: ${daily.luckyColor}.` : "Check back daily for updated lucky numbers.",
-    },
-  ];
+  const baseFaq = {
+    q: `What is today's horoscope for ${signTitle}?`,
+    a: daily ? `Today's ${signTitle} horoscope: "${daily.text.slice(0, 120)}..."` : `Check back for today's ${signTitle} horoscope.`,
+  };
+  const signSpecificFaqs = DAILY_SIGN_FAQS[sign] || [];
+  const faqs = [baseFaq, ...signSpecificFaqs];
 
   return (
     <div className="bg-warm-gradient min-h-screen px-4 py-16">
@@ -235,6 +297,16 @@ export default async function DailyHoroscopePage({ params }: PageProps) {
             </div>
           </div>
         )}
+
+        {SIGN_DAILY_CONTEXT[sign] && (
+          <p className="text-xs text-muted leading-relaxed text-center mb-6">
+            {SIGN_DAILY_CONTEXT[sign]}
+          </p>
+        )}
+
+        <p className="text-xs text-foreground/30 text-center mb-6">
+          Based on traditional Western astrology and current planetary positions
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-3 mb-8">
           <Link href={`/horoscope/weekly/${sign}`} className="flex-1 text-center rounded-full border border-border px-6 py-3 text-sm text-gold transition hover:bg-gold/10">
