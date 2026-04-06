@@ -295,6 +295,45 @@ export default function Home() {
         </section>
       )}
 
+      {/* What Is Fortune Crack */}
+      <section className="mx-auto max-w-3xl px-4 py-10">
+        <h2 className="text-2xl font-bold text-foreground/80 mb-4 text-center">
+          What Is Fortune Crack?
+        </h2>
+        <div className="rounded-2xl border border-border bg-background p-8 space-y-4">
+          <p className="leading-relaxed text-muted">
+            Fortune Crack is a free daily fortune and astrology site built around an interactive
+            fortune cookie experience. Instead of clicking a button to see a random quote, you
+            actually break a virtual cookie using real-time physics — tap it, drag it, shake your
+            device, double-tap, or squeeze. Each method produces different crack patterns, sounds,
+            and particle effects.
+          </p>
+          <p className="leading-relaxed text-muted">
+            Behind the cookie is a collection of over 1,000 original fortunes organized into eight
+            categories: wisdom, love, career, humor, motivation, philosophy, adventure, and mystery.
+            Each fortune has a rarity tier (Common, Rare, Epic, or Legendary), and a daily streak
+            system rewards regular visitors with better odds of finding rare fortunes.
+          </p>
+          <p className="leading-relaxed text-muted">
+            Beyond fortune cookies, the site offers{" "}
+            <Link href="/horoscope" className="text-gold hover:underline">daily horoscopes</Link>{" "}
+            for all 12 zodiac signs, updated every morning based on traditional Western astrology.
+            There are also{" "}
+            <Link href="/zodiac/aries" className="text-gold hover:underline">zodiac profiles</Link>{" "}
+            with personality insights and relationship guidance,{" "}
+            <Link href="/lucky-numbers" className="text-gold hover:underline">daily lucky numbers</Link>,
+            and a{" "}
+            <Link href="/blog" className="text-gold hover:underline">blog</Link>{" "}
+            covering fortune cookie history, astrology, luck, and cultural traditions.
+          </p>
+          <p className="leading-relaxed text-muted">
+            The Daily Fortune uses a date-seeded algorithm so everyone on Earth sees the same fortune
+            each day. Horoscopes are regenerated daily. New fortunes are added weekly. Blog posts
+            publish multiple times a week.
+          </p>
+        </div>
+      </section>
+
       {/* About Fortune Cookies */}
       <section className="mx-auto max-w-3xl px-4 py-10">
         <h2 className="text-2xl font-bold text-foreground/80 mb-4 text-center">
@@ -303,20 +342,31 @@ export default function Home() {
         <div className="rounded-2xl border border-border bg-background p-8 space-y-4">
           <p className="leading-relaxed text-muted">
             Despite being synonymous with Chinese restaurants in America, fortune cookies were
-            actually invented in California. Japanese immigrant Makoto Hagiwara is widely credited
-            with introducing them at San Francisco&apos;s Japanese Tea Garden in the early 1900s. The
-            cookies drew from the Japanese tradition of <em>tsujiura senbei</em> — crackers containing
-            paper fortunes sold at temples in Kyoto. During World War II, Japanese-American bakers
-            were interned, and Chinese-American manufacturers took over production, cementing the
-            cookie&apos;s association with Chinese cuisine.
+            actually invented in California. Japanese immigrant{" "}
+            <a href="https://en.wikipedia.org/wiki/Makoto_Hagiwara" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
+              Makoto Hagiwara
+            </a>{" "}
+            is widely credited with introducing them at San Francisco&apos;s{" "}
+            <a href="https://en.wikipedia.org/wiki/Japanese_Tea_Garden_(San_Francisco)" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
+              Japanese Tea Garden
+            </a>{" "}
+            in the early 1900s. The cookies drew from the Japanese tradition of{" "}
+            <em>tsujiura senbei</em> — crackers containing paper fortunes sold at temples in Kyoto.
+            During World War II, Japanese-American bakers were interned, and Chinese-American
+            manufacturers took over production, cementing the cookie&apos;s association with Chinese
+            cuisine.
           </p>
           <p className="leading-relaxed text-muted">
-            Psychologists call it the <em>Barnum effect</em> — our tendency to find personal meaning
-            in vague statements. Fortune cookies tap into this beautifully. A message like &ldquo;A
-            calm mind hears what a busy mind cannot&rdquo; feels uncannily relevant because our brains
-            naturally search for connections to our current circumstances. This isn&apos;t a flaw in
-            thinking — it&apos;s a feature. Studies show that brief moments of reflection, even prompted
-            by a cookie, can improve mood and encourage mindful pauses in our day.
+            Psychologists call it the{" "}
+            <a href="https://en.wikipedia.org/wiki/Barnum_effect" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">
+              Barnum effect
+            </a>{" "}
+            — our tendency to find personal meaning in vague statements. Fortune cookies tap into
+            this beautifully. A message like &ldquo;A calm mind hears what a busy mind cannot&rdquo;
+            feels uncannily relevant because our brains naturally search for connections to our
+            current circumstances. This isn&apos;t a flaw in thinking — it&apos;s a feature. Brief moments
+            of reflection, even prompted by a cookie, can improve mood and encourage mindful pauses
+            in our day.
           </p>
           <p className="leading-relaxed text-muted">
             Fortune Crack recreates this experience digitally with real-time physics simulation.
