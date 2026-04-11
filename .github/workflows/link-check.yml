@@ -34,7 +34,7 @@ jobs:
 
       - name: Create issue on failure (deduplicated)
         if: failure()
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const title = 'Broken links detected';
@@ -68,7 +68,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@v9
         with:
           script: |
             const title = 'Broken links detected';
