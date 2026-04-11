@@ -25,9 +25,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.82.0",
-    "@atproto/api": "^0.19.6",
-    "@stripe/stripe-js": "^9.0.1",
+    "@anthropic-ai/sdk": "^0.88.0",
+    "@atproto/api": "^0.19.8",
+    "@stripe/stripe-js": "^9.1.0",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
     "astronomy-engine": "^2.1.19",
@@ -37,13 +37,13 @@
     "jose": "^6.2.2",
     "korean-lunar-calendar": "^0.3.6",
     "matter-js": "^0.20.0",
-    "next": "^16.2.2",
+    "next": "^16.2.3",
     "next-mdx-remote": "^6.0.0",
     "pixi.js": "^8.17.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "resend": "^6.10.0",
-    "stripe": "^22.0.0"
+    "stripe": "^22.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -52,14 +52,14 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vercel/node": "^5.7.0",
+    "@vercel/node": "^5.7.4",
     "@vercel/og": "^0.11.1",
     "eslint": "^9",
-    "eslint-config-next": "^16.2.2",
+    "eslint-config-next": "^16.2.3",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "twitter-api-v2": "^1.29.0",
     "typescript": "^6",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.4"
   }
 }
