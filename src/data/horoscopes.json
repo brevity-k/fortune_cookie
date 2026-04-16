@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-04-15",
+    "date": "2026-04-16",
     "horoscopes": {
       "aries": {
-        "text": "Your birthday season continues to amplify your natural magnetism, but today asks you to pause rather than push. That conversation you've been avoiding? It's actually the shortcut to what you want. Channel your fire into listening instead of leading, just for these next few hours.",
-        "love": 4,
-        "career": 3,
+        "text": "That project you've been sitting on? Today's the day to dust it off and actually start. You're feeling the pull toward something new, but make sure you're not just chasing novelty for its own sake. Channel that trademark fire into one focused direction rather than scattering yourself across five half-formed ideas.",
+        "love": 3,
+        "career": 4,
         "health": 4,
         "luckyNumber": 17,
         "luckyColor": "crimson",
         "mood": "determined"
       },
       "taurus": {
-        "text": "Something you planted weeks ago—metaphorically or literally—is beginning to show results. Take the longer route home today and notice what's blooming around you. Your ruler Venus is whispering that rest isn't laziness; it's strategy.",
-        "love": 3,
-        "career": 4,
-        "health": 5,
+        "text": "Money conversations need your attention today, even if you'd rather put them off until next week. Someone close to you is ready to meet you halfway on something you've been negotiating. Take the longer route home tonight—you'll stumble onto something that makes you smile.",
+        "love": 4,
+        "career": 3,
+        "health": 3,
         "luckyNumber": 42,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Are you collecting information or avoiding a decision? Mercury's current position suggests you already know the answer but you're enjoying the research phase a bit too much. Pick up the phone and call that person back—the conversation will unlock three new doors.",
-        "love": 4,
-        "career": 5,
+        "text": "Your mind is three steps ahead of everyone else's, which is both your superpower and your stumbling block today. Slow down enough to bring others along with you—their input might actually improve what you're building. Call that person back before the day ends.",
+        "love": 3,
+        "career": 4,
         "health": 3,
         "luckyNumber": 8,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Your intuition is louder than usual today, almost drowning out logic entirely. Trust it. Someone close to you needs what only you can offer, but they won't ask directly—watch for the subtle signals.",
-        "love": 5,
-        "career": 3,
-        "health": 4,
+        "text": "Have you been waiting for permission to put yourself first? Consider this it. The Moon's influence reminds you that self-care isn't selfish when you've been running on empty for weeks. One authentic conversation will do more for your relationships than a dozen surface-level check-ins.",
+        "love": 4,
+        "career": 2,
+        "health": 5,
         "luckyNumber": 29,
         "luckyColor": "seafoam",
-        "mood": "intuitive"
-      },
-      "leo": {
-        "text": "The spotlight finds you even when you're not seeking it, which might feel exhausting by mid-afternoon. Let someone else take the lead on that group project—your generosity will be remembered longer than your performance. Spring is teaching you that growth sometimes means stepping back.",
-        "love": 3,
-        "career": 4,
-        "health": 3,
-        "luckyNumber": 61,
-        "luckyColor": "gold",
         "mood": "reflective"
       },
+      "leo": {
+        "text": "You're radiating something magnetic today, and people are noticing. Use that natural charm in the meeting or conversation that matters most, but don't waste energy trying to win over everyone in the room. Focus on quality connections over applause.",
+        "love": 5,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 63,
+        "luckyColor": "gold",
+        "mood": "confident"
+      },
       "virgo": {
-        "text": "Your usual systems feel slightly off today, and that's actually perfect. The mess is where the breakthrough lives. Give yourself permission to improvise, especially around creative projects or relationship conversations that require more heart than planning.",
+        "text": "That nagging detail everyone else missed? You caught it, and addressing it now saves chaos later. Try not to let perfectionism trap you in endless revision mode—done is better than perfect today. Your body is asking for better sleep; listen to it.",
+        "love": 2,
+        "career": 5,
+        "health": 2,
+        "luckyNumber": 51,
+        "luckyColor": "navy",
+        "mood": "focused"
+      },
+      "libra": {
+        "text": "Why are you still trying to balance everyone else's needs while ignoring your own? Today offers a chance to recalibrate that scale without guilt. A creative project needs your attention more than administrative tasks do—give yourself permission to prioritize beauty over efficiency for once.",
         "love": 4,
         "career": 3,
         "health": 4,
-        "luckyNumber": 53,
+        "luckyNumber": 76,
         "luckyColor": "lavender",
-        "mood": "inspired"
-      },
-      "libra": {
-        "text": "Why are you trying so hard to keep everyone happy when what's needed is honest clarity? The balance you're known for sometimes means holding steady in your truth while others adjust around you. Wear something that makes you feel powerful today.",
-        "love": 3,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 26,
-        "luckyColor": "pink",
-        "mood": "confident"
+        "mood": "harmonious"
       },
       "scorpio": {
-        "text": "That secret you're keeping is taking up more energy than it's worth. Today offers a rare window for release without drama—choose your confidant wisely and let it go. Financial matters require your signature intensity right now.",
-        "love": 4,
-        "career": 5,
-        "health": 3,
-        "luckyNumber": 74,
+        "text": "Trust your instincts about that situation—you're reading between the lines correctly. Someone's about to reveal something they've been holding back, and your response will set the tone for what comes next. Channel intensity into transformation rather than confrontation.",
+        "love": 3,
+        "career": 4,
+        "health": 4,
+        "luckyNumber": 34,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Your restlessness is actually a compass pointing toward something specific, not just general wanderlust. Book that ticket, start that course, or simply take a different route to work. Jupiter's influence reminds you that adventure doesn't always require a passport.",
-        "love": 5,
-        "career": 4,
+        "text": "Spring is feeding your need for expansion, but today asks you to explore depth instead of breadth. Book that trip or sign up for that class you've been researching—talking about adventure is fine, but you're ready to actually commit. Your optimism is contagious; share it generously.",
+        "love": 4,
+        "career": 3,
         "health": 5,
-        "luckyNumber": 11,
+        "luckyNumber": 91,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "You've been climbing steadily, but today asks you to glance sideways at the view you've been missing. Professional success is coming, but the timing is slightly different than your spreadsheet predicted. Adjust expectations, not effort.",
+        "text": "You've been climbing steadily, but today's a good day to pause and assess whether you're still heading toward the summit you actually want. A financial opportunity looks promising—just make sure the numbers support your instincts. Rest isn't weakness; it's strategy.",
         "love": 2,
         "career": 5,
-        "health": 4,
-        "luckyNumber": 88,
+        "health": 3,
+        "luckyNumber": 12,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Your brain is firing on all cylinders with ideas that sound wild but are actually three years ahead of everyone else. Document everything today—voice memos, sketches, random notes—because future you will need this blueprint. Community matters require your unique perspective.",
+        "text": "Your unconventional solution to that recurring problem? It's exactly what's needed, even if others raise their eyebrows at first. Collaborative energy is strong, so share that wild idea with someone who gets your wavelength. Drink more water than you think you need.",
         "love": 3,
         "career": 4,
-        "health": 3,
-        "luckyNumber": 35,
-        "luckyColor": "indigo",
+        "health": 4,
+        "luckyNumber": 55,
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "The boundary between your dreams and reality feels especially thin today, which is your natural habitat. Channel this into creative work rather than getting lost in fantasy about situations you can't control. Someone from your past may resurface with surprising relevance.",
-        "love": 4,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 99,
-        "luckyColor": "teal",
-        "mood": "playful"
+        "text": "Dreams and reality are blending in interesting ways today—pay attention to what your subconscious is trying to tell you. That creative block you've been facing? It dissolves when you stop forcing it and just let things flow. Someone needs your compassion, but remember to save some for yourself too.",
+        "love": 5,
+        "career": 2,
+        "health": 3,
+        "luckyNumber": 23,
+        "luckyColor": "indigo",
+        "mood": "intuitive"
       }
     }
   },
