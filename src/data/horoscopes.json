@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-04-21",
+    "date": "2026-04-22",
     "horoscopes": {
       "aries": {
-        "text": "Happy solar return, Aries! This is your moment to plant seeds for the year ahead, so don't hold back on those bold ideas that have been brewing. The energy around you is electric, but remember that sustainable growth requires some patience too. Take time today to write down one intention that truly matters.",
+        "text": "Your birthday season brings a surge of creative energy that's begging to be channeled into something tangible. Stop overthinking that project and just start—messy first drafts are how masterpieces begin. The confidence you're feeling isn't arrogance; it's alignment.",
         "love": 4,
         "career": 5,
         "health": 3,
-        "luckyNumber": 21,
+        "luckyNumber": 7,
         "luckyColor": "crimson",
         "mood": "energetic"
       },
       "taurus": {
-        "text": "You're in the final stretch of your introspective season, and something important is crystallizing behind the scenes. Trust what you're feeling even if you can't articulate it yet. Rest isn't laziness right now—it's preparation.",
+        "text": "Today marks the Sun's entrance into your sign, turning the spotlight squarely on you for the next month. What do you actually want, not what everyone else expects? Take the afternoon to do something that feeds your soul rather than your schedule.",
         "love": 3,
-        "career": 2,
+        "career": 3,
         "health": 4,
-        "luckyNumber": 8,
-        "luckyColor": "lavender",
+        "luckyNumber": 22,
+        "luckyColor": "emerald",
         "mood": "reflective"
       },
       "gemini": {
-        "text": "Your social calendar might be lighting up, but pay attention to which connections actually energize you versus which ones just fill time. There's a conversation waiting to happen with someone who gets your weird sense of humor—seek that out instead of scattering yourself thin. Mercury's position suggests your words carry extra weight today, so choose them wisely.",
-        "love": 3,
+        "text": "That conversation you've been avoiding? It's taking up more mental space than actually having it would. Mercury's position suggests your words will land better than you think, so reach out before lunch. Sometimes clarity comes from speaking, not from endless internal rehearsal.",
+        "love": 4,
         "career": 4,
         "health": 3,
-        "luckyNumber": 47,
+        "luckyNumber": 15,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Something about your public image or career path is shifting, and it might feel vulnerable to step into this new visibility. Let yourself be seen anyway. The recognition you've been hoping for is closer than you think, but it requires you to own your expertise without apologizing for it.",
+        "text": "You're feeling the pull to retreat, and honestly, that's exactly what you need right now. Spring isn't just about bursting forth—it's also about what's germinating beneath the surface. Give yourself permission to work quietly on something before sharing it with the world.",
+        "love": 3,
+        "career": 2,
+        "health": 4,
+        "luckyNumber": 44,
+        "luckyColor": "seafoam",
+        "mood": "intuitive"
+      },
+      "leo": {
+        "text": "Your social calendar is lighting up, but pay attention to which invitations genuinely excite you versus which feel like obligations. That side project you mentioned last month deserves more of your attention than you've been giving it. Take the longer route home and let your mind wander.",
+        "love": 4,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 31,
+        "luckyColor": "gold",
+        "mood": "playful"
+      },
+      "virgo": {
+        "text": "Is perfectionism protecting you or holding you back? Today's energy asks you to distinguish between the two. Someone at work is noticing your efforts more than you realize—don't downplay your contributions when they're acknowledged.",
         "love": 2,
         "career": 5,
         "health": 3,
-        "luckyNumber": 63,
-        "luckyColor": "silver",
-        "mood": "ambitious"
+        "luckyNumber": 68,
+        "luckyColor": "navy",
+        "mood": "focused"
       },
-      "leo": {
-        "text": "Why not take the scenic route today, literally or metaphorically? Your ruler is highlighting expansion and learning, making this a perfect day to explore something that's been tugging at your curiosity. Book that workshop, start that book, or just talk to someone with a completely different perspective than yours.",
-        "love": 4,
-        "career": 4,
-        "health": 4,
-        "luckyNumber": 19,
-        "luckyColor": "gold",
-        "mood": "adventurous"
-      },
-      "virgo": {
-        "text": "You're being asked to release something, and you already know what it is. This spring energy is about transformation, not just surface-level tidying. What would it feel like to trust the process instead of controlling every detail?",
-        "love": 4,
-        "career": 3,
-        "health": 2,
-        "luckyNumber": 34,
-        "luckyColor": "emerald",
-        "mood": "intuitive"
-      },
-      "scorpio": {
-        "text": "Partnerships are taking center stage, and there's an opportunity to renegotiate something that hasn't been working. Be direct but don't weaponize your honesty—there's a difference between truth-telling and truth-wielding. Someone's waiting for you to make the first move toward reconciliation or deeper commitment.",
+      "libra": {
+        "text": "Adventure is calling, even if it's just exploring a new neighborhood or finally opening that book you've been meaning to read. Your ruler Venus is encouraging expansion beyond your usual routines. Say yes to the unexpected invitation.",
         "love": 5,
         "career": 3,
+        "health": 4,
+        "luckyNumber": 12,
+        "luckyColor": "pink",
+        "mood": "adventurous"
+      },
+      "scorpio": {
+        "text": "Financial clarity arrives when you stop avoiding the spreadsheet and just look at the numbers honestly. There's power in knowing exactly where you stand. A secret you've been keeping might be weighing heavier than the freedom of sharing it would—consider your options carefully.",
+        "love": 3,
+        "career": 4,
         "health": 3,
-        "luckyNumber": 72,
+        "luckyNumber": 89,
         "luckyColor": "maroon",
         "mood": "intense"
       },
-      "libra": {
-        "text": "Your routine could use a refresh, and today's the day to implement one small change that supports your body better. It doesn't have to be dramatic—maybe it's just drinking water before coffee or taking a real lunch break. Venus is reminding you that self-care isn't selfish, it's structural.",
-        "love": 3,
+      "sagittarius": {
+        "text": "Partnerships are highlighted today, and not just the romantic kind. Who in your life actually challenges you to grow rather than just agreeing with everything you say? Those are the people worth investing in right now.",
+        "love": 4,
         "career": 4,
         "health": 5,
-        "luckyNumber": 56,
-        "luckyColor": "seafoam",
-        "mood": "grounded"
-      },
-      "sagittarius": {
-        "text": "Your creative energy is absolutely buzzing right now, so do something with it before it turns into restlessness. This could be artistic, romantic, or just playful—whatever lets you express yourself without a practical goal attached. Joy for joy's sake is the assignment.",
-        "love": 5,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 91,
-        "luckyColor": "orange",
-        "mood": "playful"
+        "luckyNumber": 3,
+        "luckyColor": "purple",
+        "mood": "optimistic"
       },
       "capricorn": {
-        "text": "Home matters are calling for your attention, and for once, you should probably answer. There's emotional work or physical organizing that will actually pay dividends in how grounded you feel. Saturn's influence reminds you that foundations matter, even when they're not visible to anyone else.",
+        "text": "Your productivity is impressive, but your body is asking for basic maintenance you've been postponing. Schedule that appointment, drink more water, take the actual lunch break. Small adjustments to your daily routine will yield surprising results by month's end.",
         "love": 2,
-        "career": 2,
-        "health": 3,
-        "luckyNumber": 15,
+        "career": 4,
+        "health": 2,
+        "luckyNumber": 56,
         "luckyColor": "charcoal",
-        "mood": "focused"
+        "mood": "determined"
       },
       "aquarius": {
-        "text": "The words are flowing, so write them down, speak them out, or send that message you've been drafting in your head. Your ideas need air and witnesses right now, not more solitary refinement. Call that person back—seriously, just do it today.",
+        "text": "Creative blocks dissolve when you stop trying to force innovation and just play. That hobby you loved as a kid? There's wisdom in revisiting it now. Your unique perspective is exactly what a current situation needs, even if others don't see it yet.",
         "love": 3,
-        "career": 5,
-        "health": 3,
-        "luckyNumber": 42,
-        "luckyColor": "indigo",
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 27,
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Financial or material concerns might feel more solid today, like you're finally seeing a clear path forward with something that's been murky. Trust your instincts about what you're actually worth, whether that's in salary negotiations or just recognizing your own value. Spring is asking you to grow roots, not just dreams.",
-        "love": 3,
-        "career": 4,
-        "health": 4,
-        "luckyNumber": 28,
-        "luckyColor": "teal",
-        "mood": "determined"
+        "text": "Home and family matters need your attention, but in a nurturing way, not a sacrificial one. What would make your personal space feel more like a sanctuary? Sometimes the best thing you can do for others is to fill your own cup first.",
+        "love": 4,
+        "career": 2,
+        "health": 5,
+        "luckyNumber": 41,
+        "luckyColor": "lavender",
+        "mood": "calm"
       }
     }
   },
