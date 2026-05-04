@@ -95,6 +95,65 @@ export default function EditorialPolicyPage() {
           </section>
 
           <section>
+            <h2 className="text-xl font-semibold text-gold mb-3">
+              How Our Content Is Created
+            </h2>
+            <p className="leading-relaxed text-muted mb-3">
+              We believe readers deserve a clear picture of how the words on this site are
+              produced. Different parts of the site are created in different ways, and we want
+              that breakdown to be public.
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-muted">
+              <li>
+                <strong className="text-foreground/70">Fortune library:</strong> Our 1,000+
+                fortune messages are hand-curated. Each one was selected, edited, and assigned
+                a category and rarity tier by a human editor.
+              </li>
+              <li>
+                <strong className="text-foreground/70">Long-form blog articles:</strong> The
+                articles in our blog &mdash; covering the history of fortune cookies, Korean
+                Saju, Western astrology, numerology, and the psychology of fortune telling
+                &mdash; are drafted with AI assistance and then reviewed, edited, and
+                fact-checked by a human editor before publication. Sources are checked against
+                primary documents or peer-reviewed scholarship.
+              </li>
+              <li>
+                <strong className="text-foreground/70">Daily, weekly, and monthly
+                horoscopes:</strong> The short daily horoscope text for each zodiac sign is
+                drafted with AI assistance using prompts that encode the planetary rulers,
+                elemental associations, and sign characteristics from traditional Western
+                astrology. The supporting context paragraphs and FAQs surrounding the
+                horoscopes are hand-written.
+              </li>
+              <li>
+                <strong className="text-foreground/70">Saju (Four Pillars) calculations:</strong>{" "}
+                The Saju engine that calculates your four pillars, Five Elements balance, Day
+                Master, and Major Luck Cycles is a deterministic algorithm based on the
+                traditional sexagenary cycle and 24 solar terms. There is no AI generation in
+                the calculation itself. The interpretive narrative shown alongside the
+                calculation is reviewed by a human editor.
+              </li>
+              <li>
+                <strong className="text-foreground/70">Daily fortune and lucky numbers:</strong>{" "}
+                The Daily Fortune and Lucky Numbers shown on the site are produced by a
+                date-seeded pseudorandom algorithm so every visitor sees the same values on a
+                given day. There is no AI text generation involved.
+              </li>
+              <li>
+                <strong className="text-foreground/70">Static pages:</strong> The About,
+                Privacy, Terms, Editorial Policy, Contact, and Learn pages are written and
+                maintained directly by the site owner.
+              </li>
+            </ul>
+            <p className="leading-relaxed text-muted mt-3">
+              When AI assistance is used, the human editor is responsible for the published
+              result, including factual accuracy, tone, and originality. AI-assisted drafts
+              that contain errors, generic filler, or content that duplicates another source
+              are rewritten or discarded.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-xl font-semibold text-gold mb-3">Corrections &amp; Feedback</h2>
             <p className="leading-relaxed text-muted mb-3">
               If you spot a factual error, a broken link, or content that does not meet the
