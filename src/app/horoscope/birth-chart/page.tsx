@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "planet positions",
     "house placements",
   ],
+  robots: { index: false, follow: true },
   alternates: {
     canonical: `${SITE_URL}/horoscope/birth-chart`,
   },

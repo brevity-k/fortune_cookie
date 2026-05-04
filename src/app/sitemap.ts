@@ -23,7 +23,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPageDate = new Date("2026-03-11");
 
-  // Horoscope pages: hub + daily/weekly/monthly for all 12 signs
+  // Horoscope pages: hub + daily for all 12 signs.
+  // Weekly/monthly variants are intentionally omitted from the sitemap
+  // because they share heavily templated structure with the daily pages.
   const horoscopeEntries: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/horoscope`,
@@ -31,26 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily" as const,
       priority: 0.8,
     },
-    ...ZODIAC_SIGNS.flatMap((sign) => [
-      {
-        url: `${baseUrl}/horoscope/daily/${sign.key}`,
-        lastModified: today,
-        changeFrequency: "daily" as const,
-        priority: 0.7,
-      },
-      {
-        url: `${baseUrl}/horoscope/weekly/${sign.key}`,
-        lastModified: today,
-        changeFrequency: "weekly" as const,
-        priority: 0.6,
-      },
-      {
-        url: `${baseUrl}/horoscope/monthly/${sign.key}`,
-        lastModified: today,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      },
-    ]),
+    ...ZODIAC_SIGNS.map((sign) => ({
+      url: `${baseUrl}/horoscope/daily/${sign.key}`,
+      lastModified: today,
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    })),
   ];
 
   // Category fortune pages
@@ -148,12 +136,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: staticPageDate,
       changeFrequency: "weekly",
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/horoscope/birth-chart`,
-      lastModified: staticPageDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
     },
     ...horoscopeEntries,
     ...categoryEntries,

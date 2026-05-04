@@ -133,6 +133,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${zodiac.name.toLowerCase()} horoscope ${formatted.toLowerCase()}`,
       "monthly horoscope",
     ],
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `${SITE_URL}/horoscope/monthly/${sign}`,
     },

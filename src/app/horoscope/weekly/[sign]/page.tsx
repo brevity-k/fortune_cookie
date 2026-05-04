@@ -133,6 +133,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${zodiac.name.toLowerCase()} horoscope this week`,
       "weekly horoscope",
     ],
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `${SITE_URL}/horoscope/weekly/${sign}`,
     },
