@@ -24,14 +24,12 @@ export async function POST(req: NextRequest) {
 
     // Rate limiting
     const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
-    if (astroAIRatelimit) {
-      const { success } = await astroAIRatelimit.limit(ip);
-      if (!success) {
-        return NextResponse.json(
-          { error: 'Too many requests. Please try again later.' },
-          { status: 429 }
-        );
-      }
+    const { success } = await astroAIRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
     }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;

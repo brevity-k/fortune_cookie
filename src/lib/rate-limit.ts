@@ -1,23 +1,27 @@
-import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
+const stores = new Map<string, Map<string, number[]>>();
 
-function createLimiter(prefix: string, requests: number, window: string): Ratelimit | null {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
-  return new Ratelimit({
-    redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(requests, window as Parameters<typeof Ratelimit.slidingWindow>[1]),
-    prefix: `fortunecrack:${prefix}`,
-    ephemeralCache: new Map(),
-  });
+function createLimiter(prefix: string, maxRequests: number, windowMs: number) {
+  const store = new Map<string, number[]>();
+  stores.set(prefix, store);
+
+  return {
+    async limit(key: string): Promise<{ success: boolean }> {
+      const now = Date.now();
+      const timestamps = store.get(key) ?? [];
+      const recent = timestamps.filter((t) => now - t < windowMs);
+      store.set(key, recent);
+      if (recent.length >= maxRequests) return { success: false };
+      recent.push(now);
+      return { success: true };
+    },
+  };
 }
 
 /** Saju AI interpretation: 5 requests per day per IP */
-export const sajuAIRatelimit = createLimiter('saju-ai', 5, '1 d');
+export const sajuAIRatelimit = createLimiter('saju-ai', 5, 24 * 60 * 60 * 1000);
 
 /** Astro AI interpretation: 5 requests per day per IP */
-export const astroAIRatelimit = createLimiter('astro-ai', 5, '1 d');
+export const astroAIRatelimit = createLimiter('astro-ai', 5, 24 * 60 * 60 * 1000);
 
 /** Contact form: 5 requests per hour per IP */
-export const contactRatelimit = createLimiter('contact', 5, '1 h');
+export const contactRatelimit = createLimiter('contact', 5, 60 * 60 * 1000);

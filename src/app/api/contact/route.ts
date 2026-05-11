@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE_URL, SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
-import { contactRatelimit } from "@/lib/rate-limit";
+import { contactRatelimit } from '@/lib/rate-limit';
 
 function escapeHtml(str: string): string {
   return str
@@ -29,14 +29,12 @@ export async function POST(req: NextRequest) {
 
     // Rate limiting by IP
     const ip = req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
-    if (contactRatelimit) {
-      const { success } = await contactRatelimit.limit(ip);
-      if (!success) {
-        return NextResponse.json(
-          { error: "Too many requests. Please try again later." },
-          { status: 429 }
-        );
-      }
+    const { success } = await contactRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
     }
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey || !apiKey.startsWith('re_')) {
