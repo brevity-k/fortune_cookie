@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
 import { subscribeRatelimit } from '@/lib/rate-limit';
-import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
+import { isAllowedOrigin } from '@/lib/api-utils';
 
 export async function GET(req: NextRequest) {
   if (!isAllowedOrigin(req)) {

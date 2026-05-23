@@ -70,8 +70,8 @@ jobs:
           fi
 
           # For single-package bumps, extract version numbers and compare major versions
-          FROM_VER=$(echo "$TITLE" | grep -oP 'from \K[0-9]+' | head -1)
-          TO_VER=$(echo "$TITLE" | grep -oP 'to \K[0-9]+' | head -1)
+          FROM_VER=$(echo "$TITLE" | grep -oP 'from \K\d+(?=\.\d)' | head -1)
+          TO_VER=$(echo "$TITLE" | grep -oP 'to \K\d+(?=\.\d)' | head -1)
 
           if [ -n "$FROM_VER" ] && [ -n "$TO_VER" ]; then
             if [ "$FROM_VER" = "$TO_VER" ]; then

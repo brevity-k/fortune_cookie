@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { extractJsonObject } from "@/lib/json-utils";
-import { sajuAIRatelimit } from "@/lib/rate-limit";
+import { premiumAIRatelimit } from "@/lib/rate-limit";
+import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from "@/lib/saju/premium";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,12 +11,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Forbidden." }, { status: 403 });
     }
 
-    // Rate limiting
-    const ip = req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
-    const { success } = await sajuAIRatelimit.limit(ip);
+    // Premium check
+    const token = req.cookies.get(PREMIUM_COOKIE_NAME)?.value;
+    if (!token) {
+      return NextResponse.json({ error: "Premium subscription required." }, { status: 401 });
+    }
+    const payload = await verifyPremiumToken(token);
+    if (!payload) {
+      return NextResponse.json({ error: "Invalid or expired token." }, { status: 401 });
+    }
+
+    const { success } = await premiumAIRatelimit.limit(payload.customerId);
     if (!success) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
+        { error: "Daily AI limit reached. Please try again tomorrow." },
         { status: 429 }
       );
     }

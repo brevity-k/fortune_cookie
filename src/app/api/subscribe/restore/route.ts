@@ -29,9 +29,13 @@ export async function POST(req: NextRequest) {
 
     const body = await parseJsonBody(req);
     if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
-    const { email } = body;
-    if (!email || typeof email !== 'string') {
+    const rawEmail = body.email;
+    if (!rawEmail || typeof rawEmail !== 'string') {
       return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
+    }
+    const email = rawEmail.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     }
 
     const stripe = new Stripe(secretKey);

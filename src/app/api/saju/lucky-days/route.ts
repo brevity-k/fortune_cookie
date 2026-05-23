@@ -43,12 +43,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid element data.' }, { status: 400 });
     }
 
+    const DAY_ABBR = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     const days: {
       date: string;
-      pillar: { stem: number; branch: number };
+      dayOfWeek: string;
+      stemBranch: string;
+      element: Element;
       rating: 'favorable' | 'neutral' | 'challenging';
-      stemElement: Element;
-      branchElement: Element;
     }[] = [];
 
     const today = new Date();
@@ -76,10 +78,10 @@ export async function POST(req: NextRequest) {
 
       days.push({
         date: dateStr,
-        pillar: { stem: pillar.stem, branch: pillar.branch },
+        dayOfWeek: DAY_ABBR[d.getDay()],
+        stemBranch: `${formatted.stemElement}/${formatted.branchElement}`,
+        element: stemElement,
         rating,
-        stemElement: formatted.stemElement,
-        branchElement: formatted.branchElement,
       });
     }
 

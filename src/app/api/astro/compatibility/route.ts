@@ -59,8 +59,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to parse compatibility analysis.' }, { status: 500 });
     }
 
-    const { chemistry, challenges, advice, score } = parsed;
-    return NextResponse.json({ chemistry, challenges, advice, score });
+    const { harmony, communication, emotional, chemistry, challenges, advice, score } = parsed;
+    return NextResponse.json({ harmony, communication, emotional, chemistry, challenges, advice, score });
   } catch (error) {
     console.error('Compatibility analysis error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json({ error: 'Failed to generate compatibility analysis.' }, { status: 500 });
