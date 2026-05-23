@@ -7,6 +7,19 @@ const allowedOrigins = (() => {
   return [SITE_URL, `${protocol}//${wwwHost}`];
 })();
 
+const MAX_BODY_BYTES = 16 * 1024; // 16 KB
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function parseJsonBody(req: NextRequest): Promise<any> {
+  try {
+    const text = await req.text();
+    if (text.length > MAX_BODY_BYTES) return null;
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
 export function isAllowedOrigin(req: NextRequest): boolean {
   const origin = req.headers.get('origin');
   if (!origin) return false;

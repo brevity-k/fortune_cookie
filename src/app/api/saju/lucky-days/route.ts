@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { premiumAIRatelimit } from '@/lib/rate-limit';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
 import { calculateDayPillar } from '@/lib/saju/day-pillar';
@@ -29,13 +29,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Daily limit reached. Please try again tomorrow.' }, { status: 429 });
     }
 
-    const { chart } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { chart } = body;
     if (!chart?.fiveElements) {
       return NextResponse.json({ error: 'Missing chart data.' }, { status: 400 });
     }
 
+    const VALID_ELEMENTS = new Set<string>(["wood", "fire", "earth", "metal", "water"]);
     const favorableElement: Element = chart.fiveElements.favorableElement;
     const unfavorableElement: Element = chart.fiveElements.unfavorableElement;
+    if (!VALID_ELEMENTS.has(favorableElement) || !VALID_ELEMENTS.has(unfavorableElement)) {
+      return NextResponse.json({ error: 'Invalid element data.' }, { status: 400 });
+    }
 
     const days: {
       date: string;

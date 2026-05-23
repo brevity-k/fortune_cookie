@@ -40,12 +40,19 @@ function getCacheKey(chartA: NatalChart, form: PartnerForm): string {
   return `astro_compat_${a}_${b}`;
 }
 
+const COMPAT_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
 function getCached(key: string): CompatibilityData | null {
   if (typeof window === "undefined") return null;
   const raw = localStorage.getItem(key);
   if (!raw) return null;
   try {
-    return JSON.parse(raw);
+    const { data, cachedAt } = JSON.parse(raw) as { data: CompatibilityData; cachedAt: number };
+    if (!cachedAt || Date.now() - cachedAt > COMPAT_CACHE_TTL_MS) {
+      localStorage.removeItem(key);
+      return null;
+    }
+    return data;
   } catch {
     return null;
   }
@@ -53,7 +60,7 @@ function getCached(key: string): CompatibilityData | null {
 
 function cacheResult(key: string, data: CompatibilityData) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(key, JSON.stringify(data));
+  localStorage.setItem(key, JSON.stringify({ data, cachedAt: Date.now() }));
 }
 
 interface Props {

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { isAllowedOrigin } from "@/lib/api-utils";
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { extractJsonObject } from "@/lib/json-utils";
 import { sajuAIRatelimit } from "@/lib/rate-limit";
 
@@ -28,7 +28,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { fourPillars, fiveElements, birthInfo } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { fourPillars, fiveElements, birthInfo } = body;
 
     if (!fourPillars || !fiveElements || !birthInfo) {
       return NextResponse.json(

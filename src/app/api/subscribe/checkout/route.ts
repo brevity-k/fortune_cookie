@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { subscribeRatelimit } from '@/lib/rate-limit';
 import { SITE_URL } from '@/lib/constants';
 

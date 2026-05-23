@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { extractJsonObject } from '@/lib/json-utils';
 import { buildInterpretationPrompt } from '@/lib/astro/prompts';
 import { astroAIRatelimit } from '@/lib/rate-limit';
@@ -29,7 +29,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { chart } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { chart } = body;
 
     if (!chart?.planets || !chart?.ascendant) {
       return NextResponse.json(

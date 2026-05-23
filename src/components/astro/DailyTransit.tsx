@@ -10,12 +10,15 @@ interface DailyTransitData {
   tip: string;
 }
 
-const CACHE_KEY = "astro_daily";
-
-function getCached(): DailyTransitData | null {
-  if (typeof window === "undefined") return null;
+function getDailyTransitKey(chart: NatalChart): string {
   const today = new Date().toISOString().slice(0, 10);
-  const raw = localStorage.getItem(`${CACHE_KEY}_${today}`);
+  const chartId = chart.planets.slice(0, 3).map((p) => Math.round(p.longitude)).join("_");
+  return `astro_daily_${today}_${chartId}`;
+}
+
+function getCached(chart: NatalChart): DailyTransitData | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem(getDailyTransitKey(chart));
   if (!raw) return null;
   try {
     return JSON.parse(raw);
@@ -24,10 +27,9 @@ function getCached(): DailyTransitData | null {
   }
 }
 
-function cache(data: DailyTransitData) {
+function cache(chart: NatalChart, data: DailyTransitData) {
   if (typeof window === "undefined") return;
-  const today = new Date().toISOString().slice(0, 10);
-  localStorage.setItem(`${CACHE_KEY}_${today}`, JSON.stringify(data));
+  localStorage.setItem(getDailyTransitKey(chart), JSON.stringify(data));
 }
 
 const SECTIONS: { key: keyof DailyTransitData; label: string; icon: string }[] = [
@@ -47,7 +49,7 @@ export default function DailyTransit({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) {
       setReading(cached);
       return;
@@ -69,7 +71,7 @@ export default function DailyTransit({ chart }: Props) {
         }
         const data = await res.json();
         setReading(data);
-        cache(data);
+        cache(chart, data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

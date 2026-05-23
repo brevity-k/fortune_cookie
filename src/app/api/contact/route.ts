@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE_URL, SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
-import { isAllowedOrigin } from "@/lib/api-utils";
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { contactRatelimit } from '@/lib/rate-limit';
 
 function escapeHtml(str: string): string {
@@ -53,7 +53,9 @@ export async function POST(req: NextRequest) {
     }
     const fromEmail = process.env.FROM_EMAIL || `${SITE_NAME} <onboarding@resend.dev>`;
 
-    const { name, email, subject, message } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { name, email, subject, message } = body;
 
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
       return NextResponse.json(

@@ -280,6 +280,9 @@ export default function CookieCanvas({
       window.removeEventListener("click", initOnInteraction);
       window.removeEventListener("touchstart", initOnInteraction);
     };
+  // Empty deps: canvas/physics/interaction setup runs once at mount.
+  // handleBreakRef (not handleBreak directly) is used inside the callback,
+  // so prop changes are reflected without re-running the effect.
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -11,25 +11,24 @@ interface DailyReadingData {
   favorableTime: string;
 }
 
-const CACHE_KEY = "saju_daily_reading";
+function getDailyCacheKey(chart: SajuChart): string {
+  const b = chart.birthInfo;
+  const today = new Date().toISOString().slice(0, 10);
+  return `saju_daily_${today}_${b.year}_${b.month}_${b.day}_${b.hour}`;
+}
 
-function getCached(): DailyReadingData | null {
+function getCached(chart: SajuChart): DailyReadingData | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(CACHE_KEY);
+  const raw = localStorage.getItem(getDailyCacheKey(chart));
   if (!raw) return null;
   try {
-    const cached = JSON.parse(raw);
-    if (cached.date === new Date().toISOString().slice(0, 10)) return cached.data;
-    return null;
+    return JSON.parse(raw) as DailyReadingData;
   } catch { return null; }
 }
 
-function cache(data: DailyReadingData) {
+function cache(chart: SajuChart, data: DailyReadingData) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(CACHE_KEY, JSON.stringify({
-    date: new Date().toISOString().slice(0, 10),
-    data,
-  }));
+  localStorage.setItem(getDailyCacheKey(chart), JSON.stringify(data));
 }
 
 const SECTIONS: { key: keyof DailyReadingData; label: string; icon: string }[] = [
@@ -49,7 +48,7 @@ export default function DailyReading({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) { setReading(cached); return; }
 
     async function fetchReading() {
@@ -68,7 +67,7 @@ export default function DailyReading({ chart }: Props) {
         }
         const data = await res.json();
         setReading(data);
-        cache(data);
+        cache(chart, data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

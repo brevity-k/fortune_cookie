@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { subscribeRatelimit } from '@/lib/rate-limit';
 import { verifyPremiumToken, verifyPremiumTokenWithGracePeriod, signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 

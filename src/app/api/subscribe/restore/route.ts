@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { restoreRatelimit } from '@/lib/rate-limit';
 import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
@@ -27,7 +27,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { email } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { email } = body;
     if (!email || typeof email !== 'string') {
       return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
     }

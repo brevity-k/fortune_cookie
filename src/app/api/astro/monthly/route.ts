@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { extractJsonObject } from '@/lib/json-utils';
 import { premiumAIRatelimit } from '@/lib/rate-limit';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
@@ -34,7 +34,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'AI service is not configured.' }, { status: 503 });
     }
 
-    const { chart } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { chart } = body;
     if (!chart?.planets || !chart?.ascendant) {
       return NextResponse.json({ error: 'Missing chart data.' }, { status: 400 });
     }

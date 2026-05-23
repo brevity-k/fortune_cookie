@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { subscribeRatelimit } from '@/lib/rate-limit';
 import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
@@ -24,7 +24,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { sessionId } = await req.json();
+    const body = await parseJsonBody(req);
+    if (!body) return NextResponse.json({ error: 'Invalid or oversized request body.' }, { status: 400 });
+    const { sessionId } = body;
     if (!sessionId || typeof sessionId !== 'string') {
       return NextResponse.json({ error: 'Missing session ID.' }, { status: 400 });
     }

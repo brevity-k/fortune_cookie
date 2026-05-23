@@ -357,7 +357,7 @@ FORMAT REQUIREMENTS:
   if (process.env.GITHUB_OUTPUT) {
     fs.appendFileSync(
       process.env.GITHUB_OUTPUT,
-      `slug=${finalTopic.slug}\ntitle=${finalTopic.title}\nword_count=${wordCount}\n`,
+      `slug=${finalTopic.slug}\ntitle=${finalTopic.title.replace(/[\r\n]/g, ' ')}\nword_count=${wordCount}\n`,
     );
   }
 }
