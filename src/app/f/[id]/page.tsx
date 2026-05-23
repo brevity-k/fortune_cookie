@@ -1,3 +1,5 @@
+// dynamicParams is intentionally absent: share IDs are user-generated at runtime and cannot be pre-enumerated.
+// All requests are rendered on demand (ƒ dynamic route).
 import type { Metadata } from "next";
 import { SITE_URL, SITE_NAME, CATEGORY_COLORS } from "@/lib/constants";
 import { getRarityLabel, getFortuneNumber } from "@/lib/fortuneEngine";

@@ -28,7 +28,7 @@ const SLUG_FILE = path.join(process.cwd(), ".generated-slug");
 
 const TOPIC_MODEL = "claude-sonnet-4-5-20250929";
 const RESEARCH_MODEL = "claude-sonnet-4-5-20250929";
-const WRITING_MODEL = "claude-opus-4-20250514";
+const WRITING_MODEL = "claude-opus-4-7";
 
 interface TopicResult {
   title: string;

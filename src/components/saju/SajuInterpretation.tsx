@@ -108,6 +108,7 @@ export default function SajuInterpretation({ chart }: Props) {
       const res = await fetch("/api/saju-interpret", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({
           fourPillars: chart.fourPillars,
           fiveElements: chart.fiveElements,

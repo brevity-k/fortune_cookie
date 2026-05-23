@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { isAllowedOrigin } from '@/lib/api-utils';
-import { subscribeRatelimit } from '@/lib/rate-limit';
+import { restoreRatelimit } from '@/lib/rate-limit';
 import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
 export async function POST(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     }
 
     const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
-    const { success } = await subscribeRatelimit.limit(ip);
+    const { success } = await restoreRatelimit.limit(ip);
     if (!success) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     }
 
     const token = await signPremiumToken(customer.id);
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true }, { headers: { 'Cache-Control': 'no-store' } });
     response.cookies.set(PREMIUM_COOKIE_NAME, token, premiumCookieOptions());
     return response;
   } catch (error) {

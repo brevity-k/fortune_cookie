@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     }
 
     const newToken = await signPremiumToken(customerId);
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true }, { headers: { 'Cache-Control': 'no-store' } });
     response.cookies.set(PREMIUM_COOKIE_NAME, newToken, premiumCookieOptions());
     return response;
   } catch (error) {

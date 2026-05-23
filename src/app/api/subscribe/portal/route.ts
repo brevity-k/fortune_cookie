@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       return_url: `${SITE_URL}/saju`,
     });
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Portal error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(

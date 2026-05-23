@@ -40,8 +40,18 @@ export async function POST(req: NextRequest) {
       ? session.customer
       : session.customer.id;
 
+    // Re-validate active subscription — prevents session replay after cancellation
+    const subscriptions = await stripe.subscriptions.list({
+      customer: customerId,
+      status: 'active',
+      limit: 1,
+    });
+    if (subscriptions.data.length === 0) {
+      return NextResponse.json({ error: 'No active subscription.' }, { status: 403 });
+    }
+
     const token = await signPremiumToken(customerId);
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true }, { headers: { 'Cache-Control': 'no-store' } });
     response.cookies.set(PREMIUM_COOKIE_NAME, token, premiumCookieOptions());
     return response;
   } catch (error) {

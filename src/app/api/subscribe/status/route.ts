@@ -22,5 +22,5 @@ export async function GET(req: NextRequest) {
     return response;
   }
 
-  return NextResponse.json({ isPremium: true });
+  return NextResponse.json({ isPremium: true }, { headers: { 'Cache-Control': 'private, no-store' } });
 }

@@ -17,12 +17,19 @@ function getCacheKey(birthInfo: { year: number; month: number; day: number; hour
   return `astro_interpretation_${birthInfo.year}-${birthInfo.month}-${birthInfo.day}-${birthInfo.hour}-${birthInfo.minute}`;
 }
 
+const ASTRO_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
 function getCachedInterpretation(key: string): Interpretation | null {
   if (typeof window === "undefined") return null;
   const raw = localStorage.getItem(key);
   if (!raw) return null;
   try {
-    return JSON.parse(raw);
+    const { data, cachedAt } = JSON.parse(raw) as { data: Interpretation; cachedAt: number };
+    if (!cachedAt || Date.now() - cachedAt > ASTRO_CACHE_TTL_MS) {
+      localStorage.removeItem(key);
+      return null;
+    }
+    return data;
   } catch {
     return null;
   }
@@ -30,7 +37,7 @@ function getCachedInterpretation(key: string): Interpretation | null {
 
 function cacheInterpretation(key: string, data: Interpretation) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(key, JSON.stringify(data));
+  localStorage.setItem(key, JSON.stringify({ data, cachedAt: Date.now() }));
 }
 
 const SECTIONS: { key: keyof Interpretation; label: string; icon: string }[] = [
@@ -63,6 +70,7 @@ export default function AstroInterpretation({ chart, birthInfo }: Props) {
       const res = await fetch("/api/astro/interpret", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ chart }),
       });
 
