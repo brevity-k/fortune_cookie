@@ -7,13 +7,13 @@ const allowedOrigins = (() => {
   return [SITE_URL, `${protocol}//${wwwHost}`];
 })();
 
-const MAX_BODY_BYTES = 16 * 1024; // 16 KB
+const MAX_BODY_LENGTH = 16 * 1024; // 16 KB
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function parseJsonBody(req: NextRequest): Promise<any> {
   try {
     const text = await req.text();
-    if (text.length > MAX_BODY_BYTES) return null;
+    if (text.length > MAX_BODY_LENGTH) return null;
     return JSON.parse(text);
   } catch {
     return null;

@@ -13,33 +13,32 @@ interface DayEntry {
 
 type LuckyDaysData = DayEntry[];
 
-const CACHE_KEY = "saju_lucky_days";
-
-function getWeekNumber(): string {
+function getWeekStart(): string {
   const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 1);
-  const diff = now.getTime() - start.getTime();
-  const oneWeek = 7 * 24 * 60 * 60 * 1000;
-  return `${now.getFullYear()}-W${Math.ceil(diff / oneWeek)}`;
+  const day = now.getDay();
+  const diff = day === 0 ? -6 : 1 - day;
+  const monday = new Date(now);
+  monday.setDate(now.getDate() + diff);
+  return monday.toISOString().slice(0, 10);
 }
 
-function getCached(): LuckyDaysData | null {
+function getLuckyDaysKey(chart: SajuChart): string {
+  const b = chart.birthInfo;
+  return `saju_lucky_days_${getWeekStart()}_${b.year}_${b.month}_${b.day}_${b.hour}`;
+}
+
+function getCached(chart: SajuChart): LuckyDaysData | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(CACHE_KEY);
+  const raw = localStorage.getItem(getLuckyDaysKey(chart));
   if (!raw) return null;
   try {
-    const cached = JSON.parse(raw);
-    if (cached.week === getWeekNumber()) return cached.data;
-    return null;
+    return JSON.parse(raw);
   } catch { return null; }
 }
 
-function cache(data: LuckyDaysData) {
+function cache(chart: SajuChart, data: LuckyDaysData) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(CACHE_KEY, JSON.stringify({
-    week: getWeekNumber(),
-    data,
-  }));
+  localStorage.setItem(getLuckyDaysKey(chart), JSON.stringify(data));
 }
 
 const RATING_STYLES: Record<string, { text: string; border: string; icon: string }> = {
@@ -58,7 +57,7 @@ export default function LuckyDayCalendar({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) { setDays(cached); return; }
 
     async function fetchDays() {
@@ -76,8 +75,8 @@ export default function LuckyDayCalendar({ chart }: Props) {
           throw new Error(body.error || "Failed to get lucky days.");
         }
         const data = await res.json();
-        setDays(data);
-        cache(data);
+        setDays(data.days);
+        cache(chart, data.days);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

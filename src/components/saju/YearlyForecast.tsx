@@ -12,26 +12,24 @@ interface YearlyForecastData {
   strategy: string;
 }
 
-const CACHE_KEY = "saju_yearly_forecast";
+function getYearlyForecastKey(chart: SajuChart): string {
+  const b = chart.birthInfo;
+  const currentYear = new Date().getFullYear();
+  return `saju_yearly_forecast_${currentYear}_${b.year}_${b.month}_${b.day}_${b.hour}`;
+}
 
-function getCached(): YearlyForecastData | null {
+function getCached(chart: SajuChart): YearlyForecastData | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(CACHE_KEY);
+  const raw = localStorage.getItem(getYearlyForecastKey(chart));
   if (!raw) return null;
   try {
-    const cached = JSON.parse(raw);
-    const currentYear = new Date().getFullYear().toString();
-    if (cached.year === currentYear) return cached.data;
-    return null;
+    return JSON.parse(raw);
   } catch { return null; }
 }
 
-function cache(data: YearlyForecastData) {
+function cache(chart: SajuChart, data: YearlyForecastData) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(CACHE_KEY, JSON.stringify({
-    year: new Date().getFullYear().toString(),
-    data,
-  }));
+  localStorage.setItem(getYearlyForecastKey(chart), JSON.stringify(data));
 }
 
 const SECTIONS: { key: keyof YearlyForecastData; label: string; icon: string }[] = [
@@ -53,7 +51,7 @@ export default function YearlyForecast({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) { setForecast(cached); return; }
 
     async function fetchForecast() {
@@ -72,7 +70,7 @@ export default function YearlyForecast({ chart }: Props) {
         }
         const data = await res.json();
         setForecast(data);
-        cache(data);
+        cache(chart, data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

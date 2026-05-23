@@ -12,12 +12,15 @@ interface MonthlyForecastData {
   advice: string;
 }
 
-const CACHE_KEY = "astro_monthly";
-
-function getCached(): MonthlyForecastData | null {
-  if (typeof window === "undefined") return null;
+function getMonthlyForecastKey(chart: NatalChart): string {
   const currentMonth = new Date().toISOString().slice(0, 7);
-  const raw = localStorage.getItem(`${CACHE_KEY}_${currentMonth}`);
+  const chartId = chart.planets.slice(0, 3).map((p) => Math.round(p.longitude)).join("_");
+  return `astro_monthly_${currentMonth}_${chartId}`;
+}
+
+function getCached(chart: NatalChart): MonthlyForecastData | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem(getMonthlyForecastKey(chart));
   if (!raw) return null;
   try {
     return JSON.parse(raw);
@@ -26,10 +29,9 @@ function getCached(): MonthlyForecastData | null {
   }
 }
 
-function cache(data: MonthlyForecastData) {
+function cache(chart: NatalChart, data: MonthlyForecastData) {
   if (typeof window === "undefined") return;
-  const currentMonth = new Date().toISOString().slice(0, 7);
-  localStorage.setItem(`${CACHE_KEY}_${currentMonth}`, JSON.stringify(data));
+  localStorage.setItem(getMonthlyForecastKey(chart), JSON.stringify(data));
 }
 
 const SECTIONS: { key: keyof MonthlyForecastData; label: string; icon: string }[] = [
@@ -51,7 +53,7 @@ export default function MonthlyForecast({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) {
       setForecast(cached);
       return;
@@ -73,7 +75,7 @@ export default function MonthlyForecast({ chart }: Props) {
         }
         const data = await res.json();
         setForecast(data);
-        cache(data);
+        cache(chart, data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

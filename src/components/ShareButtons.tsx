@@ -42,7 +42,7 @@ export default function ShareButtons({ fortune, visible }: ShareButtonsProps) {
       textarea.value = `${shareText} ${shareUrl}`;
       document.body.appendChild(textarea);
       textarea.select();
-      document.execCommand("copy");
+      document.execCommand("copy"); // deprecated but kept as clipboard API fallback for older browsers
       document.body.removeChild(textarea);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);

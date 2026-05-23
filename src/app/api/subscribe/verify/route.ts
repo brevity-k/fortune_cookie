@@ -30,6 +30,9 @@ export async function POST(req: NextRequest) {
     if (!sessionId || typeof sessionId !== 'string') {
       return NextResponse.json({ error: 'Missing session ID.' }, { status: 400 });
     }
+    if (!/^cs_(test|live)_[a-zA-Z0-9]+$/.test(sessionId)) {
+      return NextResponse.json({ error: 'Invalid session ID format.' }, { status: 400 });
+    }
 
     const stripe = new Stripe(secretKey);
     const session = await stripe.checkout.sessions.retrieve(sessionId);

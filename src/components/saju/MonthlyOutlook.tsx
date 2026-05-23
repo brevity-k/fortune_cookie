@@ -12,26 +12,24 @@ interface MonthlyOutlookData {
   advice: string;
 }
 
-const CACHE_KEY = "saju_monthly_outlook";
+function getMonthlyOutlookKey(chart: SajuChart): string {
+  const b = chart.birthInfo;
+  const currentMonth = new Date().toISOString().slice(0, 7);
+  return `saju_monthly_outlook_${currentMonth}_${b.year}_${b.month}_${b.day}_${b.hour}`;
+}
 
-function getCached(): MonthlyOutlookData | null {
+function getCached(chart: SajuChart): MonthlyOutlookData | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(CACHE_KEY);
+  const raw = localStorage.getItem(getMonthlyOutlookKey(chart));
   if (!raw) return null;
   try {
-    const cached = JSON.parse(raw);
-    const currentMonth = new Date().toISOString().slice(0, 7);
-    if (cached.month === currentMonth) return cached.data;
-    return null;
+    return JSON.parse(raw);
   } catch { return null; }
 }
 
-function cache(data: MonthlyOutlookData) {
+function cache(chart: SajuChart, data: MonthlyOutlookData) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(CACHE_KEY, JSON.stringify({
-    month: new Date().toISOString().slice(0, 7),
-    data,
-  }));
+  localStorage.setItem(getMonthlyOutlookKey(chart), JSON.stringify(data));
 }
 
 const SECTIONS: { key: keyof MonthlyOutlookData; label: string; icon: string }[] = [
@@ -53,7 +51,7 @@ export default function MonthlyOutlook({ chart }: Props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cached = getCached();
+    const cached = getCached(chart);
     if (cached) { setOutlook(cached); return; }
 
     async function fetchOutlook() {
@@ -72,7 +70,7 @@ export default function MonthlyOutlook({ chart }: Props) {
         }
         const data = await res.json();
         setOutlook(data);
-        cache(data);
+        cache(chart, data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {

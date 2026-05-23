@@ -13,26 +13,26 @@ interface AiInterpretation {
   luckyColor: string;
 }
 
-const CACHE_KEY = "saju_interpretation";
+function getInterpretationKey(chart: SajuChart): string {
+  const b = chart.birthInfo;
+  const today = new Date().toISOString().slice(0, 10);
+  return `saju_interpretation_${today}_${b.year}_${b.month}_${b.day}_${b.hour}`;
+}
 
-function getCachedInterpretation(): AiInterpretation | null {
+function getCachedInterpretation(chart: SajuChart): AiInterpretation | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(CACHE_KEY);
+  const raw = localStorage.getItem(getInterpretationKey(chart));
   if (!raw) return null;
   try {
-    const cached = JSON.parse(raw);
-    const today = new Date().toISOString().slice(0, 10);
-    if (cached.date === today) return cached.data;
-    return null;
+    return JSON.parse(raw) as AiInterpretation;
   } catch {
     return null;
   }
 }
 
-function cacheInterpretation(data: AiInterpretation) {
+function cacheInterpretation(chart: SajuChart, data: AiInterpretation) {
   if (typeof window === "undefined") return;
-  const today = new Date().toISOString().slice(0, 10);
-  localStorage.setItem(CACHE_KEY, JSON.stringify({ date: today, data }));
+  localStorage.setItem(getInterpretationKey(chart), JSON.stringify(data));
 }
 
 const ELEMENT_TRAITS: Record<Element, { personality: string; career: string; love: string; health: string }> = {
@@ -94,7 +94,7 @@ interface Props {
 }
 
 export default function SajuInterpretation({ chart }: Props) {
-  const [aiInterpretation, setAiInterpretation] = useState<AiInterpretation | null>(getCachedInterpretation);
+  const [aiInterpretation, setAiInterpretation] = useState<AiInterpretation | null>(() => getCachedInterpretation(chart));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -123,7 +123,7 @@ export default function SajuInterpretation({ chart }: Props) {
 
       const data = await res.json();
       setAiInterpretation(data);
-      cacheInterpretation(data);
+      cacheInterpretation(chart, data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
