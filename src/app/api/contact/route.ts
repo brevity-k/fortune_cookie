@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE_URL, SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
+import { isAllowedOrigin } from "@/lib/api-utils";
 import { contactRatelimit } from '@/lib/rate-limit';
 
 function escapeHtml(str: string): string {
@@ -18,9 +19,7 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(req: NextRequest) {
   try {
-    // CSRF protection: verify request origin
-    const origin = req.headers.get("origin");
-    if (!origin || origin !== SITE_URL) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json(
         { error: "Forbidden." },
         { status: 403 }
@@ -121,7 +120,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("Contact form error:", error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { error: "Failed to send message. Please try again." },
       { status: 500 }

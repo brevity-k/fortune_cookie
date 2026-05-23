@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { SITE_URL } from '@/lib/constants';
-import { verifyPremiumToken, signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
+import { isAllowedOrigin } from '@/lib/api-utils';
+import { subscribeRatelimit } from '@/lib/rate-limit';
+import { verifyPremiumToken, verifyPremiumTokenWithGracePeriod, signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
 export async function POST(req: NextRequest) {
   try {
-    const origin = req.headers.get('origin');
-    const isAllowedOrigin =
-      origin &&
-      (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
-    if (!isAllowedOrigin) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
+    }
+
+    const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+    const { success } = await subscribeRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
     }
 
     const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -34,10 +36,12 @@ export async function POST(req: NextRequest) {
       if (payload) {
         customerId = payload.customerId;
       } else {
-        // Token expired — try to decode without verification
-        const parts = token.split('.');
-        const decoded = JSON.parse(atob(parts[1]));
-        customerId = decoded.customerId;
+        // Token expired — verify signature but tolerate expiry; Stripe re-validates subscription below
+        const expiredPayload = await verifyPremiumTokenWithGracePeriod(token);
+        if (!expiredPayload?.customerId) {
+          return NextResponse.json({ error: 'Invalid token.' }, { status: 401 });
+        }
+        customerId = expiredPayload.customerId;
       }
     } catch {
       return NextResponse.json({ error: 'Invalid token.' }, { status: 401 });
@@ -64,7 +68,7 @@ export async function POST(req: NextRequest) {
     response.cookies.set(PREMIUM_COOKIE_NAME, newToken, premiumCookieOptions());
     return response;
   } catch (error) {
-    console.error('Refresh error:', error);
+    console.error('Refresh error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { error: 'Failed to refresh token.' },
       { status: 500 }

@@ -1,36 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { SITE_URL } from '@/lib/constants';
+import { isAllowedOrigin } from '@/lib/api-utils';
+import { subscribeRatelimit } from '@/lib/rate-limit';
 import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
-
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const RATE_LIMIT_MAX = 5;
-const rateLimitMap = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const timestamps = rateLimitMap.get(ip) ?? [];
-  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  rateLimitMap.set(ip, recent);
-  if (recent.length >= RATE_LIMIT_MAX) return true;
-  recent.push(now);
-  rateLimitMap.set(ip, recent);
-  return false;
-}
 
 export async function POST(req: NextRequest) {
   try {
-    const origin = req.headers.get('origin');
-    const isAllowedOrigin =
-      origin &&
-      (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
-    if (!isAllowedOrigin) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
     const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
-    if (isRateLimited(ip)) {
+    const { success } = await subscribeRatelimit.limit(ip);
+    if (!success) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
         { status: 429 }
@@ -79,7 +61,7 @@ export async function POST(req: NextRequest) {
     response.cookies.set(PREMIUM_COOKIE_NAME, token, premiumCookieOptions());
     return response;
   } catch (error) {
-    console.error('Restore error:', error);
+    console.error('Restore error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { error: 'Failed to restore subscription.' },
       { status: 500 }

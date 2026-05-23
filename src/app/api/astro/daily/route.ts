@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { SITE_URL } from '@/lib/constants';
+import { isAllowedOrigin } from '@/lib/api-utils';
+import { extractJsonObject } from '@/lib/json-utils';
+import { premiumAIRatelimit } from '@/lib/rate-limit';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
 import { getCurrentPlanetPositions } from '@/lib/astro/transits';
 import { buildDailyTransitPrompt } from '@/lib/astro/prompts';
@@ -8,19 +10,7 @@ import { formatDegree } from '@/lib/astro/format';
 
 export async function POST(req: NextRequest) {
   try {
-    // CSRF protection — exact origin matching
-    const origin = req.headers.get('origin');
-    const allowedOrigins = [SITE_URL];
-    if (SITE_URL.includes('www.')) {
-      allowedOrigins.push(SITE_URL.replace('www.', ''));
-    } else {
-      allowedOrigins.push(SITE_URL.replace('://', '://www.'));
-    }
-    const isAllowedOrigin =
-      origin &&
-      (allowedOrigins.includes(origin) ||
-        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
-    if (!isAllowedOrigin) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
@@ -32,6 +22,11 @@ export async function POST(req: NextRequest) {
     const payload = await verifyPremiumToken(token);
     if (!payload) {
       return NextResponse.json({ error: 'Invalid or expired token.' }, { status: 401 });
+    }
+
+    const { success } = await premiumAIRatelimit.limit(payload.customerId);
+    if (!success) {
+      return NextResponse.json({ error: 'Daily AI limit reached. Please try again tomorrow.' }, { status: 429 });
     }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -65,17 +60,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No reading generated.' }, { status: 500 });
     }
 
-    let parsed;
-    try {
-      const jsonStr = textBlock.text.replace(/^```json?\n?/, '').replace(/\n?```$/, '').trim();
-      parsed = JSON.parse(jsonStr);
-    } catch {
+    const parsed = extractJsonObject(textBlock.text);
+    if (!parsed) {
       return NextResponse.json({ error: 'Failed to parse reading.' }, { status: 500 });
     }
 
-    return NextResponse.json(parsed);
+    const { energy, relationships, career, tip } = parsed;
+    return NextResponse.json({ energy, relationships, career, tip });
   } catch (error) {
-    console.error('Daily transit reading error:', error);
+    console.error('Daily transit reading error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json({ error: 'Failed to generate daily reading.' }, { status: 500 });
   }
 }

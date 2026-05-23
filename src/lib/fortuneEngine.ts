@@ -215,6 +215,7 @@ export function getFortuneNumber(text: string): number {
   for (let i = 0; i < text.length; i++) {
     hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
   }
+  // Math.abs guards against negative values if clock is set before LAUNCH_DATE (e.g. in tests)
   return Math.abs(daysSinceLaunch * 1000 + (hash % 1000)) + 1;
 }
 

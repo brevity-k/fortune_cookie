@@ -1,24 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { SITE_URL } from '@/lib/constants';
+import { isAllowedOrigin } from '@/lib/api-utils';
+import { extractJsonObject } from '@/lib/json-utils';
 import { buildInterpretationPrompt } from '@/lib/astro/prompts';
 import { astroAIRatelimit } from '@/lib/rate-limit';
 
 export async function POST(req: NextRequest) {
   try {
-    // CSRF protection — exact origin matching
-    const origin = req.headers.get('origin');
-    const allowedOrigins = [SITE_URL];
-    if (SITE_URL.includes('www.')) {
-      allowedOrigins.push(SITE_URL.replace('www.', ''));
-    } else {
-      allowedOrigins.push(SITE_URL.replace('://', '://www.'));
-    }
-    const isAllowedOrigin =
-      origin &&
-      (allowedOrigins.includes(origin) ||
-        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
-    if (!isAllowedOrigin) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
@@ -64,18 +53,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No interpretation generated.' }, { status: 500 });
     }
 
-    // Parse JSON from response (handle potential markdown code blocks)
-    let parsed;
-    try {
-      const jsonStr = textBlock.text.replace(/^```json?\n?/, '').replace(/\n?```$/, '').trim();
-      parsed = JSON.parse(jsonStr);
-    } catch {
+    const parsed = extractJsonObject(textBlock.text);
+    if (!parsed) {
       return NextResponse.json({ error: 'Failed to parse interpretation.' }, { status: 500 });
     }
 
-    return NextResponse.json(parsed);
+    const { emotions, communication, love, ambition, career, balance } = parsed;
+    return NextResponse.json({ emotions, communication, love, ambition, career, balance });
   } catch (error) {
-    console.error('Astro interpretation error:', error);
+    console.error('Astro interpretation error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { error: 'Failed to generate interpretation.' },
       { status: 500 }

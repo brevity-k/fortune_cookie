@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SITE_URL } from '@/lib/constants';
+import { isAllowedOrigin } from '@/lib/api-utils';
+import { premiumAIRatelimit } from '@/lib/rate-limit';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
 import { calculateDayPillar } from '@/lib/saju/day-pillar';
 import { getStemElement } from '@/lib/saju/stems';
@@ -9,12 +10,7 @@ import type { Element } from '@/lib/saju/types';
 
 export async function POST(req: NextRequest) {
   try {
-    const origin = req.headers.get('origin');
-    const isAllowedOrigin =
-      origin &&
-      (SITE_URL.startsWith(origin) ||
-        (process.env.NODE_ENV === 'development' && (origin === 'http://localhost:3000' || origin === 'http://127.0.0.1:3000')));
-    if (!isAllowedOrigin) {
+    if (!isAllowedOrigin(req)) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
@@ -26,6 +22,11 @@ export async function POST(req: NextRequest) {
     const payload = await verifyPremiumToken(token);
     if (!payload) {
       return NextResponse.json({ error: 'Invalid or expired token.' }, { status: 401 });
+    }
+
+    const { success } = await premiumAIRatelimit.limit(payload.customerId);
+    if (!success) {
+      return NextResponse.json({ error: 'Daily limit reached. Please try again tomorrow.' }, { status: 429 });
     }
 
     const { chart } = await req.json();
@@ -78,7 +79,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ days });
   } catch (error) {
-    console.error('Lucky days calculation error:', error);
+    console.error('Lucky days calculation error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json({ error: 'Failed to calculate lucky days.' }, { status: 500 });
   }
 }

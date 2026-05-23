@@ -43,13 +43,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           INPUT_TYPE: ${{ github.event.inputs.type || 'auto' }}
         run: |
-          if [ "$INPUT_TYPE" = "auto" ]; then
-            npx tsx scripts/generate-horoscopes.ts
-          elif [ "$INPUT_TYPE" = "all" ]; then
-            npx tsx scripts/generate-horoscopes.ts --all
-          else
-            npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE"
-          fi
+          case "$INPUT_TYPE" in
+            auto)   npx tsx scripts/generate-horoscopes.ts ;;
+            all)    npx tsx scripts/generate-horoscopes.ts --all ;;
+            daily|weekly|monthly) npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE" ;;
+            *) echo "Unknown INPUT_TYPE: $INPUT_TYPE" >&2; exit 1 ;;
+          esac
 
       - name: Retry on failure
         if: steps.generate.outcome == 'failure'
@@ -60,13 +59,12 @@ jobs:
           set -e
           echo "Retrying horoscope generation..."
           sleep 30
-          if [ "$INPUT_TYPE" = "auto" ]; then
-            npx tsx scripts/generate-horoscopes.ts
-          elif [ "$INPUT_TYPE" = "all" ]; then
-            npx tsx scripts/generate-horoscopes.ts --all
-          else
-            npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE"
-          fi
+          case "$INPUT_TYPE" in
+            auto)   npx tsx scripts/generate-horoscopes.ts ;;
+            all)    npx tsx scripts/generate-horoscopes.ts --all ;;
+            daily|weekly|monthly) npx tsx scripts/generate-horoscopes.ts --"$INPUT_TYPE" ;;
+            *) echo "Unknown INPUT_TYPE: $INPUT_TYPE" >&2; exit 1 ;;
+          esac
 
       - name: Validate JSON
         run: node -e "JSON.parse(require('fs').readFileSync('src/data/horoscopes.json','utf8')); console.log('JSON valid')"

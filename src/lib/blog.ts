@@ -61,6 +61,7 @@ export function getAllPosts(): BlogPost[] {
 }
 
 export function getPost(slug: string): BlogPost | undefined {
+  if (!/^[a-z0-9-]+$/.test(slug)) return undefined;
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return undefined;
 

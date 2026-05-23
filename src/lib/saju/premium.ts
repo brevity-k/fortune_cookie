@@ -32,6 +32,16 @@ export async function verifyPremiumToken(token: string): Promise<PremiumPayload 
   }
 }
 
+// Verifies signature but tolerates up to 7 days past expiry — use only when Stripe re-validates the subscription
+export async function verifyPremiumTokenWithGracePeriod(token: string): Promise<PremiumPayload | null> {
+  try {
+    const { payload } = await jwtVerify(token, getSecret(), { clockTolerance: 7 * 24 * 60 * 60 });
+    return payload as unknown as PremiumPayload;
+  } catch {
+    return null;
+  }
+}
+
 export function premiumCookieOptions() {
   return {
     httpOnly: true,

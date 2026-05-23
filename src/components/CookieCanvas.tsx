@@ -132,6 +132,8 @@ export default function CookieCanvas({
     },
     [onBreak, onFortuneReveal]
   );
+  const handleBreakRef = useRef(handleBreak);
+  handleBreakRef.current = handleBreak;
 
   const handleReset = useCallback(() => {
     setIsBroken(false);
@@ -193,7 +195,7 @@ export default function CookieCanvas({
       const interaction = new InteractionDetector();
       interaction.setCookieBounds(renderer.cx, renderer.cy, renderer.radius);
       interaction.setCallbacks({
-        onBreak: handleBreak,
+        onBreak: (event: BreakEvent) => handleBreakRef.current(event),
         onHover: (intensity) => {
           renderer.state.hoverIntensity = intensity;
           if (intensity > 0.5) {
@@ -227,7 +229,7 @@ export default function CookieCanvas({
               },
             });
             SoundManager.init();
-            SoundManager.play(count === 1 ? "crack" : "crack");
+            SoundManager.play("crack");
           }
         },
       });

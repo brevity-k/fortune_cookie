@@ -11,6 +11,7 @@ const VALID_CATEGORIES = [
 
 const VALID_RARITIES = ["common", "rare", "epic", "legendary"];
 
+// Higher-contrast colors tuned for 1200×630 OG images — intentionally different from the UI palette in constants.ts
 const CATEGORY_COLORS: Record<string, string> = {
   wisdom: "#0d7377",
   love: "#e8475f",
@@ -41,7 +42,8 @@ export async function GET(request: NextRequest) {
   let text = searchParams.get("text") || "A fortune awaits you";
   const category = searchParams.get("category") || "wisdom";
   const rarity = searchParams.get("rarity") || "common";
-  const num = searchParams.get("num") || "1";
+  const numRaw = parseInt(searchParams.get("num") ?? "1", 10);
+  const num = String(Number.isFinite(numRaw) && numRaw > 0 ? Math.min(numRaw, 9999) : 1);
 
   if (text.length > 300) text = text.slice(0, 300);
   const validCategory = VALID_CATEGORIES.includes(category) ? category : "wisdom";
