@@ -133,7 +133,9 @@ export default function CookieCanvas({
     [onBreak, onFortuneReveal]
   );
   const handleBreakRef = useRef(handleBreak);
-  handleBreakRef.current = handleBreak;
+  useEffect(() => {
+    handleBreakRef.current = handleBreak;
+  });
 
   const handleReset = useCallback(() => {
     setIsBroken(false);
@@ -283,7 +285,7 @@ export default function CookieCanvas({
   // Empty deps: canvas/physics/interaction setup runs once at mount.
   // handleBreakRef (not handleBreak directly) is used inside the callback,
   // so prop changes are reflected without re-running the effect.
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="relative w-full max-w-[600px] mx-auto">
