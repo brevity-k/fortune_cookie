@@ -25,8 +25,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.100.1",
-    "@atproto/api": "^0.20.7",
+    "@anthropic-ai/sdk": "^0.101.0",
+    "@atproto/api": "^0.20.9",
     "@stripe/stripe-js": "^9.7.0",
     "astronomy-engine": "^2.1.19",
     "gray-matter": "^4.0.3",
@@ -35,11 +35,11 @@
     "jose": "^6.2.3",
     "korean-lunar-calendar": "^0.3.6",
     "matter-js": "^0.20.0",
-    "next": "^16.2.6",
+    "next": "^16.2.7",
     "next-mdx-remote": "^6.0.0",
-    "pixi.js": "^8.18.1",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "pixi.js": "^8.19.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "resend": "^6.12.4",
     "stripe": "^22.2.0"
   },
@@ -52,11 +52,11 @@
     "@types/react-dom": "^19",
     "@vercel/og": "^0.11.1",
     "eslint": "^9",
-    "eslint-config-next": "^16.2.6",
+    "eslint-config-next": "^16.2.7",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "twitter-api-v2": "^1.29.0",
     "typescript": "^6",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.8"
   }
 }
