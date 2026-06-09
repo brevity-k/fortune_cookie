@@ -50,3 +50,7 @@ next-env.d.ts
 
 # worktrees
 .worktrees/
+
+# local agent config (keep local — never commit)
+.claude/
+.omc/
