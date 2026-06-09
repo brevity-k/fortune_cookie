@@ -65,6 +65,13 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted">
+          <p className="mx-auto mb-3 max-w-2xl leading-relaxed">
+            Fortune Crack is for entertainment and personal reflection only. Our fortunes,
+            horoscopes, and astrology content are not professional, financial, medical, or
+            psychological advice. See our{" "}
+            <Link href="/editorial-policy" className="hover:text-gold">Content Policy</Link>{" "}
+            for how this content is created.
+          </p>
           &copy; {new Date().getFullYear()} Fortune Crack. All rights reserved.
         </div>
       </div>

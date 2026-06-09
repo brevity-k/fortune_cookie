@@ -99,6 +99,18 @@ export default function Home() {
         <p className="text-muted text-sm">
           Fortune Crack #{dailyNumber.toLocaleString()} &middot; {today}
         </p>
+        <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-foreground/70">
+          Fortune Crack is a free daily fortune and Western astrology site. Break an interactive
+          fortune cookie to reveal one of 1,000+ original messages, read today&apos;s{" "}
+          <Link href="/horoscope" className="text-gold hover:underline">horoscope</Link>{" "}
+          for all 12{" "}
+          <Link href="/zodiac/aries" className="text-gold hover:underline">zodiac signs</Link>,
+          explore in-depth astrology guides in our{" "}
+          <Link href="/learn" className="text-gold hover:underline">Learn</Link>{" "}
+          section, and check your daily{" "}
+          <Link href="/lucky-numbers" className="text-gold hover:underline">lucky numbers</Link>.
+          New fortunes, horoscopes, and articles are published every day.
+        </p>
       </section>
 
       {/* Featured Today */}
