@@ -1,9 +1,9 @@
 {
   "daily": {
-    "date": "2026-06-30",
+    "date": "2026-07-01",
     "horoscopes": {
       "aries": {
-        "text": "That restless energy you're feeling? It's pushing you toward something new, but timing matters more than speed right now. Take the afternoon to organize your thoughts before making any bold announcements. Your instinct to act is strong, but the better move is planning your next three steps instead of just the first one.",
+        "text": "That restless feeling? It's pointing you toward something you've been avoiding. Mars is backing you up today, but the real power move is knowing when to pause rather than push. Take the long route home and let your mind wander—the solution you need won't come from forcing it.",
         "love": 3,
         "career": 4,
         "health": 3,
@@ -12,103 +12,103 @@
         "mood": "determined"
       },
       "taurus": {
-        "text": "You've been second-guessing a financial decision, but your initial instinct was actually spot-on. Trust what you knew three days ago. Someone from your past might reach out today—answer that message, even if it feels random.",
+        "text": "Your patience is about to pay off in a way you didn't expect. Someone's finally ready to meet you halfway on that thing you've been negotiating. Celebrate with something that pleases your senses tonight—you've earned it.",
         "love": 4,
-        "career": 3,
+        "career": 4,
         "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Why does everyone suddenly need your opinion today? Because Mercury's making you the most articulate person in every room. Use this clarity to have that conversation you've been avoiding—you'll find exactly the right words. Just don't overschedule yourself; leave at least one hour completely unplanned.",
+        "text": "Why are you overthinking what should be a simple conversation? Mercury's making everything feel more complicated than it is right now. Just say the thing directly—your usual charm will smooth over any awkwardness. The clarity you're craving is on the other side of honesty.",
         "love": 3,
-        "career": 5,
+        "career": 3,
         "health": 3,
         "luckyNumber": 8,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Home feels like the only place that makes sense right now, and that's perfectly fine. Let yourself retreat and recharge without guilt. The emotional clarity you're seeking won't come from more conversations—it'll come from giving yourself permission to simply feel whatever's surfacing.",
+        "text": "You're picking up on everyone's emotions today, which is both your gift and your challenge. Set a boundary before lunch or you'll be drained by dinner. That creative project you shelved last month is calling you back—the timing's actually perfect now.",
         "love": 4,
-        "career": 2,
-        "health": 4,
+        "career": 3,
+        "health": 2,
         "luckyNumber": 29,
-        "luckyColor": "seafoam",
-        "mood": "reflective"
+        "luckyColor": "silver",
+        "mood": "intuitive"
       },
       "leo": {
-        "text": "Your natural magnetism is dialed up to maximum today, so expect people to gravitate toward you without even trying. Someone in your professional circle is noticing your work more than you realize. Wear something that makes you feel powerful—external confidence feeds internal momentum right now.",
+        "text": "Your birthday season is here and you're already feeling the shift. Today's about reclaiming center stage in your own life, not anyone else's drama. Wear something that makes you feel powerful and watch how differently people respond to you.",
         "love": 5,
         "career": 4,
-        "health": 4,
-        "luckyNumber": 63,
+        "health": 5,
+        "luckyNumber": 1,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "All those details you've been tracking are finally starting to form a complete picture. Today's the day to synthesize rather than analyze—step back and look at the whole instead of the parts. Your body's asking for better sleep; maybe try putting your phone away an hour earlier tonight.",
-        "love": 3,
-        "career": 5,
+        "text": "Stop editing yourself in real-time. Your first instinct this morning is the right one, even if it feels imperfect. Mercury's got your back on the details, but you need to trust your gut on the bigger picture for once.",
+        "love": 2,
+        "career": 4,
         "health": 3,
-        "luckyNumber": 51,
-        "luckyColor": "lavender",
+        "luckyNumber": 54,
+        "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "A relationship dynamic shifts slightly today, and it's actually moving in the direction you've been hoping for. Don't overanalyze it—just let things unfold naturally. Take the scenic route home if you can; you need the transition time between work mode and personal mode more than you think.",
-        "love": 5,
-        "career": 3,
+        "text": "A friendship is turning into something more collaborative than you realized. Venus is highlighting partnerships today, so float that idea you've been keeping to yourself. The balance you're always seeking? It's already there—you just need to stop adjusting it.",
+        "love": 4,
+        "career": 5,
         "health": 4,
-        "luckyNumber": 25,
+        "luckyNumber": 33,
         "luckyColor": "pink",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "You're seeing through someone's surface presentation straight to their actual motives, and your intuition is absolutely correct. The question isn't whether you're right—it's what you choose to do with that information. Not every truth needs to be spoken out loud today; some are more powerful when you simply know them.",
+        "text": "You're seeing through someone's performance today, and honestly, it's exhausting. Trust what you know rather than what you're being told. Channel that intensity into something productive this afternoon—your focus is razor-sharp right now and it would be a waste to spend it all on someone else's mess.",
         "love": 3,
-        "career": 4,
+        "career": 5,
         "health": 3,
-        "luckyNumber": 77,
+        "luckyNumber": 71,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Why are you still holding onto that situation that clearly ended weeks ago? Jupiter's reminding you that your superpower is moving forward, not looking backward. Book something fun for this weekend—you need adventure on the calendar, even if it's just exploring a neighborhood you've never walked through before.",
+        "text": "Where has your sense of adventure gone? Jupiter's nudging you toward a spontaneous decision today. Book something, say yes to something, commit to something that makes your routine self a little nervous. Life's too short to play it safe all summer.",
         "love": 4,
         "career": 3,
-        "health": 5,
-        "luckyNumber": 12,
+        "health": 4,
+        "luckyNumber": 19,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "That professional goal you set in March is closer than it appears, but the final push requires a different strategy than what got you here. Ask for help from someone unexpected. Your tendency to shoulder everything alone is costing you speed, not proving your capability.",
-        "love": 2,
-        "career": 5,
+        "text": "Your long-term strategy is solid, but today requires flexibility you're not used to giving. Saturn's teaching you that structure and spontaneity aren't enemies. That person who seems disorganized? They have something valuable to teach you about creative problem-solving.",
+        "love": 3,
+        "career": 4,
         "health": 3,
-        "luckyNumber": 34,
+        "luckyNumber": 66,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Your unconventional solution to a group problem is exactly what's needed, even if others seem skeptical at first. Present your idea anyway—by tomorrow, they'll come around. Someone's going to challenge your thinking today in a way that actually sharpens it rather than undermines it, so stay open.",
-        "love": 3,
-        "career": 4,
+        "text": "Your brain's making connections nobody else sees yet. Write down that weird idea before noon—it's going somewhere interesting. Uranus is amplifying your already unconventional thinking, so don't tone it down to make others comfortable.",
+        "love": 2,
+        "career": 5,
         "health": 4,
         "luckyNumber": 88,
-        "luckyColor": "indigo",
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "The creative inspiration hitting you today isn't random—it's been building quietly for weeks. Put something down on paper, canvas, or screen before it dissolves back into the ether. Your dreams have been especially vivid lately because your subconscious is processing something your waking mind hasn't fully acknowledged yet.",
-        "love": 4,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 56,
-        "luckyColor": "teal",
-        "mood": "intuitive"
+        "text": "You've been giving everyone else the benefit of the doubt except yourself. Neptune's blurring some lines today, but your intuition about your own needs is crystal clear. Take that afternoon for yourself without explaining it to anyone—the world will survive without your caretaking for a few hours.",
+        "love": 3,
+        "career": 2,
+        "health": 2,
+        "luckyNumber": 45,
+        "luckyColor": "seafoam",
+        "mood": "reflective"
       }
     }
   },
@@ -190,91 +190,91 @@
     }
   },
   "monthly": {
-    "month": "2026-06",
+    "month": "2026-07",
     "horoscopes": {
       "aries": {
-        "overview": "What if the thing you've been pushing so hard against suddenly gives way? June brings a shift in momentum that rewards your recent efforts, particularly around mid-month when professional doors swing open with surprising ease. This is a season of harvest after months of relentless planting. Your natural fire finds fuel in collaboration rather than solo ventures.",
-        "love": "Vulnerability becomes your unexpected superpower this month, especially if you've been keeping romantic prospects at arm's length. Single Rams might find chemistry in intellectual spaces—workshops, bookstores, group chats—while partnered Aries discover that admitting uncertainty actually deepens trust.",
-        "career": "The recognition you receive around the 18th isn't random; it's the culmination of groundwork you laid in early spring. Leadership opportunities arrive with more responsibility than you anticipated, so negotiate terms before accepting. Your ideas have serious traction right now, but they need structure to become reality.",
-        "health": "Your body is asking for dynamic rest—think yoga instead of bootcamp, swimming instead of running. The intensity you normally crave might deplete you rather than energize you this month. Listen to what feels nourishing rather than what feels like discipline.",
-        "advice": "Let someone else set the pace occasionally. You'll be surprised how much further you travel when you're not always breaking trail."
+        "overview": "What if everything you've been pushing toward suddenly starts pulling you instead? July brings a magnetic quality to your ambitions, where opportunities find you rather than the other way around. Your natural drive meets unexpected ease, especially mid-month when creative projects and romantic ventures gain surprising momentum. This is what abundance feels like when you're not forcing it.",
+        "love": "Passion runs high, but so does your need for independence—find someone who celebrates both. Single Rams might meet someone through a friend's casual introduction that becomes anything but casual.",
+        "career": "Your ideas have currency right now, so speak up in meetings and pitch what you've been quietly developing. A leadership opportunity emerges after the 18th that recognizes your initiative.",
+        "health": "Channel that trademark intensity into something that makes you sweat and smile simultaneously. Your body craves movement that feels like play, not punishment.",
+        "advice": "Let yourself be surprised by what comes easily. Not everything worth having requires a battle."
       },
       "taurus": {
-        "overview": "June places you at a creative crossroads, and for once, you're excited rather than anxious about choosing a direction. Financial clarity arrives in the first week, giving you permission to invest in something you've been mentally circling for months. The stability you crave is being rebuilt from the inside out, which feels slower but infinitely more sustainable. Summer's abundance speaks your language fluently.",
-        "love": "Romance gets refreshingly straightforward after weeks of mixed signals or internal confusion. If you've been dating someone casually, expect a conversation that defines things one way or another. Committed Bulls find that quality time becomes non-negotiable—and protecting it actually strengthens your bond rather than creating conflict.",
-        "career": "A creative project or side interest could generate unexpected income, but only if you take it seriously enough to structure it properly. Your value in the workplace becomes undeniable around the 22nd when someone in leadership explicitly acknowledges what you bring. This is the month to ask for what you're worth, not what you think they'll agree to.",
-        "health": "Your nervous system needs earthing—literal contact with grass, soil, or water. Indoor-only days will leave you feeling vaguely depleted without knowing why. Prioritize meals that feel like rituals rather than fuel stops.",
-        "advice": "The thing you're holding onto out of loyalty might be holding you back. Examine whether it still serves you or just feels familiar."
+        "overview": "July plants you firmly in your power, asking you to recognize what you've already built rather than what's still missing. Financial clarity arrives mid-month, bringing either a solid opportunity or the confidence to finally make that investment in yourself. Your sensory world feels heightened—food tastes better, music moves you more, touch carries meaning. Slow down enough to notice.",
+        "love": "Vulnerability isn't weakness, it's the bridge to the intimacy you've been craving. Couples find renewed appreciation through small, consistent gestures rather than grand declarations.",
+        "career": "Your steady approach finally gets the recognition it deserves, possibly through a promotion or expanded responsibilities. Trust your instinct about a collaboration proposed near month's end.",
+        "health": "Your neck and shoulders hold more tension than you realize—bodywork or stretching practices bring immediate relief. Prioritize sleep as the foundation for everything else.",
+        "advice": "Security comes from knowing your worth, not from controlling every outcome."
       },
       "gemini": {
-        "overview": "Your birthday season delivers exactly what you've been craving: options, connections, and validation that your ideas aren't as scattered as others have suggested. The first half of June buzzes with social momentum, but pay attention to the quieter second half when integration happens. You're being invited to go deeper rather than wider this month. What you commit to now will still interest you in six months.",
-        "love": "Flirtation comes easily, but actual intimacy requires you to stay in the conversation past the witty opener. Someone might call you out for surface-level engagement around the 15th—take it as useful feedback rather than criticism. Partnered Geminis benefit from scheduling adventures that genuinely surprise you both, not just checking boxes on a summer bucket list.",
-        "career": "Your communication skills are your currency this month, especially in negotiations or presentations. A project you thought was shelved gets revived with better support and clearer parameters. Multi-tasking will backfire more than usual; single-focus sprints will yield better results than your typical juggling act.",
-        "health": "Mental rest is as essential as physical rest, which means scrolling doesn't count as downtime. Your hands need creative outlets—cooking, drawing, building something tangible. Notice if anxiety lives in your jaw or shoulders and address it with deliberate release.",
-        "advice": "Not every connection needs to be maintained. Some people are meant for a season, and this month helps you discern which relationships have roots."
+        "overview": "Communication is always your realm, but July hands you the microphone and an audience that's actually listening. Ideas that felt scattered suddenly crystallize into something shareable, teachable, possibly profitable. Your social calendar fills naturally, though you'll need to be selective about which invitations deserve your energy. A sibling or neighbor plays an unexpected role in your month.",
+        "love": "Wit and banter can only take you so far—someone wants to know what you actually feel. If you're partnered, plan something that requires your phones to be off and your attention to be fully present.",
+        "career": "A writing, speaking, or teaching opportunity surfaces that aligns perfectly with your skills. Say yes even if logistics seem complicated—you'll figure it out as you go.",
+        "health": "Your nervous system needs grounding more than stimulation right now. Try walking barefoot, breathing exercises, or anything that brings you back into your body.",
+        "advice": "Depth doesn't bore you as much as you think it does. Give the important conversations more than surface-level attention."
       },
       "cancer": {
-        "overview": "Have you been waiting for permission to prioritize yourself? June hands it to you explicitly, particularly in areas where you've been the perpetual caretaker. The spotlight finds you whether you seek it or not, especially around your work or public contributions. Your intuition is exceptionally sharp right now, bordering on psychic—trust the hunches that arrive without logical explanation. This is your month to receive instead of constantly pouring out.",
-        "love": "Emotional honesty becomes magnetic, attracting people who can handle your full depth rather than just your pleasant exterior. A conversation you've been avoiding actually brings relief when you finally initiate it. Single Crabs might feel drawn to someone who needs you less and sees you more—let that be the green flag it is.",
-        "career": "Your behind-the-scenes contributions are about to become very visible, possibly through a promotion, public acknowledgment, or expanded role. Financial improvements arrive through negotiation rather than luck, so prepare to advocate for yourself. Creative Cancers find that personal projects gain unexpected traction if shared publicly.",
-        "health": "Your emotional weather directly impacts your physical body this month more than usual. Digestive issues or sleep disruption often signal unprocessed feelings. Water—drinking it, bathing in it, being near it—becomes genuinely therapeutic rather than metaphorically soothing.",
-        "advice": "Saying no to good things creates space for great things. Your time is the most valuable resource you possess."
+        "overview": "Your birthday season arrives with unusual clarity about what you're building toward and who you're becoming. July asks you to honor both your need for security and your hunger for growth—they're not opposing forces. Emotional courage shows up in unexpected moments, particularly around the 14th when a conversation you've been avoiding actually strengthens a relationship. Home and family matters settle into a new, more sustainable rhythm.",
+        "love": "You're done performing emotional labor for people who won't meet you halfway. This realization either deepens your current relationship or opens the door for something more reciprocal.",
+        "career": "Financial recognition comes through, whether as a raise, bonus, or new income stream that values your emotional intelligence. Your intuition about a workplace dynamic proves accurate.",
+        "health": "Your stomach tells you emotional truths before your mind does—pay attention to what foods and situations create discomfort. Hydration and gentle movement support your lunar nature.",
+        "advice": "Protect your energy without apologizing for it. The right people will understand."
       },
       "leo": {
-        "overview": "June asks you to consider what you're building versus what you're performing. The difference matters more this month than usual, especially as opportunities arise that glitter without offering substance. Your natural charisma is amplified, but so is your ability to discern who's applauding your authentic self versus your entertaining persona. Strategic retreat in the last week of the month isn't weakness—it's preparation for a powerful July.",
-        "love": "Playfulness returns to romance after a heavier spring, but make sure you're not using charm to avoid real conversations. Someone worth your time will want to know what you fear, not just what you celebrate. Partnered Leos rediscover why you chose each other, often through laughter and shared creativity rather than serious discussion.",
-        "career": "A leadership role or high-visibility project lands in your lap, but read the fine print before accepting. What looks like a crown might be a burden in disguise. Your creative output is exceptional this month—document ideas even if you can't execute them immediately. Collaboration amplifies your impact, especially with people who complement rather than mirror your skills.",
-        "health": "Your heart—both literal and metaphorical—needs tending. Cardiovascular exercise feels especially good, as does expressing affection freely. Notice if you're performing wellness for an audience versus actually nourishing yourself. Rest is productive.",
-        "advice": "Let someone else be the star occasionally. Your security doesn't depend on constant visibility, and stepping back reveals who's truly in your corner."
+        "overview": "This is your month to remember why you're the sun of the zodiac—not because you demand attention, but because you genuinely radiate it. Creative projects, romantic connections, and personal expression all get the green light, with momentum building toward your birthday. Something you've been developing privately is ready for its public debut. Your confidence isn't arrogance when it's backed by genuine talent and preparation.",
+        "love": "Romance feels cinematic right now, full of moments that make you believe in magic again. If you're single, don't downplay your standards—someone is ready to meet them.",
+        "career": "Step into the spotlight with a presentation, pitch, or visible role that showcases your leadership. Recognition arrives from unexpected quarters, possibly bringing new professional allies.",
+        "health": "Your heart—both literal and metaphorical—needs tending. Cardiovascular exercise boosts your mood while creative expression keeps your spirit fed.",
+        "advice": "Generosity is your nature, but make sure you're not dimming your light to make others comfortable. Shine fully."
       },
       "virgo": {
-        "overview": "The analysis paralysis that's kept you circling certain decisions finally lifts, revealing a clear path forward. June brings relief in the form of information—data you've been waiting for, conversations that clarify confusion, or simply enough perspective to stop second-guessing yourself. Your standards remain high, but your self-criticism softens. Progress doesn't require perfection, and this month proves it.",
-        "love": "Overthinking someone's intentions creates distance that honest conversation would immediately close. If you're interested, be direct; if you're uncertain, be honest about that too. Partnered Virgos benefit from lowering the bar for what constitutes quality time—sometimes presence matters more than perfectly planned dates. Let things be easy.",
-        "career": "Your organizational skills solve a problem that's been plaguing your team or department, earning you respect and possibly compensation. A work process you've been refining is ready to be shared or implemented on a larger scale. Recognition comes through competence rather than self-promotion, which suits you perfectly. Trust your expertise.",
-        "health": "Your gut—literal and intuitive—is trying to tell you something, and June gives you the clarity to finally decode it. Digestive health improves when you address stress rather than just adjusting your diet. Movement that feels meditative serves you better than punishing workouts. Your body is wiser than your mind gives it credit for.",
-        "advice": "Done is better than perfect this month. The project you've been polishing endlessly is ready for the world, even if it doesn't feel flawless to you."
+        "overview": "Ever feel like you're working behind the scenes while everyone else takes the stage? July asks you to find peace in that position rather than resentment. This is a month for rest, reflection, and completing projects before your birthday season brings you back into action. Your analytical mind needs a break from solving everyone else's problems. Dreams and intuitive hits carry more useful information than your usual logical approach.",
+        "love": "Intimacy deepens when you stop trying to fix or improve your partner and simply accept what is. Single Virgos might reconnect with someone from the past worth a second look.",
+        "career": "Tie up loose ends and document your processes—this groundwork sets you up for visibility in August. Avoid taking on new commitments until you're certain they align with your actual goals.",
+        "health": "Your digestive system and nervous system are intimately connected—notice how stress manifests physically. Restorative practices serve you better than intense workouts right now.",
+        "advice": "Not everything needs to be perfected or improved. Sometimes good enough is exactly right."
       },
       "libra": {
-        "overview": "What would you choose if people-pleasing wasn't part of the equation? June confronts you with this question repeatedly, especially in situations where your preference directly contradicts someone else's expectations. The discomfort you feel when asserting boundaries is growth, not failure. Your natural diplomacy remains intact, but it's being recalibrated to include yourself in the negotiations. Beauty and balance still matter, but not at the expense of your authenticity.",
-        "love": "Partnership dynamics shift when you stop managing someone else's emotions and focus on honestly expressing your own. The relationship that can handle your full truth is the one worth keeping. Single Libras attract different types this month—less charming, more substantial—if you're willing to prioritize depth over chemistry. Attraction follows honesty.",
-        "career": "A collaborative project reveals whether you're working with teammates or people who expect you to carry the weight. Speak up about inequitable distribution of labor before resentment builds. Your aesthetic sensibilities and strategic thinking are both needed for an upcoming initiative—don't minimize either skill set. You're more irreplaceable than you assume.",
-        "health": "Balance doesn't mean equal—sometimes rest needs to outweigh productivity, or solitude needs to trump socializing. Your kidneys and lower back might signal when you're carrying stress meant for others. Symmetry in your physical practice—yoga, stretching, bilateral movement—helps settle your nervous system.",
-        "advice": "Disappointing someone occasionally is the price of integrity. The people worth keeping will respect your honesty even when it's inconvenient."
+        "overview": "Your social sphere expands in ways that feel both exciting and slightly overwhelming—say yes to the invitations that spark genuine curiosity. July connects you with people who share your vision for what's possible, whether that's in creative collaboration, activism, or simply how to live more beautifully. A friendship might deepen into something more, or a casual acquaintance reveals unexpected depth. Your diplomatic skills are needed in your community.",
+        "love": "Attraction begins in the mind for you this month—you want someone who challenges your ideas, not just agrees with them. Existing partnerships benefit from trying something new together.",
+        "career": "Networking isn't transactional when you're genuinely interested in people. A connection made casually after the 20th carries long-term professional potential.",
+        "health": "Your kidneys and lower back need extra support—stay hydrated and stretch regularly. Balance remains your key word; extremes don't serve you.",
+        "advice": "Stop waiting for perfect conditions to pursue what excites you. Start messy if you have to."
       },
       "scorpio": {
-        "overview": "You're being asked to release a grudge, habit, or story that's been providing identity but preventing evolution. June's intensity matches yours, which means transformation happens whether you consciously participate or get dragged along. The control you've maintained in one area might need to loosen for growth to occur elsewhere. Trust is the work this month—in others, in process, and especially in your own resilience. What you survive only makes you more yourself.",
-        "love": "Jealousy or possessiveness that surfaces isn't the problem—it's information about unmet needs or old wounds. Address the root instead of managing the symptoms. Single Scorpios might experience magnetic attraction around the 20th, but pay attention to whether it's chemistry or familiarity with intensity. Partnered Scorpios deepen intimacy by sharing power rather than wielding it.",
-        "career": "Your research, intuition, or investigative skills uncover something valuable that others have overlooked. A power dynamic at work shifts in your favor, but wield influence with integrity rather than revenge. Financial opportunities improve, especially through joint ventures or resources you share with others. Your strategic mind is unmatched right now—use it.",
-        "health": "What you've been avoiding looking at directly is affecting your wellbeing more than you've admitted. Physical symptoms often have emotional roots for you—explore both. Elimination—of toxins, relationships, habits—supports your vitality. Water purifies you literally and energetically this month.",
-        "advice": "Forgiveness isn't about them; it's about refusing to let the past colonize your future. What you release creates space for what you actually want."
+        "overview": "Picture yourself at the top of the mountain you've been climbing—that's July's energy for you. Professional recognition or public acknowledgment arrives for work you've been doing quietly for months. Your ambitions feel clearer and your path toward them more direct, though you'll need to let others see your capabilities rather than hiding your talents. Power dynamics shift in your favor, particularly after the 12th.",
+        "love": "Intensity is your default, but July asks for transparency too—let someone see your ambitions and fears without the mystery. Vulnerability builds the trust you crave more than any seduction technique.",
+        "career": "A promotion, new role, or public achievement positions you exactly where you've wanted to be. Own your expertise without downplaying it to make others comfortable.",
+        "health": "Deep, transformative practices serve you—whether that's therapy, intense physical training, or shadow work. Your regenerative abilities are strong; trust them.",
+        "advice": "True power doesn't need to be hidden or hoarded. Let yourself be seen in your full capability."
       },
       "sagittarius": {
-        "overview": "When was the last time you stayed somewhere long enough to see what blooms? June slows your typical pace, which might feel restrictive initially but reveals depth you'd miss at your usual speed. Commitments that once felt like cages could be reframed as containers for growth. Your optimism remains intact, but it's being tempered with realism that actually makes your visions more achievable. Expansion happens through depth this month, not distance.",
-        "love": "Someone wants more consistency than you've been offering, and the conversation is worth having even if it feels binding. Freedom within relationship is possible, but it requires negotiation and honesty. Single Archers benefit from slowing down the getting-to-know-you phase—don't skip chapters to get to the exciting parts. Depth creates its own kind of adventure.",
-        "career": "A learning opportunity or teaching role expands your influence beyond your current scope. Your big-picture thinking solves a problem that's had others stuck in details. International connections or diverse perspectives fuel your best work this month. If you've been considering additional education or certification, June provides clarity about whether it's expansion or avoidance.",
-        "health": "Your hips, thighs, and liver need attention—stretching, movement, and moderation in indulgence. Outdoor activity feeds your soul more than gym workouts. Notice if restlessness is masking the need for internal exploration rather than external adventure. Sometimes the journey is inward.",
-        "advice": "Commitment isn't confinement when it's chosen consciously. What you dedicate yourself to fully will take you further than what you sample superficially."
+        "overview": "When was the last time you felt genuinely inspired rather than just busy? July reopens that channel through travel, learning, or philosophical exploration that reminds you why you're here. Your worldview expands—either literally through a journey or metaphorically through a teacher, book, or perspective that shifts everything. Adventure calls, and you're finally ready to answer. This is the abundance you've been seeking: meaning.",
+        "love": "You need a partner who's a fellow traveler, not an anchor. Conversations turn toward future possibilities and shared dreams, revealing who's actually ready to grow with you.",
+        "career": "Teaching, publishing, or international projects gain traction. Your enthusiasm is contagious—use it to rally others around a vision that extends beyond the immediate.",
+        "health": "Your hips and thighs need attention through stretching or strengthening. Outdoor movement feeds your soul more than any gym routine.",
+        "advice": "Commitment doesn't mean confinement when it's to the right thing. Choose your adventure wisely."
       },
       "capricorn": {
-        "overview": "The structure you've been building finally feels stable enough to relax into rather than constantly reinforce. June rewards your discipline with tangible results—the promotion, the recognition, the financial improvement you've been working toward. But the invitation is also to enjoy what you've created instead of immediately identifying the next mountain to climb. Success includes satisfaction, not just achievement. Let yourself feel proud.",
-        "love": "Vulnerability doesn't come naturally, but someone's patience with your slow thaw deserves acknowledgment and reciprocation. Letting someone support you isn't weakness—it's partnership. Single Goats attract potential partners through competence and presence rather than pursuit. Committed Capricorns rediscover playfulness when you stop treating the relationship like another responsibility to manage.",
-        "career": "Your authority and expertise are unquestionable right now, positioning you for advancement or expanded responsibility. A long-term project reaches a milestone that validates your strategy and effort. Delegate what doesn't require your specific skillset—your time is too valuable to spend on tasks others can handle. Leadership suits you, but make sure the climb is toward something you actually want.",
-        "health": "Your bones, joints, and teeth need attention—structural support through movement, nutrition, and rest. Chronic tension in your jaw or neck signals unspoken stress. Your body has carried you through relentless effort; treat it with the same respect you give your work. Rest is an investment, not an indulgence.",
-        "advice": "Ambition serves you, but don't let it become the only thing that defines you. Who you are matters more than what you accomplish."
+        "overview": "July takes you beneath surface concerns into questions of real transformation—what needs to die so something better can be born? Financial matters involving shared resources, investments, or debts find resolution, though probably not in the way you originally planned. Your practical nature meets emotional depth this month, revealing that not everything worth having can be controlled or scheduled. Trust is your work right now.",
+        "love": "Intimacy deepens when you stop performing competence and reveal actual need. Your partner wants to support you, but first you have to let them see what you're carrying.",
+        "career": "A joint venture or partnership brings opportunities that exceed what you could build alone. Resources become available after the 16th; be ready with a clear proposal.",
+        "health": "Stress manifests in your bones and joints—don't ignore pain signals. Restorative rest and stress management are productivity tools, not luxuries.",
+        "advice": "Control is an illusion that exhausts you. Practice trust in small doses."
       },
       "aquarius": {
-        "overview": "Your innovative ideas finally find the audience and support they deserve, but collaboration requires compromise you haven't had to make when working solo. June tests whether you can maintain your vision while incorporating others' contributions. The community you've been seeking might already surround you if you let people in past the intellectual connection. Belonging doesn't require conformity—it requires presence. Show up as yourself.",
-        "love": "Emotional availability feels awkward but necessary if you want connection that's more than friendship with attraction. Someone might push for definition or commitment that triggers your independence reflex—examine whether it's genuine incompatibility or fear of losing autonomy. Partnered Aquarians benefit from scheduled spontaneity, which sounds contradictory but actually works for you. Create containers for connection.",
-        "career": "Your unconventional approach to a common problem positions you as an innovator worth listening to. Technology, networking, or group initiatives amplify your impact beyond individual effort. A collaborative project succeeds when you balance vision with flexibility. Your ideas need others to become reality, and others need your ideas to break through stagnation.",
-        "health": "Your nervous system and circulation benefit from practices that ground you—breath work, earthing, reducing screen time. Your mind moves faster than your body can sustain; create buffers between stimulation. Community wellness activities serve you better than solo pursuits this month. Connection is medicine.",
-        "advice": "Detachment serves you, but don't mistake it for superiority. The people around you have wisdom that complements your innovation—listen more than you lecture."
+        "overview": "Relationships take center stage this month, asking you to bridge your love of independence with your need for meaningful connection. July clarifies who's truly in your corner versus who just enjoys your ideas. Partnerships—romantic, business, or creative—either level up through honest negotiation or reveal their natural endpoint. Your idealism meets reality, and surprisingly, reality might win. Collaboration feels less like compromise and more like multiplication.",
+        "love": "You can't innovate your way out of emotional honesty—someone needs to hear how you actually feel, awkward or not. Single Aquarians meet potential partners through work or shared causes.",
+        "career": "A partnership or contract negotiation reaches a critical point. Your unique perspective is valuable; don't discount it to reach consensus faster.",
+        "health": "Your circulation and ankles need attention—keep moving and stretching throughout your day. Your nervous system thrives on novelty but also needs consistent sleep.",
+        "advice": "Community is built through showing up, not just through brilliant ideas. Be present."
       },
       "pisces": {
-        "overview": "Dream and reality find unexpected alignment this month when something you've been visualizing begins taking concrete form. June asks you to participate actively in manifestation rather than waiting for the universe to deliver without your effort. Your intuition is exceptionally accurate, but it needs pairing with practical action to create results. Boundaries—those structures you've historically resisted—actually protect your energy for what matters most. Magic requires embodiment.",
-        "love": "Fantasy and reality need integration if you want sustainable romance. Someone might not match the story you've created about them, which is either disappointing or liberating depending on your perspective. Single Pisces benefit from clarity about what you need versus what you think you should want. Partnered Fish deepen intimacy through honest conversation about expectations that haven't been voiced.",
-        "career": "Your creative or healing gifts generate opportunities that require business savvy to capitalize on. Artistic work needs structure to reach beyond your immediate circle. A mentor or advisor provides practical guidance that grounds your vision without diminishing it. Money follows value, but only if you're willing to name your worth and ask for it.",
-        "health": "Your feet, immune system, and sleep patterns need attention and consistency. Escapism through substances, screens, or fantasy depletes rather than restores you. Water heals you, but so does earth—combine them if possible. Your sensitivity is a gift when bounded, but without protection, it becomes overwhelm.",
-        "advice": "Spiritual bypassing keeps you safe but small. True growth requires engaging with reality, not just transcending it."
+        "overview": "What if the daily routine you've been resisting is actually the container your creativity needs? July grounds your dreamy nature into practical rhythms that serve your health, work, and sense of purpose. Service takes on new meaning—not as sacrifice, but as the way your gifts meet the world's needs. Your body asks for attention you've been postponing. Small, consistent actions build toward something substantial.",
+        "love": "Show love through actions, not just feelings—your partner needs tangible proof you're invested. Single Pisces might find romance in ordinary places doing ordinary things.",
+        "career": "Your work quality speaks for itself, attracting opportunities without hustle. A health-related or service-oriented project aligns perfectly with your skills and values.",
+        "health": "Your feet, immune system, and energy levels all need consistent care—establish non-negotiable daily practices. Sleep and boundaries are your medicine.",
+        "advice": "Discipline is how you honor your dreams, not what prevents them. Build structure that supports your vision."
       }
     }
   }
