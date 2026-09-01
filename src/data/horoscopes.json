@@ -1,113 +1,113 @@
 {
   "daily": {
-    "date": "2026-08-31",
+    "date": "2026-09-01",
     "horoscopes": {
       "aries": {
-        "text": "That restless feeling? It's actually momentum building. Channel it into something concrete today rather than letting it scatter your focus. A conversation this afternoon could open a door you didn't even know you were looking for.",
+        "text": "That project you've been putting off? Today's the day to tackle it head-on, even if you only commit to fifteen minutes. Your natural drive is amplified, but don't mistake speed for direction—pause to make sure you're running toward something that actually matters. A conversation this evening could reveal why someone's been distant lately.",
         "love": 3,
         "career": 4,
         "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "energetic"
+        "mood": "determined"
       },
       "taurus": {
-        "text": "You've been pushing hard lately, and today's the day to acknowledge that. Take the longer route home if you can—your mind needs the processing time. Something you've been cultivating is closer to harvest than you think.",
-        "love": 4,
+        "text": "You're craving comfort, but growth lives just outside that familiar zone. September opens with an invitation to reconsider what security really means—maybe it's not about holding tight but knowing you can handle whatever comes. That financial decision can wait another day or two.",
+        "love": 3,
         "career": 3,
         "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
-        "mood": "grounded"
+        "mood": "reflective"
       },
       "gemini": {
-        "text": "Your inbox is telling you something about where your energy's been going. Mercury's positioning sharpens your communication skills today, so speak up in that meeting or send the message you've been drafting in your head. Trust your first instinct on the small decisions.",
-        "love": 3,
-        "career": 5,
+        "text": "Your mind's racing through a dozen possibilities, but the answer you need is probably in the conversation you've been avoiding. Reach out to that person before lunch. Mercury's making you articulate in ways that surprise even you, so use your words—they're landing better than you think.",
+        "love": 4,
+        "career": 4,
         "health": 3,
-        "luckyNumber": 8,
+        "luckyNumber": 23,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Why are you still holding onto that thing that already served its purpose? The Moon's influence today brings clarity about what needs releasing. Someone close to you needs your listening ear more than your solutions right now.",
+        "text": "Something from the past wants your attention today, and ignoring it will take more energy than just facing it. Take the longer route home if you can—the extra time to think will be worth it. Your intuition is especially sharp right now, so trust that gut feeling about the situation at work.",
         "love": 4,
-        "career": 2,
-        "health": 3,
-        "luckyNumber": 23,
-        "luckyColor": "silver",
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 8,
+        "luckyColor": "seafoam",
         "mood": "intuitive"
       },
       "leo": {
-        "text": "Your birthday season winds down with a bang, not a whimper. There's creative fire in you today that demands expression—don't waste it on overthinking. Wear something that makes you feel like yourself times ten.",
-        "love": 5,
+        "text": "Why are you dimming yourself to make others comfortable? The Sun's still backing you up, and today's a reminder that your presence isn't 'too much' for the right people. Celebrate a small win—yours or someone else's—and watch how that generosity comes back around.",
+        "love": 4,
         "career": 4,
-        "health": 4,
-        "luckyNumber": 31,
+        "health": 3,
+        "luckyNumber": 51,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "Happy solar return season! The Sun moves into your sign bringing renewed vitality and clarity about your next chapter. Today's about small recalibrations, not massive overhauls—adjust one routine and watch how it ripples outward.",
+        "text": "Happy solar return season! You're reassessing everything, which is very on-brand, but try to separate useful analysis from paralyzing perfectionism today. That thing you think isn't ready? It's closer than you believe. Someone at work notices your attention to detail, even if they haven't said so yet.",
         "love": 3,
-        "career": 4,
-        "health": 5,
-        "luckyNumber": 6,
+        "career": 5,
+        "health": 4,
+        "luckyNumber": 64,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "You're in a quieter phase right now, and that's exactly where you need to be. Venus whispers rather than shouts today—pay attention to the subtle shifts in a relationship. That creative project you abandoned in June? Dust it off.",
-        "love": 4,
-        "career": 3,
-        "health": 3,
-        "luckyNumber": 54,
+        "text": "You've been accommodating everyone else's schedule, and it's starting to show. What would it look like to prioritize your needs today without guilt? Venus is preparing something lovely for your season ahead, but first you need to clear out what's been draining you. Rest isn't selfish.",
+        "love": 3,
+        "career": 2,
+        "health": 5,
+        "luckyNumber": 29,
         "luckyColor": "lavender",
-        "mood": "reflective"
+        "mood": "calm"
       },
       "scorpio": {
-        "text": "Something about a group situation feels off, and you're right to notice. Trust what you're picking up beneath the surface conversations today. Your intensity is an asset right now, not something to dim—just choose your battles wisely.",
-        "love": 3,
-        "career": 4,
+        "text": "That intensity you're feeling isn't a problem to solve—it's information. Pay attention to what's stirring beneath the surface, especially around friendships that might be evolving into something else or fading naturally. Transformation doesn't always announce itself with fireworks; sometimes it whispers.",
+        "love": 4,
+        "career": 3,
         "health": 3,
         "luckyNumber": 77,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Big ideas are flowing, but today requires you to nail down the details you usually skip. Jupiter's influence expands your professional visibility—make sure you're ready for the attention. Book that trip you've been theoretically planning.",
-        "love": 3,
-        "career": 5,
+        "text": "Your wanderlust is bumping up against responsibilities, but who says you can't bring adventure to the mundane? Try that new lunch spot, take a different route, say yes to the unexpected invitation. Jupiter's influence means even small shifts in perspective can open surprisingly big doors.",
+        "love": 4,
+        "career": 3,
         "health": 4,
-        "luckyNumber": 12,
+        "luckyNumber": 35,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "You're seeing the long-term implications of everything right now, which is both a gift and a burden. Let yourself think beyond the practical for a few hours today. Call that person back—the one you've been meaning to reach for weeks.",
+        "text": "You've been climbing, but have you checked lately if it's the right mountain? September asks you to audit your goals—not to abandon them, but to make sure they still fit who you're becoming. That mentor or elder figure has advice worth hearing, even if it challenges your current plan.",
         "love": 2,
         "career": 4,
         "health": 3,
-        "luckyNumber": 89,
+        "luckyNumber": 12,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "An unexpected idea arrives sideways today, probably when you're doing something completely unrelated. Write it down immediately or it'll vanish like smoke. Your social energy is high but selective—quality over quantity in all interactions.",
+        "text": "Your brilliant idea needs a practical container, and today's perfect for building it. Collaborate with someone whose skills complement yours—you don't have to innovate alone. Uranus is shaking things up in ways you'll appreciate later, but for now, just stay open to doing things differently than you originally planned.",
         "love": 3,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 45,
+        "career": 5,
+        "health": 3,
+        "luckyNumber": 88,
         "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "That boundary you set last week? Today tests whether you meant it. Neptune's dreamy influence could blur your judgment, so anchor decisions in what you know rather than what you hope. Your creative instincts are razor-sharp right now—use them.",
-        "love": 4,
+        "text": "Are you absorbing someone else's mood again? Ground yourself before that afternoon meeting—five minutes outside will do more than you think. Your creativity is flowing, but Neptune's influence means you need boundaries around your energy. Write down that dream or idea before it dissolves.",
+        "love": 5,
         "career": 3,
-        "health": 3,
-        "luckyNumber": 29,
-        "luckyColor": "seafoam",
+        "health": 2,
+        "luckyNumber": 46,
+        "luckyColor": "indigo",
         "mood": "inspired"
       }
     }
@@ -190,91 +190,91 @@
     }
   },
   "monthly": {
-    "month": "2026-08",
+    "month": "2026-09",
     "horoscopes": {
       "aries": {
-        "overview": "Ever feel like you're running on pure adrenaline and ambition? August hands you the fuel you've been craving, especially in the first half when your professional life demands center stage. This is a month for decisive action, not endless deliberation. The heat of summer mirrors your internal fire—channel it strategically and you'll be unstoppable.",
-        "love": "Romantic tension might feel more thrilling than comfortable this month, with past patterns resurfacing just when you thought you'd moved on. If you're coupled, honest conversations about shared goals will either bring you closer or reveal important cracks. Single Aries should lean into spontaneity rather than trying to control every outcome.",
-        "career": "Your leadership abilities are undeniable right now, but don't mistake authority for invincibility. A project you've been pushing forward gains serious momentum mid-month, though you might need to collaborate with someone whose working style tests your patience. The recognition you seek is coming, but it requires you to play well with others.",
-        "health": "Physical energy runs high, but mental restlessness could manifest as insomnia or jaw tension. Movement is your medicine—think intense workouts that help you process emotions, not just burn calories. Listen to your body when it asks for rest; pushing through fatigue won't prove anything this month.",
-        "advice": "Stop treating every disagreement like a battle to be won. Sometimes the strongest position is the one that allows for nuance and compromise."
+        "overview": "September asks you to pause where you'd typically charge forward. The harvest this month isn't about what you can seize next, but what you've already built—relationships, projects, inner resilience. You'll find yourself drawn inward more than usual, reassessing partnerships and how you show up in them. This reflection won't slow you down; it'll sharpen your aim.",
+        "love": "Conversations go deeper than surface level this month, and you might be surprised by what your partner needs to say. Single? Someone from your past may resurface with unfinished emotional business worth exploring.",
+        "career": "You're being called to collaborate rather than compete, which may feel uncomfortable at first. The wins coming your way depend on how well you can merge your vision with someone else's without losing yourself in the process.",
+        "health": "Your body is asking for gentler movement—think stretching, walking, restorative practices rather than high-intensity pushes. Sleep patterns may shift; honor the need for more rest without guilt.",
+        "advice": "Let someone else lead for once. You'll learn something valuable about yourself when you're not the one setting the pace."
       },
       "taurus": {
-        "overview": "August invites you to loosen your grip on the familiar and explore what lies just beyond your comfort zone. Travel, learning, and philosophical conversations color your month, offering perspective shifts you didn't know you needed. You're being called to expand, but on your own terms—no need to abandon everything that makes you feel secure. Think of this as stretching, not uprooting.",
-        "love": "Relationships deepen when you're willing to be vulnerable about your actual needs rather than what you think you should need. Coupled Tauruses might plan a trip together or finally have that conversation about future commitments. If you're single, someone from a different background or belief system could spark genuine interest—stay curious.",
-        "career": "Financial matters require more attention than usual, particularly around shared resources or what you're owed. You might be negotiating a raise, finalizing a contract, or dealing with insurance and investments. Trust your instincts about value, both yours and what you're being offered.",
-        "health": "Your nervous system needs grounding this month—too much mental stimulation without physical release will leave you foggy and irritable. Prioritize meals that actually nourish rather than just convenience, and create evening rituals that signal to your body it's time to wind down. Nature is your reset button.",
-        "advice": "Not every opportunity needs to be practical to be worthwhile. Let yourself be inspired by something that serves no purpose other than joy."
+        "overview": "What if the stability you're chasing is already here, just wearing a different face? September brings a shift in your daily rhythms, asking you to refine routines that have grown stale. Work and wellness take center stage, but not in overwhelming ways—think small recalibrations that yield surprisingly substantial results. The transformation you're undergoing is quiet, almost invisible, until suddenly it's not.",
+        "love": "You're craving something real, something you can touch and trust. Existing relationships benefit from practical gestures—cooking together, fixing something around the house, shared silence that feels full rather than empty.",
+        "career": "Your attention to detail becomes your greatest asset this month, particularly around mid-September. Someone in a position of authority notices the quality of your work, even if recognition doesn't arrive immediately.",
+        "health": "Digestive health deserves attention—what you're eating and how you're eating it both matter. Your body is more sensitive than usual to processed foods and rushed meals.",
+        "advice": "Stop waiting for the perfect moment to make that small change. Start now, messily if necessary."
       },
       "gemini": {
-        "overview": "Intimacy takes on new dimensions this month, pushing you beneath the surface-level connections you usually prefer. August asks you to go deeper—with yourself, with others, with the questions you've been avoiding. This might feel uncomfortable at times, but there's real power in what you discover when you stop distracting yourself. Transformation doesn't announce itself with trumpets; sometimes it arrives quietly, in a conversation you almost didn't have.",
-        "love": "Partnerships demand authenticity now, and you can't charm your way out of serious discussions that need to happen. If you're in a relationship, expect themes around shared finances, physical intimacy, or emotional transparency to surface. Single Geminis might attract someone intense and complex—thrilling, yes, but requiring more emotional bandwidth than usual.",
-        "career": "Collaborative projects flourish when you're genuinely invested in mutual success rather than just networking. A professional partnership could become more formal this month, or you might find yourself relying on someone's expertise more than your independent streak usually allows. Contracts and agreements deserve careful reading.",
-        "health": "Mental health deserves the same attention you give physical symptoms—don't intellectualize your feelings when you should be feeling them. Your sleep quality improves when you create boundaries around screens and stimulation before bed. Consider therapy or journaling to process what's stirring beneath your usual clever commentary.",
-        "advice": "Vulnerability isn't weakness dressed up as honesty. It's the only way to build something real with another person."
+        "overview": "This is your month to play, create, and remember what lights you up when productivity isn't the point. Romance and creative expression intertwine in unexpected ways throughout September. You've been processing so much information lately; now it's time to alchemize it into something that feels joyful rather than just useful. Let yourself be a little reckless with your heart and your art.",
+        "love": "New connections spark easily, especially in creative or social settings. For those already partnered, inject some playfulness back into the dynamic—flirtation isn't just for the beginning.",
+        "career": "You're brimming with ideas, but implementation requires more focus than you're used to giving. Pick one concept and follow it through completely before jumping to the next shiny thing.",
+        "health": "Your nervous system needs discharge—dancing, laughing, even crying can help move stuck energy. Mental health improves when you let yourself feel things fully rather than analyzing them to death.",
+        "advice": "Say yes to the invitation that seems slightly impractical. The best stories come from moments when logic takes a backseat."
       },
       "cancer": {
-        "overview": "Relationships command your full attention this month, whether you're ready for it or not. August highlights partnerships of all kinds—romantic, professional, creative—bringing both clarity and complexity to how you show up for others. You might find yourself negotiating needs, redefining boundaries, or recognizing patterns you've outgrown. The question isn't whether to engage, but how authentically you're willing to do so.",
-        "love": "Someone in your life is ready for a deeper commitment or clearer definition of what you mean to each other. If you're in a relationship, conversations about the future feel inevitable and necessary, even if they're scary. Single Cancers could meet someone who challenges their usual type in the best possible way—stay open.",
-        "career": "Daily routines and work responsibilities demand reorganization, especially if you've been running on autopilot. You might take on new tasks that better align with your skills, or finally delegate what's been draining you. Health-related issues could impact your schedule, requiring you to prioritize differently.",
-        "health": "Your digestive system and emotional state are intimately connected right now—stress manifests physically faster than usual. Nourishment means more than food; it includes the company you keep, the media you consume, and the thoughts you entertain. Movement that feels meditative rather than punishing serves you best.",
-        "advice": "You can't control how others respond to your honesty, only whether you offer it. Trust that the right people will meet you where you are."
+        "overview": "Home is calling you back in ways both literal and metaphorical. September pulls your attention toward your foundation—where you live, who you live with, what emotional safety actually means to you right now. This might manifest as a desire to rearrange your space, have important family conversations, or simply spend more evenings in rather than out. The outer world can wait while you tend to your inner sanctuary.",
+        "love": "Vulnerability is your superpower this month, not your weakness. Letting someone see your actual needs, not just your nurturing side, deepens intimacy in surprising ways.",
+        "career": "Work-from-home arrangements or flexible schedules become more important to negotiate. Your productivity actually increases when you feel emotionally grounded, so advocate for what supports that.",
+        "health": "Emotional eating patterns may surface—not to judge them, but to understand what feelings you're trying to feed. Gentle inquiry serves you better than strict rules right now.",
+        "advice": "You don't have to host or hold space for everyone. Sometimes the most loving thing is a closed door and a quiet night with yourself."
       },
       "leo": {
-        "overview": "Happy solar return, Leo—your month begins with cosmic permission to shine exactly as you are. August pulses with creative energy, romantic possibility, and the kind of confidence that makes others lean in closer. This isn't about performance or proving anything; it's about authentic self-expression and the joy that comes from letting yourself be seen. You're magnetic when you stop trying so hard and just exist in your full power.",
-        "love": "Romance feels playful and passionate, with opportunities for genuine connection if you're brave enough to drop the theater and show someone your real self. Coupled Leos rediscover what made them fall for each other in the first place—plan something that brings back early-relationship excitement. Single? Your charm is undeniable this month, but notice whether you're attracting admirers or actual matches.",
-        "career": "Work might feel less inspiring than your personal projects, which is fine—not every month is about professional breakthroughs. Focus on what genuinely engages you rather than what looks impressive. If you're creative, this is prime time for output. If you're climbing a corporate ladder, use August to build relationships rather than push agendas.",
-        "health": "Your vitality is strong, but don't confuse capacity with invincibility. Your heart (literally and figuratively) needs attention—cardiovascular exercise paired with activities that bring genuine pleasure. Rest when your body asks, not just when you've exhausted all other options. Joy is medicinal.",
-        "advice": "Leadership means inspiring others through your example, not demanding they follow. Be the person you'd want to learn from."
+        "overview": "Your voice matters this September, but the message requires careful crafting. Communication takes on unusual weight—emails, conversations, presentations all carry more impact than typical months. You're being asked to say what you mean and mean what you say, without the performance that usually accompanies your self-expression. Authenticity lands better than charisma right now, which might feel strange but ultimately liberating.",
+        "love": "Talking about the relationship instead of just being in it strengthens your bond. Say the thing you've been rehearsing in your head; your person can handle your truth.",
+        "career": "A teaching, writing, or communication opportunity emerges, possibly connected to skills you've been developing quietly. Your ability to make complex things accessible becomes valuable currency.",
+        "health": "Throat, neck, and shoulders hold tension this month. Singing, humming, or even screaming into a pillow can release what words alone cannot.",
+        "advice": "Listen as much as you speak. The silence between your sentences is where others find space to meet you."
       },
       "virgo": {
-        "overview": "August asks you to turn inward before your season officially begins. Home, family, and emotional foundations need your attention, even if your instinct is to stay busy and productive. This is preparatory work—creating internal stability so you can step into the spotlight next month with confidence. You might feel more private than usual, and that's exactly right. Not everything needs to be optimized or shared; some things just need to be felt.",
-        "love": "Emotional availability matters more than impressive dates or perfect timing. If you're in a relationship, create space for vulnerability even when it feels awkward or unpolished. Single Virgos might not feel particularly social, and that's fine—this month is better suited for inner work than aggressive dating. Someone from your past could resurface in your thoughts if not your inbox.",
-        "career": "Behind-the-scenes work yields better results than seeking visibility right now. Finish projects, organize systems, and prepare for opportunities coming next month. Your analytical skills help you spot problems before they escalate, making you invaluable even if you're not getting credit. Trust that your contributions matter whether or not they're immediately recognized.",
-        "health": "Your nervous system could use serious rest—mental exhaustion shows up as physical symptoms you might be tempted to push through. Sleep quality and gut health deserve attention, particularly if stress has you reaching for quick fixes instead of real nourishment. Solitude isn't loneliness; it's essential maintenance.",
-        "advice": "Not every feeling requires analysis or action. Sometimes you just need to let yourself experience something without trying to solve it."
+        "overview": "Happy solar return season—but this isn't about celebration so much as recalibration. September highlights your relationship with resources, both material and internal. What do you actually value versus what you've been told to value? Your worth isn't measured by productivity alone, though your inner critic will try to convince you otherwise. This month asks you to get honest about money, self-esteem, and the sneaky ways they're connected.",
+        "love": "Physical presence and tangible gestures speak louder than words. Show up, literally—be on time, follow through, cook the meal, give the massage without being asked.",
+        "career": "A raise, new income stream, or financial opportunity requires you to advocate for yourself. Practice stating your worth out loud before the actual conversation; your discomfort with self-promotion needs rehearsal time.",
+        "health": "Your body needs nourishment, not punishment. If your wellness routine feels like penance, it's time to redesign it around pleasure and sustainability instead.",
+        "advice": "Good enough is actually good enough. Perfectionism is just fear wearing a productive disguise."
       },
       "libra": {
-        "overview": "Your social calendar fills with genuinely interesting invitations, not just obligatory appearances. August lights up your communication sector, bringing conversations that matter, connections that energize you, and ideas that won't let you go. You're thinking about the future differently now—less about what looks balanced and more about what actually feels right. This month rewards curiosity and networking, so say yes to the gatherings and groups that intrigue you.",
-        "love": "Mental connection matters as much as physical chemistry right now, and you need both to feel truly interested. Coupled Libras benefit from trying new things together—classes, trips, even just different conversation topics that pull you out of routine. If you're single, you might meet someone through friends or at an event you almost skipped. Flirtation thrives on witty exchange.",
-        "career": "Your ideas deserve to be heard, and August gives you the platform if you're willing to speak up. Presentations, pitches, and collaborative brainstorms go well when you trust your voice. A short-term project or freelance opportunity could come through your network. Stay flexible about how opportunities arrive.",
-        "health": "Mental stimulation is energizing, but too much scattered focus leaves you drained and anxious. Your hands, arms, and shoulders might hold tension—stretching and mindful movement help. Social exhaustion is real; honor the difference between connections that replenish you and those that only deplete. Not every invitation deserves a yes.",
-        "advice": "Stop prioritizing harmony over honesty. The relationships worth keeping can handle your truth."
+        "overview": "Who are you when no one's watching? September initiates a powerful reset as the Sun moves through your sign, but this birthday season feels different—more internal, more honest, maybe a little raw. You're shedding versions of yourself that looked good but didn't feel true. The people-pleasing, the diplomatic deflection, the constant calibration to others' preferences—what's underneath all that? This month, you get to find out.",
+        "love": "You can't compromise yourself into a healthy relationship. The right person appreciates your boundaries, not your flexibility beyond breaking.",
+        "career": "Step into visibility even if you don't feel ready. Leadership opportunities arise for those willing to advocate for their vision rather than waiting for consensus.",
+        "health": "Lower back and kidney health need attention. Hydration and core-strengthening practices support both physical and energetic balance.",
+        "advice": "Start saying 'I want' instead of 'whatever works for everyone.' Your desires are not inconveniences; they're data."
       },
       "scorpio": {
-        "overview": "Financial matters and self-worth intersect in interesting ways this month. August has you reconsidering what you value—both materially and personally—and whether your resources align with your priorities. You might be earning more, spending differently, or simply recognizing that certain investments (of time, energy, or money) no longer serve you. This isn't superficial; it's about honoring what you've built and claiming what you deserve.",
-        "love": "Physical intimacy and tangible expressions of affection matter more than words right now. If you're in a relationship, talk about resources, futures, and what security means to both of you. Single Scorpios attract people who appreciate their intensity, but notice whether there's substance beneath the chemistry. Someone's financial or emotional stability becomes relevant.",
-        "career": "Your skills are valuable, and August reminds you to act accordingly. This is an excellent time to negotiate salary, raise your rates, or pursue opportunities that reflect your actual worth. A side project could become profitable if you're willing to treat it seriously. Don't undercharge out of habit or insecurity.",
-        "health": "Your relationship with food, rest, and physical pleasure needs attention—are you nourishing yourself or just going through motions? Your throat and neck might hold stress, suggesting you're not speaking up about something important. Sensory experiences (massage, good food, time in nature) aren't luxuries right now; they're necessities.",
-        "advice": "You teach people how to treat you by what you tolerate. Raise your standards and watch who rises to meet them."
+        "overview": "September takes you into the underworld before your season officially begins—think of it as pre-season training for the transformation ahead. Dreams intensify, secrets surface, and you're processing layers of grief or release you didn't know you were carrying. This isn't comfortable, but you've never been afraid of discomfort. The harvest for you is what you're willing to let die so something truer can be born.",
+        "love": "Intimacy requires showing the parts you usually keep hidden. The vulnerability you fear will repel someone is often what draws them closer.",
+        "career": "Behind-the-scenes work yields better results than public-facing efforts. Research, strategy, and elimination of what's not working prepare you for October's more visible moves.",
+        "health": "Sleep is sacred medicine this month. Insomnia or vivid dreams signal deep psychological processing; honor it with rest, not resistance.",
+        "advice": "Trust what's falling apart. Sometimes destruction is the kindest form of renovation."
       },
       "sagittarius": {
-        "overview": "This is your month to take up space unapologetically. August brings focus, clarity, and momentum to your personal goals and self-expression. You're ready to move forward on plans that have been percolating, and the universe seems remarkably cooperative. The key is aligning your big vision with practical steps—you're great at seeing possibilities, but now you need to choose one and commit. Confidence comes from action, not contemplation.",
-        "love": "You're attractive when you're pursuing your own goals rather than trying to mold yourself into someone's ideal. Coupled Sagittarians might need more independence within the relationship, which can actually strengthen the bond if communicated well. Single? You're radiating main-character energy, and people notice. Just make sure you're not so focused on adventure that you miss genuine connection.",
-        "career": "Personal projects or entrepreneurial ventures get a major boost, especially if they align with your authentic interests. Your enthusiasm is infectious, making this a great time to pitch ideas or lead initiatives. Just be careful not to overpromise—your optimism sometimes writes checks your schedule can't cash. Focus is your superpower this month.",
-        "health": "Your energy runs high, but don't mistake momentum for invincibility. Your liver and hips might need attention, particularly if you've been overindulging or not moving enough. Outdoor exercise satisfies both your need for freedom and physical release. Watch your tendency to go all-in then burn out; sustainability matters.",
-        "advice": "The goal isn't to do everything possible. It's to do the right things well."
+        "overview": "Your attention shifts outward to community, friendship, and the networks that sustain you. September asks: are you surrounded by people who actually get you, or just people who are conveniently there? Some friendships will deepen while others naturally drift, and neither requires drama. You're also dreaming bigger about your future, seeing possibilities that feel audacious—good, that's where you belong.",
+        "love": "Friendship and romance blur in the best way. Someone you've been platonically close to might spark differently, or your partner becomes your best friend all over again.",
+        "career": "Networking isn't schmoozing; it's finding your people and building something together. Collaborations and group projects energize you more than solo pursuits right now.",
+        "health": "Social energy depletes you faster than you realize. Balance group activities with solo adventures that refill your tank.",
+        "advice": "Not every connection needs to be deep. Some people are meant for specific seasons, and that's perfectly okay."
       },
       "capricorn": {
-        "overview": "August asks you to slow down and process rather than produce. This is a quieter month by design, giving you space to rest, reflect, and release what no longer serves your evolution. You might feel less visible or ambitious than usual, and that's not a problem—it's preparation. Sometimes the most productive thing you can do is nothing at all. Trust that strategic withdrawal isn't the same as giving up; it's gathering strength for what's coming.",
-        "love": "Emotional availability requires deliberate effort this month, as your instinct might be to retreat into work or solitude. If you're in a relationship, communicate your need for space rather than going silent and hoping they understand. Single Capricorns aren't likely to feel particularly social, which is fine—not every month is for dating. Past relationships might occupy your thoughts as you process old patterns.",
-        "career": "Work continues but without the usual drive or recognition, which can feel frustrating. Use this time for behind-the-scenes preparation, strategic planning, or finishing projects rather than starting new ones. Your contributions might go unnoticed now, but they're building toward something. Politics at work require more discretion than usual.",
-        "health": "Rest isn't optional right now—your body is asking for recovery time, and ignoring it will only create bigger problems. Sleep quality affects everything else, so prioritize your evening routine. Your feet, bones, and knees might need attention. Consider this month a reset period; you can push again next month.",
-        "advice": "Productivity isn't the only measure of worth. Sometimes the bravest thing you can do is admit you need to pause and recover."
+        "overview": "All eyes on you this September, whether you're ready or not. Your public life, career trajectory, and reputation demand attention as opportunities and challenges arrive simultaneously. You've been building toward something for years—this month shows you how much of that foundation is solid. The pressure feels intense, but pressure is just unmet potential asking for direction. You know what to do; the question is whether you trust yourself enough to do it.",
+        "love": "Your career ambitions and relationship needs may feel at odds. The right partner supports your climb without requiring you to shrink your goals.",
+        "career": "Recognition arrives, possibly through a promotion, public acknowledgment, or new responsibility. This is what you've worked for; don't downplay it out of superstition or false modesty.",
+        "health": "Stress shows up in your bones and joints. Regular movement and weight-bearing exercise support both physical structure and mental resilience.",
+        "advice": "Ambition and rest aren't opposites. Schedule recovery with the same seriousness you schedule achievement."
       },
       "aquarius": {
-        "overview": "Community and collective efforts energize you in unexpected ways this month. August highlights friendships, group projects, and the larger vision you're working toward beyond just personal success. You're thinking about impact and legacy, connecting with people who share your values and future-oriented thinking. This is a month for collaboration over isolation, even if your natural instinct is to go it alone. The right allies make everything possible.",
-        "love": "Friendship might matter more than traditional romance right now, and that's actually healthy. If you're coupled, you remember why you like each other as people, not just partners—plan activities that emphasize shared interests over heavy relationship talks. Single Aquarians could develop feelings for a friend or meet someone through group activities. Let things unfold naturally.",
-        "career": "Networking and collaboration bring opportunities that solo efforts won't. Your innovative ideas gain traction when you find the right team or community to support them. This is an excellent month for joining professional groups, attending conferences, or positioning yourself within your industry. Long-term career goals deserve attention over immediate payoffs.",
-        "health": "Your nervous system and circulation need support—too much screen time and not enough movement will leave you foggy and anxious. Group fitness or activities with friends satisfy both your social needs and physical health. Ankle and calf issues might arise if you've been sedentary. Mental stimulation is good; mental overwhelm is not.",
-        "advice": "The right collaboration multiplies your impact more than perfect independence ever could. Stop protecting yourself out of connection."
+        "overview": "When was the last time you did something that expanded your world? September reignites your hunger for growth, learning, and experiences beyond your usual scope. This might look like travel, education, philosophical exploration, or simply consuming media that challenges your perspective. You're bored with the familiar, and that restlessness is intelligence, not ingratitude. Feed your curiosity without apology.",
+        "love": "Long-distance connections or relationships with someone from a different background gain significance. Difference is exciting, not threatening, when both people stay curious.",
+        "career": "Teaching, publishing, or international work opportunities emerge. Your unconventional perspective is an asset; stop trying to make it palatable for traditional structures.",
+        "health": "Your hips and thighs need stretching and strengthening. Movement practices that feel exploratory rather than routine serve you best.",
+        "advice": "Book the trip, take the class, read the dense book. Your brain is hungry; feed it something substantial."
       },
       "pisces": {
-        "overview": "Professional recognition and public-facing opportunities define your August. You're being seen for your skills and contributions in ways that might feel both validating and slightly overwhelming. This is your moment to step into leadership or authority, even if imposter syndrome whispers that you're not ready. You are. The key is balancing ambition with your natural empathy—success doesn't require you to harden or compromise your values.",
-        "love": "Your career focus might leave less energy for romance, which requires honest communication with partners. Coupled Pisces need to maintain connection despite busy schedules—small gestures matter more than grand ones. If you're single, you might attract someone through professional settings, or realize you need to establish your own path before intertwining with another. Status and stability become more attractive.",
-        "career": "Your hard work is finally being noticed, bringing opportunities for advancement, recognition, or new responsibilities. This is a month to be visible, speak up in meetings, and advocate for yourself professionally. A mentor or authority figure might offer support. Just make sure opportunities align with your values, not just your ego.",
-        "health": "Stress manifests in your knees, joints, and bone structure—your body is asking you to slow down even as your career accelerates. Your skin might also reflect internal stress or inadequate hydration. Ambition is wonderful, but not at the expense of basic self-care. Structure and routine actually help you feel grounded rather than confined right now.",
-        "advice": "You don't have to sacrifice your softness to be taken seriously. Your empathy is a strength, not a liability in leadership."
+        "overview": "Depth over breadth defines your September. You're being pulled into emotional and financial entanglements that require courage to navigate—shared resources, intimacy, inheritances both literal and psychological. This isn't light work, but you're built for depth. Transformation happens when you stop swimming on the surface and dive into what you've been avoiding. What you find there is power you didn't know you had.",
+        "love": "Merge without losing yourself. True intimacy doesn't erase boundaries; it requires them so you know where you end and another begins.",
+        "career": "Joint ventures, investments, or other people's money factor into professional matters. Do the due diligence; your intuition is strong, but contracts need clear eyes too.",
+        "health": "Reproductive and eliminative health deserve attention. Your body is clearing out what no longer serves, physically and energetically.",
+        "advice": "Let yourself want what you want, even if it's inconvenient or complicated. Desire is information, not a character flaw."
       }
     }
   }
