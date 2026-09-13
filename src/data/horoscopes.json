@@ -1,18 +1,18 @@
 {
   "daily": {
-    "date": "2026-09-12",
+    "date": "2026-09-13",
     "horoscopes": {
       "aries": {
-        "text": "That project you've been pushing forward hits a natural pause today, and honestly, you need it. Use this breathing room to check in with collaborators—their input might reshape your approach in ways you hadn't considered. The harvest season is asking you to gather feedback, not just charge ahead.",
+        "text": "Your impulse to push forward meets resistance today, but that friction is actually showing you what needs refining. Take the longer route home and let your mind wander—solutions appear when you're not forcing them. Someone from your past might reach out with unexpected news.",
         "love": 3,
         "career": 4,
         "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "reflective"
+        "mood": "determined"
       },
       "taurus": {
-        "text": "Your usual patience is wearing thin with someone who keeps changing the plan. Before you dig your heels in, consider whether flexibility might actually serve you better right now. Sometimes the scenic route reveals what the highway misses.",
+        "text": "You're craving comfort, but today asks you to sit with a little uncertainty instead. The harvest season reminds you that not everything ripens on your timeline. Trust that what you've planted is still growing, even if you can't see the progress yet.",
         "love": 4,
         "career": 3,
         "health": 4,
@@ -21,171 +21,171 @@
         "mood": "grounded"
       },
       "gemini": {
-        "text": "Three conversations are competing for your attention today, but only one actually matters. You'll know which one by how it makes your mind feel—energized or scattered. Mercury's influence helps you cut through the noise if you're willing to listen to your gut for once.",
+        "text": "Is all that mental chatter serving you, or is it just noise? Mercury's position suggests your thoughts are moving faster than your ability to process them. Write down three things you know for sure, then let the rest go. A conversation this afternoon could shift your perspective on a money matter.",
         "love": 3,
         "career": 4,
-        "health": 3,
-        "luckyNumber": 29,
+        "health": 2,
+        "luckyNumber": 8,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Is it time to let go of that thing you've been holding onto, or do you need to hold it just a little longer? Today brings clarity around this question, especially in the quiet moments between tasks. Trust what surfaces when you're washing dishes or folding laundry—that's when the moon speaks clearest to you.",
+        "text": "Something you've been holding onto is ready to be released—you'll feel it in your chest when the moment arrives. The moon's pull today reminds you that transformation isn't about forcing change, it's about allowing it. Be gentle with yourself.",
         "love": 4,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 8,
-        "luckyColor": "seafoam",
-        "mood": "intuitive"
+        "career": 2,
+        "health": 3,
+        "luckyNumber": 29,
+        "luckyColor": "silver",
+        "mood": "reflective"
       },
       "leo": {
-        "text": "You're ready to shine in a presentation or important conversation, and the confidence is absolutely warranted. Just remember that listening creates as much impact as speaking today. Let others have the spotlight for a moment—it doesn't dim yours.",
+        "text": "Your natural confidence gets a boost today, but watch that you're not steamrolling over someone's quiet contribution. The spotlight is nice, but today's real growth happens when you step back and listen. That creative project? Stop perfecting and start sharing.",
         "love": 4,
         "career": 5,
-        "health": 3,
-        "luckyNumber": 51,
+        "health": 4,
+        "luckyNumber": 63,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "All that planning you've done is about to show results, but not in the exact form you expected. The harvest rarely looks identical to what we planted, and that's actually the gift. Take the longer route home tonight and let your mind wander without a agenda.",
+        "text": "All that analyzing is exhausting you. Today's your season, but that doesn't mean you need to optimize every single moment—sometimes the most productive thing you can do is rest. Call that person back, even if you don't have all the answers yet.",
         "love": 3,
-        "career": 4,
-        "health": 4,
-        "luckyNumber": 63,
-        "luckyColor": "navy",
+        "career": 3,
+        "health": 2,
+        "luckyNumber": 51,
+        "luckyColor": "lavender",
         "mood": "focused"
       },
       "libra": {
-        "text": "Someone's asking for a decision you're not ready to make, and that's perfectly fine. Venus reminds you that deliberation isn't indecision—it's discernment. Give yourself until Monday, and don't let anyone rush you.",
-        "love": 4,
-        "career": 3,
-        "health": 3,
-        "luckyNumber": 24,
-        "luckyColor": "lavender",
+        "text": "You're on the edge of your season and feeling that familiar pull toward balance, but maybe what you need isn't equilibrium—maybe it's a choice. One decision you've been delaying is ripe for action. The scales tip when you finally add your weight to one side.",
+        "love": 5,
+        "career": 4,
+        "health": 4,
+        "luckyNumber": 7,
+        "luckyColor": "pink",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "That hunch you had last week? It was right, and today proves it. The question now is what you do with this validation—gloat or act? Channel this insight into transformation rather than vindication. Your power grows in private moments of change, not public displays of being correct.",
-        "love": 3,
+        "text": "That intensity you're feeling? It's not a warning, it's information. Something beneath the surface is demanding your attention, and autumn's transformative energy is giving you permission to dig deep. Trust your instincts about who's being genuine and who's performing.",
+        "love": 4,
         "career": 4,
-        "health": 4,
-        "luckyNumber": 76,
+        "health": 3,
+        "luckyNumber": 34,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Your mind is already three steps ahead, but your body is asking you to be present for this one. Adventure doesn't always mean movement—sometimes it's exploring depth instead of distance. Call that person back today; the conversation will surprise you.",
-        "love": 4,
+        "text": "Your restlessness is pointing toward something real today—don't dismiss it as just another whim. Jupiter's influence suggests that wanderlust you're feeling has a purpose. Even if you can't book a flight, change your routine enough to remember what spontaneity feels like.",
+        "love": 3,
         "career": 3,
-        "health": 3,
-        "luckyNumber": 39,
+        "health": 5,
+        "luckyNumber": 76,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "The foundation you've been building is solid, even if it doesn't feel flashy. Today brings a small but significant acknowledgment of your work—accept it graciously instead of deflecting. You've earned more than you allow yourself to claim.",
-        "love": 3,
+        "text": "You've been climbing, but today asks you to pause and assess whether you're still heading toward your actual goal or just moving out of habit. Saturn's lessons aren't always about discipline—sometimes they're about knowing when to pivot. That side project deserves more attention than you've been giving it.",
+        "love": 2,
         "career": 5,
         "health": 3,
-        "luckyNumber": 12,
+        "luckyNumber": 88,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "A spark of insight hits you mid-afternoon, probably while you're doing something completely unrelated to the problem it solves. Write it down immediately—Uranus loves to send brilliant ideas and then make you forget them. Your innovation matters, but only if you capture it.",
-        "love": 2,
+        "text": "Your mind is buzzing with ideas that feel both brilliant and completely impractical. That tension is where innovation lives. Share the wildest one with someone who gets you—they'll either help you ground it or push it even further. Either way, you win.",
+        "love": 3,
         "career": 4,
         "health": 4,
-        "luckyNumber": 87,
+        "luckyNumber": 23,
         "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "The boundary between helping and over-extending is especially blurry today. Notice where you feel energized versus drained—that's Neptune asking you to be more selective with your compassion. You can be kind without dissolving completely into someone else's needs.",
-        "love": 4,
+        "text": "The veil between what you sense and what you can prove feels especially thin today. Neptune's influence heightens your intuition, but don't get so lost in feelings that you miss the practical steps right in front of you. Someone needs your empathy, but they also need your honesty.",
+        "love": 5,
         "career": 3,
         "health": 3,
-        "luckyNumber": 55,
-        "luckyColor": "indigo",
+        "luckyNumber": 11,
+        "luckyColor": "seafoam",
         "mood": "intuitive"
       }
     }
   },
   "weekly": {
-    "weekOf": "2026-09-06",
+    "weekOf": "2026-09-13",
     "horoscopes": {
       "aries": {
-        "overview": "Your energy shifts inward this week, which might feel unusual but trust it. There's power in pausing to reassess what you've built so far this season, especially around Tuesday when clarity strikes about a project you've been forcing.",
-        "love": "Passion runs high, but so does impatience—watch for the urge to rush conversations that need time to unfold naturally. Single Rams might find someone intriguing through a work connection or while pursuing a personal goal.",
-        "career": "A collaboration that seemed stuck suddenly gains momentum. Your direct communication style serves you well now, though you'll want to listen as much as you speak to catch an important detail someone's been trying to share.",
-        "advice": "Let yourself rest without guilt. Harvest season isn't just about gathering—it's about honoring what the work has cost you."
+        "overview": "Your energy shifts inward this week, a rare but necessary pause in your usual forward momentum. Something you've been pushing hard on finally shows signs of progress, though not in the way you expected.",
+        "love": "Patience isn't your strong suit, but a relationship deepens when you stop trying to force a conversation and simply listen. Single Rams might find sparks flying with someone from your past resurfacing.",
+        "career": "A project you thought was finished requires one more round of revisions. Your initial frustration gives way to appreciation when you realize these changes actually strengthen your work.",
+        "advice": "Let the harvest happen at its own pace. You've planted well—now trust the timing."
       },
       "taurus": {
-        "overview": "Something you planted months ago finally shows its worth, and the satisfaction is real. Mid-week brings a conversation that changes how you think about a long-term goal, opening doors you didn't know existed.",
-        "love": "Vulnerability feels easier than usual right now. If you've been holding back something important, the emotional climate supports deeper sharing, particularly around the weekend when defenses naturally lower.",
-        "career": "Financial matters deserve your attention—not because there's a crisis, but because an opportunity needs thoughtful consideration. Your instinct for value is especially sharp, so trust what feels sustainable versus what just looks appealing.",
-        "advice": "Reflection doesn't mean dwelling. Look back to appreciate your growth, then set your sights forward."
+        "overview": "The tangible results you've been working toward start materializing, bringing a satisfying sense of completion. This week rewards your consistency, though you'll need to share credit where it's due.",
+        "love": "Comfort and romance aren't mutually exclusive right now—in fact, they're intertwined. Plan something cozy rather than elaborate, and watch how intimacy flourishes in the familiar.",
+        "career": "Your practical solutions impress someone in a position to advocate for you. Don't downplay your contributions in meetings; what seems obvious to you is actually genius to others.",
+        "advice": "Celebrate the small wins. They're actually quite large when you stop to really look at them."
       },
       "gemini": {
-        "overview": "Your mind craves depth over breadth this week, pulling you toward fewer topics with greater intensity. A creative breakthrough arrives when you stop juggling and focus on the one idea that keeps returning to you.",
-        "love": "Communication flows, but make sure you're truly exchanging rather than performing. There's a difference between sharing your thoughts and creating space for someone else's, and your relationships bloom when you remember that balance.",
-        "career": "Multiple opportunities create decision fatigue by Thursday. Instead of keeping all options open indefinitely, commit to the path that teaches you something new, even if it's not the obvious choice.",
-        "advice": "Write down what you're learning right now—these insights are building toward something significant."
+        "overview": "Your mind craves depth over breadth this week, an unusual shift that leads you down fascinating rabbit holes. A conversation that starts casually turns into something unexpectedly meaningful.",
+        "love": "Stop second-guessing what someone meant and ask directly—the clarity transforms everything. Coupled Geminis find that talking about future dreams reignites excitement that's been simmering quietly.",
+        "career": "You're juggling multiple projects, but one deserves your focused attention right now. The quality of your deep work this week sets up opportunities that won't become visible until next month.",
+        "advice": "Not every thought needs to be shared immediately. Some ideas gain power when you sit with them first."
       },
       "cancer": {
-        "overview": "Emotional weather shifts dramatically from week's start to finish, beginning with sensitivity and ending with surprising confidence. What you need from others becomes clearer, making it easier to ask for support without apologizing.",
-        "love": "Your intuition about someone's unspoken feelings is probably correct. Rather than waiting for them to articulate everything perfectly, meet them halfway with your own honesty about what you're experiencing.",
-        "career": "A project reaches completion, giving you space to evaluate whether your current path still fits who you're becoming. The answer might surprise you—you've transformed more than you realize since this cycle began.",
-        "advice": "Let go of one obligation that's been draining you without giving back. Your time is part of the harvest too."
+        "overview": "Your intuition is particularly sharp, picking up on undercurrents others miss entirely. This week asks you to trust those gut feelings even when you can't quite articulate why something feels off or right.",
+        "love": "Vulnerability feels risky but necessary—someone is waiting for you to show them what you really need. If you're in a relationship, a small gesture of openness creates a wave of closeness.",
+        "career": "Your ability to read the room gives you an advantage in negotiations or team dynamics. Don't be afraid to voice what everyone's thinking but no one's saying.",
+        "advice": "Create boundaries around your time and energy. Protecting your peace isn't selfish—it's essential maintenance."
       },
       "leo": {
-        "overview": "Recognition arrives, though perhaps not in the form you expected—sometimes acknowledgment shows up as responsibility or as others seeking your guidance. Your influence is growing whether or not applause accompanies it.",
-        "love": "Generosity comes naturally to you, but notice if you're giving to avoid receiving. Someone wants to support or celebrate you this week; practice letting them without immediately redirecting attention elsewhere.",
-        "career": "Leadership opportunities emerge that test whether you're ready for the next level. Say yes before you feel completely prepared—confidence builds through action, not the other way around.",
-        "advice": "Celebrate a win, even a small one. Your inner fire needs acknowledgment as fuel."
+        "overview": "Recognition comes, but it's quieter and more personal than the applause you typically seek. Someone sees exactly what you've put into your work, and their acknowledgment means more than you anticipated.",
+        "love": "Romance thrives when you let someone else take the lead for once. Your generosity is beautiful, but receiving with grace is its own kind of strength.",
+        "career": "A creative risk you took weeks ago starts paying off in unexpected ways. Your confidence inspires others to be bolder, and that collective energy elevates everyone's work.",
+        "advice": "Shine your light, but also notice who's shining theirs back at you. Connection is a two-way glow."
       },
       "virgo": {
-        "overview": "Your season's lessons crystallize into practical wisdom you can actually use. There's satisfaction in seeing how the details you've been managing connect to a larger pattern, validating your attention to what others overlooked.",
-        "love": "Perfectionism loosens its grip just enough for real intimacy to enter. You don't need to have everything figured out before you let someone closer—in fact, being in process together creates stronger bonds than presenting a finished version of yourself.",
-        "career": "Your organizational skills are in demand, but be selective about what you take on. Not every problem is yours to solve, and you serve everyone better when you're not stretched impossibly thin.",
-        "advice": "Rest is productive. Your body and mind need integration time after all the processing you've been doing."
+        "overview": "Your season continues to offer opportunities for reinvention, and this week specifically asks you to release outdated standards you've been holding yourself to. Progress doesn't require perfection.",
+        "love": "Let someone love you exactly as you are right now, not as you'll be once you've completed your self-improvement checklist. Imperfection is where real intimacy lives.",
+        "career": "Your attention to detail saves a project from a significant oversight. While others might not notice what you prevented, you know the value of your contribution—and that's enough.",
+        "advice": "Rest is productive. Your body and mind are asking for restoration, not another task to optimize."
       },
       "libra": {
-        "overview": "As your season approaches, you're clearing space for what wants to emerge. Something you've been deliberating reaches decision point by Wednesday—your hesitation has been wisdom, not weakness, and now you know enough to choose.",
-        "love": "Balance shifts as you realize you've been accommodating more than connecting. Small adjustments in how you show up create surprisingly significant changes in relationship dynamics, especially if you're willing to risk mild discomfort for authenticity.",
-        "career": "A partnership or collaboration needs recalibration. The work is solid, but the distribution of effort or credit isn't quite right, and addressing this now prevents resentment from building later.",
-        "advice": "Choose one thing for yourself this week that requires no justification or compromise."
+        "overview": "As your season approaches, you're already feeling the pull toward balance and beauty in all things. Something out of alignment in your life becomes impossible to ignore, and you're ready to address it.",
+        "love": "A difficult conversation you've been avoiding actually brings you closer when you finally have it. Harmony isn't the absence of conflict—it's the willingness to work through it together.",
+        "career": "Your diplomatic skills are in high demand as tensions arise in your workplace. You're able to see multiple perspectives simultaneously, making you the natural mediator.",
+        "advice": "Stop waiting for perfect conditions to make a decision. Sometimes you have to choose and then create the balance."
       },
       "scorpio": {
-        "overview": "Intensity builds toward transformation you've been anticipating without quite naming. Old patterns reveal themselves clearly now, not to shame you but to offer a genuine choice about whether you want to continue them into the next chapter.",
-        "love": "Jealousy or possessiveness might surface as a signal that you need to tend to your own sense of security rather than monitoring someone else's behavior. When you feel grounded in your worth, relationships breathe easier.",
-        "career": "Your research or behind-the-scenes work produces results that surprise even you. Something you've been investigating or developing in private is nearly ready to share, though rushing the reveal would diminish its impact.",
-        "advice": "Trust the pace of your becoming. Transformation can't be forced, only supported."
+        "overview": "You're in a reflective phase, processing recent transformations that happened quickly. This week gives you time to integrate changes and understand what they mean for who you're becoming.",
+        "love": "Intensity is your default, but gentleness serves you better right now. Someone needs your softer side, the part of you that heals rather than challenges.",
+        "career": "Your research or behind-the-scenes work uncovers something valuable that others overlooked. Trust your instinct to dig deeper when surface-level answers don't satisfy you.",
+        "advice": "Not everything is a test or a mystery to solve. Sometimes people mean exactly what they say."
       },
       "sagittarius": {
-        "overview": "Your vision expands while practical realities simultaneously demand attention—the tension between possibility and limitation is where your growth lives right now. A conversation with someone who thinks differently opens up an approach you hadn't considered.",
-        "love": "Adventure takes emotional form this week. Exploring vulnerability or trying a different way of relating offers the novelty you crave without needing to travel or escape your current situation.",
-        "career": "Teaching, publishing, or sharing your knowledge becomes highlighted. What you think is obvious carries value for others; don't underestimate how your perspective helps people see their situations differently.",
-        "advice": "Ground your optimism in one concrete action. Dreams need roots to become real."
+        "overview": "Your restlessness intensifies, but traveling far isn't the only way to find what you're seeking. Adventure might look like exploring a new idea or having a conversation that expands your perspective.",
+        "love": "Freedom and commitment aren't opposing forces this week—they're complementary. The right person or relationship gives you space to grow while staying connected.",
+        "career": "Your enthusiasm is contagious, bringing fresh energy to a stagnant project. Someone in leadership notices your ability to inspire optimism even in challenging circumstances.",
+        "advice": "Finish what you started before chasing the next exciting thing. Completion has its own kind of thrill."
       },
       "capricorn": {
-        "overview": "Accomplishment arrives, but so does the question of what fulfillment actually means to you beyond checking boxes. You're reassessing ambition itself—not abandoning it, but refining it to match who you're becoming rather than who you thought you should be.",
-        "love": "Control releases slightly as you realize trying to manage outcomes prevents genuine connection. There's relief in admitting you can't engineer someone else's feelings or guarantee against hurt, only show up honestly.",
-        "career": "Authority recognizes your contributions, potentially with new responsibilities or opportunities. Before automatically accepting, check whether this advancement aligns with your evolving priorities or just looks good on paper.",
-        "advice": "Celebrate how far you've climbed, then honestly assess if you're still climbing the mountain you actually want to summit."
+        "overview": "The structures you've built are being tested for stability, revealing where foundations are solid and where they need reinforcement. This isn't failure—it's valuable information.",
+        "love": "Let your walls down just enough to let someone in. You've been self-sufficient for so long that accepting support feels strange, but it's also liberating.",
+        "career": "Your long-term vision is finally gaining traction with decision-makers who previously didn't understand it. Persistence is paying off, though implementation will still take time.",
+        "advice": "Success doesn't always look like climbing higher. Sometimes it's about building deeper roots where you are."
       },
       "aquarius": {
-        "overview": "Innovation strikes when you're engaged with community or collaborative projects rather than working in isolation. Your unique perspective needs dialogue to fully develop—other people's questions help you articulate what you intuitively know.",
-        "love": "Friendship and romance blend in ways that defy conventional categories, which suits you perfectly. Let relationships be what they are rather than what they're supposed to be, and everyone involved finds more freedom.",
-        "career": "An unconventional approach solves a problem that's stumped more traditional thinkers. Your willingness to experiment and risk looking foolish becomes your greatest professional asset this week.",
-        "advice": "Connect with your people. Even independent souls need their constellation."
+        "overview": "Your innovative ideas meet practical resistance this week, which is actually useful feedback in disguise. Not every brilliant thought needs immediate implementation—some need refinement.",
+        "love": "Connection requires showing up as your full, weird, wonderful self rather than the edited version you think people want. Someone is waiting to love the real you.",
+        "career": "Collaboration challenges your preference for independent work, but the synergy produces something better than you could have created alone. Let others contribute their genius too.",
+        "advice": "Community isn't a constraint on your freedom—it's where your ideas find their wings. Let people in."
       },
       "pisces": {
-        "overview": "Boundaries that seemed impossible to maintain suddenly feel natural as you remember why you established them in the first place. Your sensitivity is a gift, not a burden, when you honor it rather than apologizing for it.",
-        "love": "Romantic idealism meets reality in a way that deepens rather than disappoints. Someone shows you through actions that devotion can be both transcendent and practical, mystical and reliable.",
-        "career": "Creative projects benefit from structure you'd normally resist. The container doesn't limit your vision—it gives your imagination something to work with and against, producing better results than total freedom would.",
-        "advice": "Trust what you sense before you can prove it. Your intuition is harvesting information your rational mind hasn't caught up to yet."
+        "overview": "Your dreams are vivid and meaningful this week, offering insights your waking mind hasn't fully grasped yet. Pay attention to recurring symbols or themes that keep surfacing.",
+        "love": "You're giving so much that you're depleting yourself. Love shouldn't leave you empty—make sure the flow goes both ways.",
+        "career": "Your creative work touches something deeper than you realized, affecting people in ways they struggle to articulate. Don't underestimate your impact just because it's subtle.",
+        "advice": "Ground yourself in the physical world when emotions threaten to overwhelm. A walk, a meal, or simply feeling your feet on the floor brings necessary balance."
       }
     }
   },
