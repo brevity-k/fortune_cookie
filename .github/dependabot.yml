@@ -14,6 +14,9 @@ updates:
       # eslint-config-next does not yet support eslint 10
       - dependency-name: "eslint"
         update-types: ["version-update:semver-major"]
+      # typescript-eslint does not yet support typescript 7
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

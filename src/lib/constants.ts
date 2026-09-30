@@ -14,8 +14,6 @@ export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@f
 export const GA_MEASUREMENT_ID = "G-TMMGPRKTLD";
 export const ADSENSE_PUB_ID = "ca-pub-7561681382580308";
 
-// Fortune system limits (also defined in scripts/lib/types.ts for script-layer access)
-export const MAX_FORTUNES = 3000;
 export const JOURNAL_LIMIT = 100;
 
 // Streak thresholds for rarity bonus multipliers

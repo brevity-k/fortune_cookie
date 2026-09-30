@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vercel CLI build output (vercel build / vercel pull)
+    ".vercel/**",
     // Git worktrees contain their own builds/node_modules
     ".worktrees/**",
   ]),

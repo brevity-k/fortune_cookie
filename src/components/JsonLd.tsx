@@ -1,5 +1,10 @@
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
+// Escape "<" so content containing "</script>" can't break out of the tag
+function toJsonLd(data: object): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
@@ -15,7 +20,7 @@ export function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(data) }}
     />
   );
 }
@@ -37,7 +42,7 @@ export function WebSiteJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(data) }}
     />
   );
 }
@@ -81,7 +86,7 @@ export function ArticleJsonLd({ title, description, slug, datePublished }: Artic
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(data) }}
     />
   );
 }
@@ -107,7 +112,7 @@ export function FAQPageJsonLd({ faqs }: FAQPageJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(data) }}
     />
   );
 }
@@ -131,7 +136,7 @@ export function BreadcrumbJsonLd({ items }: BreadcrumbJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: toJsonLd(data) }}
     />
   );
 }

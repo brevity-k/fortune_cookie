@@ -27,9 +27,6 @@ function createLimiter(prefix: string, maxRequests: number, windowMs: number) {
   };
 }
 
-/** Saju AI interpretation: 5 requests per day per IP */
-export const sajuAIRatelimit = createLimiter('saju-ai', 5, 24 * 60 * 60 * 1000);
-
 /** Astro AI interpretation: 5 requests per day per IP */
 export const astroAIRatelimit = createLimiter('astro-ai', 5, 24 * 60 * 60 * 1000);
 

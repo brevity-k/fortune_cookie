@@ -62,10 +62,14 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           POST_TYPE: ${{ steps.mode.outputs.type }}
-        run: npx tsx scripts/post-to-x.ts --"$POST_TYPE" 2>&1 | tee /tmp/x-post-output.txt
+        run: |
+          set -o pipefail
+          npx tsx scripts/post-to-x.ts --"$POST_TYPE" 2>&1 | tee /tmp/x-post-output.txt
 
       - name: Retry on failure
+        id: retry
         if: steps.post.outcome == 'failure'
+        continue-on-error: true
         env:
           X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
           X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
@@ -73,9 +77,9 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           POST_TYPE: ${{ steps.mode.outputs.type }}
         run: |
-          # Don't retry auth/permission errors — they won't resolve on retry
-          if grep -q "code 401\|code 403" /tmp/x-post-output.txt 2>/dev/null; then
-            echo "Auth/permission error (401/403) detected — skipping retry"
+          # Don't retry auth/permission/billing errors — they won't resolve on retry
+          if grep -q "code 401\|code 402\|code 403" /tmp/x-post-output.txt 2>/dev/null; then
+            echo "Auth/permission/billing error (401/402/403) detected — skipping retry"
             exit 1
           fi
           echo "Retrying tweet post..."
@@ -83,6 +87,7 @@ jobs:
           npx tsx scripts/post-to-x.ts --"$POST_TYPE"
 
       - name: Post to Bluesky
+        id: bsky
         if: always()
         continue-on-error: true
         env:
@@ -92,6 +97,7 @@ jobs:
         run: npx tsx scripts/post-to-bluesky.ts --"$POST_TYPE"
 
       - name: Commit post state
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -101,6 +107,12 @@ jobs:
           git pull --rebase origin main
           git push
         continue-on-error: true
+
+      - name: Fail if any post failed
+        if: always() && ((steps.post.outcome == 'failure' && steps.retry.outcome != 'success') || steps.bsky.outcome == 'failure')
+        run: |
+          echo "::error::X outcome=${{ steps.post.outcome }}/${{ steps.retry.outcome }}, Bluesky outcome=${{ steps.bsky.outcome }}"
+          exit 1
 
   notify-failure:
     needs: post-tweet

@@ -14,7 +14,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { AtpAgent, RichText } from "@atproto/api";
+import type { AtpAgent } from "@atproto/api";
 import { log, requireEnv, callWithRetry } from "./lib/utils";
 import { ZODIAC_SIGNS } from "./lib/types";
 import type { FortunesFile } from "./lib/types";
@@ -143,10 +143,14 @@ function buildHoroscopePost(): string {
 // Bluesky client
 // ---------------------------------------------------------------------------
 
+// Dynamic import: @atproto/api pulls in ESM-only multiformats, which a CJS require can't resolve
+const loadAtproto = () => import("@atproto/api");
+
 let _agent: AtpAgent | null = null;
 
 async function getAgent(): Promise<AtpAgent> {
   if (_agent) return _agent;
+  const { AtpAgent } = await loadAtproto();
   _agent = new AtpAgent({ service: "https://bsky.social" });
   await callWithRetry(
     () => _agent!.login({
@@ -161,6 +165,7 @@ async function getAgent(): Promise<AtpAgent> {
 
 async function postToBluesky(text: string): Promise<void> {
   const agent = await getAgent();
+  const { RichText } = await loadAtproto();
   const rt = new RichText({ text });
   await rt.detectFacets(agent);
   const result = await callWithRetry(
