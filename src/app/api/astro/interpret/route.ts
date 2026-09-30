@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody, getClientIp } from '@/lib/api-utils';
 import { extractJsonObject } from '@/lib/json-utils';
 import { buildInterpretationPrompt } from '@/lib/astro/prompts';
 import { astroAIRatelimit } from '@/lib/rate-limit';
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Rate limiting
-    const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+    const ip = getClientIp(req);
     const { success } = await astroAIRatelimit.limit(ip);
     if (!success) {
       return NextResponse.json(

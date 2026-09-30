@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
+import { isAllowedOrigin, parseJsonBody, getClientIp } from '@/lib/api-utils';
 import { subscribeRatelimit } from '@/lib/rate-limit';
 import { signPremiumToken, PREMIUM_COOKIE_NAME, premiumCookieOptions } from '@/lib/saju/premium';
 
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
-    const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+    const ip = getClientIp(req);
     const { success } = await subscribeRatelimit.limit(ip);
     if (!success) {
       return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });

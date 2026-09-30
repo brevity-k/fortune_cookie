@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
 import { subscribeRatelimit } from '@/lib/rate-limit';
-import { isAllowedOrigin } from '@/lib/api-utils';
+import { isAllowedOrigin, getClientIp } from '@/lib/api-utils';
 
 export async function GET(req: NextRequest) {
   if (!isAllowedOrigin(req)) {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
   }
 
-  const ip = req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  const ip = getClientIp(req);
   const { success } = await subscribeRatelimit.limit(ip);
   if (!success) {
     return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });

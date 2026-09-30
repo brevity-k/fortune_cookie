@@ -28,3 +28,11 @@ export function isAllowedOrigin(req: NextRequest): boolean {
   }
   return allowedOrigins.includes(origin);
 }
+
+export function getClientIp(req: NextRequest): string {
+  return req.headers.get('x-real-ip') || req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+}
+
+export function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
