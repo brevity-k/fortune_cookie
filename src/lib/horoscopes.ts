@@ -49,8 +49,6 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
   { key: "pisces", name: "Pisces", symbol: "\u2653", element: "Water", dateRange: "Feb 19 - Mar 20", ruler: "Neptune" },
 ];
 
-export const ZODIAC_SIGN_KEYS = ZODIAC_SIGNS.map((s) => s.key);
-
 const data = horoscopeData as {
   daily: { date: string; horoscopes: Record<string, DailyHoroscope> };
   weekly: { weekOf: string; horoscopes: Record<string, WeeklyHoroscope> };
