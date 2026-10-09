@@ -131,7 +131,8 @@ function buildHoroscopePost(): string {
   if (graphemeLength(horoscopeText) > maxTextLength) {
     const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
     const segments = [...segmenter.segment(horoscopeText)];
-    const truncated = segments.slice(0, maxTextLength).map((s) => s.segment).join("");
+    // Leave room for the ellipsis so the post never exceeds MAX_GRAPHEMES
+    const truncated = segments.slice(0, maxTextLength - 1).map((s) => s.segment).join("");
     const lastPeriod = truncated.lastIndexOf(".");
     horoscopeText = lastPeriod > maxTextLength * 0.4 ? truncated.slice(0, lastPeriod + 1) : truncated + "\u2026";
   }
