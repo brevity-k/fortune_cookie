@@ -12,19 +12,21 @@ export default function FortuneReveal({ fortune, visible }: FortuneRevealProps) 
   const [displayText, setDisplayText] = useState("");
   const [typingDone, setTypingDone] = useState(false);
   const rafRef = useRef<number>(undefined);
+  const [prevInputs, setPrevInputs] = useState({ fortune, visible });
+
+  // Reset the typewriter during render when the fortune or visibility changes
+  if (prevInputs.fortune !== fortune || prevInputs.visible !== visible) {
+    setPrevInputs({ fortune, visible });
+    setDisplayText("");
+    setTypingDone(false);
+  }
 
   useEffect(() => {
-    if (!fortune || !visible) {
-      setDisplayText("");
-      setTypingDone(false);
-      return;
-    }
+    if (!fortune || !visible) return;
 
     // Typewriter effect using requestAnimationFrame
     let index = 0;
     let lastTime = 0;
-    setDisplayText("");
-    setTypingDone(false);
 
     const step = (timestamp: number) => {
       if (!lastTime) lastTime = timestamp;

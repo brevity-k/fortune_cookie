@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCachedReading } from "@/lib/use-cached-reading";
 import type { SajuChart } from "@/lib/saju/types";
 
 interface DayEntry {
@@ -41,6 +41,10 @@ function cache(chart: SajuChart, data: LuckyDaysData) {
   localStorage.setItem(getLuckyDaysKey(chart), JSON.stringify(data));
 }
 
+function selectDays(json: unknown): LuckyDaysData {
+  return (json as { days: LuckyDaysData }).days;
+}
+
 const RATING_STYLES: Record<string, { text: string; border: string; icon: string }> = {
   favorable: { text: "text-emerald-400", border: "border-emerald-500/30", icon: "\u2714\uFE0F" },
   neutral: { text: "text-amber-400", border: "border-amber-500/30", icon: "\u25CF" },
@@ -52,39 +56,14 @@ interface Props {
 }
 
 export default function LuckyDayCalendar({ chart }: Props) {
-  const [days, setDays] = useState<LuckyDaysData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const cached = getCached(chart);
-    if (cached) { setDays(cached); return; }
-
-    async function fetchDays() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/saju/lucky-days", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "same-origin",
-          body: JSON.stringify({ chart }),
-        });
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get lucky days.");
-        }
-        const data = await res.json();
-        setDays(data.days);
-        cache(chart, data.days);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchDays();
-  }, [chart]);
+  const { data: days, loading, error } = useCachedReading({
+    chart,
+    endpoint: "/api/saju/lucky-days",
+    errorMessage: "Failed to get lucky days.",
+    readCache: getCached,
+    writeCache: cache,
+    select: selectDays,
+  });
 
   if (loading) {
     return (

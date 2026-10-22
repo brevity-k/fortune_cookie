@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCachedReading } from "@/lib/use-cached-reading";
 import type { NatalChart } from "@/lib/astro/types";
 
 interface MonthlyForecastData {
@@ -48,42 +48,13 @@ interface Props {
 }
 
 export default function MonthlyForecast({ chart }: Props) {
-  const [forecast, setForecast] = useState<MonthlyForecastData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const cached = getCached(chart);
-    if (cached) {
-      setForecast(cached);
-      return;
-    }
-
-    async function fetchForecast() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/astro/monthly", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "same-origin",
-          body: JSON.stringify({ chart }),
-        });
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get monthly forecast.");
-        }
-        const data = await res.json();
-        setForecast(data);
-        cache(chart, data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchForecast();
-  }, [chart]);
+  const { data: forecast, loading, error } = useCachedReading({
+    chart,
+    endpoint: "/api/astro/monthly",
+    errorMessage: "Failed to get monthly forecast.",
+    readCache: getCached,
+    writeCache: cache,
+  });
 
   if (loading) {
     return (
