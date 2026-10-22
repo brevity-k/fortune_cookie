@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCachedReading } from "@/lib/use-cached-reading";
 import type { SajuChart } from "@/lib/saju/types";
 
 interface MonthlyOutlookData {
@@ -46,39 +46,13 @@ interface Props {
 }
 
 export default function MonthlyOutlook({ chart }: Props) {
-  const [outlook, setOutlook] = useState<MonthlyOutlookData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const cached = getCached(chart);
-    if (cached) { setOutlook(cached); return; }
-
-    async function fetchOutlook() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/saju/monthly", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "same-origin",
-          body: JSON.stringify({ chart }),
-        });
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get monthly outlook.");
-        }
-        const data = await res.json();
-        setOutlook(data);
-        cache(chart, data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchOutlook();
-  }, [chart]);
+  const { data: outlook, loading, error } = useCachedReading({
+    chart,
+    endpoint: "/api/saju/monthly",
+    errorMessage: "Failed to get monthly outlook.",
+    readCache: getCached,
+    writeCache: cache,
+  });
 
   if (loading) {
     return (

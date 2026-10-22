@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCachedReading } from "@/lib/use-cached-reading";
 import type { SajuChart } from "@/lib/saju/types";
 
 interface YearlyForecastData {
@@ -46,39 +46,13 @@ interface Props {
 }
 
 export default function YearlyForecast({ chart }: Props) {
-  const [forecast, setForecast] = useState<YearlyForecastData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const cached = getCached(chart);
-    if (cached) { setForecast(cached); return; }
-
-    async function fetchForecast() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/saju/yearly", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "same-origin",
-          body: JSON.stringify({ chart }),
-        });
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get yearly forecast.");
-        }
-        const data = await res.json();
-        setForecast(data);
-        cache(chart, data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchForecast();
-  }, [chart]);
+  const { data: forecast, loading, error } = useCachedReading({
+    chart,
+    endpoint: "/api/saju/yearly",
+    errorMessage: "Failed to get yearly forecast.",
+    readCache: getCached,
+    writeCache: cache,
+  });
 
   if (loading) {
     return (

@@ -17,10 +17,13 @@ export default function CityAutocomplete({ value, onSelect }: Props) {
   const [matches, setMatches] = useState<City[]>([]);
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  // Sync external value changes
-  useEffect(() => {
+  const [prevValue, setPrevValue] = useState(value);
+
+  // Sync external value changes during render
+  if (value !== prevValue) {
+    setPrevValue(value);
     setQuery(value);
-  }, [value]);
+  }
 
   // Close dropdown on click outside
   useEffect(() => {

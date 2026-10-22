@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCachedReading } from "@/lib/use-cached-reading";
 import type { SajuChart } from "@/lib/saju/types";
 
 interface DailyReadingData {
@@ -43,39 +43,13 @@ interface Props {
 }
 
 export default function DailyReading({ chart }: Props) {
-  const [reading, setReading] = useState<DailyReadingData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const cached = getCached(chart);
-    if (cached) { setReading(cached); return; }
-
-    async function fetchReading() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch("/api/saju/daily", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "same-origin",
-          body: JSON.stringify({ chart }),
-        });
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}));
-          throw new Error(body.error || "Failed to get daily reading.");
-        }
-        const data = await res.json();
-        setReading(data);
-        cache(chart, data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchReading();
-  }, [chart]);
+  const { data: reading, loading, error } = useCachedReading({
+    chart,
+    endpoint: "/api/saju/daily",
+    errorMessage: "Failed to get daily reading.",
+    readCache: getCached,
+    writeCache: cache,
+  });
 
   if (loading) {
     return (
