@@ -1,280 +1,280 @@
 {
   "daily": {
-    "date": "2026-10-31",
+    "date": "2026-11-01",
     "horoscopes": {
       "aries": {
-        "text": "That restless energy you're feeling? It's pushing you toward a conversation you've been avoiding. Mars backing into your reflection zone means the bravest thing you can do today is actually slow down and listen. Someone close to you has been trying to get through—make space for them tonight.",
+        "text": "That project you've been pushing forward needs a different approach today. Instead of forcing momentum, step back and let others show you what they've been working on—you might be surprised by how much has been happening behind the scenes. Your usual drive is better spent refining than rushing.",
         "love": 3,
         "career": 4,
         "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "intense"
+        "mood": "reflective"
       },
       "taurus": {
-        "text": "Take the longer route home today and notice what you've been rushing past. Your usual efficiency is admirable, but this Halloween brings gifts to those who wander a little. That creative project you shelved last month keeps whispering—maybe it's time to listen.",
+        "text": "You're craving comfort today, but the real nourishment comes from finishing something you started weeks ago. Clear that one nagging task off your list before lunch, then actually enjoy your afternoon without it hanging over you.",
         "love": 4,
         "career": 3,
         "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
-        "mood": "reflective"
+        "mood": "determined"
       },
       "gemini": {
-        "text": "Your mind is spinning with about seven different ideas, but only one actually matters today. Mercury's position suggests you already know which one—it's the thing that makes you slightly nervous to say out loud. Write it down before lunch, then watch how the afternoon shifts.",
+        "text": "Why are you holding back that idea? Mercury's position suggests your communication skills are particularly sharp right now, so speak up in that meeting or send that message you've been drafting in your head. The longer route home will give you time to process whatever response you get.",
         "love": 3,
-        "career": 4,
+        "career": 5,
         "health": 3,
-        "luckyNumber": 23,
-        "luckyColor": "amber",
+        "luckyNumber": 8,
+        "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Someone's going to surprise you with their honesty today, and your first instinct might be to protect yourself. Don't. The moon's influence makes this a rare moment where vulnerability actually builds the foundation you've been craving. Cook something that takes time tonight—the ritual will settle you.",
-        "love": 5,
+        "text": "Your intuition is louder than usual, especially about a family matter that's been quietly bothering you. Trust that nudge to reach out, even if the timing feels awkward. Sometimes the best conversations happen when we stop waiting for the perfect moment.",
+        "love": 4,
         "career": 2,
         "health": 4,
-        "luckyNumber": 8,
+        "luckyNumber": 23,
         "luckyColor": "silver",
         "mood": "intuitive"
       },
       "leo": {
-        "text": "You've been performing when you should be processing. Today's the day to drop the curtain and check in with yourself—no audience required. That thing you're calling confidence might actually be exhaustion wearing a brave face, and there's no shame in admitting the difference.",
+        "text": "Take center stage today, but make it about collaboration rather than solo performance. Your natural leadership shines brightest when you're elevating others alongside yourself, and someone on your team really needs that recognition you can provide.",
         "love": 3,
-        "career": 3,
-        "health": 2,
+        "career": 4,
+        "health": 3,
         "luckyNumber": 55,
         "luckyColor": "gold",
-        "mood": "grounded"
+        "mood": "confident"
       },
       "virgo": {
-        "text": "Not everything needs to be fixed, analyzed, or improved today. Someone in your world is doing just fine with their messy process—let them. Your real work right now is noticing where your need for order is actually just fear of letting go.",
+        "text": "All that analyzing is keeping you stuck in your head when your hands need to be doing the work. Pick one thing—just one—and execute it imperfectly rather than planning it flawlessly. You'll learn more from doing than from another round of revision.",
         "love": 2,
-        "career": 5,
-        "health": 3,
+        "career": 3,
+        "health": 5,
         "luckyNumber": 34,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "Why are you still trying to make everyone comfortable when you're the one who needs support? Venus is asking you to flip the script and actually state what you need—not what sounds fair or reasonable, but what you actually want. The response might surprise you.",
-        "love": 4,
-        "career": 3,
-        "health": 3,
-        "luckyNumber": 61,
-        "luckyColor": "lavender",
-        "mood": "determined"
-      },
-      "scorpio": {
-        "text": "Happy solar return, Scorpio. This Halloween gives you permission to transform into whoever you're becoming, not who you've been. That power you feel building isn't something to control—it's something to channel. Call in the favor you're owed; people want to celebrate you today.",
-        "love": 5,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 13,
-        "luckyColor": "indigo",
-        "mood": "passionate"
-      },
-      "sagittarius": {
-        "text": "Your wanderlust is bumping up against some very real responsibilities, and for once, maybe both can coexist. Book something for next month instead of next year—having an adventure on the calendar does half the work of actually taking it. Jupiter's backing you up on the optimism front.",
+        "text": "A financial decision requires your attention, and putting it off until you have \"all the information\" is just avoidance at this point. You know enough to make a choice—trust yourself and move forward. Balance comes from action, not endless deliberation.",
         "love": 3,
         "career": 4,
-        "health": 5,
-        "luckyNumber": 77,
+        "health": 3,
+        "luckyNumber": 11,
+        "luckyColor": "lavender",
+        "mood": "harmonious"
+      },
+      "scorpio": {
+        "text": "Your birthday season brings intensity, as always, but this year it's asking you to transform something about how you present yourself to the world. What mask are you ready to drop? The vulnerability might feel uncomfortable, but it's also where your real power lives right now.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 9,
+        "luckyColor": "maroon",
+        "mood": "intense"
+      },
+      "sagittarius": {
+        "text": "Restlessness is pushing you toward something new, but today's energy favors preparation over leap-taking. Research that destination, sketch out that plan, or have the preliminary conversation. Your adventure is coming—just not this second.",
+        "love": 3,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 67,
         "luckyColor": "orange",
-        "mood": "optimistic"
+        "mood": "adventurous"
       },
       "capricorn": {
-        "text": "You've been grinding when you should be strategizing. Step back from the task list today and look at the actual architecture of what you're building—does it still match the blueprint in your head? Saturn's asking you to work smarter, not just harder, and that might mean scrapping something that's not serving the vision.",
-        "love": 2,
-        "career": 4,
+        "text": "You've been so focused on the summit that you haven't noticed how far you've already climbed. Pause today and actually acknowledge your progress, maybe even celebrate it a little. Then call that person back—they've been waiting, and the conversation will fuel your next phase.",
+        "love": 3,
+        "career": 5,
         "health": 3,
-        "luckyNumber": 29,
+        "luckyNumber": 28,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "That weird idea that keeps popping up? Stop dismissing it as impractical. Uranus doesn't do conventional, and neither do you when you're at your best. Share it with someone who gets your wavelength before midnight—this Halloween energy amplifies the unconventional, and you're practically made for it.",
-        "love": 3,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 91,
-        "luckyColor": "electric blue",
+        "text": "That unconventional solution you've been tinkering with? Today's the day to test it out, even in a small way. Your innovative approach might raise some eyebrows, but it'll also open doors that traditional methods have kept locked.",
+        "love": 2,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 71,
+        "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "You're picking up on everyone's energy today, which is both gift and burden. Create actual boundaries this afternoon—turn off notifications, take a walk alone, let yourself drift without absorbing. Neptune's influence makes your intuition sharper than usual, but only if you give it quiet space to speak.",
+        "text": "Your boundaries need reinforcing today, especially around your creative or personal time. Saying no to one thing means saying yes to yourself, and that dream project deserves more than the scraps of energy left over from everyone else's demands. Honor what wants to come through you.",
         "love": 4,
-        "career": 2,
-        "health": 3,
+        "career": 3,
+        "health": 5,
         "luckyNumber": 46,
         "luckyColor": "seafoam",
-        "mood": "calm"
+        "mood": "inspired"
       }
     }
   },
   "weekly": {
-    "weekOf": "2026-10-25",
+    "weekOf": "2026-11-01",
     "horoscopes": {
       "aries": {
-        "overview": "Your energy turns inward this week, which might feel unfamiliar but necessary. Rather than charging ahead, you're being asked to pause and assess what's actually worth fighting for.",
-        "love": "Vulnerability becomes your unexpected superpower. Single Aries might find themselves drawn to someone completely different from their usual type, while attached rams discover that admitting uncertainty deepens intimacy.",
-        "career": "A project you've been pushing hard on needs refinement, not more force. Step back and let others contribute their expertise—collaboration will achieve what solo effort can't right now.",
-        "advice": "Trust that stillness isn't the same as stagnation. Sometimes the most productive thing you can do is wait."
+        "overview": "Your energy shifts inward this week, prompting you to reassess what truly deserves your fire. A conversation midweek might reveal that someone's been paying closer attention to your ideas than you realized.",
+        "love": "Vulnerability feels risky right now, but it's exactly what deepens your connections. Single Aries might find themselves drawn to someone who challenges them intellectually rather than just physically.",
+        "career": "A project you've been pushing hard on needs a strategic pause rather than more force. Step back and let others contribute—their input could solve the problem you've been wrestling with solo.",
+        "advice": "Not every battle needs your immediate response. Sometimes the strongest move is letting things settle before you strike."
       },
       "taurus": {
-        "overview": "Financial clarity arrives after weeks of uncertainty, bringing relief and a clearer path forward. Your instincts about material matters are especially sharp now.",
-        "love": "Comfort and passion don't have to be opposites, and this week proves it. Whether you're building something new or deepening what exists, sensuality and security walk hand in hand.",
-        "career": "Your persistence is finally showing results, though perhaps not in the exact form you expected. A conversation about value—yours or someone else's—needs your diplomatic touch.",
-        "advice": "Don't dismiss the small pleasures as insignificant. They're actually anchoring you through bigger changes happening beneath the surface."
+        "overview": "Financial matters demand your attention, but not in the stressful way you might expect—this is about recognizing your worth and acting accordingly. The full harvest of something you planted months ago is finally within reach.",
+        "love": "You're craving stability, yet someone close might need more flexibility than usual. Find the balance between holding your ground and bending enough to keep the connection strong.",
+        "career": "Your practical skills shine brightest when you trust your instincts about value and timing. A negotiation or discussion about compensation goes better than expected if you stay calm and clear about what you bring to the table.",
+        "advice": "Comfort is important, but growth often requires you to stretch just beyond what feels easy."
       },
       "gemini": {
-        "overview": "Communication takes on unusual weight this week as people actually want to hear what you have to say. Your ideas are landing differently now—with more impact and less need for explanation.",
-        "love": "Words matter more than gestures right now. Say the thing you've been thinking but haven't voiced, whether it's a confession, a question, or a boundary that needs setting.",
-        "career": "You're juggling multiple opportunities, and the temptation to say yes to everything is strong. Choose the path that teaches you something new rather than the one that simply keeps you busy.",
-        "advice": "Write down your scattered thoughts. What seems like mental chaos is actually a pattern trying to emerge."
+        "overview": "Information overload hits differently this week—instead of energizing you, it might leave you scattered. Focus becomes your superpower when you deliberately choose what deserves your mental energy and what doesn't.",
+        "love": "Say what you actually mean instead of dancing around the topic. Your partner or potential partner appreciates directness far more than clever deflection right now.",
+        "career": "Multiple opportunities or projects compete for your attention, but spreading yourself too thin helps no one. Pick the one that genuinely excites you rather than the one that simply seems most urgent.",
+        "advice": "Your mind works fast, but this week rewards you for slowing down enough to finish what you start before chasing the next shiny idea."
       },
       "cancer": {
-        "overview": "You're shedding an old emotional skin, which feels tender but necessary. What once provided security now feels restrictive, and you're ready to admit it.",
-        "love": "Past patterns are showing up for review, not repetition. Notice what feels familiar in current dynamics—that awareness alone can shift the entire trajectory of a relationship.",
-        "career": "Your intuition about workplace dynamics is spot-on, even if you can't prove it yet. Trust your gut about who's reliable and who's just performing reliability.",
-        "advice": "Give yourself permission to outgrow people and situations that once fit perfectly. Evolution isn't betrayal."
+        "overview": "Old emotions surface unexpectedly, asking to be felt rather than managed or fixed. This week invites you to honor what's been hiding in your shell without letting it define your present.",
+        "love": "Intimacy deepens when you share not just your caring nature but also your fears and frustrations. Someone wants to support you, but they need you to actually let them in first.",
+        "career": "Your intuition about workplace dynamics is especially sharp right now—trust those subtle feelings about who to collaborate with and which projects align with your values. Professional growth comes through emotional intelligence, not just technical skills.",
+        "advice": "Protecting yourself and being open aren't opposites. You can honor your sensitivity while still taking risks that matter."
       },
       "leo": {
-        "overview": "Creative blocks dissolve as you stop trying to force inspiration and simply show up to play. Your natural charisma is quieter this week but somehow more magnetic.",
-        "love": "Romance benefits from authenticity over performance. Let someone see you in your ordinary moments—the real connection you're craving lives there, not in the highlight reel.",
-        "career": "Recognition might come from an unexpected direction, possibly for work you did months ago and forgot about. Your influence extends further than you realize.",
-        "advice": "Rest isn't laziness, it's preparation. What you do with your downtime will fuel what comes next."
+        "overview": "Recognition might come from an unexpected direction this week, reminding you that your influence extends further than you thought. Someone's been watching your work and is ready to acknowledge it publicly.",
+        "love": "Romance thrives when you drop the performance and just be yourself—messy moments included. Your warmth is most magnetic when it's genuine rather than carefully curated.",
+        "career": "Leadership opportunities emerge, but they require a different style than you typically employ. Collaboration and listening might feel less exciting than taking charge, yet they're exactly what this situation needs from you.",
+        "advice": "Your light doesn't dim when you share the stage. In fact, it often shines brighter."
       },
       "virgo": {
-        "overview": "Perfectionism loosens its grip as you discover that 'good enough' can actually be excellent. The mental space you've been craving opens up when you stop over-editing everything.",
-        "love": "Analyzing your feelings won't resolve them, and this week teaches you the value of simply feeling without fixing. Relationships deepen when you release the need to optimize every interaction.",
-        "career": "Your attention to detail is valuable, but don't let it trap you in endless revision. Ship the project, send the email, share the work—completion beats perfection right now.",
-        "advice": "Notice where your high standards serve you and where they're just anxiety in disguise. There's a difference, and you're ready to see it."
+        "overview": "Perfectionism tightens its grip this week, but loosening that control actually improves your results. The details matter, yet so does knowing when something is good enough to release into the world.",
+        "love": "Over-analyzing someone's words or actions creates problems that don't actually exist. Take gestures at face value instead of searching for hidden meanings beneath every interaction.",
+        "career": "Your organizational skills solve a problem that's been frustrating your team for weeks. Don't downplay your contribution just because the solution seems obvious to you—what's clear to you is brilliant to others.",
+        "advice": "Done is often better than perfect, especially when perfect keeps you stuck in endless revision. Trust your work and let it go."
       },
       "libra": {
-        "overview": "Balance returns not through careful calibration but through choosing what truly matters to you. This week asks you to stop accommodating and start deciding.",
-        "love": "Harmony at the expense of honesty isn't actually harmony. A conversation you've been avoiding will actually bring you closer to the peace you seek, not further from it.",
-        "career": "Partnership dynamics shift as you realize you've been carrying more than your share. Redistributing responsibilities isn't selfish—it's sustainable, and others are more willing than you think.",
-        "advice": "Your worth isn't determined by how useful you are to others. Practice receiving without immediately reciprocating."
+        "overview": "Decisions feel weightier than usual, and your natural desire to consider all perspectives might be causing analysis paralysis. Sometimes choosing imperfectly is better than not choosing at all.",
+        "love": "You've been accommodating someone else's needs while neglecting your own, and the imbalance is starting to show. Healthy relationships require both people to voice what they want, including you.",
+        "career": "A partnership or collaboration reaches a turning point where you need to address what's not working rather than maintaining pleasant surfaces. Difficult conversations now prevent bigger problems later.",
+        "advice": "Peace at any cost isn't actually peace—it's avoidance. Real harmony includes honest friction sometimes."
       },
       "scorpio": {
-        "overview": "Your season brings intensity with purpose as you're drawn to excavate what others would rather leave buried. What you're discovering about yourself is both confronting and liberating.",
-        "love": "Intimacy deepens when you stop testing people and start trusting them. Vulnerability isn't weakness, and this week someone proves they can handle the real you.",
-        "career": "Your insight into hidden dynamics gives you an advantage, but wielding that power wisely matters more than wielding it at all. Strategic silence might be your strongest move.",
-        "advice": "Not everything that's true needs to be spoken. Discernment about when to reveal and when to protect serves you now."
+        "overview": "Your birthday season brings intensity and the urge to transform something fundamental about your life. What you're ready to release has already served its purpose; letting go isn't loss but evolution.",
+        "love": "Trust issues bubble up, giving you a chance to examine whether they're about the present situation or old wounds you're projecting forward. Intimacy deepens when you're willing to be wrong about your suspicions.",
+        "career": "Your insight into hidden dynamics gives you a strategic advantage, but wielding that power wisely matters more than simply having it. Use what you know to build bridges, not to gain leverage over others.",
+        "advice": "Transformation doesn't always require destruction. Sometimes it's about integrating what you've learned rather than burning everything down."
       },
       "sagittarius": {
-        "overview": "Restlessness signals growth, not dissatisfaction. You're being called toward something new, and the discomfort you feel is actually anticipation in disguise.",
-        "love": "Freedom and commitment aren't opposites when you're with someone who understands your nature. If you're feeling trapped, examine whether the cage is external or self-imposed.",
-        "career": "An opportunity to expand your reach arrives, possibly involving teaching, travel, or sharing your expertise with a wider audience. Say yes before you feel ready—you'll figure it out as you go.",
-        "advice": "Follow the curiosity, even if you can't justify it logically. Your instinct for what's next is more reliable than any plan."
+        "overview": "Restlessness pushes you toward the exit before you've finished what you started here. Adventure calls, but so does completion—this week asks you to find the thrill in following through.",
+        "love": "Freedom and commitment aren't the enemies you sometimes make them out to be. The right relationship expands your world rather than shrinking it, if you're brave enough to find out.",
+        "career": "Big ideas flow easily, but implementation requires attention to details that bore you. Partner with someone who excels at execution, or force yourself to slow down enough to build foundations under your visions.",
+        "advice": "Not every cage you feel trapped in is real. Sometimes what feels like limitation is just the discipline required to achieve what you claim to want."
       },
       "capricorn": {
-        "overview": "Ambition takes a backseat to reflection as you assess whether you're climbing the right mountain. The goals you set a year ago might not fit who you're becoming.",
-        "love": "Letting someone see your uncertainty doesn't diminish you. The walls you've built for protection might actually be preventing the support you secretly want.",
-        "career": "Your hard work is being noticed, but recognition might feel hollow if you're not proud of what you're building. Mid-course corrections aren't failures—they're wisdom in action.",
-        "advice": "Success that costs you your peace isn't success. Give yourself permission to redefine what achievement means to you."
+        "overview": "Your usual strategy of pushing through meets unexpected resistance, suggesting it's time to try a different approach. Sometimes the mountain doesn't need to be climbed alone or on the hardest possible route.",
+        "love": "Letting someone see your struggles doesn't make you weak—it makes you human and relatable. The walls you've built for protection might also be keeping out the connection you secretly crave.",
+        "career": "Achievement satisfies you, but this week asks whether you're climbing toward something meaningful or simply climbing because that's what you do. Pause to check if your goals still align with what you actually value now, not who you were five years ago.",
+        "advice": "Success means nothing if you're too exhausted to enjoy it. Build rest and pleasure into your plans, not just as rewards but as essential fuel."
       },
       "aquarius": {
-        "overview": "Community matters more than independence this week, which might surprise you. The ideas you've been developing in isolation need other perspectives to fully form.",
-        "love": "Emotional availability doesn't require you to abandon your need for space. Someone's asking for more presence, and you can offer it without losing yourself.",
-        "career": "Innovation comes through collaboration rather than solo genius right now. Your unconventional approach works better when combined with others' practical expertise.",
-        "advice": "Being different doesn't mean being alone. Let the right people into your inner world."
+        "overview": "Your innovative thinking solves a problem others didn't even realize existed yet. The challenge this week is communicating your vision in ways that bring people along rather than leaving them confused in your mental dust.",
+        "love": "Emotional expression doesn't come naturally, but relationships require more than intellectual connection to thrive. Someone needs to hear how you feel, not just what you think about the relationship.",
+        "career": "Your ideas are ahead of their time, which means you'll need patience while others catch up. Instead of frustration, see this as an opportunity to refine your approach and build the coalition you need for implementation.",
+        "advice": "Being different is your gift, but connection still matters. Don't let your uniqueness become isolation."
       },
       "pisces": {
-        "overview": "Boundaries you've been trying to establish finally feel natural rather than forced. You're learning to help others without absorbing their chaos, and it's transforming everything.",
-        "love": "Fantasy and reality find a meeting place as you release idealized versions of love and embrace what's actually in front of you. Real intimacy might be quieter than you imagined but far more nourishing.",
-        "career": "Your creativity needs structure to manifest fully. Partner with someone who handles the practical details so you can focus on the vision—you don't have to do it all yourself.",
-        "advice": "Escapism is tempting, but presence is where the magic actually happens. Stay grounded in your body and your life."
+        "overview": "Boundaries feel harsh to your flowing nature, but they're exactly what you need right now to preserve your energy. You've been absorbing everyone else's emotions and losing track of your own in the process.",
+        "love": "Fantasy and reality need sorting—someone might not be who you've imagined them to be, and that's actually okay. Real people with flaws can offer more genuine connection than the perfect partner you've dreamed up.",
+        "career": "Creative projects flourish when you give them structure rather than waiting for pure inspiration to strike. Your imagination is boundless, but practical containers help your visions actually manifest in the world.",
+        "advice": "Saying no to what drains you isn't selfish; it's how you preserve enough energy to say yes to what truly matters."
       }
     }
   },
   "monthly": {
-    "month": "2026-10",
+    "month": "2026-11",
     "horoscopes": {
       "aries": {
-        "overview": "Ever notice how the things you've been pushing against suddenly give way all at once? October brings that satisfying breakthrough, particularly in partnerships where you've been doing most of the heavy lifting. Your ruler's movement through your intimacy sector means conversations get real, fast. What you thought was resistance might actually be an invitation to go deeper.",
-        "love": "Someone's ready to match your intensity this month, but only if you drop the need to control the pace. Single Aries find that vulnerability—not confidence—becomes their most magnetic quality.",
-        "career": "A project you shelved in late summer deserves another look; the resources that were missing then are suddenly available now. Collaborative ventures flourish when you let others take the lead occasionally.",
-        "health": "Your body's asking for more rest than your mind thinks you need. Listen to the former. Intuitive movement practices like dance or tai chi help discharge the restless energy that keeps you wired at night.",
-        "advice": "Stop treating compromise like defeat. The best victories this month come from finding the third option you hadn't considered."
+        "overview": "What if the pause you've been resisting is exactly what you need? November asks you to slow down just enough to notice what's actually working versus what you've been pushing forward out of habit. The urge to act remains strong, but this month rewards strategic patience over impulse. Your energy shifts inward as autumn deepens, creating space for recalibration.",
+        "love": "Conversations you've been avoiding suddenly become easier to have, especially mid-month. If you're partnered, expect a breakthrough around shared finances or intimacy. Single Aries might find attraction sparking in familiar places you'd written off.",
+        "career": "A project you initiated months ago finally gains traction, but not in the form you originally imagined. Be willing to adjust your approach without abandoning your vision entirely. Collaboration becomes surprisingly rewarding, particularly with people whose working style differs from yours.",
+        "health": "Your nervous system needs more rest than you think. Sleep quality matters more than sleep quantity right now, so examine your evening routines with fresh eyes. Physical release through movement helps, but balance intensity with genuine recovery.",
+        "advice": "Trust that stepping back doesn't mean losing ground. Sometimes the most productive thing you can do is let something simmer."
       },
       "taurus": {
-        "overview": "October asks you to reconsider what security actually means. The structures you've built—impressive as they are—might be protecting you from exactly what you need. There's a difference between stability and stagnation, and this month draws that line clearly. Financial shifts aren't setbacks; they're redirections toward something more aligned with your evolving values.",
-        "love": "Relationships thrive when you admit what you actually want instead of what you think you should want. Attached Bulls find that a honest conversation about needs revitalizes connection; single ones attract someone by being unapologetically specific about dealbreakers.",
-        "career": "Your worth isn't up for negotiation, but your methods might need updating. A younger colleague or new technology offers a shortcut you've been too proud to consider. Revenue streams diversify when you stop putting all your energy into one source.",
-        "health": "Tension lives in your jaw and shoulders this month—consider what you're not saying. Magnesium, massage, and humming (yes, really) all help release the physical grip of unexpressed words.",
-        "advice": "Let something go that's been taking up space. The relief you feel will confirm it was time."
+        "overview": "You're being asked to release something you've held onto far longer than necessary. November brings a reckoning with attachments—to outcomes, to relationships, to versions of yourself that no longer fit. This isn't loss; it's intentional clearing to make room for what's trying to arrive. The transformation feels both overdue and surprisingly tender.",
+        "love": "Vulnerability becomes your unexpected superpower this month. Saying what you actually want, rather than what seems reasonable, opens doors you assumed were closed. Coupled Taurus may need to renegotiate terms around independence and togetherness.",
+        "career": "Financial matters demand attention, particularly around value and compensation. You're realizing what you're truly worth, and that awareness might make current arrangements feel insufficient. Start conversations rather than making ultimatums—there's room to negotiate.",
+        "health": "Your body is asking for pleasure, not punishment. Find movement that feels good rather than disciplined. Digestive issues may flare if you're swallowing emotions instead of expressing them.",
+        "advice": "Let go of needing to know how everything will work out. The path reveals itself when you stop gripping the map so tightly."
       },
       "gemini": {
-        "overview": "What happens when you stop performing and start being? October gives you permission to find out. Your usual gift for adaptation has kept you busy matching everyone else's energy, but this month rewards you for showing up as yourself—unedited, unfiltered. Creative projects gain momentum not through strategy but through authenticity. People are drawn to your raw material, not your polished pitch.",
-        "love": "Flirtation is fun, but someone wants to know what's underneath the banter. Coupled Geminis discover that routine creates freedom rather than limiting it; singles find chemistry with someone they'd normally overlook at first glance.",
-        "career": "Your ideas are solid, but they need grounding in practical systems to go anywhere. Partner with someone detail-oriented who can build the infrastructure your visions require. Multiple income streams or side projects finally start generating real returns mid-month.",
-        "health": "Your nervous system needs downtime from constant input—try a day without podcasts, scrolling, or background noise. Breath work and journaling help process the mental backlog you've been ignoring.",
-        "advice": "Finish one thing before starting three new things. Completion brings more satisfaction than you remember."
+        "overview": "November hands you the microphone, then asks: what do you actually want to say? Beyond the wit and the clever observations, there's something more substantial trying to emerge. Relationships take center stage, demanding depth over breadth. You're learning the difference between being interesting and being known.",
+        "love": "Partnership dynamics shift as you realize surface-level connection no longer satisfies. If you're coupled, probe beneath the daily logistics to rediscover what drew you together. Single Geminis attract intensity rather than lightness—decide if you're ready for that.",
+        "career": "Collaboration opportunities multiply, but choose quality over quantity. One meaningful partnership will advance your goals more than scattered networking. Written communication and presentations go exceptionally well, especially in the second half of the month.",
+        "health": "Mental rest is just as important as physical rest. Your mind has been running constant loops—try externalizing thoughts through writing or conversation. Hand and arm tension may appear if you're holding stress in your upper body.",
+        "advice": "Commit to one thing fully rather than keeping three things at arm's length. Depth creates the breakthrough you've been seeking in breadth."
       },
       "cancer": {
-        "overview": "You've been holding space for everyone else's feelings while minimizing your own—how's that working? October flips the script, asking you to tend your inner world with the same devotion you give to others. Home and family matters reach a turning point that requires you to voice needs you've kept quiet about for months. The transformation happens when you stop waiting for others to notice and simply state what's true.",
-        "love": "Resentment you didn't realize you were carrying surfaces early in the month, but clearing the air brings you closer than manufactured harmony ever could. Single Cancers attract partners by setting boundaries instead of dissolving them.",
-        "career": "Your emotional intelligence is your competitive advantage—use it. A workplace situation requires the kind of diplomacy that can't be taught, only embodied. Financial growth comes through nurturing something slowly rather than forcing quick results.",
-        "health": "Your gut is sending clearer signals than usual; honor what it's telling you about food, people, and situations. Water-based movement and time near actual water help regulate the emotional intensity.",
-        "advice": "Saying no to what drains you isn't selfish—it's how you maintain the capacity to show up for what matters. Protect your energy like the resource it is."
+        "overview": "The details you've been neglecting suddenly matter enormously. November pulls your attention toward the practical, the daily, the routines that either support or sabotage your larger goals. This feels unglamorous, maybe even tedious, but there's profound power in getting the small things right. Your sensitivity becomes an asset in discerning what actually serves you.",
+        "love": "Love shows up in gestures rather than grand declarations. Notice who's present in the mundane moments, who shows up consistently rather than dramatically. If you're partnered, tackle the boring logistics together—shared competence can be surprisingly intimate.",
+        "career": "Your work requires refinement rather than reinvention. Focus on improving systems and processes that you've let slide. Health-related fields or service-oriented projects gain momentum. Recognition comes through reliability, not flash.",
+        "health": "This is your month to establish routines that stick. Start smaller than you think necessary—consistency matters more than ambition. Gut health and nutrition deserve attention, particularly around how different foods affect your mood and energy.",
+        "advice": "Stop waiting for the perfect moment to get organized. The magic is in the mundane, the daily choices that compound into transformation."
       },
       "leo": {
-        "overview": "Recognition comes this month, but not in the form you expected. October rewards the behind-the-scenes work you've been doing when no one was watching. Your creativity is shifting from performance to craft, from seeking applause to pursuing mastery. There's power in letting your work speak louder than your self-promotion, and the right people are noticing the shift.",
-        "love": "Pride might be getting in the way of intimacy—can you be adored and ordinary at the same time? Couples benefit from doing something unremarkable together that has nothing to do with impressing anyone. Single Leos find sparks in unexpected places when they drop the need to make an entrance.",
-        "career": "A leadership opportunity emerges, but it requires a more collaborative style than you're used to. Your vision is needed, but so is your willingness to share the spotlight. Financial gains come through partnerships and shared resources rather than solo ventures.",
-        "health": "Your heart—both literal and metaphorical—needs attention. Cardiovascular exercise balanced with heart-opening practices like gratitude journaling create vitality. Notice where generosity has become depletion.",
-        "advice": "Let yourself be seen in your process, not just your triumphs. Vulnerability is just another form of courage."
+        "overview": "Are you creating what brings you joy, or what you think should bring you joy? November asks you to examine the difference between authentic self-expression and performance. Your creative energy runs high, but it needs honest direction. Pleasure isn't frivolous—it's essential data about who you're becoming.",
+        "love": "Romance arrives when you stop trying to impress and start being genuinely playful. Coupled Leos rediscover the fun that got buried under responsibility. Dating feels lighter and more experimental if you release the pressure of finding 'the one.' Let people surprise you.",
+        "career": "Projects that showcase your unique talents gain visibility, but ego needs to step aside. Your work shines brightest when you're genuinely invested, not when you're chasing validation. Creative fields and leadership roles see positive developments mid-month.",
+        "health": "Joy is medicine right now. What makes you laugh? What feels genuinely pleasurable rather than dutiful? Your heart—both literally and figuratively—needs activities that make it feel expansive and alive.",
+        "advice": "Create for the sake of creating, not for applause. The work that flows from genuine inspiration will find its audience without you forcing it."
       },
       "virgo": {
-        "overview": "What if the mess is part of the method? Your birthday season afterglow carries into October with permission to be less precise and more experimental. Analysis has taken you far, but intuition wants equal airtime now. Projects benefit from your willingness to start before everything is perfect, to iterate rather than over-plan. The harvest you're gathering includes some wild seeds you didn't intentionally plant.",
-        "love": "Criticism—even the constructive kind—is creating distance where you want closeness. Practice witnessing without fixing, accepting without improving. Single Virgos discover that revealing imperfections attracts more genuine connection than curated perfection ever could.",
-        "career": "Your organizational skills are in high demand, but don't let others' chaos become your responsibility. Delegate what doesn't require your specific expertise. A creative project or side interest shows surprising commercial potential when you stop treating it as a hobby.",
-        "health": "Digestive issues often reflect difficulty processing emotions, not just food. Notice what you're trying to control that needs to be released. Movement that feels playful rather than punishing serves you better now.",
-        "advice": "Done is better than perfect this month. Ship the project, send the email, have the conversation—refinement can happen in version two."
+        "overview": "Home—the physical space, the emotional foundation, the sense of belonging—demands your attention and receives your care. November turns you inward toward roots and origins, asking you to tend what's been neglected while you focused outward. This isn't retreat; it's necessary maintenance of the foundation from which everything else grows. You're building sanctuary.",
+        "love": "Intimacy deepens when you allow yourself to be seen in your most private, unpolished moments. Family dynamics may affect romantic relationships, requiring clear boundaries. Single Virgos might revisit feelings for someone from the past or find attraction growing slowly in familiar territory.",
+        "career": "Work-from-home arrangements or family business matters come into focus. Your productivity improves dramatically when your domestic situation feels stable. Behind-the-scenes work advances your goals more than visible hustle right now.",
+        "health": "Emotional health and physical health are inseparable this month. Unprocessed feelings may manifest as tension in your lower back or digestive system. Create space for genuine rest at home, not just collapse between obligations.",
+        "advice": "You can't build outward on a shaky foundation. Tend your roots before reaching for new growth."
       },
       "libra": {
-        "overview": "Your birthday season lands differently this year—there's less interest in keeping the peace and more commitment to keeping it real. October pushes you toward authenticity that might ruffle feathers, and you're surprisingly okay with that. The balance you're known for is shifting from external harmony to internal alignment. What you've been tolerating in the name of diplomacy is no longer tolerable, and that clarity is a gift.",
-        "love": "Relationships require renegotiation this month as you become clearer about what partnership actually means to you. Saying what you want feels vulnerable but ultimately brings you closer to someone who can meet you there. Single Libras attract by having standards, not by being accommodating.",
-        "career": "Your aesthetic sense and people skills combine to open doors, but you need to walk through them with confidence. A financial opportunity requires you to name your worth without apologizing. Creative work gets recognized when you stop waiting for permission to call yourself an artist.",
-        "health": "Your kidneys and lower back hold tension when you're over-functioning in relationships—drink more water and stretch daily. Practices that restore equilibrium, like yin yoga or sound baths, feel especially supportive.",
-        "advice": "You don't need everyone to like you, just the right people. Prune relationships that require you to shrink."
+        "overview": "Your voice carries weight this month—use it. November amplifies your natural gift for communication, but the stakes feel higher than usual. What you say, write, and share creates ripples in unexpected directions. Local connections and daily interactions hold more significance than distant possibilities. Pay attention to the conversations happening right in front of you.",
+        "love": "Talking through issues actually works now, if you're willing to be direct rather than diplomatic. Coupled Libras benefit from regular check-ins rather than saving everything for big talks. Mental connection sparks attraction for single Libras—find someone who challenges your thinking.",
+        "career": "Short-term projects and local opportunities deserve your energy. Teaching, writing, or communication-focused work flourishes. Your ability to see multiple perspectives becomes your greatest professional asset. Network within your immediate community rather than casting a wide net.",
+        "health": "Mental stimulation and mental rest need equal billing. Your mind craves input, but overstimulation leads to anxiety. Take breaks from screens and noise. Shoulder and neck tension may indicate you're carrying stress from unspoken words.",
+        "advice": "Say the thing you've been polishing and perfecting. Authentic communication beats perfect articulation every time."
       },
       "scorpio": {
-        "overview": "The month begins in your introspective zone, asking you to clear out what you've been carrying that isn't yours to hold. October is preparation for your upcoming solar return, a time of shedding skins and releasing grudges that have overstayed their welcome. Power comes not from control but from the willingness to transform. What emerges as you move toward your birthday is a version of yourself less defended and more magnetic for it.",
-        "love": "Intensity is your native language, but not everyone speaks it fluently—can you find the sweet spot between depth and pressure? Couples grow closer through shared vulnerability rather than shared secrets. Single Scorpios attract someone by revealing what they usually keep hidden.",
-        "career": "Your instincts about who to trust are exceptionally sharp right now; act on them. A power dynamic at work shifts in your favor when you stop trying to force the outcome. Research, investigation, and behind-the-scenes strategy yield better results than visible maneuvering.",
-        "health": "Emotional detox is as important as physical this month—what resentment or grief needs to move through you? Sweating through exercise or sauna helps release what you're holding in your tissues. Trust your body's signals about who and what depletes you.",
-        "advice": "Forgiveness isn't about them; it's about freeing up the energy you've invested in the story. Let it go and watch what becomes possible."
+        "overview": "What are you actually worth, and who taught you to undervalue it? November asks uncomfortable questions about resources, self-worth, and the tangled relationship between the two. Your season brings intensity to matters of money and values, revealing where you've given away power. This is your month to reclaim it, not through force but through clear-eyed assessment of what you bring and what you deserve.",
+        "love": "Physical intimacy deepens, but it requires you to articulate your needs rather than expecting partners to intuit them. Money and shared resources need honest discussion in committed relationships. Single Scorpios attract people who mirror your current relationship with self-worth—notice the pattern.",
+        "career": "Financial negotiations favor you if you're willing to advocate for yourself. Ask for the raise, pitch the higher rate, or renegotiate terms. Your value is increasing even if external validation hasn't caught up yet. Trust your assessment of your worth.",
+        "health": "Resource your body the way you'd resource an important project. Quality nutrition, adequate rest, and genuine pleasure aren't luxuries. Throat issues may arise if you're swallowing words you need to speak, particularly around money or worth.",
+        "advice": "Stop accepting less than you're worth out of fear there isn't more available. Scarcity is a story, not a truth."
       },
       "sagittarius": {
-        "overview": "Your social sphere expands in unexpected directions this month, bringing people who challenge your perspective in the best way. October asks you to think bigger about community—who are your people, really, and are you investing in those connections? There's opportunity in collaborative ventures that let you contribute your vision while others handle the details. Freedom and commitment aren't opposites; sometimes the right structures actually create more room to roam.",
-        "love": "Adventure is great, but so is showing up consistently for someone. Attached Archers find that planning a future together is its own kind of exploration; single ones attract by being genuinely interested in others' stories, not just sharing their own.",
-        "career": "Your ideas have legs, but they need a team to walk anywhere. Network strategically and follow up on connections made earlier in the year. Teaching, mentoring, or sharing knowledge becomes a viable revenue stream. International or online opportunities expand your reach.",
-        "health": "Your hips and thighs carry your restless energy—make sure you're stretching and moving enough. Outdoor time isn't optional for your mental health; even a walk around the block resets your system. Watch overindulgence as a response to boredom.",
-        "advice": "Say yes to the invitation that scares you a little. Growth lives just outside your comfort zone, and you're ready for it."
+        "overview": "This is your month to claim space unapologetically. November activates your sign, bringing both visibility and the opportunity to redefine how you show up. You're shedding a skin that no longer fits, and the process feels simultaneously liberating and vulnerable. Who are you becoming, and are you brave enough to introduce her to the world?",
+        "love": "You're magnetic right now, attracting attention without trying. The question is whether you want it from the people offering it. Coupled Sagittarius needs to balance independence with intimacy—you can be committed without being confined. New connections spark easily but require depth to last.",
+        "career": "Personal branding and public presence receive a boost. This is the time to put yourself forward for opportunities you'd normally shy away from. Leadership roles or visible projects align with your evolving identity. Trust your vision even if others don't immediately understand it.",
+        "health": "Energy runs high but needs direction rather than dissipation. Channel restlessness into purposeful movement rather than scattered activity. Your hips and thighs may hold tension—stretch, dance, or move in ways that feel expansive.",
+        "advice": "Be who you're becoming rather than who you've been. The old identity got you here; it doesn't have to take you forward."
       },
       "capricorn": {
-        "overview": "Career matters peak this month as your efforts finally gain the visibility they deserve. October puts you in the spotlight whether you feel ready or not, so you might as well own it. The recognition coming your way isn't luck; it's the accumulation of work you've been putting in when others were cutting corners. There's a difference between ambition and striving—you're learning to achieve from a place of sufficiency rather than scarcity.",
-        "love": "Relationships need more than your leftover energy to thrive. Someone close wants access to the softer parts you usually reserve for solitude. Coupled Goats rediscover intimacy by actually scheduling it; single ones find chemistry with someone who appreciates their work ethic without enabling workaholism.",
-        "career": "A leadership role or public-facing opportunity emerges mid-month—accept it even if you don't feel completely prepared. Your competence speaks for itself; stop waiting for perfect conditions. Negotiating compensation or title changes favors you when you present clear evidence of value.",
-        "health": "Your bones, joints, and teeth need attention—are you getting enough calcium, vitamin D, and weight-bearing exercise? Structural work like Pilates or strength training builds the foundation your body requires. Rest is productive, not lazy.",
-        "advice": "Success tastes better when you let yourself enjoy it. Pause to acknowledge how far you've come before immediately reaching for the next goal."
+        "overview": "November asks you to rest before the year ahead demands your full capacity. This is your month of necessary retreat, of closing cycles and clearing old patterns before your season begins. What you do in private now shapes what you'll build publicly soon. Solitude isn't loneliness—it's preparation. Let yourself dissolve into the unknown for a few weeks.",
+        "love": "Hidden feelings or secret attractions may surface, requiring you to decide what to do with them. Coupled Capricorns benefit from private time together, away from social obligations. If you're single, don't force connections—this is a month for internal clarity about what you actually want.",
+        "career": "Behind-the-scenes work advances your goals more than visible achievement. Finish what's pending rather than starting new initiatives. Strategic planning and research pay dividends. Your next professional chapter is forming in the quiet.",
+        "health": "Rest is productive work right now. Your body needs genuine downtime, not just reduced activity. Dreams may become vivid or revealing—pay attention. Feet and immune system need extra care as the season shifts.",
+        "advice": "Let things end that are trying to end. Completion is just as important as initiation, and you're clearing space for what's coming."
       },
       "aquarius": {
-        "overview": "When was the last time you let yourself be a beginner? October opens your mind to philosophies, places, or practices that shake up your usual perspective. What you thought you knew is up for revision, and that's exciting rather than destabilizing. Learning happens through experience this month, not theory—say yes to the trip, the class, the conversation that stretches you. Your originality shines when you absorb new influences without losing your edge.",
-        "love": "Emotional distance might feel safe, but it's also keeping you lonely. Someone wants to know what you feel, not just what you think. Couples benefit from breaking routines and trying something completely new together; single Aquarians attract through genuine weirdness, not performed cool.",
-        "career": "Your innovative ideas meet receptive audiences this month, especially if you can translate vision into practical application. Consulting, freelancing, or project-based work suits your need for variety. Publishing, teaching, or speaking opportunities expand your influence beyond your immediate circle.",
-        "health": "Your nervous system runs hot when you're overstimulated—build in more buffer time between commitments. Ankle and calf stretches prevent injury. Experiment with grounding practices that connect your brilliant mind to your actual body.",
-        "advice": "Belonging doesn't require you to normalize yourself. Find your people instead of trying to fit with the wrong ones."
+        "overview": "Your people are calling—will you answer? November highlights community, friendship, and collective vision, asking you to look up from individual concerns toward shared goals. You're learning the difference between belonging and conforming, between collaboration and compromise. The future you've been imagining requires allies, not just ideas. Connection becomes the catalyst for innovation.",
+        "love": "Friendship and romance blur in interesting ways. Coupled Aquarius benefits from socializing together and seeing your partner through friends' eyes. Single Aquarius might find attraction growing from existing friendships, or meet someone through group activities. Intellectual connection sparks chemistry.",
+        "career": "Network strategically rather than casually. Group projects and collaborative efforts advance your goals more than solo work. Your long-term vision gains clarity and support. Technology or progressive fields offer unexpected opportunities. Don't underestimate the power of your community.",
+        "health": "Social connection affects your wellbeing more than you realize. Isolation drains you even if you think you prefer it. Find your people—online or in person—who understand your particular frequency. Calves and ankles may need attention.",
+        "advice": "You don't have to build the future alone. The right collaborators multiply your impact exponentially."
       },
       "pisces": {
-        "overview": "October takes you into deep waters where transformation isn't optional. Shared resources, intimate partnerships, or psychological patterns you've been avoiding all demand attention now. This isn't comfortable, but it's necessary—the parts of yourself you've kept submerged are asking to be integrated. Trust your capacity to navigate complexity; you're stronger than your tendency to escape would suggest. What dies this month makes room for something more authentic to be born.",
-        "love": "Merged boundaries have been causing problems you've been blaming on the other person—where do you end and they begin? Couples heal through honest conversations about money, sex, or power. Single Pisces attract by being clear about their needs instead of morphing to match someone else's.",
-        "career": "Financial partnerships or investments require scrutiny—trust your instincts if something feels off. Your creative or healing work has monetary value; stop undercharging out of guilt or uncertainty. Depth work like therapy, research, or artistic exploration yields better results than surface-level productivity.",
-        "health": "Your feet and immune system need extra care—are you running yourself down by absorbing everyone else's stress? Boundaries are medicine. Salt baths, time alone, and saying no to energy vampires all support your wellbeing.",
-        "advice": "Face what you've been avoiding. The fear of looking is always worse than what you actually find, and clarity brings relief."
+        "overview": "November puts you in the spotlight whether you sought it or not. Professional matters and public recognition demand your attention, asking you to step into visibility with intentionality. This isn't about performing; it's about owning your expertise and allowing your work to reach the people who need it. Your career and life direction are shifting—lean into the evolution rather than resisting it.",
+        "love": "Romance takes a backseat to professional ambitions, and that's okay. Coupled Pisces needs understanding partners who support your current focus. If you're single, attraction might spark with someone in your professional sphere—keep appropriate boundaries but stay open. Love doesn't have to be the center to be real.",
+        "career": "Your moment has arrived. Opportunities for advancement, recognition, or new professional directions present themselves. Say yes even if you don't feel completely ready. Authority figures notice your work. Your creative approach to serious matters becomes your signature strength.",
+        "health": "Ambition is energizing, but don't sacrifice your body to your goals. Knees and bone health need attention. Structure supports your sensitive system right now—routine doesn't have to feel rigid. Balance drive with genuine rest.",
+        "advice": "Step into the role that's being offered rather than waiting until you feel worthy of it. Competence develops through doing, not preparation."
       }
     }
   }
