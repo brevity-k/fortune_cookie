@@ -1,114 +1,114 @@
 {
   "daily": {
-    "date": "2026-11-01",
+    "date": "2026-11-02",
     "horoscopes": {
       "aries": {
-        "text": "That project you've been pushing forward needs a different approach today. Instead of forcing momentum, step back and let others show you what they've been working on—you might be surprised by how much has been happening behind the scenes. Your usual drive is better spent refining than rushing.",
+        "text": "That project you've been pushing aside keeps whispering for attention, and today's the day to finally listen. Your usual charging-ahead energy wants to soften into something more methodical—let it. Take the afternoon to map out what's actually realistic before you commit to anything new.",
         "love": 3,
         "career": 4,
         "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "reflective"
+        "mood": "determined"
       },
       "taurus": {
-        "text": "You're craving comfort today, but the real nourishment comes from finishing something you started weeks ago. Clear that one nagging task off your list before lunch, then actually enjoy your afternoon without it hanging over you.",
+        "text": "You're craving comfort, but the kind of comfort that comes from finally dealing with what you've been avoiding. Have that conversation you've been rehearsing in your head. The anticipation is worse than the actual moment will be.",
         "love": 4,
         "career": 3,
         "health": 4,
         "luckyNumber": 42,
         "luckyColor": "emerald",
-        "mood": "determined"
+        "mood": "grounded"
       },
       "gemini": {
-        "text": "Why are you holding back that idea? Mercury's position suggests your communication skills are particularly sharp right now, so speak up in that meeting or send that message you've been drafting in your head. The longer route home will give you time to process whatever response you get.",
+        "text": "Why are you overthinking something that doesn't need an explanation? Mercury's pulling you toward clarity, but you're the one complicating the message. Send the text, make the call, say the thing plainly. Your brain wants to solve puzzles today, so give it something actually challenging to work on instead of manufacturing problems.",
         "love": 3,
-        "career": 5,
+        "career": 4,
         "health": 3,
         "luckyNumber": 8,
         "luckyColor": "electric blue",
         "mood": "curious"
       },
       "cancer": {
-        "text": "Your intuition is louder than usual, especially about a family matter that's been quietly bothering you. Trust that nudge to reach out, even if the timing feels awkward. Sometimes the best conversations happen when we stop waiting for the perfect moment.",
+        "text": "Something from last month is coming back around, but this time you've got better perspective on it. Trust what you learned the first time through. Take the longer route home tonight—you need the transition time between worlds.",
         "love": 4,
-        "career": 2,
+        "career": 3,
         "health": 4,
-        "luckyNumber": 23,
+        "luckyNumber": 29,
         "luckyColor": "silver",
-        "mood": "intuitive"
+        "mood": "reflective"
       },
       "leo": {
-        "text": "Take center stage today, but make it about collaboration rather than solo performance. Your natural leadership shines brightest when you're elevating others alongside yourself, and someone on your team really needs that recognition you can provide.",
+        "text": "Your generosity is beautiful, but today someone needs your honesty more than your encouragement. The Sun's position is asking you to illuminate what's real, not just what's possible. Be the friend who tells the truth kindly.",
         "love": 3,
         "career": 4,
         "health": 3,
-        "luckyNumber": 55,
+        "luckyNumber": 51,
         "luckyColor": "gold",
         "mood": "confident"
       },
       "virgo": {
-        "text": "All that analyzing is keeping you stuck in your head when your hands need to be doing the work. Pick one thing—just one—and execute it imperfectly rather than planning it flawlessly. You'll learn more from doing than from another round of revision.",
-        "love": 2,
-        "career": 3,
-        "health": 5,
-        "luckyNumber": 34,
+        "text": "All that analyzing you've been doing is about to pay off, but only if you actually act on what you've figured out. The information-gathering phase is over. Start small if you need to, but start today—even just one email or one cleared surface makes the difference.",
+        "love": 3,
+        "career": 5,
+        "health": 3,
+        "luckyNumber": 64,
         "luckyColor": "navy",
         "mood": "focused"
       },
       "libra": {
-        "text": "A financial decision requires your attention, and putting it off until you have \"all the information\" is just avoidance at this point. You know enough to make a choice—trust yourself and move forward. Balance comes from action, not endless deliberation.",
+        "text": "You've been bending to keep the peace, and today you'll notice how tired that's made you. What if you just stated your preference without the elaborate justification? People can handle your boundaries better than you think they can.",
         "love": 3,
-        "career": 4,
-        "health": 3,
-        "luckyNumber": 11,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 23,
         "luckyColor": "lavender",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "Your birthday season brings intensity, as always, but this year it's asking you to transform something about how you present yourself to the world. What mask are you ready to drop? The vulnerability might feel uncomfortable, but it's also where your real power lives right now.",
+        "text": "Everything feels significant right now because everything actually is significant for you. Your intuition is working overtime, so honor what it's telling you even if you can't explain it logically yet. Someone's about to show you whether they're serious or just curious—you'll know which by evening.",
         "love": 5,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 9,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 11,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Restlessness is pushing you toward something new, but today's energy favors preparation over leap-taking. Research that destination, sketch out that plan, or have the preliminary conversation. Your adventure is coming—just not this second.",
-        "love": 3,
-        "career": 3,
+        "text": "That restless feeling isn't a problem to solve—it's information. Where have you been playing it too safe? Jupiter's encouraging expansion, but you're the one who has to actually book the ticket or sign up for the thing. Do something today that your future self will thank you for.",
+        "love": 4,
+        "career": 4,
         "health": 4,
-        "luckyNumber": 67,
+        "luckyNumber": 77,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "You've been so focused on the summit that you haven't noticed how far you've already climbed. Pause today and actually acknowledge your progress, maybe even celebrate it a little. Then call that person back—they've been waiting, and the conversation will fuel your next phase.",
+        "text": "You're building something real, and today shows you proof that the slow route was the right route. Call that person back—the one you've been meaning to connect with. Professional opportunities are hiding in personal conversations right now.",
         "love": 3,
         "career": 5,
         "health": 3,
-        "luckyNumber": 28,
+        "luckyNumber": 36,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "That unconventional solution you've been tinkering with? Today's the day to test it out, even in a small way. Your innovative approach might raise some eyebrows, but it'll also open doors that traditional methods have kept locked.",
-        "love": 2,
+        "text": "Your mind is three steps ahead of everyone else's, which is normal for you, but today try slowing down enough to bring people along. That weird idea you had last week is looking less weird and more genius—write it down properly. Collaboration works better than solo missions right now, even though that's not your instinct.",
+        "love": 3,
         "career": 4,
-        "health": 3,
-        "luckyNumber": 71,
+        "health": 4,
+        "luckyNumber": 55,
         "luckyColor": "teal",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Your boundaries need reinforcing today, especially around your creative or personal time. Saying no to one thing means saying yes to yourself, and that dream project deserves more than the scraps of energy left over from everyone else's demands. Honor what wants to come through you.",
+        "text": "You're sensing something shifting beneath the surface, and you're right. Neptune's making everything feel a bit blurry, so stick to what you can actually touch and verify today. Your creativity is powerful right now—channel it into something tangible rather than just dreaming about it.",
         "love": 4,
         "career": 3,
-        "health": 5,
-        "luckyNumber": 46,
+        "health": 3,
+        "luckyNumber": 88,
         "luckyColor": "seafoam",
-        "mood": "inspired"
+        "mood": "intuitive"
       }
     }
   },
