@@ -1,113 +1,113 @@
 {
   "daily": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "horoscopes": {
       "aries": {
-        "text": "That project you've been pushing forward hits a natural pause today, and honestly, you need it. Use this breathing room to reassess your strategy rather than forcing momentum that isn't there. Your instinct is always to charge ahead, but sometimes the smartest move is knowing when to circle back and refine.",
+        "text": "That restless energy you're feeling? It's actually pointing you somewhere important. Instead of pushing through with brute force today, try the indirect approach—you'll be surprised how much faster things move. Take the longer route home and notice what catches your eye.",
         "love": 3,
-        "career": 2,
-        "health": 4,
+        "career": 4,
+        "health": 3,
         "luckyNumber": 17,
         "luckyColor": "crimson",
-        "mood": "reflective"
-      },
-      "taurus": {
-        "text": "Financial conversations require your full attention today—scan those contracts twice before signing anything. Someone in your circle has advice worth hearing, even if it contradicts your initial gut feeling. Take the compliment you receive at face value instead of deflecting it.",
-        "love": 4,
-        "career": 4,
-        "health": 3,
-        "luckyNumber": 52,
-        "luckyColor": "emerald",
-        "mood": "focused"
-      },
-      "gemini": {
-        "text": "Why are you overcomplicating what should be a simple decision? Mercury's position suggests your usual mental agility might be working against you right now, creating problems where none exist. Pick the obvious choice and move on—you can always adjust later if needed.",
-        "love": 2,
-        "career": 3,
-        "health": 4,
-        "luckyNumber": 8,
-        "luckyColor": "amber",
-        "mood": "curious"
-      },
-      "cancer": {
-        "text": "Home matters pull at you stronger than usual, and there's real wisdom in listening to that tug. Someone from your past might resurface in your thoughts or your inbox—this isn't random. The emotions coming up are showing you what still needs tending.",
-        "love": 4,
-        "career": 2,
-        "health": 3,
-        "luckyNumber": 29,
-        "luckyColor": "silver",
-        "mood": "intuitive"
-      },
-      "leo": {
-        "text": "Your creative energy is crackling today, so don't waste it on mundane tasks if you can help it. Delegate the boring stuff and make space for what actually lights you up. That idea you had last week? Now's the time to sketch it out properly.",
-        "love": 3,
-        "career": 5,
-        "health": 4,
-        "luckyNumber": 63,
-        "luckyColor": "gold",
-        "mood": "inspired"
-      },
-      "virgo": {
-        "text": "Stop editing that email and just send it already. Your perfectionist tendencies are keeping you stuck in analysis mode when what's needed is action, even imperfect action. The afternoon brings unexpected clarity about a relationship dynamic that's been confusing you.",
-        "love": 3,
-        "career": 3,
-        "health": 2,
-        "luckyNumber": 41,
-        "luckyColor": "navy",
         "mood": "determined"
       },
-      "libra": {
-        "text": "A compromise you've been dancing around needs a clear answer from you, and sitting on the fence is becoming its own kind of decision. Trust that choosing a direction—even if it disappoints someone—is better than this holding pattern. Take the longer route home and let your mind wander.",
-        "love": 2,
+      "taurus": {
+        "text": "You've been sitting on a creative idea for weeks now, and today's the day to actually share it with someone who gets you. The harvest season is asking you to reap what you've been cultivating, not just admire it from afar. Trust that your timing is better than you think.",
+        "love": 4,
         "career": 4,
         "health": 4,
-        "luckyNumber": 76,
+        "luckyNumber": 28,
+        "luckyColor": "emerald",
+        "mood": "grounded"
+      },
+      "gemini": {
+        "text": "Your mind's been jumping between three different tracks lately, but today rewards focus over variety. Pick one conversation that matters and actually finish it. Mercury's position is sharpening your words—use them to clarify, not complicate.",
+        "love": 3,
+        "career": 5,
+        "health": 3,
+        "luckyNumber": 42,
+        "luckyColor": "amber",
+        "mood": "focused"
+      },
+      "cancer": {
+        "text": "Why do you keep replaying that conversation from last week? Today's about releasing what you can't control and tending to what you can. Make your space cozy tonight—light a candle, play that album, let yourself just be.",
+        "love": 4,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 7,
+        "luckyColor": "seafoam",
+        "mood": "reflective"
+      },
+      "leo": {
+        "text": "Someone's going to ask for your opinion today, and they actually want the real answer, not the polished version. Your warmth opens doors, but your honesty keeps them open. Wear something that makes you feel like yourself, not who you think you should be.",
+        "love": 5,
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 53,
+        "luckyColor": "gold",
+        "mood": "confident"
+      },
+      "virgo": {
+        "text": "All that planning has been useful, but today asks you to improvise a little. A small mistake might actually lead somewhere better than your original path. Give yourself permission to be imperfect—it's more productive than you'd think.",
+        "love": 3,
+        "career": 4,
+        "health": 3,
+        "luckyNumber": 64,
         "luckyColor": "lavender",
+        "mood": "curious"
+      },
+      "libra": {
+        "text": "You've been bending to keep the peace, and it's starting to cost you something real. Today's energy supports drawing a gentle but firm boundary. The people worth keeping will respect it, and you'll sleep better tonight knowing you honored yourself.",
+        "love": 3,
+        "career": 4,
+        "health": 5,
+        "luckyNumber": 21,
+        "luckyColor": "indigo",
         "mood": "harmonious"
       },
       "scorpio": {
-        "text": "The intensity you're feeling about a particular situation is valid, but ask yourself if acting on it today serves you. Sometimes power lies in waiting, in watching, in gathering more information before you make your move. Your instincts are razor-sharp right now—use them strategically.",
-        "love": 5,
-        "career": 4,
+        "text": "That intuition nudging you about someone's motives? Pay attention to it without making it into a whole investigation. November is your season of transformation, and sometimes that means transforming how you respond to familiar patterns. Call that person back—even if it feels vulnerable.",
+        "love": 4,
+        "career": 5,
         "health": 3,
-        "luckyNumber": 3,
+        "luckyNumber": 9,
         "luckyColor": "maroon",
         "mood": "intense"
       },
       "sagittarius": {
-        "text": "Adventure calls, but it might look like a spontaneous lunch with a stranger rather than booking a flight. Stay open to the small detours that break up your routine. Your optimism is contagious today—notice how people respond when you walk into a room.",
+        "text": "Your wanderlust is real, but today's adventure might be closer than you think—a different coffee shop, a book you'd never normally pick up, a conversation that goes sideways in the best way. Jupiter's influence is expanding your world without requiring a passport.",
         "love": 4,
         "career": 3,
-        "health": 5,
-        "luckyNumber": 88,
+        "health": 4,
+        "luckyNumber": 76,
         "luckyColor": "orange",
         "mood": "adventurous"
       },
       "capricorn": {
-        "text": "That goal you set months ago deserves a progress check, not from a place of judgment but honest assessment. You've actually come further than you think, even if the finish line keeps moving. Call that person back—the conversation will open a door you didn't know was there.",
+        "text": "You're so close to a breakthrough you've been working toward for months. Don't sabotage it now by doubting whether you've earned it—you have. Take one practical step today, even if it's small, to move things forward.",
         "love": 3,
         "career": 5,
-        "health": 3,
-        "luckyNumber": 14,
+        "health": 4,
+        "luckyNumber": 35,
         "luckyColor": "charcoal",
         "mood": "ambitious"
       },
       "aquarius": {
-        "text": "Your unconventional approach to a common problem catches someone's attention in the best way. Don't water down your ideas to make them more palatable—the weird angle is exactly what makes them work. Collaboration sparks fly this afternoon if you're open to them.",
+        "text": "That unconventional solution you've been mulling over? Someone in power is finally ready to hear it. Present your ideas with confidence but without the usual detachment—let people see why you actually care. Innovation needs emotion to land.",
         "love": 3,
         "career": 4,
-        "health": 4,
-        "luckyNumber": 55,
+        "health": 3,
+        "luckyNumber": 88,
         "luckyColor": "electric blue",
         "mood": "innovative"
       },
       "pisces": {
-        "text": "Dreams and reality blur today in ways that feel both confusing and strangely productive. Write down the images that come to you between sleep and waking—there's something there worth examining. Someone needs your empathy, but make sure you're not absorbing their stress as your own.",
+        "text": "Your dreams have been especially vivid lately, and they're trying to tell you something about a current situation. Write them down before they fade. Neptune's creating a thin veil between your inner world and outer reality—use it to access wisdom you've been ignoring while awake.",
         "love": 5,
-        "career": 2,
-        "health": 2,
-        "luckyNumber": 22,
-        "luckyColor": "seafoam",
+        "career": 3,
+        "health": 4,
+        "luckyNumber": 12,
+        "luckyColor": "teal",
         "mood": "intuitive"
       }
     }
