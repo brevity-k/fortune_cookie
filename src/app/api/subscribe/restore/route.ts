@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { Resend } from 'resend';
 import { isAllowedOrigin, parseJsonBody, getClientIp, isValidEmail } from '@/lib/api-utils';
 import { restoreRatelimit } from '@/lib/rate-limit';
@@ -50,22 +50,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     }
 
-    const customer = await findActiveCustomerByEmail(email);
-    if (customer) {
-      const token = await signRestoreToken(customer.id);
-      const link = `${SITE_URL}/api/subscribe/restore/confirm?token=${encodeURIComponent(token)}`;
-      const fromEmail = process.env.FROM_EMAIL || `${SITE_NAME} <onboarding@resend.dev>`;
-      await new Resend(resendKey).emails.send({
-        from: fromEmail,
-        to: customer.email,
-        subject: `Your ${SITE_NAME} premium sign-in link`,
-        html: `
-          <p>Someone (hopefully you) asked to restore ${SITE_NAME} premium on a new device.</p>
-          <p><a href="${link}">Click here to sign in</a>. This link expires in 15 minutes.</p>
-          <p>If you didn't request this, you can ignore this email.</p>
-        `,
-      });
-    }
+    // Lookup and send run after the response is sent, so neither timing nor
+    // a send failure distinguishes subscriber emails from unknown ones.
+    after(() => sendRestoreLink(email, resendKey));
 
     return NextResponse.json(
       { success: true, message: GENERIC_MESSAGE },
@@ -77,5 +64,28 @@ export async function POST(req: NextRequest) {
       { error: 'Failed to restore subscription.' },
       { status: 500 }
     );
+  }
+}
+
+async function sendRestoreLink(email: string, resendKey: string): Promise<void> {
+  try {
+    const customer = await findActiveCustomerByEmail(email);
+    if (!customer) return;
+    const token = await signRestoreToken(customer.id);
+    const link = `${SITE_URL}/api/subscribe/restore/confirm?token=${encodeURIComponent(token)}`;
+    const fromEmail = process.env.FROM_EMAIL || `${SITE_NAME} <onboarding@resend.dev>`;
+    const { error } = await new Resend(resendKey).emails.send({
+      from: fromEmail,
+      to: customer.email,
+      subject: `Your ${SITE_NAME} premium sign-in link`,
+      html: `
+        <p>Someone (hopefully you) asked to restore ${SITE_NAME} premium on a new device.</p>
+        <p><a href="${link}">Click here to sign in</a>. This link expires in 15 minutes.</p>
+        <p>If you didn't request this, you can ignore this email.</p>
+      `,
+    });
+    if (error) console.error('Restore email error:', error.message);
+  } catch (error) {
+    console.error('Restore link error:', error instanceof Error ? error.message : 'Unknown error');
   }
 }
