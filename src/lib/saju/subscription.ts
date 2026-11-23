@@ -33,6 +33,22 @@ export async function hasActiveSubscription(customerId: string): Promise<boolean
   return active;
 }
 
+/**
+ * Finds a customer with an active subscription for this email. Stripe Checkout
+ * creates a new Customer per checkout, so one email can map to several customers.
+ */
+export async function findActiveCustomerByEmail(
+  email: string,
+): Promise<{ id: string; email: string } | null> {
+  const customers = await getStripe().customers.list({ email, limit: 10 });
+  for (const customer of customers.data) {
+    if (await hasActiveSubscription(customer.id)) {
+      return { id: customer.id, email: customer.email ?? email };
+    }
+  }
+  return null;
+}
+
 /** Test-only: reset the per-instance cache. */
 export function _clearSubscriptionCache(): void {
   cache.clear();

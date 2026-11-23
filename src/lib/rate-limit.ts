@@ -40,5 +40,5 @@ export const premiumAIRatelimit = createLimiter('premium-ai', 50, 24 * 60 * 60 *
 export const subscribeRatelimit = createLimiter('subscribe', 10, 60 * 60 * 1000);
 
 // Tighter limit for restore: email enumeration risk — 3 attempts per day per IP
-// Accepted risk: no email ownership verification; tighter window limits bulk probing
+// Restore only emails a sign-in link (ownership verified by inbox access)
 export const restoreRatelimit = createLimiter('restore', 3, 24 * 60 * 60 * 1000);

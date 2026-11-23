@@ -15,6 +15,17 @@ export interface PremiumPayload {
   status: 'active' | 'cancelled';
 }
 
+const RESTORE_PURPOSE = 'restore';
+const RESTORE_TOKEN_EXPIRY = '15m';
+
+// Premium session tokens carry no `purpose` claim; any token that does
+// (e.g. an emailed restore link) must never be accepted as a session.
+function toPremiumPayload(payload: Record<string, unknown>): PremiumPayload | null {
+  if (payload.purpose !== undefined) return null;
+  if (typeof payload.customerId !== 'string' || !payload.customerId) return null;
+  return payload as unknown as PremiumPayload;
+}
+
 export async function signPremiumToken(customerId: string): Promise<string> {
   return new SignJWT({ customerId, status: 'active' } as unknown as Record<string, unknown>)
     .setProtectedHeader({ alg: 'HS256' })
@@ -26,7 +37,7 @@ export async function signPremiumToken(customerId: string): Promise<string> {
 export async function verifyPremiumToken(token: string): Promise<PremiumPayload | null> {
   try {
     const { payload } = await jwtVerify(token, getSecret());
-    return payload as unknown as PremiumPayload;
+    return toPremiumPayload(payload);
   } catch {
     return null;
   }
@@ -36,7 +47,26 @@ export async function verifyPremiumToken(token: string): Promise<PremiumPayload 
 export async function verifyPremiumTokenWithGracePeriod(token: string): Promise<PremiumPayload | null> {
   try {
     const { payload } = await jwtVerify(token, getSecret(), { clockTolerance: 7 * 24 * 60 * 60 });
-    return payload as unknown as PremiumPayload;
+    return toPremiumPayload(payload);
+  } catch {
+    return null;
+  }
+}
+
+/** Short-lived, single-purpose token embedded in the emailed restore link. */
+export async function signRestoreToken(customerId: string): Promise<string> {
+  return new SignJWT({ customerId, purpose: RESTORE_PURPOSE })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime(RESTORE_TOKEN_EXPIRY)
+    .sign(getSecret());
+}
+
+export async function verifyRestoreToken(token: string): Promise<string | null> {
+  try {
+    const { payload } = await jwtVerify(token, getSecret());
+    if (payload.purpose !== RESTORE_PURPOSE) return null;
+    return typeof payload.customerId === 'string' && payload.customerId ? payload.customerId : null;
   } catch {
     return null;
   }
