@@ -17,10 +17,10 @@
     "fortune:generate": "tsx scripts/generate-fortunes.ts",
     "seasonal:generate": "tsx scripts/generate-seasonal.ts",
     "content:validate": "tsx scripts/validate-content.ts",
-    "x:post": "tsx scripts/post-to-x.ts --both",
-    "x:fortune": "tsx scripts/post-to-x.ts --fortune",
-    "x:horoscope": "tsx scripts/post-to-x.ts --horoscope",
-    "x:blog": "tsx scripts/post-to-x.ts --blog-all",
+    "bsky:post": "tsx scripts/post-to-bluesky.ts --both",
+    "bsky:fortune": "tsx scripts/post-to-bluesky.ts --fortune",
+    "bsky:horoscope": "tsx scripts/post-to-bluesky.ts --horoscope",
+    "bsky:blog": "tsx scripts/post-to-bluesky.ts --blog-all",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -54,7 +54,6 @@
     "eslint-config-next": "^16.4.6",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
-    "twitter-api-v2": "^1.31.0",
     "typescript": "^6",
     "vitest": "^5.1.0"
   }

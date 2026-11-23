@@ -1,13 +1,13 @@
-name: Auto X Post
+name: Auto Bluesky Post
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # Daily at 8AM UTC — fortune tweet
-    - cron: "0 14 * * *" # Daily at 2PM UTC — horoscope tweet
+    - cron: "0 8 * * *"  # Daily at 8AM UTC — fortune post
+    - cron: "0 14 * * *" # Daily at 2PM UTC — horoscope post
   workflow_dispatch:
     inputs:
       type:
-        description: "Tweet type"
+        description: "Post type"
         type: choice
         options: [fortune, horoscope, both]
         default: both
@@ -17,11 +17,11 @@ permissions:
   issues: write
 
 concurrency:
-  group: auto-x-post
+  group: auto-bluesky-post
   cancel-in-progress: false
 
 jobs:
-  post-tweet:
+  post:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -37,7 +37,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Determine tweet type
+      - name: Determine post type
         id: mode
         env:
           INPUT_TYPE: ${{ github.event.inputs.type }}
@@ -53,43 +53,8 @@ jobs:
             fi
           fi
 
-      - name: Post to X
-        id: post
-        continue-on-error: true
-        env:
-          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
-          X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-          POST_TYPE: ${{ steps.mode.outputs.type }}
-        run: |
-          set -o pipefail
-          npx tsx scripts/post-to-x.ts --"$POST_TYPE" 2>&1 | tee /tmp/x-post-output.txt
-
-      - name: Retry on failure
-        id: retry
-        if: steps.post.outcome == 'failure'
-        continue-on-error: true
-        env:
-          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
-          X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-          POST_TYPE: ${{ steps.mode.outputs.type }}
-        run: |
-          # Don't retry auth/permission/billing errors — they won't resolve on retry
-          if grep -q "code 401\|code 402\|code 403" /tmp/x-post-output.txt 2>/dev/null; then
-            echo "Auth/permission/billing error (401/402/403) detected — skipping retry"
-            exit 1
-          fi
-          echo "Retrying tweet post..."
-          sleep 30
-          npx tsx scripts/post-to-x.ts --"$POST_TYPE"
-
       - name: Post to Bluesky
         id: bsky
-        if: always()
-        continue-on-error: true
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
@@ -101,21 +66,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/x-post-state.json scripts/bsky-post-state.json
+          git add scripts/bsky-post-state.json
           git diff --cached --quiet && exit 0
-          git commit -m "chore: update X post state"
+          git commit -m "chore: update bluesky post state"
           git pull --rebase origin main
           git push
         continue-on-error: true
 
-      - name: Fail if any post failed
-        if: always() && ((steps.post.outcome == 'failure' && steps.retry.outcome != 'success') || steps.bsky.outcome == 'failure')
-        run: |
-          echo "::error::X outcome=${{ steps.post.outcome }}/${{ steps.retry.outcome }}, Bluesky outcome=${{ steps.bsky.outcome }}"
-          exit 1
 
   notify-failure:
-    needs: post-tweet
+    needs: post
     if: failure()
     runs-on: ubuntu-latest
     permissions:
@@ -124,7 +84,7 @@ jobs:
       - uses: actions/github-script@v9
         with:
           script: |
-            const title = '🚨 Auto X post pipeline failed';
+            const title = '🚨 Auto Bluesky post pipeline failed';
             const existing = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -141,11 +101,11 @@ jobs:
                 labels: ['bug', 'automated']
               });
             } else {
-              console.log('Open issue for auto X post failure already exists — skipping duplicate.');
+              console.log('Open issue for auto Bluesky post failure already exists — skipping duplicate.');
             }
 
   notify-success:
-    needs: post-tweet
+    needs: post
     if: success()
     runs-on: ubuntu-latest
     permissions:
@@ -154,7 +114,7 @@ jobs:
       - uses: actions/github-script@v9
         with:
           script: |
-            const title = '🚨 Auto X post pipeline failed';
+            const title = '🚨 Auto Bluesky post pipeline failed';
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,

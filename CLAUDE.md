@@ -17,7 +17,7 @@
 | Shareable Fortune Cards | Done — /api/fortune-card + /f/[id] share landing |
 | Programmatic SEO (23 routes) | Done — category + zodiac + daily + lucky-numbers |
 | Horoscope Pages (36 pages) | Done — daily/weekly/monthly x 12 signs |
-| Auto X + Bluesky Posting | Done — 2 posts/day via twitter-api-v2 + @atproto/api |
+| Auto Bluesky Posting | Done — 2 posts/day + new blog posts via @atproto/api (X API pipeline dropped 2026-11) |
 | Site Health + Self-Healing | Done — link-check, lighthouse, content-health workflows |
 | Google AdSense | Not Active — 3 slots coded, publisher ID needed |
 
@@ -54,10 +54,9 @@ scripts/
 ├── generate-post.ts              # Claude API blog generator (two-stage)
 ├── generate-fortunes.ts          # Weekly fortune growth
 ├── generate-horoscopes.ts        # Daily/weekly/monthly horoscope gen
-├── post-to-x.ts                  # Auto-post to X (Twitter)
 ├── post-to-bluesky.ts            # Auto-post to Bluesky
 └── quality-check.ts, auto-fix.ts, validate-content.ts
-.github/workflows/                # 10 workflows (auto-blog, auto-fortunes, auto-horoscopes, auto-x-post, ci, content-health, etc.)
+.github/workflows/                # 10 workflows (auto-blog, auto-fortunes, auto-horoscopes, auto-bluesky-post, ci, content-health, etc.)
 ```
 
 ## Build & Run
@@ -77,7 +76,7 @@ npm run blog:quality         # AI quality check on latest post
 npm run fortune:generate     # Generate 20 new fortunes
 npm run horoscope:generate   # Generate horoscopes
 npm run content:validate     # Validate all data file integrity
-npm run x:post               # Post fortune + horoscope to X + Bluesky
+npm run bsky:post            # Post fortune + horoscope to Bluesky
 ```
 
 ## Fortune Data
@@ -93,14 +92,12 @@ npm run x:post               # Post fortune + horoscope to X + Bluesky
 | Secret | Purpose |
 |---|---|
 | `ANTHROPIC_API_KEY` | Claude API (blog, fortunes, horoscopes, quality checks) |
-| `X_CONSUMER_KEY` / `X_SECRET_KEY` | X (Twitter) API |
-| `X_ACCESS_TOKEN` / `X_ACCESS_TOKEN_SECRET` | X user tokens |
 | `BLUESKY_HANDLE` / `BLUESKY_APP_PASSWORD` | Bluesky posting |
 
 ## Automation Summary
 
 10 GitHub Actions workflows run this site autonomously:
-- **Daily:** horoscopes (5AM UTC), X+Bluesky posts (8AM + 2PM UTC)
+- **Daily:** horoscopes (5AM UTC), Bluesky posts (8AM + 2PM UTC)
 - **Tue/Fri:** blog post generation (9AM UTC)
 - **Weekly:** fortune generation (Sun 10AM UTC), link-check (Mon 6AM), content-health (Mon noon), lighthouse (Wed 6AM)
 - **On PR:** CI pipeline (required status check)

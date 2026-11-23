@@ -96,20 +96,18 @@ jobs:
           git pull --rebase origin main
           git push
 
-      - name: Tweet new blog post
+      - name: Post new blog post to Bluesky
         env:
-          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
-          X_SECRET_KEY: ${{ secrets.X_SECRET_KEY }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-        run: npx tsx scripts/post-to-x.ts --blog
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: npx tsx scripts/post-to-bluesky.ts --blog
         continue-on-error: true
 
-      - name: Commit blog tweet state
+      - name: Commit Bluesky blog post state
         run: |
-          git add scripts/x-post-state.json
+          git add scripts/bsky-post-state.json
           git diff --cached --quiet && exit 0
-          git commit -m "chore: update blog tweet state"
+          git commit -m "chore: update bluesky blog post state"
           git pull --rebase origin main
           git push
         continue-on-error: true
