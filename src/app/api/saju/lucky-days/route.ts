@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAllowedOrigin, parseJsonBody } from '@/lib/api-utils';
 import { premiumAIRatelimit } from '@/lib/rate-limit';
-import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
+import { requirePremium } from '@/lib/saju/require-premium';
 import { calculateDayPillar } from '@/lib/saju/day-pillar';
 import { getStemElement } from '@/lib/saju/stems';
 import { getBranchElement } from '@/lib/saju/branches';
@@ -14,15 +14,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
     }
 
-    // Premium check
-    const token = req.cookies.get(PREMIUM_COOKIE_NAME)?.value;
-    if (!token) {
-      return NextResponse.json({ error: 'Premium subscription required.' }, { status: 401 });
-    }
-    const payload = await verifyPremiumToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: 'Invalid or expired token.' }, { status: 401 });
-    }
+    // Premium check (session cookie + live Stripe subscription)
+    const payload = await requirePremium(req);
+    if (payload instanceof NextResponse) return payload;
 
     const { success } = await premiumAIRatelimit.limit(payload.customerId);
     if (!success) {
