@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to parse interpretation.' }, { status: 500 });
     }
 
-    const { emotions, communication, love, ambition, career, balance } = parsed;
-    return NextResponse.json({ emotions, communication, love, ambition, career, balance });
+    const { personality, emotions, communication, love, ambition, career, balance } = parsed;
+    return NextResponse.json({ personality, emotions, communication, love, ambition, career, balance });
   } catch (error) {
     console.error('Astro interpretation error:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(

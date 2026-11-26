@@ -6,7 +6,8 @@ interface PremiumState {
   isPremium: boolean;
   loading: boolean;
   subscribe: () => Promise<void>;
-  restore: (email: string) => Promise<string | null>;
+  /** Requests an emailed sign-in link; resolves to a message to show the user. */
+  restore: (email: string) => Promise<string>;
   manageSubscription: () => Promise<void>;
 }
 
@@ -45,19 +46,19 @@ export function usePremium(): PremiumState {
     window.location.href = url;
   }, []);
 
-  const restore = useCallback(async (email: string): Promise<string | null> => {
+  const restore = useCallback(async (email: string): Promise<string> => {
     const res = await fetch('/api/subscribe/restore', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
       credentials: 'same-origin',
     });
+    const body = await res.json().catch(() => ({}));
     if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
       return body.error || 'Failed to restore subscription.';
     }
-    setIsPremium(true);
-    return null;
+    // Access is granted only after the user clicks the emailed sign-in link
+    return body.message || 'Check your email for a sign-in link.';
   }, []);
 
   const manageSubscription = useCallback(async () => {

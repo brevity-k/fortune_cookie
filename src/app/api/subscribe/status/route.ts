@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPremiumToken, PREMIUM_COOKIE_NAME } from '@/lib/saju/premium';
+import { hasActiveSubscription } from '@/lib/saju/subscription';
 import { subscribeRatelimit } from '@/lib/rate-limit';
 import { isAllowedOrigin, getClientIp } from '@/lib/api-utils';
 
@@ -21,7 +22,17 @@ export async function GET(req: NextRequest) {
   }
 
   const payload = await verifyPremiumToken(token);
-  if (!payload || payload.status !== 'active') {
+  let active = false;
+  if (payload && payload.status === 'active') {
+    try {
+      active = await hasActiveSubscription(payload.customerId);
+    } catch (error) {
+      // Stripe unavailable: trust the signed token rather than locking users out
+      console.error('Status check error:', error instanceof Error ? error.message : 'Unknown error');
+      active = true;
+    }
+  }
+  if (!active) {
     const response = NextResponse.json({ isPremium: false });
     response.cookies.delete(PREMIUM_COOKIE_NAME);
     return response;
